@@ -141,6 +141,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
             );
         } else {
             // to do: data variable not that useful anymore
+            // TODO Rob
             var formData = new FormData();
             var data = {
                 title: title,
@@ -155,8 +156,8 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
             formData.append('title', title);
             formData.append('categoryId', category);
             formData.append('description', description);
-            formData.append('photo', file);
-            formData.append('position', JSON.stringify(data.position))
+            formData.append('file', file);
+            formData.append('position', JSON.stringify(data.position));
             apis.memories
                 .createMemory(formData)
                 .then((res: AxiosResponse) => {
