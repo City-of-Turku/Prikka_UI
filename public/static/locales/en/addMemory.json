@@ -7,5 +7,7 @@
     "description_PH": "Description",
     "map_title": "Position",
     "continue_button": "Submit",
-    "success": "Memory created"
+    "success": "Memory created",
+    "image_info": "Max image size 10MB",
+    "upload_button_text": "Upload"
 }

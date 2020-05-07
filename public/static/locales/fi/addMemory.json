@@ -8,5 +8,7 @@
     "description_PH": "Kuvaus",
     "map_title": "Sijainti",
     "continue_button": "Lähetä",
-    "success": "Muisto luotu"
+    "success": "Muisto luotu",
+    "image_info": "Koko maksimissaan 10MB",
+    "upload_button_text": "Lataa kuva"
 }

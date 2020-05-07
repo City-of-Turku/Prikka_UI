@@ -33,7 +33,7 @@ const basePathMemories = '/memory-management';
  * @param {*} payload
  */
 const createMemory = (payload: any): Promise<AxiosResponse> => {
-    return api.post(`${basePathMemories}/memories`, payload);
+    return api.post(`${basePathMemories}/memories`, payload, { headers: { 'Content-Type': 'multipart/form-data' }});
 };
 
 /**

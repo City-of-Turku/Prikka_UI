@@ -14,6 +14,7 @@ export type Memory = {
     updateAt: string;
     userId: number;
     categoryId: number;
+    photo: any;
 };
 
 export type Memories = {

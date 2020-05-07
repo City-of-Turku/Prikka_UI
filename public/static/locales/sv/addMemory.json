@@ -8,5 +8,7 @@
     "description_PH": "beskrivning",
     "map_title": "Plats",
     "continue_button": "Skick in",
-    "success": "Minne skapat"
+    "success": "Minne skapat",
+    "image_info": "Maximal fil storlek 10MB",
+    "upload_button_text": "Ladda upp"
 }
