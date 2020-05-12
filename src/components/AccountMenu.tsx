@@ -21,12 +21,14 @@ import {
     MenuList,
     ClickAwayListener,
 } from '@material-ui/core';
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 interface IAccountMenu {
+    t(key, opts?): Function;
     isAdmin: boolean;
 }
 // --- COMPONENT ---
-const AccountMenu: React.FC<IAccountMenu> = ({ isAdmin }) => {
+const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin }) => {
     //State
     const [open, setOpen] = React.useState(false);
 
@@ -95,8 +97,9 @@ const AccountMenu: React.FC<IAccountMenu> = ({ isAdmin }) => {
                 aria-controls={open ? 'menu-list-grow' : undefined}
                 aria-haspopup="true"
                 onClick={handleToggle}
+                endIcon={<ExpandMoreIcon />}
             >
-                Account
+                {t('accountmenu.navbar')}
             </Button>
             {/* Popup Menu */}
 
@@ -127,16 +130,16 @@ const AccountMenu: React.FC<IAccountMenu> = ({ isAdmin }) => {
                                     onKeyDown={handleListKeyDown}
                                 >
                                     <MenuItem onClick={handleMymemoriesClick}>
-                                        My Memories
+                                        {t('accountmenu.memories')}
                                     </MenuItem>
                                     {isAdmin ? (
                                         <MenuItem onClick={handleAdminClick}>
-                                            Admin
+                                            {t('accountmenu.admin')}
                                         </MenuItem>
                                     ) : null}
 
                                     <MenuItem onClick={handleSettingsClick}>
-                                        Settings
+                                        {t('accountmenu.settings')}
                                     </MenuItem>
                                     <MenuItem
                                         component="a"
@@ -145,7 +148,7 @@ const AccountMenu: React.FC<IAccountMenu> = ({ isAdmin }) => {
                                             process.env.LOGOUT_URL
                                         }
                                     >
-                                        Logout
+                                        {t('accountmenu.logout')}
                                     </MenuItem>
                                 </MenuList>
                             </ClickAwayListener>

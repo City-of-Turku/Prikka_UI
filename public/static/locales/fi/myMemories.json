@@ -1,3 +1,6 @@
 {
-    "myMemories": "Muistoni"
+    "title": "Muistoni",
+    "description": "Tässä ovat kaikki julkaisemesi muistot.",
+    "emptyMemoryList": "Ei ole vielä lisännyt muistoja.",
+    "addNewMemoryComment": "Lisää muiston \"Lisää muisto\" napista."
 }

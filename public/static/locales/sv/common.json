@@ -12,7 +12,7 @@
         "memories": "Mina minnen",
         "admin": "Admin",
         "settings": "Inställningar",
-        "log": "Logga in",
-        "logt": "Logga ut"
+        "login": "Logga in",
+        "logout": "Logga ut"
     }
 }

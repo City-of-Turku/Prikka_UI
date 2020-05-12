@@ -11,7 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { Memory } from '../types';
+import {Category, Memory} from '../types';
 import { NextPage } from 'next';
 import DeleteMemoryDialog from './DeleteMemoryDialog';
 import Moment from 'react-moment';
@@ -27,11 +27,13 @@ const useStyles = makeStyles({
 
 interface IMemoryCard {
     memory: Memory;
+    category: Category;
     controls?: boolean;
     handleDeleteMemory?(): void;
 }
 const MemoryCard: React.FC<IMemoryCard> = ({
     memory,
+    category,
     controls,
     handleDeleteMemory,
 }) => {
@@ -57,7 +59,7 @@ const MemoryCard: React.FC<IMemoryCard> = ({
                         color="textSecondary"
                         component="p"
                     >
-                        {memory.categoryId}
+                        {category.name}
                     </Typography>
 
                     {/* Date */}

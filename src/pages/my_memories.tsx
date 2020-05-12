@@ -13,18 +13,20 @@ import CardContent from '@material-ui/core/CardContent';
 import Layout from '../components/Layout';
 import MemoryCard from '../components/MemoryCard';
 
-import { Memories } from '../types';
+import {Categories, Memories} from '../types';
 import { apis } from '../services/apis';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useSnackbarContext } from '../contexts/SnackbarContext';
+import {filter} from "compression";
 
 // --- COMPONENT ---
 interface IMyMemories {
     t(key: string, opts?): string;
+    categories: Categories;
     isLogged: boolean;
 }
-const MyMemories: NextPage<IMyMemories & any> = ({ t, isLogged }) => {
+const MyMemories: NextPage<IMyMemories & any> = ({ t, categories, isLogged }) => {
     const snackbarContext = useSnackbarContext();
 
     const [userMemories, setUserMemories] = useState<Memories | null>(null);
@@ -66,22 +68,13 @@ const MyMemories: NextPage<IMyMemories & any> = ({ t, isLogged }) => {
                     <Card style={{ minWidth: '200px' }}>
                         <CardContent>
                             <Typography
-                                gutterBottom
-                                variant="h5"
-                                component="h2"
-                            >
-                                Error
-                            </Typography>
-                            <Typography
-                                variant="body2"
+                                variant="body1"
                                 color="textSecondary"
                                 component="p"
                             >
-                                No memories to display.
+                                {t('emptyMemoryList')}
                                 <br />
-                                Try adding one with
-                                <br />
-                                "+ ADD MEMORY" button
+                                {t('addNewMemoryComment')}
                             </Typography>
                         </CardContent>
                     </Card>
@@ -96,6 +89,7 @@ const MyMemories: NextPage<IMyMemories & any> = ({ t, isLogged }) => {
                                 handleDeleteMemory(index, memory.id)
                             }
                             memory={memory}
+                            category={categories.filter (item => item.id == memory.categoryId)[0]}
                             controls={true}
                         />
                     </Grid>
@@ -125,8 +119,7 @@ const MyMemories: NextPage<IMyMemories & any> = ({ t, isLogged }) => {
                         </Typography>
                         <div>
                             <Typography variant="body1" gutterBottom>
-                                Here you can see all the memories you have
-                                published.
+                                {t('description')}
                             </Typography>
                             <br />
                         </div>
@@ -143,8 +136,16 @@ const MyMemories: NextPage<IMyMemories & any> = ({ t, isLogged }) => {
 
 // --- POPULATE PAGE ---
 MyMemories.getInitialProps = async (ctx: any) => {
+    let categories: Categories = null;
+    await apis.categories
+        .getAllCategories()
+        .then((res) => {
+            categories = res.data.categories;
+        })
+        .catch((err) => console.error('Error fetching categories'));
     return {
         namespacesRequired: ['common', 'myMemories'],
+        categories: categories,
     };
 };
 

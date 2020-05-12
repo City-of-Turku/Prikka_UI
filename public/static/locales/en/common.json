@@ -13,7 +13,7 @@
         "memories": "My Memories",
         "admin": "Admin",
         "settings": "Settings",
-        "log": "Login",
-        "logt": "LogOut"
+        "login": "Login",
+        "logout": "LogOut"
     }
 }

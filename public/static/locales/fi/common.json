@@ -12,7 +12,7 @@
         "memories": "Muistoni",
         "admin": "Admin",
         "settings": "Asetukset",
-        "log": "Kirjaudu",
-        "logt": "Kirjaudu ulos"
+        "login": "Kirjaudu",
+        "logout": "Kirjaudu ulos"
     }
 }

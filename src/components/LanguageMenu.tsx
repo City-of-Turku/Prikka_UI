@@ -28,7 +28,7 @@ const LanguageMenu = ({ t, i18n }) => {
     const options: any[] = [
         { key: 'en', value: 'English' },
         { key: 'fi', value: 'Suomi' },
-        { key: 'sv', value: 'Svensk' },
+        { key: 'sv', value: 'Svenska' },
     ];
     const anchorRef = React.useRef<HTMLButtonElement>(null);
 
