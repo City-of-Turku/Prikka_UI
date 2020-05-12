@@ -43,11 +43,12 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IAdmin {
     t(key: string, opts?: any): string;
     categories: Categories;
+    isLogged: boolean;
+    isAdmin: boolean;
 }
 
 const Admin: NextPage<IAdmin & any> = ({
     t,
-    categories,
     isLogged,
     isAdmin,
 }) => {
@@ -55,14 +56,29 @@ const Admin: NextPage<IAdmin & any> = ({
     const classes = useStyles();
     const snackbarContext = useSnackbarContext();
     //States
+    const [categories, setCategories] = useState<Categories | null>(null)
+
+    const getAllCategories = async () => {
+        await apis.categories
+            .getAllCategories()
+            .then((res) => {
+                let categories = res.data.categories;
+                setCategories(categories)
+                console.log(categories)
+                console.log('Categories fetched: ', categories.length);
+            })
+            .catch((err) => console.error('Error fetching categories', err));
+    }
+
     const [categoryName, setCategoryName] = useState<string>('');
     const [categoryDescription, setCategoryDescription] = useState<string>('');
     const [selectedIndex, setSelectedIndex] = useState<number>(0);
-
     useEffect(() => {
         if (!isLogged || !isAdmin) {
             window.location.href =
                 process.env.BACK_URL! + process.env.LOGIN_URL!;
+        } else {
+            getAllCategories()
         }
     }, []);
 
@@ -82,8 +98,8 @@ const Admin: NextPage<IAdmin & any> = ({
             name: categoryName,
             description: categoryDescription,
         };
-        apis.categories
-            .createCategory(model)
+        apis.admin
+            .adminCreateCategory(model)
             .then((res: AxiosResponse) => {
                 snackbarContext.displaySuccessSnackbar('Category Added');
             })
@@ -251,25 +267,7 @@ const Admin: NextPage<IAdmin & any> = ({
 
 // --- POPULATE PAGE ---
 Admin.getInitialProps = async (ctx: any) => {
-    let categories: Categories = null;
-
-    if (ctx.isLogged && ctx.isAdmin) {
-        await apis.categories
-            .getAllCategories()
-            .then((res) => {
-                categories = res.data.categories;
-
-                console.log('Categories fetched: ', categories.length);
-            })
-            .catch((err) => console.error('Error fetching categories'));
-    } else {
-        console.log('Data not fetched because user not logged');
-    }
-
-    return {
-        namespacesRequired: ['common', 'admin'],
-        categories,
-    };
+    return {namespacesRequired: ['common', 'admin'],};
 };
 
 export default withTranslation('admin')(Admin as any);
