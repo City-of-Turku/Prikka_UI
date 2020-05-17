@@ -28,7 +28,7 @@ interface IAccountMenu {
     isAdmin: boolean;
 }
 // --- COMPONENT ---
-const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin }) => {
+const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin}) => {
     //State
     const [open, setOpen] = React.useState(false);
 
@@ -88,7 +88,8 @@ const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin }) => {
         handleClose(event);
         Router.push('/admin');
     };
-
+    //TODO Check how this param is sent here
+    isAdmin = true;
     return (
         <div id="account-menu">
             {/* Account button */}

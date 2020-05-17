@@ -15,6 +15,7 @@ import {Category, Memory} from '../types';
 import { NextPage } from 'next';
 import DeleteMemoryDialog from './DeleteMemoryDialog';
 import Moment from 'react-moment';
+import {ListItem} from "@material-ui/core";
 
 const useStyles = makeStyles({
     root: {
@@ -31,6 +32,16 @@ interface IMemoryCard {
     controls?: boolean;
     handleDeleteMemory?(): void;
 }
+
+
+function getImageUrl(photo) {
+    console.log(photo);
+    if (photo) {
+        return process.env.BACK_URL + '/uploads/' + photo.filename;
+    }
+    return "/images/placeholder_small.jpg";
+}
+
 const MemoryCard: React.FC<IMemoryCard> = ({
     memory,
     category,
@@ -38,13 +49,15 @@ const MemoryCard: React.FC<IMemoryCard> = ({
     handleDeleteMemory,
 }) => {
     const classes = useStyles();
+    const imageUrl = getImageUrl(JSON.parse(memory.photo));
 
     return (
         <Card className={classes.root}>
             <CardActionArea>
+                {/* Memory picture */}
                 <CardMedia
                     className={classes.media}
-                    image="/images/placeholder_small.jpg"
+                    image={imageUrl}
                     title="Memory Picture"
                 />
                 <CardContent>

@@ -1,6 +1,6 @@
 {
-    "title": "Add a memory",
-    "warning": "Warning : You're not logged in, your memory will be published as \"Anonymous\"",
+    "title": "Add a new memory",
+    "warning": "Warning : You're not logged, your memory will be published as \"Anonymous\"",
     "info_title": "Informations",
     "title_PH": "Title",
     "category_PH": "Category",

@@ -22,7 +22,7 @@ import { Router, useRouter } from 'next/router';
 // --- COMPONENT ---
 interface IIndex {
     t(key: string, opts?: any): string;
-    memorie: Memories;
+    memories: Memories;
     categories: Categories;
     isLogged: boolean;
     selectedMemoryId: string;
