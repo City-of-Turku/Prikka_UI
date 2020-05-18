@@ -81,6 +81,11 @@ const createMemoryReport = (payload: any) =>
     api.post(`${basePathMemories}/reports`, payload);
 
 /**
+ * GET : get all reported memories
+ */
+const getAllReportedMemories = () => api.get(`${basePathMemories}/reportedMemories`);
+
+/**
  * GET : get all reports associated to one memory
  */
 const getMemoryReportsById = (id: any) =>
@@ -192,6 +197,13 @@ const adminDeleteUserById = (id: any) =>
     api.delete(`/admin/${basePathAuth}/user/${id}`)
 
 /**
+ * GET : admin get all users
+ */
+const adminGetAllUsers = () =>
+    api.get(`/admin/auth-management/user`)
+
+
+/**
  * Axios object to export, contening all the APIs to call
  */
 export const apis = {
@@ -204,6 +216,7 @@ export const apis = {
         getAllMemories,
         getUserMemories,
         createMemoryReport,
+        getAllReportedMemories,
         getMemoryReportsById,
     },
     auth: {
@@ -226,5 +239,6 @@ export const apis = {
         adminDeleteCategoryById,
         adminDeleteMemoryById,
         adminDeleteUserById,
+        adminGetAllUsers,
     }
 };

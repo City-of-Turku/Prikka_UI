@@ -15,6 +15,9 @@ export type Memory = {
     userId: number;
     categoryId: number;
     photo: any;
+    Reports: {
+        id: number;
+    }
 };
 
 export type Memories = {
@@ -35,4 +38,18 @@ export type Background = {
     id: number;
     title: string;
     credit: string;
+};
+
+export type User = {
+    id: number;
+    displayName: string;
+    email: string;
+    admin: boolean;
+    createdAt: string;
+    updateAt: string;
+};
+
+export type Users = {
+    count: number;
+    rows: User[];
 };

@@ -6,27 +6,37 @@
  */
 
 // --- IMPORTS ---
-import React, { useState, useEffect } from 'react';
-import { withTranslation } from '../i18n';
+import React, {useEffect, useState} from 'react';
+import {withTranslation} from '../i18n';
 import {
-    Typography,
-    TextField,
     Button,
-    Grid,
-    Theme,
+    Card,
     createStyles,
-    makeStyles,
+    Grid,
+    List,
     ListItem,
     ListItemText,
-    List,
+    makeStyles,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TextField,
+    Theme,
+    Typography,
 } from '@material-ui/core';
 import Layout from '../components/Layout';
-import { apis } from '../services/apis';
-import { useSnackbarContext } from '../contexts/SnackbarContext';
-import { AxiosError, AxiosResponse } from 'axios';
-import { Categories, Category } from '../types';
-import { NextPage } from 'next';
+import {apis} from '../services/apis';
+import {useSnackbarContext} from '../contexts/SnackbarContext';
+import {AxiosError, AxiosResponse} from 'axios';
+import {Categories, Category, Memories, Users} from '../types';
+import {NextPage} from 'next';
 import Head from 'next/head';
+import CardContent from "@material-ui/core/CardContent";
+import ReportedMemoryCard from "../components/ReportedMemoryCard";
+import UserTableRow from "../components/UserTableRow";
+import UserTable from "../components/UserTable";
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -57,6 +67,8 @@ const Admin: NextPage<IAdmin & any> = ({
     const snackbarContext = useSnackbarContext();
     //States
     const [categories, setCategories] = useState<Categories | null>(null)
+    const [reportedMemories, setReportedMemories] = useState<Memories | null>(null);
+    const [users, setUsers] = useState<Users | null>(null);
 
     const getAllCategories = async () => {
         await apis.categories
@@ -78,7 +90,9 @@ const Admin: NextPage<IAdmin & any> = ({
             window.location.href =
                 process.env.BACK_URL! + process.env.LOGIN_URL!;
         } else {
-            getAllCategories()
+            getAllCategories();
+            getAllReportedMemories();
+            getAllUsers();
         }
     }, []);
 
@@ -144,6 +158,117 @@ const Admin: NextPage<IAdmin & any> = ({
                 </Typography>
             </div>
         );
+    };
+
+    const getAllReportedMemories = async () => {
+        let tempMemories: Memories;
+        await apis.memories
+            .getAllReportedMemories()
+            .then((res) => {
+                tempMemories = res.data;
+                console.log('memories fetched: ', tempMemories.count);
+                setReportedMemories(tempMemories);
+            })
+            .catch((err) => {
+                console.error('Error fetching memories', err);
+            });
+    };
+
+    const displayReportedMemories = () => {
+        let component;
+
+        if (reportedMemories === null || reportedMemories.count === 0) {
+            component = (
+                <Grid item xs={4}>
+                    <Card style={{ minWidth: '200px' }}>
+                        <CardContent>
+                            <Typography
+                                variant="body1"
+                                color="textSecondary"
+                                component="p"
+                            >
+                                {t('emptyMemoryList')}
+                                <br />
+                                {t('addNewMemoryComment')}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
+            );
+        } else {
+            component = reportedMemories.rows.map((memory, index) => {
+                return (
+                    <Grid key={index} item xs={4}>
+                        <ReportedMemoryCard
+//                            handleDeleteMemory={() =>
+//                                handleDeleteMemory(index, memory.id)
+//                           }
+                            memory={memory}
+                            category={categories.filter (item => item.id == memory.categoryId)[0]}
+                            controls={true}
+                        />
+                    </Grid>
+                );
+            });
+        }
+        return component;
+    };
+
+    const getAllUsers = async () => {
+        let tempUsers: Users;
+        await apis.admin
+            .adminGetAllUsers()
+            .then((res) => {
+                tempUsers = res.data;
+                console.log('users fetched: ', tempUsers.count);
+                setUsers(tempUsers);
+            })
+            .catch((err) => {
+                console.error('Error fetching memories', err);
+            });
+    };
+
+    const displayUsers = () => {
+        let component;
+
+        // This table can be reached only if there exits at least one logged in user.
+        // Therefore the null value is not even a possible situation.
+        if (users === null || users.count === 0) {
+            component = <div>Empty list>/</div>;
+        } else {
+            component = users.rows.map((user, index) => {
+                return (
+                    <TableContainer>
+                        <Table>
+                            <TableHead>
+                                <TableCell >User name2</TableCell>
+                                <TableCell>E-mail</TableCell>
+                                <TableCell>Is admin</TableCell>
+                            </TableHead>
+                            <TableBody>
+                                <UserTableRow user={user} controls={true} />
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                );
+            });
+        }
+        return component;
+    };
+
+    const displayUsers2 = () => {
+        let component;
+
+        // This table can be reached only if there exits at least one logged in user.
+        // Therefore the null value is not even a possible situation.
+        if (users === null || users.count === 0) {
+            component = <div>Empty list>/</div>;
+        } else {
+            component = (users) => {(
+                <UserTable users={users} controls={true}>testaus</UserTable>
+            )}
+        };
+        return component;
     };
 
     return (
@@ -241,23 +366,28 @@ const Admin: NextPage<IAdmin & any> = ({
                         </Typography>
 
                         <form noValidate autoComplete="false">
-                            <Grid container spacing={3}>
-                                {[...Array(4).keys()].map(() => {
-                                    return (
-                                        <Grid item xs={4}>
-                                            <div
-                                                style={{
-                                                    backgroundColor: 'grey',
-                                                    height: '100px',
-                                                    width: '100px',
-                                                }}
-                                            ></div>
-                                        </Grid>
-                                    );
-                                })}
+                            <Grid container spacing={2}>
+                                {displayReportedMemories()}
                             </Grid>
                         </form>
+
                         <div style={{ height: '5vh' }} />
+
+                        {/* Review Reports */}
+                        <Typography variant="h6" gutterBottom>
+                            Users
+                        </Typography>
+                        <Typography variant="body1" gutterBottom>
+                            //TODO,
+                        </Typography>
+
+                        <form noValidate autoComplete="false">
+                            <Grid container spacing={2}>
+                                {displayUsers()}
+                                {displayUsers2()}
+                            </Grid>
+                        </form>
+
                     </Layout>
                 </div>
             ) : null}
