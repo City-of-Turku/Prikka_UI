@@ -84,7 +84,11 @@ const Admin: NextPage<IAdmin & any> = ({
 
     const [categoryName, setCategoryName] = useState<string>('');
     const [categoryDescription, setCategoryDescription] = useState<string>('');
+    const [categoryUpdatedId, setCategoryUpdatedId] = useState<number>(0);
+    const [categoryUpdatedName, setCategoryUpdatedName] = useState<string>('');
+    const [categoryUpdatedDescription, setCategoryUpdatedDescription] = useState<string>('');
     const [selectedIndex, setSelectedIndex] = useState<number>(0);
+
     useEffect(() => {
         if (!isLogged || !isAdmin) {
             window.location.href =
@@ -106,6 +110,18 @@ const Admin: NextPage<IAdmin & any> = ({
     ) => {
         setCategoryDescription(event.target.value);
     };
+    const handleCategoryNameChangeUpdate = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+        setCategoryUpdatedName(event.target.value);
+        setCategoryUpdatedId(selectedIndex);
+    };
+    const handleCategoryDescriptionChangeUpdate = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+        setCategoryUpdatedDescription(event.target.value);
+        setCategoryUpdatedId(selectedIndex);
+    };
 
     const handleSubmit = () => {
         const model = {
@@ -115,7 +131,22 @@ const Admin: NextPage<IAdmin & any> = ({
         apis.admin
             .adminCreateCategory(model)
             .then((res: AxiosResponse) => {
-                snackbarContext.displaySuccessSnackbar('Category Added');
+                snackbarContext.displaySuccessSnackbar('Category added');
+            })
+            .catch((err: AxiosError) => {
+                snackbarContext.displayErrorSnackbar('Error');
+            });
+    };
+
+    const handleCategoryUpdateSubmit = () => {
+        const model = {
+            name: categoryUpdatedName,
+            description: categoryUpdatedDescription,
+        };
+        apis.admin
+            .adminUpdateCategory(categoryUpdatedId,model)
+            .then((res: AxiosResponse) => {
+                snackbarContext.displaySuccessSnackbar('Category updated');
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
@@ -147,15 +178,42 @@ const Admin: NextPage<IAdmin & any> = ({
         const categorySelected: Category = categories[selectedIndex];
         return (
             <div>
-                <Typography variant="h6">Name</Typography>
-                <Typography variant="body1" gutterBottom>
-                    {categorySelected.name}
+                <Typography variant="h6" gutterBottom>
+                    Update selected category
                 </Typography>
-
-                <Typography variant="h6">Description</Typography>
-                <Typography variant="body1" gutterBottom>
-                    {categorySelected.description}
-                </Typography>
+                <form noValidate autoComplete="false">
+                    <div>
+                        <TextField
+                            variant="outlined"
+                            label="Category Name"
+                            onChange={handleCategoryNameChangeUpdate}
+                            value={categorySelected.name}
+                        ></TextField>
+                    </div>
+                    <br />
+                    <div>
+                        <TextField
+                            variant="outlined"
+                            multiline
+                            rows={4}
+                            label="Category Description"
+                            value={categorySelected.description}
+                            onChange={
+                                handleCategoryDescriptionChangeUpdate
+                            }
+                        ></TextField>
+                    </div>
+                    <br />
+                    <div>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleCategoryUpdateSubmit}
+                        >
+                            Save updated category
+                        </Button>
+                    </div>
+                </form>
             </div>
         );
     };
