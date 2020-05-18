@@ -39,6 +39,7 @@ import {
     TwitterShareButton,
     WhatsappShareButton,
 } from 'react-share';
+import ShareMemoryPopup from "./ShareMemoryPopup";
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -141,65 +142,7 @@ const MemoryDetails: React.FC<IMemoryDetails> = ({
                             </MuiThemeProvider>
                         </Grid>
                         <Grid item>
-                            <Popup
-                                trigger={
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        startIcon={<ShareSharpIcon />}
-                                    >
-                                        Share
-                                    </Button>
-                                }
-                                modal
-                            >
-                                <div>
-                                    <Typography variant="h4">
-                                        Share this memory on social media
-                                    </Typography>
-                                    <Divider />
-
-                                    <Grid
-                                        container
-                                        direction="row"
-                                        justify="space-evenly"
-                                        alignItems="center"
-                                    >
-                                        <Grid item>
-                                            <EmailShareButton
-                                                url={shareUrl}
-                                                body={shareTitle}
-                                            >
-                                                <EmailIcon size={50} round />
-                                            </EmailShareButton>
-                                        </Grid>
-                                        <Grid item>
-                                            <WhatsappShareButton
-                                                url={shareUrl}
-                                                title={shareTitle}
-                                            >
-                                                <WhatsappIcon size={50} round />
-                                            </WhatsappShareButton>
-                                        </Grid>
-                                        <Grid item>
-                                            <FacebookShareButton
-                                                url={shareUrl}
-                                                quote={shareTitle}
-                                            >
-                                                <FacebookIcon size={50} round />
-                                            </FacebookShareButton>
-                                        </Grid>
-                                        <Grid item>
-                                            <TwitterShareButton
-                                                url={shareUrl}
-                                                title={shareTitle}
-                                            >
-                                                <TwitterIcon size={50} round />
-                                            </TwitterShareButton>
-                                        </Grid>
-                                    </Grid>
-                                </div>
-                            </Popup>
+                            <ShareMemoryPopup shareMemoryUrl={shareUrl} shareMemoryTitle={shareTitle} />
                         </Grid>
                     </Grid>
                     <ReportDialog memory={selectedMemory} />

@@ -15,7 +15,8 @@ import {Category, Memory} from '../types';
 import { NextPage } from 'next';
 import DeleteMemoryDialog from './DeleteMemoryDialog';
 import Moment from 'react-moment';
-import {ListItem} from "@material-ui/core";
+import {Grid, ListItem} from "@material-ui/core";
+import ShareMemoryPopup from "./ShareMemoryPopup";
 
 const useStyles = makeStyles({
     root: {
@@ -50,6 +51,8 @@ const MemoryCard: React.FC<IMemoryCard> = ({
 }) => {
     const classes = useStyles();
     const imageUrl = getImageUrl(JSON.parse(memory.photo));
+    const shareUrl = `${process.env.FRONT_URL}/?memory=${memory.id}`;
+    const shareTitle = 'Check out this memory at Prikka';
 
     return (
         <Card className={classes.root}>
@@ -96,9 +99,7 @@ const MemoryCard: React.FC<IMemoryCard> = ({
             </CardActionArea>
             {controls ? (
                 <CardActions>
-                    <Button size="small" color="primary">
-                        Share
-                    </Button>
+                    <ShareMemoryPopup shareMemoryUrl={shareUrl} shareMemoryTitle={shareTitle} />
                     <DeleteMemoryDialog
                         handleDeleteMemory={handleDeleteMemory}
                         memoryId={memory.id}
