@@ -181,6 +181,9 @@ const Admin: NextPage<IAdmin & any> = ({
                 <Typography variant="h6" gutterBottom>
                     Update selected category
                 </Typography>
+                <Typography variant="body1" gutterBottom>
+                    // TODO The name and description fields are not yet editable.
+                </Typography>
                 <form noValidate autoComplete="false">
                     <div>
                         <TextField
@@ -322,9 +325,7 @@ const Admin: NextPage<IAdmin & any> = ({
         if (users === null || users.count === 0) {
             component = <div>Empty list>/</div>;
         } else {
-            component = (users) => {(
-                <UserTable users={users} controls={true}>testaus</UserTable>
-            )}
+            component = <UserTable users={users} controls={true}>testaus</UserTable>
         };
         return component;
     };
@@ -419,8 +420,7 @@ const Admin: NextPage<IAdmin & any> = ({
                             Review reports
                         </Typography>
                         <Typography variant="body1" gutterBottom>
-                            //TODO, sort memories by reports, edit or delete
-                            options
+                            //TODO, Update or delte does not work yet.
                         </Typography>
 
                         <form noValidate autoComplete="false">
@@ -436,13 +436,13 @@ const Admin: NextPage<IAdmin & any> = ({
                             Users
                         </Typography>
                         <Typography variant="body1" gutterBottom>
-                            //TODO,
+                            //TODO For now the table only lists the users that have at least once logged into the application.
                         </Typography>
 
                         <form noValidate autoComplete="false">
                             <Grid container spacing={2}>
                                 {displayUsers()}
-                                {displayUsers2()}
+                                {/*displayUsers2()*/}
                             </Grid>
                         </form>
 

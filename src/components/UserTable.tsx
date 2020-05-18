@@ -37,6 +37,11 @@ const UserTable: React.FC<IUserTable> = ({
                         <TableCell>Is admin</TableCell>
                     </TableHead>
                     <TableBody>
+                        <TableRow key="99">
+                            <TableCell></TableCell>
+                            <TableCell>user.email</TableCell>
+                            <TableCell>{users.count}</TableCell>
+                        </TableRow>
                         {users.rows.map((user, index) => {
                             <TableRow key={user.id}>
                                 <TableCell>{user.displayName}</TableCell>
