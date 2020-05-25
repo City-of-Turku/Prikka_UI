@@ -1,5 +1,5 @@
 /**
- * Component used to display sample data while My Memory page is not working
+ * Component used to display Memory card in the My memories interface
  */
 
 import React from 'react';
@@ -38,6 +38,7 @@ interface IMemoryCard {
 function getImageUrl(photo) {
     console.log(photo);
     if (photo) {
+//        return process.env.IMAGE_UPLOAD_PATH +''+ photo.filename;
         return process.env.BACK_URL + '/uploads/' + photo.filename;
     }
     return "/images/placeholder_small.jpg";

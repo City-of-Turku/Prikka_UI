@@ -35,7 +35,6 @@ import {NextPage} from 'next';
 import Head from 'next/head';
 import CardContent from "@material-ui/core/CardContent";
 import ReportedMemoryCard from "../components/ReportedMemoryCard";
-import UserTableRow from "../components/UserTableRow";
 import UserTable from "../components/UserTable";
 
 // --- STYLES ---
@@ -44,6 +43,8 @@ const useStyles = makeStyles((theme: Theme) =>
         categoryList: {
             width: '100%',
             maxWidth: 360,
+            maxHeight: 300,
+            overflow: 'auto',
             backgroundColor: theme.palette.background.paper,
         },
     }),
@@ -62,25 +63,15 @@ const Admin: NextPage<IAdmin & any> = ({
     isLogged,
     isAdmin,
 }) => {
+
     //Contexts
     const classes = useStyles();
     const snackbarContext = useSnackbarContext();
+
     //States
     const [categories, setCategories] = useState<Categories | null>(null)
     const [reportedMemories, setReportedMemories] = useState<Memories | null>(null);
     const [users, setUsers] = useState<Users | null>(null);
-
-    const getAllCategories = async () => {
-        await apis.categories
-            .getAllCategories()
-            .then((res) => {
-                let categories = res.data.categories;
-                setCategories(categories)
-                console.log(categories)
-                console.log('Categories fetched: ', categories.length);
-            })
-            .catch((err) => console.error('Error fetching categories', err));
-    }
 
     const [categoryName, setCategoryName] = useState<string>('');
     const [categoryDescription, setCategoryDescription] = useState<string>('');
@@ -99,6 +90,46 @@ const Admin: NextPage<IAdmin & any> = ({
             getAllUsers();
         }
     }, []);
+
+    const getAllCategories = async () => {
+        await apis.categories
+            .getAllCategories()
+            .then((res) => {
+                let categories = res.data.categories;
+                setCategories(categories)
+                console.log(categories)
+                console.log('Categories fetched: ', categories.length);
+            })
+            .catch((err) => console.error('Error fetching categories', err));
+    }
+
+    const getAllReportedMemories = async () => {
+        let tempMemories: Memories;
+        await apis.memories
+            .getAllReportedMemories()
+            .then((res) => {
+                tempMemories = res.data;
+                console.log('memories fetched: ', tempMemories.count);
+                setReportedMemories(tempMemories);
+            })
+            .catch((err) => {
+                console.error('Error fetching memories', err);
+            });
+    };
+
+    const getAllUsers = async () => {
+        let tempUsers: Users;
+        await apis.admin
+            .adminGetAllUsers()
+            .then((res) => {
+                tempUsers = res.data;
+                console.log('users fetched: ', tempUsers.count);
+                setUsers(tempUsers);
+            })
+            .catch((err) => {
+                console.error('Error fetching memories', err);
+            });
+    };
 
     const handleCategoryNameChange = (
         event: React.ChangeEvent<HTMLInputElement>,
@@ -123,7 +154,7 @@ const Admin: NextPage<IAdmin & any> = ({
         setCategoryUpdatedId(selectedIndex);
     };
 
-    const handleSubmit = () => {
+    const handleCategoryCreateSubmit = () => {
         const model = {
             name: categoryName,
             description: categoryDescription,
@@ -158,9 +189,13 @@ const Admin: NextPage<IAdmin & any> = ({
         index: number,
     ) => {
         setSelectedIndex(index);
+        setCategoryUpdatedId(selectedIndex);
+        const categorySelected: Category = categories[selectedIndex];
+        setCategoryUpdatedName(categorySelected.name);
+        setCategoryUpdatedDescription(categorySelected.description);
     };
 
-    const generateCategories = () => {
+    const generateCategoryListItems = () => {
         return categories.map((category: Category, index: number) => {
             return (
                 <ListItem
@@ -175,35 +210,28 @@ const Admin: NextPage<IAdmin & any> = ({
     };
 
     const generateCategoryDetails = () => {
-        const categorySelected: Category = categories[selectedIndex];
         return (
             <div>
                 <Typography variant="h6" gutterBottom>
-                    Update selected category
-                </Typography>
-                <Typography variant="body1" gutterBottom>
-                    // TODO The name and description fields are not yet editable.
+                    Selected category
                 </Typography>
                 <form noValidate autoComplete="false">
                     <div>
                         <TextField
                             variant="outlined"
                             label="Category Name"
+                            value={categoryUpdatedName}
                             onChange={handleCategoryNameChangeUpdate}
-                            value={categorySelected.name}
                         ></TextField>
                     </div>
                     <br />
                     <div>
                         <TextField
                             variant="outlined"
-                            multiline
-                            rows={4}
+                            multiline rows={4}
                             label="Category Description"
-                            value={categorySelected.description}
-                            onChange={
-                                handleCategoryDescriptionChangeUpdate
-                            }
+                            value={categoryUpdatedDescription}
+                            onChange={handleCategoryDescriptionChangeUpdate}
                         ></TextField>
                     </div>
                     <br />
@@ -213,7 +241,7 @@ const Admin: NextPage<IAdmin & any> = ({
                             color="primary"
                             onClick={handleCategoryUpdateSubmit}
                         >
-                            Save updated category
+                            Update selected category
                         </Button>
                     </div>
                 </form>
@@ -221,18 +249,78 @@ const Admin: NextPage<IAdmin & any> = ({
         );
     };
 
-    const getAllReportedMemories = async () => {
-        let tempMemories: Memories;
-        await apis.memories
-            .getAllReportedMemories()
-            .then((res) => {
-                tempMemories = res.data;
-                console.log('memories fetched: ', tempMemories.count);
-                setReportedMemories(tempMemories);
-            })
-            .catch((err) => {
-                console.error('Error fetching memories', err);
-            });
+    const displayAddCategory = () => {
+        return (
+            <Grid item xs={4}>
+                <Typography variant="h6" gutterBottom>
+                    Add new category
+                </Typography>
+                <form noValidate autoComplete="false">
+                    <div>
+                        <TextField
+                            variant="outlined"
+                            label="Category Name"
+                            onChange={handleCategoryNameChange}
+                            value={categoryName}
+                        ></TextField>
+                    </div>
+                    <br />
+                    <div>
+                        <TextField
+                            variant="outlined"
+                            multiline
+                            rows={4}
+                            label="Category Description"
+                            value={categoryDescription}
+                            onChange={
+                                handleCategoryDescriptionChange
+                            }
+                        ></TextField>
+                    </div>
+                    <br />
+                    <div>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleCategoryCreateSubmit}
+                        >
+                            Add category
+                        </Button>
+                    </div>
+                </form>
+            </Grid>
+        )
+    };
+
+    const displayCategoryList = () => {
+        return (
+            <Grid container item xs={8}>
+                <Grid item xs={12}>
+                    <Typography variant="h6">
+                        Categories
+                    </Typography>
+                </Grid>
+                <Grid container item xs={12} spacing={3}>
+                    <Grid item xs={4}>
+                        <div className={classes.categoryList}>
+                            <List
+                                component="nav"
+                                aria-label="main mailbox folders"
+                            >
+                                {categories
+                                    ? generateCategoryListItems()
+                                    : null}
+                            </List>
+                        </div>
+                    </Grid>
+                    <Grid item xs={8}>
+                        {categories
+                            ? generateCategoryDetails()
+                            : null}
+                    </Grid>
+                </Grid>
+            </Grid>
+        )
     };
 
     const displayReportedMemories = () => {
@@ -275,21 +363,7 @@ const Admin: NextPage<IAdmin & any> = ({
         return component;
     };
 
-    const getAllUsers = async () => {
-        let tempUsers: Users;
-        await apis.admin
-            .adminGetAllUsers()
-            .then((res) => {
-                tempUsers = res.data;
-                console.log('users fetched: ', tempUsers.count);
-                setUsers(tempUsers);
-            })
-            .catch((err) => {
-                console.error('Error fetching memories', err);
-            });
-    };
-
-    const displayUsers = () => {
+    const displayTableWithUsers = () => {
         let component;
 
         // This table can be reached only if there exits at least one logged in user.
@@ -297,35 +371,7 @@ const Admin: NextPage<IAdmin & any> = ({
         if (users === null || users.count === 0) {
             component = <div>Empty list>/</div>;
         } else {
-            component = users.rows.map((user, index) => {
-                return (
-                    <TableContainer>
-                        <Table>
-                            <TableHead>
-                                <TableCell >User name2</TableCell>
-                                <TableCell>E-mail</TableCell>
-                                <TableCell>Is admin</TableCell>
-                            </TableHead>
-                            <TableBody>
-                                <UserTableRow user={user} controls={true} />
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                );
-            });
-        }
-        return component;
-    };
-
-    const displayUsers2 = () => {
-        let component;
-
-        // This table can be reached only if there exits at least one logged in user.
-        // Therefore the null value is not even a possible situation.
-        if (users === null || users.count === 0) {
-            component = <div>Empty list>/</div>;
-        } else {
-            component = <UserTable users={users} controls={true}>testaus</UserTable>
+            component = <UserTable users={users} controls={true}/>
         };
         return component;
     };
@@ -343,84 +389,23 @@ const Admin: NextPage<IAdmin & any> = ({
                             Admin
                         </Typography>
 
-                        {/* Add Category */}
+                        {/*** Categories ********************/}
                         <Grid container spacing={6}>
-                            <Grid item xs={4}>
-                                <Typography variant="h6" gutterBottom>
-                                    Add new category
-                                </Typography>
-                                <form noValidate autoComplete="false">
-                                    <div>
-                                        <TextField
-                                            variant="outlined"
-                                            label="Category Name"
-                                            onChange={handleCategoryNameChange}
-                                            value={categoryName}
-                                        ></TextField>
-                                    </div>
-                                    <br />
-                                    <div>
-                                        <TextField
-                                            variant="outlined"
-                                            multiline
-                                            rows={4}
-                                            label="Category Description"
-                                            value={categoryDescription}
-                                            onChange={
-                                                handleCategoryDescriptionChange
-                                            }
-                                        ></TextField>
-                                    </div>
-                                    <br />
-                                    <div>
-                                        <Button
-                                            variant="contained"
-                                            color="primary"
-                                            onClick={handleSubmit}
-                                        >
-                                            Add category
-                                        </Button>
-                                    </div>
-                                </form>
-                            </Grid>
+                            {/* Add Category */}
+                            {displayAddCategory()}
 
                             {/* CategoryList */}
-                            <Grid container item xs={8}>
-                                <Grid item xs={12}>
-                                    <Typography variant="h6">
-                                        Current categories
-                                    </Typography>
-                                </Grid>
-                                <Grid container item xs={12} spacing={3}>
-                                    <Grid item xs={4}>
-                                        <div className={classes.categoryList}>
-                                            <List
-                                                component="nav"
-                                                aria-label="main mailbox folders"
-                                            >
-                                                {categories
-                                                    ? generateCategories()
-                                                    : null}
-                                            </List>
-                                        </div>
-                                    </Grid>
-                                    <Grid item xs={8}>
-                                        {categories
-                                            ? generateCategoryDetails()
-                                            : null}
-                                    </Grid>
-                                </Grid>
-                            </Grid>
+                            {displayCategoryList()}
                         </Grid>
 
                         <div style={{ height: '5vh' }} />
 
-                        {/* Review Reports */}
+                        {/*** Review Reports ********************/}
                         <Typography variant="h6" gutterBottom>
-                            Review reports
+                            Review reported memories
                         </Typography>
                         <Typography variant="body1" gutterBottom>
-                            //TODO, Update or delte does not work yet.
+                            //TODO, Update or delete does not work yet.
                         </Typography>
 
                         <form noValidate autoComplete="false">
@@ -431,18 +416,14 @@ const Admin: NextPage<IAdmin & any> = ({
 
                         <div style={{ height: '5vh' }} />
 
-                        {/* Review Reports */}
+                        {/*** Table with registrered users *********************/}
                         <Typography variant="h6" gutterBottom>
-                            Users
-                        </Typography>
-                        <Typography variant="body1" gutterBottom>
-                            //TODO For now the table only lists the users that have at least once logged into the application.
+                            Registered users
                         </Typography>
 
                         <form noValidate autoComplete="false">
                             <Grid container spacing={2}>
-                                {displayUsers()}
-                                {/*displayUsers2()*/}
+                                {displayTableWithUsers()}
                             </Grid>
                         </form>
 

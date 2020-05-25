@@ -69,6 +69,7 @@ interface IMemoryDetails {
     handleUnselectMemory(): void;
     selectedMemory: Memory;
 }
+
 // component
 function Photo(props) {
     console.log(props)
@@ -79,9 +80,12 @@ function Photo(props) {
                 <img src={`${process.env.BACK_URL}/uploads/${photo.filename}`}/>
             </ListItem>
             )
-            
     }
-    return null;
+    return (
+        <ListItem>
+            <img src={`/images/placeholder_small.jpg`}/>
+        </ListItem>
+    )
 }
 
 

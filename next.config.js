@@ -8,5 +8,6 @@ module.exports = {
         BACK_URL: process.env.BACK_URL,
         LOGIN_URL: process.env.LOGIN_URL,
         LOGOUT_URL: process.env.LOGOUT_URL,
+        IMAGE_UPLOAD_PATH: process.env.IMAGE_UPLOAD_PATH,
     },
 };

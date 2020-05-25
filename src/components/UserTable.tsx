@@ -1,5 +1,5 @@
 /**
- * Component used to display sample data while My Memory page is not working
+ * This component shows a list of the registered users.
  */
 
 import React from 'react';
@@ -28,32 +28,28 @@ const UserTable: React.FC<IUserTable> = ({
     handleDeleteUser,
 }) => {
     //const classes = useStyles();
-        return (
-            <TableContainer>
-                <Table>
-                    <TableHead>
-                        <TableCell >User name3</TableCell>
-                        <TableCell>E-mail</TableCell>
-                        <TableCell>Is admin</TableCell>
-                    </TableHead>
-                    <TableBody>
-                        <TableRow key="99">
-                            <TableCell></TableCell>
-                            <TableCell>user.email</TableCell>
-                            <TableCell>{users.count}</TableCell>
-                        </TableRow>
-                        {users.rows.map((user, index) => {
+    return (
+        <TableContainer>
+            <Table>
+                <TableHead color="grey">
+                    <TableCell >User name</TableCell>
+                    <TableCell>E-mail</TableCell>
+                    <TableCell>Is admin</TableCell>
+                </TableHead>
+                <TableBody>
+                    {users.rows.map(user => {
+                        return (
                             <TableRow key={user.id}>
                                 <TableCell>{user.displayName}</TableCell>
                                 <TableCell>{user.email}</TableCell>
                                 <TableCell>{user.admin.toString()}</TableCell>
                             </TableRow>
-                        })}
-                    </TableBody>
-                </Table>
-            </TableContainer>
-        );
-    }
-;
+                        )
+                    })}
+                </TableBody>
+            </Table>
+        </TableContainer>
+    );
+};
 
 export default UserTable;
