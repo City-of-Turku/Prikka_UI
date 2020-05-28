@@ -1,0 +1,19 @@
+{
+    "title": "Admin",
+    "titleAddNewCategory": "Lisää uusi kategoria",
+    "titleCategories": "Kategoriat",
+    "titleSelectedCategory": "Valittu kategoria",
+
+    "categoryName": "Kategorinimi",
+    "categoryDescription": "Kategorikuvaus",
+
+    "buttonAddCategory": "Tallenna uusi kategoria",
+    "buttonUpdateCategory": "Päivitä valittu kategoria",
+
+    "titleRegistredUsers": "Rekisteröidyt käyttäjät",
+    "headerUserName": "Käyttäjänimi",
+    "headerEmail": "Sähköpostiosoite",
+    "headerIsAdmin": "Admin-oikeus",
+    "buttonAddAdminRight": "Lisää admin oikeus",
+    "buttonRemoveAdminRight": "Poista admin oikeus"
+}

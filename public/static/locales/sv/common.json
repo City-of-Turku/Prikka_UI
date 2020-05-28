@@ -9,8 +9,9 @@
     },
     "accountmenu": {
         "navbar": "Konto",
-        "memories": "Mina minnen",
-        "admin": "Admin",
+        "mymemories": "Mina minnen",
+        "reportedmemories": "Rapporterade minnen",
+        "configurations": "Konfigurationer",
         "settings": "Inställningar",
         "login": "Logga in",
         "logout": "Logga ut"

@@ -5,10 +5,12 @@
     "info_title": "Information",
     "title_PH": "Rubrik",
     "category_PH": "Kategori",
-    "description_PH": "beskrivning",
+    "description_PH": "Beskrivning",
     "map_title": "Plats",
-    "continue_button": "Skick in",
+    "continue_button": "Skicka in",
     "success": "Minne skapat",
     "image_info": "Maximal fil storlek 10MB",
-    "upload_button_text": "Ladda upp"
+    "upload_button_text": "Ladda upp",
+    "category": "Kategori",
+    "alternativeAll": "Alla"
 }

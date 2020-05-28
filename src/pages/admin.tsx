@@ -10,18 +10,12 @@ import React, {useEffect, useState} from 'react';
 import {withTranslation} from '../i18n';
 import {
     Button,
-    Card,
     createStyles,
     Grid,
     List,
     ListItem,
     ListItemText,
     makeStyles,
-    Table,
-    TableBody,
-    TableCell,
-    TableContainer,
-    TableHead,
     TextField,
     Theme,
     Typography,
@@ -30,11 +24,9 @@ import Layout from '../components/Layout';
 import {apis} from '../services/apis';
 import {useSnackbarContext} from '../contexts/SnackbarContext';
 import {AxiosError, AxiosResponse} from 'axios';
-import {Categories, Category, Memories, Users} from '../types';
+import {Categories, Category, Users} from '../types';
 import {NextPage} from 'next';
 import Head from 'next/head';
-import CardContent from "@material-ui/core/CardContent";
-import ReportedMemoryCard from "../components/ReportedMemoryCard";
 import UserTable from "../components/UserTable";
 
 // --- STYLES ---
@@ -70,7 +62,6 @@ const Admin: NextPage<IAdmin & any> = ({
 
     //States
     const [categories, setCategories] = useState<Categories | null>(null)
-    const [reportedMemories, setReportedMemories] = useState<Memories | null>(null);
     const [users, setUsers] = useState<Users | null>(null);
 
     const [categoryName, setCategoryName] = useState<string>('');
@@ -86,7 +77,6 @@ const Admin: NextPage<IAdmin & any> = ({
                 process.env.BACK_URL! + process.env.LOGIN_URL!;
         } else {
             getAllCategories();
-            getAllReportedMemories();
             getAllUsers();
         }
     }, []);
@@ -102,20 +92,6 @@ const Admin: NextPage<IAdmin & any> = ({
             })
             .catch((err) => console.error('Error fetching categories', err));
     }
-
-    const getAllReportedMemories = async () => {
-        let tempMemories: Memories;
-        await apis.memories
-            .getAllReportedMemories()
-            .then((res) => {
-                tempMemories = res.data;
-                console.log('memories fetched: ', tempMemories.count);
-                setReportedMemories(tempMemories);
-            })
-            .catch((err) => {
-                console.error('Error fetching memories', err);
-            });
-    };
 
     const getAllUsers = async () => {
         let tempUsers: Users;
@@ -145,13 +121,13 @@ const Admin: NextPage<IAdmin & any> = ({
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
         setCategoryUpdatedName(event.target.value);
-        setCategoryUpdatedId(selectedIndex);
+//        setCategoryUpdatedId(selectedIndex);
     };
     const handleCategoryDescriptionChangeUpdate = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
         setCategoryUpdatedDescription(event.target.value);
-        setCategoryUpdatedId(selectedIndex);
+//        setCategoryUpdatedId(selectedIndex);
     };
 
     const handleCategoryCreateSubmit = () => {
@@ -189,8 +165,9 @@ const Admin: NextPage<IAdmin & any> = ({
         index: number,
     ) => {
         setSelectedIndex(index);
-        setCategoryUpdatedId(selectedIndex);
+//        setCategoryUpdatedId(selectedIndex);
         const categorySelected: Category = categories[selectedIndex];
+        setCategoryUpdatedId(categorySelected.id);
         setCategoryUpdatedName(categorySelected.name);
         setCategoryUpdatedDescription(categorySelected.description);
     };
@@ -213,13 +190,13 @@ const Admin: NextPage<IAdmin & any> = ({
         return (
             <div>
                 <Typography variant="h6" gutterBottom>
-                    Selected category
+                    {t('titleSelectedCategory')}
                 </Typography>
                 <form noValidate autoComplete="false">
                     <div>
                         <TextField
                             variant="outlined"
-                            label="Category Name"
+                            label={t('categoryName')}
                             value={categoryUpdatedName}
                             onChange={handleCategoryNameChangeUpdate}
                         ></TextField>
@@ -229,7 +206,7 @@ const Admin: NextPage<IAdmin & any> = ({
                         <TextField
                             variant="outlined"
                             multiline rows={4}
-                            label="Category Description"
+                            label={t('categoryDescription')}
                             value={categoryUpdatedDescription}
                             onChange={handleCategoryDescriptionChangeUpdate}
                         ></TextField>
@@ -241,7 +218,7 @@ const Admin: NextPage<IAdmin & any> = ({
                             color="primary"
                             onClick={handleCategoryUpdateSubmit}
                         >
-                            Update selected category
+                            {t('buttonUpdateCategory')}
                         </Button>
                     </div>
                 </form>
@@ -253,13 +230,13 @@ const Admin: NextPage<IAdmin & any> = ({
         return (
             <Grid item xs={4}>
                 <Typography variant="h6" gutterBottom>
-                    Add new category
+                    {t('titleAddNewCategory')}
                 </Typography>
                 <form noValidate autoComplete="false">
                     <div>
                         <TextField
                             variant="outlined"
-                            label="Category Name"
+                            label={t('categoryName')}
                             onChange={handleCategoryNameChange}
                             value={categoryName}
                         ></TextField>
@@ -270,7 +247,7 @@ const Admin: NextPage<IAdmin & any> = ({
                             variant="outlined"
                             multiline
                             rows={4}
-                            label="Category Description"
+                            label={t('categoryDescription')}
                             value={categoryDescription}
                             onChange={
                                 handleCategoryDescriptionChange
@@ -284,7 +261,7 @@ const Admin: NextPage<IAdmin & any> = ({
                             color="primary"
                             onClick={handleCategoryCreateSubmit}
                         >
-                            Add category
+                            {t('buttonAddCategory')}
                         </Button>
                     </div>
                 </form>
@@ -294,14 +271,12 @@ const Admin: NextPage<IAdmin & any> = ({
 
     const displayCategoryList = () => {
         return (
-            <Grid container item xs={8}>
-                <Grid item xs={12}>
+            <Grid container item xs={4}>
                     <Typography variant="h6">
-                        Categories
+                        {t('titleCategories')}
                     </Typography>
-                </Grid>
                 <Grid container item xs={12} spacing={3}>
-                    <Grid item xs={4}>
+                    <Grid item xs={12}>
                         <div className={classes.categoryList}>
                             <List
                                 component="nav"
@@ -313,54 +288,19 @@ const Admin: NextPage<IAdmin & any> = ({
                             </List>
                         </div>
                     </Grid>
-                    <Grid item xs={8}>
-                        {categories
-                            ? generateCategoryDetails()
-                            : null}
-                    </Grid>
                 </Grid>
             </Grid>
         )
     };
 
-    const displayReportedMemories = () => {
-        let component;
-
-        if (reportedMemories === null || reportedMemories.count === 0) {
-            component = (
-                <Grid item xs={4}>
-                    <Card style={{ minWidth: '200px' }}>
-                        <CardContent>
-                            <Typography
-                                variant="body1"
-                                color="textSecondary"
-                                component="p"
-                            >
-                                {t('emptyMemoryList')}
-                                <br />
-                                {t('addNewMemoryComment')}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                </Grid>
-            );
-        } else {
-            component = reportedMemories.rows.map((memory, index) => {
-                return (
-                    <Grid key={index} item xs={4}>
-                        <ReportedMemoryCard
-//                            handleDeleteMemory={() =>
-//                                handleDeleteMemory(index, memory.id)
-//                           }
-                            memory={memory}
-                            category={categories.filter (item => item.id == memory.categoryId)[0]}
-                            controls={true}
-                        />
-                    </Grid>
-                );
-            });
-        }
-        return component;
+    const displaySelectedCategory = () => {
+        return (
+            <Grid item xs={4}>
+                {categories
+                    ? generateCategoryDetails()
+                    : null}
+            </Grid>
+        )
     };
 
     const displayTableWithUsers = () => {
@@ -371,7 +311,7 @@ const Admin: NextPage<IAdmin & any> = ({
         if (users === null || users.count === 0) {
             component = <div>Empty list>/</div>;
         } else {
-            component = <UserTable users={users} controls={true}/>
+            component = <UserTable t={t} users={users} controls={true}/>
         };
         return component;
     };
@@ -386,39 +326,26 @@ const Admin: NextPage<IAdmin & any> = ({
 
                     <Layout>
                         <Typography variant="h3" gutterBottom>
-                            Admin
+                            {t('title')}
                         </Typography>
 
                         {/*** Categories ********************/}
-                        <Grid container spacing={6}>
+                        <Grid container spacing={4} >
                             {/* Add Category */}
                             {displayAddCategory()}
 
                             {/* CategoryList */}
                             {displayCategoryList()}
+
+                            {/* Selected category */}
+                            {displaySelectedCategory()}
                         </Grid>
 
-                        <div style={{ height: '5vh' }} />
-
-                        {/*** Review Reports ********************/}
-                        <Typography variant="h6" gutterBottom>
-                            Review reported memories
-                        </Typography>
-                        <Typography variant="body1" gutterBottom>
-                            //TODO, Update or delete does not work yet.
-                        </Typography>
-
-                        <form noValidate autoComplete="false">
-                            <Grid container spacing={2}>
-                                {displayReportedMemories()}
-                            </Grid>
-                        </form>
-
-                        <div style={{ height: '5vh' }} />
+                        <div style={{ height: '10vh' }} />
 
                         {/*** Table with registrered users *********************/}
                         <Typography variant="h6" gutterBottom>
-                            Registered users
+                            {t('titleRegistredUsers')}
                         </Typography>
 
                         <form noValidate autoComplete="false">

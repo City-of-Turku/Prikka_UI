@@ -49,6 +49,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IPinnedSubheaderList {
+    t(key, opts?): Function;
     memories: Memories;
     handleSelectMemory(memory: Memory): void;
     categories: Categories;
@@ -56,6 +57,7 @@ interface IPinnedSubheaderList {
 }
 // --- COMPONENT ---
 const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
+    t,
     memories,
     handleSelectMemory,
     categories,
@@ -111,10 +113,11 @@ const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
                                         alignItems="center"
                                     >
                                         <Grid item xs={6}>
-                                            Recent Memories
+                                            {t('recentMemories')}
                                         </Grid>
                                         <Grid item xs={6}>
                                             <CategorySelect
+                                                t={t}
                                                 categories={categories}
                                                 handleCategoryFilterChange={
                                                     handleCategoryFilterChange
@@ -131,8 +134,8 @@ const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
                             ) : (
                                 <ListItem>
                                     <ListItemText
-                                        primary="Error"
-                                        secondary="Memories not found"
+                                        primary={t('error')}
+                                        secondary={t('noMemoriesFound')}
                                     />
                                 </ListItem>
                             )}

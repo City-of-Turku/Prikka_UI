@@ -84,6 +84,10 @@ const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin}) => {
         handleClose(event);
         Router.push('/my_memories');
     };
+    const handleReportedMemoriesClick = (event: React.MouseEvent<EventTarget>) => {
+        handleClose(event);
+        Router.push('/reported_memories');
+    };
     const handleAdminClick = (event: React.MouseEvent<EventTarget>) => {
         handleClose(event);
         Router.push('/admin');
@@ -131,14 +135,18 @@ const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin}) => {
                                     onKeyDown={handleListKeyDown}
                                 >
                                     <MenuItem onClick={handleMymemoriesClick}>
-                                        {t('accountmenu.memories')}
+                                        {t('accountmenu.mymemories')}
                                     </MenuItem>
                                     {isAdmin ? (
-                                        <MenuItem onClick={handleAdminClick}>
-                                            {t('accountmenu.admin')}
+                                        <MenuItem onClick={handleReportedMemoriesClick}>
+                                            {t('accountmenu.reportedmemories')}
                                         </MenuItem>
                                     ) : null}
-
+                                    {isAdmin ? (
+                                        <MenuItem onClick={handleAdminClick}>
+                                            {t('accountmenu.configurations')}
+                                        </MenuItem>
+                                        ) : null}
                                     <MenuItem onClick={handleSettingsClick}>
                                         {t('accountmenu.settings')}
                                     </MenuItem>

@@ -1,0 +1,19 @@
+{
+    "title": "Admin",
+    "titleAddNewCategory": "Add new category",
+    "titleCategories": "Categories",
+    "titleSelectedCategory": "Selected category",
+
+    "categoryName": "Category name",
+    "categoryDescription": "Category description",
+
+    "buttonAddCategory": "Save new category",
+    "buttonUpdateCategory": "Update selected category",
+
+    "titleRegistredUsers": "Registered users",
+    "headerUserName": "User name",
+    "headerEmail": "E-mail",
+    "headerIsAdmin": "Is admin",
+    "buttonAddAdminRight": "Add admin right",
+    "buttonRemoveAdminRight": "Remove admin right"
+}

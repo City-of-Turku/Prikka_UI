@@ -1,3 +1,10 @@
 {
-    "report":"Report inappropriat content"
+    "report":"Report inappropriat content",
+    "recentMemories": "Recent memories",
+    "error": "Error",
+    "noMemoriesFound": "No memories were found.",
+    "category": "Category",
+    "alternativeAll": "All"
+
+
 }

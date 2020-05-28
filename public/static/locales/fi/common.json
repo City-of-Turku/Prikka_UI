@@ -9,8 +9,9 @@
     },
     "accountmenu": {
         "navbar": "Tili",
-        "memories": "Muistoni",
-        "admin": "Admin",
+        "mymemories": "Muistoni",
+        "reportedmemories": "Raportoidut muistot",
+        "configurations": "Ylläpito",
         "settings": "Asetukset",
         "login": "Kirjaudu",
         "logout": "Kirjaudu ulos"

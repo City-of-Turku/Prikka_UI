@@ -121,9 +121,6 @@ const MyMemories: NextPage<IMyMemories & any> = ({ t, categories, isLogged }) =>
                             <Typography variant="body1" gutterBottom>
                                 {t('description')}
                             </Typography>
-                            <Typography variant="body1" gutterBottom>
-                                // TODO Delete works but the view is not updated. The memory is not in the list the next time the view is opened.
-                            </Typography>
                             <br />
                         </div>
 

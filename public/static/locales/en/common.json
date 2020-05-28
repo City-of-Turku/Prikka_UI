@@ -10,8 +10,9 @@
 
     "accountmenu": {
         "navbar": "Account",
-        "memories": "My Memories",
-        "admin": "Admin",
+        "mymemories": "My Memories",
+        "reportedmemories": "Reported memories",
+        "configurations": "Configurations",
         "settings": "Settings",
         "login": "Login",
         "logout": "LogOut"

@@ -262,6 +262,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                     />
                     */}
                                         <CategorySelect
+                                            t={t}
                                             categories={categories}
                                             handleCategoryFilterChange={
                                                 handleCategoryFilterChange
@@ -298,6 +299,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                                 onChange={onChange}
                                             />
                                             <label htmlFor="contained-button-file">
+                                                <Typography>
                                                 <Button
                                                     variant="contained"
                                                     color="primary"
@@ -305,7 +307,8 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                                 >
                                                     {t("upload_button_text")}
                                                 </Button>
-                                                {t("image_info")} {filename}
+                                                    &nbsp;&nbsp;&nbsp;{t("image_info")}&nbsp;&nbsp;&nbsp;{filename}
+                                                </Typography>
                                             </label>
                                         </div> }
                                     </form>
@@ -365,7 +368,7 @@ AddMemory.getInitialProps = async () => {
         .catch((err) => console.error('Error fetching categories'));
 
     return {
-        namespacesRequired: ['common', 'addMemory'],
+        namespacesRequired: ['common', 'addMemory', 'index'],
         categories: categories,
     };
 };

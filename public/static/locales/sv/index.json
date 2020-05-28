@@ -1,3 +1,8 @@
 {
-    "report":"Anmäl osakligt innehåll"
+    "report":"Anmäl osakligt innehåll",
+    "recentMemories": "Senaste minnena",
+    "error": "Ett fel uppstod",
+    "noMemoriesFound": "Det hittades inte några sparade minnen",
+    "category": "Kategori",
+    "alternativeAll": "Alla"
 }

@@ -3,38 +3,41 @@
  */
 
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import {User, Users} from '../types';
 import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
 
-const useStyles = makeStyles({
-    root: {
-        maxWidth: 345,
+
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
     },
-    media: {
-        height: 140,
+    body: {
+        fontSize: 14,
     },
-});
+}))(TableCell);
 
 interface IUserTable {
+    t(key, opts?): Function;
     users: Users;
     controls?: boolean;
     handleDeleteUser?(): void;
 }
 
 const UserTable: React.FC<IUserTable> = ({
+    t,
     users,
     controls,
     handleDeleteUser,
 }) => {
-    //const classes = useStyles();
     return (
         <TableContainer>
             <Table>
-                <TableHead color="grey">
-                    <TableCell >User name</TableCell>
-                    <TableCell>E-mail</TableCell>
-                    <TableCell>Is admin</TableCell>
+                <TableHead>
+                    <StyledTableCell >{t('headerUserName')}</StyledTableCell>
+                    <StyledTableCell>{t('headerEmail')}</StyledTableCell>
+                    <StyledTableCell>{t('headerIsAdmin')}</StyledTableCell>
                 </TableHead>
                 <TableBody>
                     {users.rows.map(user => {

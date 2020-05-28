@@ -1,0 +1,19 @@
+{
+    "title": "Admin",
+    "titleAddNewCategory": "Lägg till en ny kategori",
+    "titleCategories": "Befintliga kategorier",
+    "titleSelectedCategory": "Vald kategori",
+
+    "categoryName": "Kategori namn",
+    "categoryDescription": "Kategori beskrivning",
+
+    "buttonAddCategory": "Spara en ny kategori",
+    "buttonUpdateCategory": "Uppdatera valda kategorin",
+
+    "titleRegistredUsers": "Registrerade användare",
+    "headerUserName": "Användarnamn",
+    "headerEmail": "E-postadress",
+    "headerIsAdmin": "Admin-rättigheter",
+    "buttonAddAdminRight": "Lägg till admin-rättigheter",
+    "buttonRemoveAdminRight": "Ta bort admin-rättigheter"
+}

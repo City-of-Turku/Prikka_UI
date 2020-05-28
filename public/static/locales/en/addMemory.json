@@ -9,5 +9,8 @@
     "continue_button": "Submit",
     "success": "Memory created",
     "image_info": "Max image size 10MB",
-    "upload_button_text": "Upload"
+    "upload_button_text": "Upload",
+    "category": "Category",
+    "alternativeAll": "All"
+
 }

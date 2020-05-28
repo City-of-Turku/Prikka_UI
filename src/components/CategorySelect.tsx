@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface ICategorySelect {
+    t(key, opts?): Function;
     categories: Categories;
     handleCategoryFilterChange(categoryId: string): void;
     required?: boolean;
@@ -26,6 +27,7 @@ interface ICategorySelect {
 }
 
 const CategorySelect: React.FC<ICategorySelect> = ({
+    t,
     categories,
     handleCategoryFilterChange,
     required = false,
@@ -52,16 +54,16 @@ const CategorySelect: React.FC<ICategorySelect> = ({
             required={required}
         >
             <InputLabel id="demo-simple-select-outlined-label">
-                Category
+                {t('category')}
             </InputLabel>
             <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 value={category}
                 onChange={handleChange}
-                label="Category"
+                label={t('category')}
             >
-                <MenuItem value="">All</MenuItem>
+                <MenuItem value="">{t('alternativeAll')}</MenuItem>
                 {categories
                     ? categories.map((category: Category, index: number) => {
                           return (

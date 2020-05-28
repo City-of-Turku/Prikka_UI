@@ -1,3 +1,9 @@
 {
-    "report":"Ilmoita epäasiallinen sisältö"
+    "report":"Ilmoita epäasiallinen sisältö",
+    "recentMemories": "Viimeksi liitetyt muistot",
+    "error": "Tapahtui virhe",
+    "noMemoriesFound": "Ei löytynyt tallennettuja muistoja.",
+    "category": "Kategoria",
+    "alternativeAll": "Kaikki"
+
 }

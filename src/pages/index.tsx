@@ -121,6 +121,7 @@ const Index: NextPage<IIndex & any> = ({
                 />
             ) : (
                 <PinnedSubheaderList
+                    t={t}
                     memories={getMemories()}
                     handleSelectMemory={handleSelectMemory}
                     categories={categories}
