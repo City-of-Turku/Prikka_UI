@@ -191,16 +191,23 @@ const adminDeleteMemoryById = (id: any) =>
     api.delete(`/admin/${basePathMemories}/memories/${id}`)
 
 /**
+ * GET : admin get all users
+ */
+const adminGetAllUsers = () =>
+    api.get(`/admin/${basePathAuth}/user`)
+
+/**
+ * UPDATE : admin update admin-right for user by id
+ */
+const adminUpdateUserById = (id: any, payload: any) =>
+    api.put(`/admin/${basePathAuth}/user/${id}`, payload)
+
+/**
  * DELETE : admin delete user by id
  */
 const adminDeleteUserById = (id: any) =>
     api.delete(`/admin/${basePathAuth}/user/${id}`)
 
-/**
- * GET : admin get all users
- */
-const adminGetAllUsers = () =>
-    api.get(`/admin/auth-management/user`)
 
 
 /**
@@ -238,7 +245,8 @@ export const apis = {
         adminUpdateCategory,
         adminDeleteCategoryById,
         adminDeleteMemoryById,
-        adminDeleteUserById,
         adminGetAllUsers,
+        adminUpdateUserById,
+        adminDeleteUserById,
     }
 };
