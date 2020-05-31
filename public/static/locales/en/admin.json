@@ -15,5 +15,16 @@
     "headerEmail": "E-mail",
     "headerIsAdmin": "Is admin",
     "buttonAddAdminRight": "Add admin right",
-    "buttonRemoveAdminRight": "Remove admin right"
+    "buttonRemoveAdminRight": "Remove admin right",
+
+    "deleteDialog": {
+        "buttonDelete": "Delete selected category",
+        "deleteTitle": "Delete category",
+        "deleteConfirmQuestion": "Are you sure that you want to delete selected category?",
+        "deleteConfirmInstruction": "Type 'Yes' to confirm.",
+        "deleteConfirmInstruction2": "Please enter 'Yes' to confirm",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "delete": "Delete"
+    }
 }

@@ -28,6 +28,8 @@ import {Categories, Category, Users} from '../types';
 import {NextPage} from 'next';
 import Head from 'next/head';
 import UserTable from "../components/UserTable";
+import DeleteDialog from "../components/DeleteDialog";
+import CardActions from "@material-ui/core/CardActions";
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -160,6 +162,17 @@ const Admin: NextPage<IAdmin & any> = ({
             });
     };
 
+    const handleCategoryDeleteSubmit = () => {
+        apis.admin
+            .adminDeleteCategoryById(categoryUpdatedId)
+            .then((res: AxiosResponse) => {
+                snackbarContext.displaySuccessSnackbar('Category deleted');
+            })
+            .catch((err: AxiosError) => {
+                snackbarContext.displayErrorSnackbar('Error');
+            });
+    };
+
     const handleListItemClick = (
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
         index: number,
@@ -221,6 +234,12 @@ const Admin: NextPage<IAdmin & any> = ({
                             {t('buttonUpdateCategory')}
                         </Button>
                     </div>
+                    <br />
+                    <DeleteDialog
+                        t={t}
+                        handleDelete={handleCategoryDeleteSubmit}
+                        type={"category"}
+                    />
                 </form>
             </div>
         );

@@ -13,7 +13,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {Category, Memory} from '../types';
 import { NextPage } from 'next';
-import DeleteMemoryDialog from './DeleteMemoryDialog';
+import DeleteDialog from './DeleteDialog';
 import Moment from 'react-moment';
 import {List, ListItem} from "@material-ui/core";
 import {Table, TableRow, TableCell} from "@material-ui/core";
@@ -51,6 +51,7 @@ const displayReportedMemories = ({Reports}) => (
 );
 
 interface IMemoryCard {
+    t(key, opts?): Function;
     memory: Memory;
     category: Category;
     controls?: boolean;
@@ -67,6 +68,7 @@ function getImageUrl(photo) {
 }
 
 const MemoryCard: React.FC<IMemoryCard> = ({
+    t,
     memory,
     category,
     controls,
@@ -135,9 +137,10 @@ const MemoryCard: React.FC<IMemoryCard> = ({
                     <Button size="small" color="primary">
                         Update memory
                     </Button>
-                    <DeleteMemoryDialog
-                        handleDeleteMemory={handleDeleteMemory}
-                        memoryId={memory.id}
+                    <DeleteDialog
+                        t={t}
+                        handleDelete={handleDeleteMemory}
+                        type={"reportedMemory"}
                     />
                 </CardActions>
             ) : null}

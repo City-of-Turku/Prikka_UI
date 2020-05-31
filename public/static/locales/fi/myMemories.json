@@ -2,5 +2,16 @@
     "title": "Muistoni",
     "description": "Tässä ovat kaikki julkaisemesi muistot.",
     "emptyMemoryList": "Ei ole vielä lisännyt muistoja.",
-    "addNewMemoryComment": "Lisää muiston \"Lisää muisto\" napista."
+    "addNewMemoryComment": "Lisää muiston \"Lisää muisto\" napista.",
+
+    "deleteDialog": {
+        "buttonDelete": "Poista",
+        "deleteTitle": "Poista muisto",
+        "deleteConfirmQuestion": "Oletteko varma että haluatte poistaa muistonne?",
+        "deleteConfirmInstruction": "Kirjoita 'Kyllä' vahistaksenne poiston.",
+        "deleteConfirmInstruction2": "Ystävällisesti kirjoita 'Kyllä' vahvistaksenne poiston",
+        "confirm": "Vahvista",
+        "cancel": "Peruta",
+        "delete": "Poista"
+    }
 }

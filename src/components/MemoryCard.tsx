@@ -13,10 +13,13 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {Category, Memory} from '../types';
 import { NextPage } from 'next';
-import DeleteMemoryDialog from './DeleteMemoryDialog';
+import DeleteDialog from './DeleteDialog';
 import Moment from 'react-moment';
-import {Grid, ListItem} from "@material-ui/core";
+import {Grid, ListItem, MenuItem, MenuList, Toolbar} from "@material-ui/core";
 import ShareMemoryPopup from "./ShareMemoryPopup";
+import Link from "next/link";
+import AddIcon from "@material-ui/icons/Add";
+import Router from "next/router";
 
 const useStyles = makeStyles({
     root: {
@@ -28,6 +31,7 @@ const useStyles = makeStyles({
 });
 
 interface IMemoryCard {
+    t(key, opts?): Function;
     memory: Memory;
     category: Category;
     controls?: boolean;
@@ -45,6 +49,7 @@ function getImageUrl(photo) {
 }
 
 const MemoryCard: React.FC<IMemoryCard> = ({
+    t,
     memory,
     category,
     controls,
@@ -101,9 +106,10 @@ const MemoryCard: React.FC<IMemoryCard> = ({
             {controls ? (
                 <CardActions>
                     <ShareMemoryPopup shareMemoryUrl={shareUrl} shareMemoryTitle={shareTitle} />
-                    <DeleteMemoryDialog
-                        handleDeleteMemory={handleDeleteMemory}
-                        memoryId={memory.id}
+                    <DeleteDialog
+                        t={t}
+                        handleDelete={handleDeleteMemory}
+                        type={"memory"}
                     />
                 </CardActions>
             ) : null}

@@ -85,6 +85,7 @@ const MyMemories: NextPage<IMyMemories & any> = ({ t, categories, isLogged }) =>
                 return (
                     <Grid key={index} item xs={4}>
                         <MemoryCard
+                            t={t}
                             handleDeleteMemory={() =>
                                 handleDeleteMemory(index, memory.id)
                             }

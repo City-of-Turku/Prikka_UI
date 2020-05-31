@@ -8,12 +8,24 @@
     "categoryDescription": "Kategori beskrivning",
 
     "buttonAddCategory": "Spara en ny kategori",
-    "buttonUpdateCategory": "Uppdatera valda kategorin",
+    "buttonUpdateCategory": "Uppdatera vald kategori",
 
     "titleRegistredUsers": "Registrerade användare",
     "headerUserName": "Användarnamn",
     "headerEmail": "E-postadress",
     "headerIsAdmin": "Admin-rättigheter",
     "buttonAddAdminRight": "Lägg till admin-rättigheter",
-    "buttonRemoveAdminRight": "Ta bort admin-rättigheter"
+    "buttonRemoveAdminRight": "Ta bort admin-rättigheter",
+
+    "deleteDialog": {
+        "buttonDelete": "Radera vald kategori",
+        "deleteTitle": "Radera en kategori",
+        "deleteConfirmQuestion": "Är ni säker på att ni vill radera valda kategori?",
+        "deleteConfirmInstruction": "Skriv 'Ja' för att bekräfta raderningen.",
+        "deleteConfirmInstruction2": "Vänligen skriv 'Ja' för att bekräfta.",
+        "confirm": "Bekräfta",
+        "cancel": "Ångra",
+        "delete": "Radera"
+    }
+
 }

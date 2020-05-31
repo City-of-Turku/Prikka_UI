@@ -114,6 +114,7 @@ const ReportedMemory: NextPage<IReportedMemory & any> = ({
                 return (
                     <Grid key={index} item xs={4}>
                         <ReportedMemoryCard
+                            t={t}
 //                            handleDeleteMemory={() =>
 //                                handleDeleteMemory(index, memory.id)
 //                           }

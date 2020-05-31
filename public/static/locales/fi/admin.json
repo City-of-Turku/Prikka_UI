@@ -15,5 +15,17 @@
     "headerEmail": "Sähköpostiosoite",
     "headerIsAdmin": "Admin-oikeus",
     "buttonAddAdminRight": "Lisää admin oikeus",
-    "buttonRemoveAdminRight": "Poista admin oikeus"
+    "buttonRemoveAdminRight": "Poista admin oikeus",
+
+    "deleteDialog": {
+        "buttonDelete": "Poista valittu kategoria",
+        "deleteTitle": "Poista kategoria",
+        "deleteConfirmQuestion": "Oletteko varma että haluatte poistaa valitun kategorian?",
+        "deleteConfirmInstruction": "Kirjoita 'Kyllä' vahistaksenne poiston.",
+        "deleteConfirmInstruction2": "Ystävällisesti kirjoita 'Kyllä' vahvistaksenne poiston",
+        "confirm": "Vahvista",
+        "cancel": "Peruta",
+        "delete": "Poista"
+    }
+
 }
