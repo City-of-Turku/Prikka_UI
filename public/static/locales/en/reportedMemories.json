@@ -1,5 +1,15 @@
 {
     "title": "Review reported memories",
     "description": "Here are all memoriws that has been reported.",
-    "emptyReportedMemoryList": "For the moment there is no memory with complains."
+    "emptyReportedMemoryList": "For the moment there is no memory with complains.",
+    "reportedMemoryCard": {
+        "buttonMoveMemoryToArchive": "Move memory to archive",
+        "archiveReason": "Reason for archiving"
+    },
+    "reportCard": {
+        "headerCreated": "Created",
+        "headerComplaint": "Complaint description",
+        "headerNoAction": "No action",
+        "buttonNoAction": "No action needed"
+    }
 }

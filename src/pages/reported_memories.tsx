@@ -112,7 +112,7 @@ const ReportedMemory: NextPage<IReportedMemory & any> = ({
         } else {
             component = reportedMemories.rows.map((memory, index) => {
                 return (
-                    <Grid key={index} item xs={4}>
+                    <Grid key={index} item xs={12}>
                         <ReportedMemoryCard
                             t={t}
 //                            handleDeleteMemory={() =>

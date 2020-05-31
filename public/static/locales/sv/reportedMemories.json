@@ -1,5 +1,15 @@
 {
     "title": "Minnen som blivit rapporterade",
     "description": "Här är alla minnen som blivit rapporterade.",
-    "emptyReportedMemoryList": "För tillfället är inget minne rapporterat."
+    "emptyReportedMemoryList": "För tillfället är inget minne rapporterat.",
+    "reportedMemoryCard": {
+        "buttonMoveMemoryToArchive": "Flytta minnet till arkivet",
+        "archiveReason": "Orsak till arkivering"
+    },
+    "reportCard": {
+        "headerCreated": "Skapad",
+        "headerComplaint": "Besvärbeskrivning",
+        "headerNoAction": "Inga åtgärder",
+        "buttonNoAction": "Inga åtgärder behövs"
+    }
 }

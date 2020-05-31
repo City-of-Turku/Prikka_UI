@@ -91,6 +91,13 @@ const getAllReportedMemories = () => api.get(`${basePathMemories}/reportedMemori
 const getMemoryReportsById = (id: any) =>
     api.get(`${basePathMemories}/reports/${id}`);
 
+/**
+ *  PUT : update memory report
+ */
+const adminUpdateMemoryReportsById = (id: any, payload: any) =>
+    api.put(`/admin/${basePathAuth}/reports/${id}`, payload)
+
+
 /* --- AUTH MANAGEMENT ---
  *  api : /auth-management
  */
@@ -185,6 +192,12 @@ const adminDeleteCategoryById = (id: any) =>
     api.delete(`/admin/${basePathCategories}/categories/${id}`)
 
 /**
+ *  UPDATE : admin update memory by id
+ */
+const adminUpdateMemoryById = (id: any, payload: any) =>
+    api.put(`/admin/${basePathMemories}/memories/${id}`, payload)
+
+/**
  *  DELETE : admin delete memory by id
  */
 const adminDeleteMemoryById = (id: any) =>
@@ -244,9 +257,11 @@ export const apis = {
         adminCreateCategory,
         adminUpdateCategory,
         adminDeleteCategoryById,
+        adminUpdateMemoryById,
         adminDeleteMemoryById,
         adminGetAllUsers,
         adminUpdateUserById,
         adminDeleteUserById,
+        adminUpdateMemoryReportsById,
     }
 };

@@ -1,9 +1,9 @@
 /**
- * Component used to display sample data while My Memory page is not working
+ * Component used to display reported memories
  */
 
-import React, {memo} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useState} from 'react';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -12,43 +12,25 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {Category, Memory} from '../types';
-import { NextPage } from 'next';
-import DeleteDialog from './DeleteDialog';
 import Moment from 'react-moment';
-import {List, ListItem} from "@material-ui/core";
-import {Table, TableRow, TableCell} from "@material-ui/core";
-import Box from "@material-ui/core/Box";
+import {Table, TableCell, TableRow, TextField} from "@material-ui/core";
+import {apis} from "../services/apis";
+import {AxiosError, AxiosResponse} from "axios";
+import {useSnackbarContext} from "../contexts/SnackbarContext";
+import ReportCard from "./ReportCard";
 
 const useStyles = makeStyles({
     root: {
-        maxWidth: 600,
+        maxWidth: 1200,
     },
     media: {
         height: 140,
     },
+    archiveReason: {
+        width: 300,
+    }
 });
 
-const displayReportedMemories = ({Reports}) => (
-    <>
-        {Reports.map(report => (
-            <TableRow>
-                <TableCell>
-                    <Moment format="YYYY/MM/DD">{report.createdAt}</Moment>
-                </TableCell>
-                <TableCell>
-                    {report.description}
-                </TableCell>
-                <TableCell>
-                    <CardActions>
-                        <Button size="small" color="primary">
-                            Delete
-                        </Button>
-                    </CardActions>
-                </TableCell>
-            </TableRow>
-        ))}
-    </>
-);
 
 interface IMemoryCard {
     t(key, opts?): Function;
@@ -57,7 +39,6 @@ interface IMemoryCard {
     controls?: boolean;
     handleDeleteMemory?(): void;
 }
-
 
 function getImageUrl(photo) {
     console.log(photo);
@@ -74,18 +55,59 @@ const MemoryCard: React.FC<IMemoryCard> = ({
     controls,
     handleDeleteMemory,
 }) => {
+
     const classes = useStyles();
+    const snackbarContext = useSnackbarContext();
     const imageUrl = getImageUrl(JSON.parse(memory.photo));
+
+    const [archiveReason, setArchiveReason] = useState<string>('');
+
+    const handleSubmitMoveMemoryToArchive = () => {
+        const data = {
+            archiveReason: archiveReason,
+        };
+        apis.admin
+            .adminUpdateMemoryById((memory.id), data)
+            .then((res: AxiosResponse) => {
+                snackbarContext.displaySuccessSnackbar('Memory moved to archive');
+            })
+            .catch((err: AxiosError) => {
+                snackbarContext.displayErrorSnackbar('Error');
+            });
+    };
+
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setArchiveReason(event.target.value);
+    };
+
+    const displayHeaders = () => {
+        return (
+            <>
+                <TableRow>
+                    <TableCell>{t('reportCard.headerCreated')}</TableCell>
+                    <TableCell>{t('reportCard.headerComplaint')}</TableCell>
+                    <TableCell>{t('reportCard.headerNoAction')}</TableCell>
+                    <TableCell></TableCell>
+                </TableRow>
+            </>
+        )
+    };
+
+    const displayReportsForMemory = ({Reports}) => (
+        <>
+            {Reports.map(report => (
+                <ReportCard t={t} memoryReport={report}></ReportCard>
+            ))}
+        </>
+    );
 
     return (
         <Card className={classes.root}>
             <CardActionArea>
+
                 {/* Memory picture */}
-                <CardMedia
-                    className={classes.media}
-                    image={imageUrl}
-                    title={imageUrl}
-                />
+                <CardMedia className={classes.media} image={imageUrl} title={imageUrl}/>
+
                 <CardContent>
                     {/* Title */}
                     <Typography gutterBottom variant="h5" component="h2">
@@ -126,7 +148,8 @@ const MemoryCard: React.FC<IMemoryCard> = ({
                         component="p"
                     >
                         <Table>
-                            {displayReportedMemories(memory)}
+                            {displayHeaders()}
+                            {displayReportsForMemory(memory)}
                         </Table>
                     </Typography>
 
@@ -134,14 +157,14 @@ const MemoryCard: React.FC<IMemoryCard> = ({
             </CardActionArea>
             {controls ? (
                 <CardActions>
-                    <Button size="small" color="primary">
-                        Update memory
+                    <Button size="small" color="primary" onClick={handleSubmitMoveMemoryToArchive}>
+                        {t('reportedMemoryCard.buttonMoveMemoryToArchive')}
                     </Button>
-                    <DeleteDialog
-                        t={t}
-                        handleDelete={handleDeleteMemory}
-                        type={"reportedMemory"}
-                    />
+                    <form className={classes.archiveReason} noValidate autoComplete="off">
+                        <TextField id="standard-basic"
+                                   label={t('reportedMemoryCard.archiveReason')}
+                                   onChange={handleOnChange} />
+                    </form>
                 </CardActions>
             ) : null}
         </Card>

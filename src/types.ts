@@ -34,6 +34,17 @@ export type Category = {
 
 export type Categories = Category[];
 
+export type MemoryReport = {
+    id: number;
+    title: string;
+    description: string;
+    createdAt: string;
+    updateAt: string;
+    userId: number;
+    adminUserId: number;
+    invalid: boolean;
+};
+
 export type Background = {
     id: number;
     title: string;
