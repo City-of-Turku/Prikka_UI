@@ -11,11 +11,13 @@
     "buttonUpdateCategory": "Update selected category",
 
     "titleRegistredUsers": "Registered users",
-    "headerUserName": "User name",
-    "headerEmail": "E-mail",
-    "headerIsAdmin": "Is admin",
-    "buttonAddAdminRight": "Add admin right",
-    "buttonRemoveAdminRight": "Remove admin right",
+    "userTable": {
+        "headerUserName": "User name",
+        "headerEmail": "E-mail",
+        "headerIsAdmin": "Is admin",
+        "buttonAddAdminRole": "Add admin right",
+        "buttonRemoveAdminRole": "Remove admin right"
+    },
 
     "deleteDialog": {
         "buttonDelete": "Delete selected category",

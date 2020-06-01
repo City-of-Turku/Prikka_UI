@@ -3,10 +3,10 @@
  */
 
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import {User, Users} from '../types';
-import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@material-ui/core";
-
+import {withStyles} from '@material-ui/core/styles';
+import {Users} from '../types';
+import {Table, TableBody, TableCell, TableContainer, TableHead} from "@material-ui/core";
+import UserRow from "./UserRow";
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
@@ -18,37 +18,38 @@ const StyledTableCell = withStyles((theme) => ({
     },
 }))(TableCell);
 
+
 interface IUserTable {
     t(key, opts?): Function;
     users: Users;
     controls?: boolean;
-    handleDeleteUser?(): void;
 }
 
 const UserTable: React.FC<IUserTable> = ({
     t,
     users,
     controls,
-    handleDeleteUser,
 }) => {
+
+    const displayUsers = (users) => (
+        <>
+            {users.rows.map(user => (
+                <UserRow t={t} user={user}></UserRow>
+            ))}
+        </>
+    );
+
     return (
         <TableContainer>
             <Table>
                 <TableHead>
-                    <StyledTableCell >{t('headerUserName')}</StyledTableCell>
-                    <StyledTableCell>{t('headerEmail')}</StyledTableCell>
-                    <StyledTableCell>{t('headerIsAdmin')}</StyledTableCell>
+                    <StyledTableCell >{t('userTable.headerUserName')}</StyledTableCell>
+                    <StyledTableCell>{t('userTable.headerEmail')}</StyledTableCell>
+                    <StyledTableCell>{t('userTable.headerIsAdmin')}</StyledTableCell>
+                    <StyledTableCell></StyledTableCell>
                 </TableHead>
                 <TableBody>
-                    {users.rows.map(user => {
-                        return (
-                            <TableRow key={user.id}>
-                                <TableCell>{user.displayName}</TableCell>
-                                <TableCell>{user.email}</TableCell>
-                                <TableCell>{user.admin.toString()}</TableCell>
-                            </TableRow>
-                        )
-                    })}
+                    {displayUsers(users)}
                 </TableBody>
             </Table>
         </TableContainer>

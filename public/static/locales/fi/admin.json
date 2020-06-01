@@ -11,11 +11,13 @@
     "buttonUpdateCategory": "Päivitä valittu kategoria",
 
     "titleRegistredUsers": "Rekisteröidyt käyttäjät",
-    "headerUserName": "Käyttäjänimi",
-    "headerEmail": "Sähköpostiosoite",
-    "headerIsAdmin": "Admin-oikeus",
-    "buttonAddAdminRight": "Lisää admin oikeus",
-    "buttonRemoveAdminRight": "Poista admin oikeus",
+    "userTable": {
+        "headerUserName": "Käyttäjänimi",
+        "headerEmail": "Sähköpostiosoite",
+        "headerIsAdmin": "Admin-oikeus",
+        "buttonAddAdminRole": "Lisää admin oikeus",
+        "buttonRemoveAdminRole": "Poista admin oikeus"
+    },
 
     "deleteDialog": {
         "buttonDelete": "Poista valittu kategoria",

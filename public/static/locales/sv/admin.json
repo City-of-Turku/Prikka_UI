@@ -11,11 +11,13 @@
     "buttonUpdateCategory": "Uppdatera vald kategori",
 
     "titleRegistredUsers": "Registrerade användare",
-    "headerUserName": "Användarnamn",
-    "headerEmail": "E-postadress",
-    "headerIsAdmin": "Admin-rättigheter",
-    "buttonAddAdminRight": "Lägg till admin-rättigheter",
-    "buttonRemoveAdminRight": "Ta bort admin-rättigheter",
+    "userTable": {
+        "headerUserName": "Användarnamn",
+        "headerEmail": "E-postadress",
+        "headerIsAdmin": "Admin-rättigheter",
+        "buttonAddAdminRole": "Lägg till admin-rättigheter",
+        "buttonRemoveAdminRole": "Ta bort admin-rättigheter"
+    },
 
     "deleteDialog": {
         "buttonDelete": "Radera vald kategori",
