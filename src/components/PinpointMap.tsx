@@ -50,7 +50,39 @@ const PinpointMap: React.FC<IPinpointMap> = ({
     });
 
     //Vars
-    const mapStyle = 'mapbox://styles/mapbox/streets-v11';
+
+    const mapStyle = {
+        "version": 8,
+        "name": "OSM",
+        "metadata": {},
+        "sources": {
+            /*            "osm": {
+                            type: 'raster',
+                            tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+                            tileSize: 256,
+                            attribution: 'Map tiles by <a target="_top" rel="noopener" href="https://tile.openstreetmap.org/">OpenStreetMap tile servers</a>, under the <a target="_top" rel="noopener" href="https://operations.osmfoundation.org/policies/tiles/">tile usage policy</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
+                        },*/
+            "wms": {
+                'type': 'raster',
+                'tiles':[
+                    'https://opaskartta.turku.fi/TeklaOGCWeb/WMS.ashx?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&transparent=true&width=256&height=256&layers=Opaskartta'
+                ],
+                'tileSize': 256
+            }
+        },
+        layers: [
+            /*        {
+                        id: 'osm',
+                        type: 'raster',
+                        source: 'osm',
+                    },*/
+            {
+                id: 'wms-layer',
+                type: 'raster',
+                source: 'wms',
+            }
+        ],
+    };
 
     //Functions
     const handleClick = ({ lngLat: [longitude, latitude] }) => {
