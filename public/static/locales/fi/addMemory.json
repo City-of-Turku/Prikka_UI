@@ -4,14 +4,14 @@
     "warning":"Varoitus: Et ole kirjautunut sisään, muistosi tullaan julkaisemaan \"Nimettömänä\"",
     "info_title": "Tiedot",
     "title_PH": "Otsikko",
-    "category_PH": "Kategoria",
+    "category_PH": "Teema",
     "description_PH": "Kuvaus",
     "map_title": "Sijainti",
     "continue_button": "Lähetä",
     "success": "Muisto luotu",
     "image_info": "Koko maksimissaan 10MB",
     "upload_button_text": "Lataa kuva",
-    "category": "Kategoria",
+    "category": "Teema",
     "alternativeAll": "Kaikki"
 
 }

@@ -1,8 +1,9 @@
 {
     "menubar": {
-        "home": "Home",
+        "home": "Homepage",
         "memories": "My Memories",
         "about": "About Us",
+        "campaign": "Campaigns",
         "addmemory": "Add Memory",
         "login": "Login",
         "logout": "Logout"

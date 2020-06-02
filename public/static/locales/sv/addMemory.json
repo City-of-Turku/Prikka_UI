@@ -4,13 +4,13 @@
     "warning":"Varning: Du är inte inloggad, dina minnen publiceras \"Anonymt\"",
     "info_title": "Information",
     "title_PH": "Rubrik",
-    "category_PH": "Kategori",
+    "category_PH": "Tema",
     "description_PH": "Beskrivning",
     "map_title": "Plats",
     "continue_button": "Skicka in",
     "success": "Minne skapat",
     "image_info": "Maximal fil storlek 10MB",
     "upload_button_text": "Ladda upp",
-    "category": "Kategori",
+    "category": "Tema",
     "alternativeAll": "Alla"
 }

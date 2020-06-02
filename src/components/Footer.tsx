@@ -16,27 +16,21 @@ import {
 // --- COMPONENT ---
 const Footer: React.FC = () => {
     return (
-        <div style={{ padding: '64px 24px' }}>
+        <div style={{ padding: '24px 24px' }}>
             <Grid container direction="row">
                 <Grid item xs={3}>
-                    Museum of Turku
+                    <a href="https://www.turku.fi/museo" target={"_blank"}>Turun museokeskus</a>
+                    <br /><br />
+                    All rights reserved. Copyright ©{new Date().getFullYear()}{' '}
+                    Museum of Turku.
+                </Grid>
+                <Grid item xs={6}>
                 </Grid>
                 <Grid item xs={3}>
-                    Partnership
-                </Grid>
-                <Grid item xs={3}>
-                    Contact
-                </Grid>
-                <Grid item xs={3}>
-                    Privacy Policy <br />
-                    Terms of Use
+                    Tietoa palvelusta <br />
+                    Saavutettavuusseloste
                 </Grid>
             </Grid>
-
-            <p>
-                All rights reserved. Copyright ©{new Date().getFullYear()}{' '}
-                Museum of Turku.
-            </p>
         </div>
     );
 };

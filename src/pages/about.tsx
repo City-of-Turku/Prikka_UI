@@ -36,10 +36,14 @@ const About: NextPage<any> = ({ t }) => {
     const Intro = () => {
         return (
             <Paper elevation={3} className={classes.paper}>
+                <Typography variant="h5" gutterBottom>
+                    {t('intro.title')}
+                </Typography>
                 <Typography variant="body1">{t('intro.p1')}</Typography>
                 <br />
-
                 <Typography variant="body1">{t('intro.p2')}</Typography>
+                <br />
+                <Typography variant="body1">{t('intro.p3')}</Typography>
             </Paper>
         );
     };
@@ -81,15 +85,37 @@ const About: NextPage<any> = ({ t }) => {
                             {t('how.p6')}
                         </Typography>
                     </li>
+                    <li>
+                        <Typography variant="body1" gutterBottom>
+                            {t('how.p7')}
+                        </Typography>
+                    </li>
                 </ul>
+                <Notice/>
+            </Paper>
+        );
+    };
+
+    const WhatKindOfMemory = () => {
+        return (
+            <Paper elevation={3} className={classes.paper}>
+                <Typography variant="h5" gutterBottom>
+                    {t('what.title')}
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                    {t('what.p1')}
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                    {t('what.p2')}
+                </Typography>
             </Paper>
         );
     };
 
     const Notice = () => {
         return (
-            <Paper elevation={3} className={classes.paper}>
-                <Typography variant="h5" gutterBottom>
+            <>
+                <Typography variant="body1" gutterBottom>
                     {t('notice.title')}
                 </Typography>
                 <ul>
@@ -109,7 +135,7 @@ const About: NextPage<any> = ({ t }) => {
                         </Typography>
                     </li>
                 </ul>
-            </Paper>
+            </>
         );
     };
 
@@ -147,10 +173,16 @@ const About: NextPage<any> = ({ t }) => {
                     {t('who.title')}
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    {t('who.p1')}
+                    <a href="https://www.turku.fi/museo" target={"_blank"}>{t('who.p1')}</a>
+                    {t('who.p2')}
                 </Typography>
-                <div style={{ height: '5vh' }} />
+            </Paper>
+        );
+    };
 
+    const Rights = () => {
+        return (
+            <Paper elevation={3} className={classes.paper}>
                 {/* Rights to content */}
                 <Typography variant="h5" gutterBottom>
                     {t('rights.title')}
@@ -162,20 +194,13 @@ const About: NextPage<any> = ({ t }) => {
                     {t('rights.p2')}
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    {t('rights.p3')}
-                </Typography>
-            </Paper>
-        );
-    };
-
-    const WhatKindOfMemory = () => {
-        return (
-            <Paper elevation={3} className={classes.paper}>
-                <Typography variant="h5" gutterBottom>
-                    {t('what.title')}
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.fi" target={"_blank"}>{t('rights.p3')}</a>
                 </Typography>
                 <Typography variant="body1" gutterBottom>
-                    {t('what.p1')}
+                    {t('rights.p4')}
+                </Typography>
+                <Typography variant="body1" gutterBottom>
+                    {t('rights.p5')}
                 </Typography>
             </Paper>
         );
@@ -195,13 +220,13 @@ const About: NextPage<any> = ({ t }) => {
                 <div style={{ height: '5vh' }} />
                 <HowItWorks />
                 <div style={{ height: '5vh' }} />
-                <Notice />
+                <WhatKindOfMemory />
                 <div style={{ height: '5vh' }} />
                 <GoodOpportunity />
                 <div style={{ height: '5vh' }} />
                 <WhoAreWe />
                 <div style={{ height: '5vh' }} />
-                <WhatKindOfMemory />
+                <Rights />
             </Layout>
         </div>
     );

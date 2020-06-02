@@ -1,18 +1,20 @@
 {
     "title": "Information om oss",
     "intro": {
-        "headliner":"Dela dina minnen och berättelser med andra!",
+        "title":"Dela dina minnen och berättelser med andra!",
         "p1": "\tHar du ett minne eller en intressant berättelse som du skulle vilja dela med andra? På denna webbplats kan du berätta om dina egna Åborelaterade minnen, händelser och stadhistorier. Om du vill kan du även dela en bild som har med ditt minne eller din berättelse att göra. Materialet som du delar finns för andra att se och bekanta sig med. Allt material sparas i Åbo museicentrals arkivsamling, som en del av vårt gemensamma kulturarv.",
-        "p2": "Här kan du spara dina minnen och klistra in dem vid händelsplatserna. Dina minnen hjälper oss att få en djupare bild av Åbos närhistoria och uppleva hur staden tidigare sett ut."
+        "p2": "Här kan du spara dina minnen och klistra in dem vid händelsplatserna. Dina minnen hjälper oss att få en djupare bild av Åbos närhistoria och uppleva hur staden tidigare sett ut.",
+        "p3": ""
     },
     "how": {
         "title": "Hur ska jag göra?",
         "p1": "Logga in med din e-post eller med ditt Facebook/Goohle-konto",
         "p2": "Klicka på knappen \"lagg till minne?\" för att skapa ett minne",
         "p3": "Skriv din berättelse, lägg till en rubrik",
-        "p4": "Om du vill kan du lägga till en bild som har med minnet att göra",
-        "p5": "Markera på kartan platsen som är relaterad till minnet",
-        "p6": "Publicera minnet"
+        "p4": "Om du vill kan du förknippa ditt minne till ett tema",
+        "p5": "Om du vill kan du lägga till en bild som har med minnet att göra",
+        "p6": "Markera på kartan platsen som är relaterad till minnet",
+        "p7": "Publicera minnet"
     },
     "notice": {
         "title":"Vänligen beakta att:",
@@ -27,14 +29,17 @@
         "p3": "att bekanta sig med Åbo och se staden med nya ögon"
     },
     "who": {
-        "title": "mer information om oss",
-        "p1": "Åbo museicentral ansvarar för Åbo stads kultur-, konst- och naturhistoriska museiverksamhet. Vi skapar och upprätthåller föremåls- och konstsamlingar samt främjar bevarandet av kultumiljön. Museicentralen förmedlar kulturarv och visuell kultur: forskninigsarbete och informationsutdelning genom utställningar och publikationer utgör grunden för museiverksamheten."
+        "title": "Mer information om oss",
+        "p1": "Åbo museicentral",
+        "p2": " ansvarar för Åbo stads kultur-, konst- och naturhistoriska museiverksamhet. Vi skapar och upprätthåller föremåls- och konstsamlingar samt främjar bevarandet av kultumiljön. Museicentralen förmedlar kulturarv och visuell kultur: forskninigsarbete och informationsutdelning genom utställningar och publikationer utgör grunden för museiverksamheten."
     },
     "rights": {
         "title": "Rättigheter till sparat material",
         "p1": "Genom att spara material pä webbplatsen ger personen fullständiga rättigheter till materialet åt Åbo mesicentral. Åbo museicentral använder materialet i sin egen verksamhet och möjliggör för andra att använda det i enlighet med CC BY-ND 4.0.",
         "p2": "CC BY 4.0 innebär att materialet kan delas öppet, dvs man får kopiera det och sprida det vidare genom vilket medium aom helst och i vilken form som helst, även kommersiellt.",
-        "p3": "Åbo museicentral behandlar personuppgifter i enlighet med 4 § (art. 6e) och 6 § (art. 9) i dataskyddslagen."
+        "p3": "Mera information om CC BY 4.0 licensen",
+        "p4": "Genom att spara material pä webbplatsen ger personen fullständiga rättigheter till materialet åt Åbo mesicentral. Åbo museicentral använder materialet i sin egen verksamhet och möjliggör för andra att använda det i enlighet med CC BY-ND 4.0.",
+        "p5": "Åbo museicentral behandlar personuppgifter i enlighet med 4 § (art 6e) och 6 § (art 9) i dataskyddslagen."
     },
     "what": {
         "title": "Vilka slags minnen kan jag lägga till på webbplatsen?",

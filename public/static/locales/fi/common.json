@@ -1,8 +1,9 @@
 {
     "menubar": {
-        "home": "Koti",
+        "home": "Etusivu",
         "memories": "My Memories",
-        "about": "Tietoja",
+        "about": "Tietoja palvelusta",
+        "campaign": "Kampanjat",
         "addmemory": "Lisää Muisto",
         "login": "Kirjaudu",
         "logout": "kirjaudu ulos"

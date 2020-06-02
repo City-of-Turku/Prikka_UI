@@ -1,8 +1,9 @@
 {
     "menubar": {
-        "home": "Hem",
+        "home": "Startsida",
         "memories": "Mina minnen",
-        "about": "Om oss",
+        "about": "Info om tjänsten",
+        "campaign": "Kampanjer",
         "addmemory": "Lägg till minnen",
         "login": "Logga in",
         "logout": "Logga ut"

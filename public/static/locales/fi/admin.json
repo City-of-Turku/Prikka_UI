@@ -1,28 +1,28 @@
 {
     "title": "Admin",
-    "titleAddNewCategory": "Lisää uusi kategoria",
-    "titleCategories": "Kategoriat",
-    "titleSelectedCategory": "Valittu kategoria",
+    "titleAddNewCategory": "Lisää uusi teema",
+    "titleCategories": "Teemat",
+    "titleSelectedCategory": "Valittu teema",
 
-    "categoryName": "Kategorinimi",
-    "categoryDescription": "Kategorikuvaus",
+    "categoryName": "Teemanimi",
+    "categoryDescription": "Teemakuvaus",
 
-    "buttonAddCategory": "Tallenna uusi kategoria",
-    "buttonUpdateCategory": "Päivitä valittu kategoria",
+    "buttonAddCategory": "Tallenna uusi teema",
+    "buttonUpdateCategory": "Päivitä valittu teema",
 
     "titleRegistredUsers": "Rekisteröidyt käyttäjät",
     "userTable": {
         "headerUserName": "Käyttäjänimi",
         "headerEmail": "Sähköpostiosoite",
         "headerIsAdmin": "Admin-oikeus",
-        "buttonAddAdminRole": "Lisää admin oikeus",
-        "buttonRemoveAdminRole": "Poista admin oikeus"
+        "buttonAddAdminRole": "Lisää admin rooli",
+        "buttonRemoveAdminRole": "Poista admin rooli"
     },
 
     "deleteDialog": {
-        "buttonDelete": "Poista valittu kategoria",
-        "deleteTitle": "Poista kategoria",
-        "deleteConfirmQuestion": "Oletteko varma että haluatte poistaa valitun kategorian?",
+        "buttonDelete": "Poista valittu teemaa",
+        "deleteTitle": "Poista teemaa",
+        "deleteConfirmQuestion": "Oletteko varma että haluatte poistaa valitun teeman?",
         "deleteConfirmInstruction": "Kirjoita 'Kyllä' vahistaksenne poiston.",
         "deleteConfirmInstruction2": "Ystävällisesti kirjoita 'Kyllä' vahvistaksenne poiston",
         "confirm": "Vahvista",

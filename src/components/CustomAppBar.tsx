@@ -96,6 +96,15 @@ const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged }) => {
                     </Button>
                 </Link>
 
+                {/* About Us */}
+                <Typography variant="h6">
+                    <Link href="/about" passHref>
+                        <Button component="a" className={classes.nav}>
+                            {t('menubar.about')}
+                        </Button>
+                    </Link>
+                </Typography>
+
                 {/* Home */}
                 <Typography variant="h6">
                     <Link href="/" passHref>
@@ -105,11 +114,11 @@ const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged }) => {
                     </Link>
                 </Typography>
 
-                {/* About Us */}
+                {/* Home */}
                 <Typography variant="h6">
-                    <Link href="/about" passHref>
+                    <Link href="/" passHref>
                         <Button component="a" className={classes.nav}>
-                            {t('menubar.about')}
+                            {t('menubar.campaign')}
                         </Button>
                     </Link>
                 </Typography>

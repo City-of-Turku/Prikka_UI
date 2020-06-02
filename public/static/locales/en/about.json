@@ -1,18 +1,20 @@
 {
     "title": "About us",
     "intro": {
-        "headliner":"Share your memories ans Stories!",
-        "p1": "\tDo you have an interesting memory or story that you would like to share? On this website, you can share your own memories, events or stories about the City of Turku. If you want, you can also share a photo related to your memory or story. The material you share will be available to other visitors on the website. All material will be stored in the archive collections of the Turku Museum Centre as part of our shared cultural heritage.",
-        "p2": "Here you can store your memories and connnect them to the places where your memories have taken place. Your memories will help us to dig deeper into the local history of Turku and experience the history of the city."
+        "title":"Share your memories ans Stories!",
+        "p1": "Do you have an interesting memory or story that you would like to share? On this website, you can share your own memories, events or stories about the City of Turku. If you want, you can also share a photo related to your memory or story. The material you share will be available to other visitors on the website. All material will be stored in the archive collections of the Turku Museum Centre as part of our shared cultural heritage.",
+        "p2": "Here you can store your memories and connect them to the places where your memories have taken place. Your memories will help us to dig deeper into the local history of Turku and experience the history of the city.",
+        "p3": ""
     },
     "how": {
         "title": "How to do it",
         "p1": "Log in with your e-mail or your Facebook/Google credentials.",
         "p2": "Click on the \"Add memory\" button in order to create a memory.",
         "p3": "Write your story and add a headline.",
-        "p4": "you can add one photo if you like",
-        "p5": "in the map, mark the place where your memory took place",
-        "p6": "Publish your memory."
+        "p4": "You can link your memory to a topic if you like",
+        "p5": "You can add one photo if you like",
+        "p6": "In the map, mark the place where your memory took place",
+        "p7": "Publish your memory."
     },
     "notice": {
         "title": "Please note that:",
@@ -28,13 +30,16 @@
     },
     "who": {
         "title": "Further information about us",
-        "p1": "Turku Museum Centre is in charge of the City of Turku's culture, art and natural history museum operations. It creates and mainttains collections of objects and artwork and promote the conservation of the local cultural environment. Turku Museum Centre transmits cultural heritage and visual culture: research and sharing of information through expositions and publications forms the foundation of the museum operations."
+        "p1": "Turku Museum Centre",
+        "p2": " is in charge of the City of Turku's culture, art and natural history museum operations. It creates and mainttains collections of objects and artwork and promote the conservation of the local cultural environment. Turku Museum Centre transmits cultural heritage and visual culture: research and sharing of information through expositions and publications forms the foundation of the museum operations."
     },
     "rights": {
         "title": "Rights for the stored material",
-        "p1": "By storing material on the website, the person hands over full rights to the material to Turku Museum Centre. Turku Museum Centre will use the material in its own operations and make the material available for the use of others according to the CC by nd 4.0.",
+        "p1": "TODO",
         "p2": "CC by 4.0 means that the material can be freely shared,  i.e. copied and spread forward in any device and form, including comercially.",
-        "p3": "Turku Museum Centre processes personal data in accordance with section 4(article 6e) and section 6(article 9) of the Data Protection Art."
+        "p3": "More information about the CC BY 4.0 license",
+        "p4": "By storing material on the website, the person hands over full rights to the material to Turku Museum Centre. Turku Museum Centre will use the material in its own operations and make the material available for the use of others according to the CC by nd 4.0.",
+        "p5": "Turku Museum Centre processes personal data in accordance with section 4(article 6e) and section 6(article 9) of the Data Protection Art."
     },
     "what": {
         "title": "What memories can you add to the website?",

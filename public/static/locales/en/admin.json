@@ -1,28 +1,28 @@
 {
     "title": "Admin",
-    "titleAddNewCategory": "Add new category",
-    "titleCategories": "Categories",
-    "titleSelectedCategory": "Selected category",
+    "titleAddNewCategory": "Add new topic",
+    "titleCategories": "Topics",
+    "titleSelectedCategory": "Selected topic",
 
-    "categoryName": "Category name",
-    "categoryDescription": "Category description",
+    "categoryName": "Topic name",
+    "categoryDescription": "Topic description",
 
-    "buttonAddCategory": "Save new category",
-    "buttonUpdateCategory": "Update selected category",
+    "buttonAddCategory": "Save new topic",
+    "buttonUpdateCategory": "Update selected topic",
 
     "titleRegistredUsers": "Registered users",
     "userTable": {
         "headerUserName": "User name",
         "headerEmail": "E-mail",
         "headerIsAdmin": "Is admin",
-        "buttonAddAdminRole": "Add admin right",
-        "buttonRemoveAdminRole": "Remove admin right"
+        "buttonAddAdminRole": "Add admin role",
+        "buttonRemoveAdminRole": "Remove admin role"
     },
 
     "deleteDialog": {
-        "buttonDelete": "Delete selected category",
-        "deleteTitle": "Delete category",
-        "deleteConfirmQuestion": "Are you sure that you want to delete selected category?",
+        "buttonDelete": "Delete selected topic",
+        "deleteTitle": "Delete topic",
+        "deleteConfirmQuestion": "Are you sure that you want to delete selected topic?",
         "deleteConfirmInstruction": "Type 'Yes' to confirm.",
         "deleteConfirmInstruction2": "Please enter 'Yes' to confirm",
         "confirm": "Confirm",

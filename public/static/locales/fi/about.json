@@ -1,40 +1,45 @@
 {
-    "title": "Tietoa meistä",
+    "title": "Tietoa palvelusta",
     "intro": {
-        "headliner":"Jaa muistojasi ja tarinoitas muille!",
-        "p1": "\tOnko sinulla muisto tai kiinnostava tarina, jonka haluaisit jakaa muille? Tällä verkkosivusolla voit kertoa omia Turkuun liittyviä muistojasi, tapahtumia ja kaupunkitarinoita. Halutessasi voit myös jakaa muistoosi tai tarinaasi liittyvän kuvan. Jakamasi materiaali on muiden nähtävillä ja tutustuttavana. Kaikki materiaali tallennetaan Turun musekeskuksen arkistokoelmaan, osaksi meidän yhteistä kulttuuriperintöämme.",
-        "p2": "Tänne voit tallentaa muistojasi ja liittää ne tapahtumien paikkoihin. Muistosi auttavat meitä syventymään Turun lähihistoriaan ja kokemaan miltä kaupungissa on aiemmin näyttänyt."
+        "title":"Jaa muistojasi ja tarinoitasi!",
+        "p1": "Onko sinulla muisto tai kiinnostava tarina, jonka haluaisit jakaa muille? Tällä verkkosivustolla voit kertoa omia Turkuun liittyviä muistojasi, tapahtumia ja kaupunkitarinoita, ja liittää ne tapahtumien paikkoihin. Halutessasi voit myös jakaa muistoosi tai tarinaasi liittyvän kuvan. Jakamasi materiaali on muiden nähtävillä ja tutustuttavana.",
+        "p2": "Museo haluaa tallentaa lähihistoriaa ja nykykulttuuria tulevaisuuden jälkipolvia varten mahdollisimman monipuolisesti. Muistosi auttavat meitä syventämään Turun lähihistoriaa ja kokemaan miltä kaupungissa on aiemmin näyttänyt. Kaikki muistot ja tarinat ovat yhtä tärkeitä, niiden kautta kirjoitetaan historiaa yhdessä.",
+        "p3": "Materiaali tallennetaan soveltuvin osin Turun museokeskuksen arkistokokoelmaan, osaksi meidän yhteistä kulttuuriperintöämme. Kaikkea sivustolle tallennettua materiaalia ei välttämättä tallenneta museon kokoelmiin. Museolla on myös oikeus poistaa aineistoa kokoelmista."
     },
     "how": {
         "title": "Kuinka toimia",
         "p1": "Kirjaudu sisään sähköpostilla tai Facebook/Google-tunnuksilla",
-        "p2": "Klikkaa \"lisää muisto\" -painiketta luodaksesi muiston",
+        "p2": "Klikkaa \"Lisää muisto\" -painiketta luodaksesi muiston",
         "p3": "Kirjoita tarinasi, lisää otsikko",
-        "p4": "Halutessasi lisää yksi muistoon liittyvä kuva",
-        "p5": "Merkitse paikka kartalla, johon muisto liittyy ",
-        "p6": "Julkaise muisto"
+        "p4": "Halutessasi liitä tarinasi teemaan",
+        "p5": "Halutessasi lisää yksi muistoon liittyvä kuva",
+        "p6": "Merkitse kartalle paikka, johon muisto liittyy ",
+        "p7": "Julkaise muisto"
     },
     "notice": {
         "title": "Otathan huomioon että:",
-        "p1": "Ihmisten yksityisyyttä tulee suojella. Jos muistoosi liittyy muita ihmisiä, älä kerro heidän koko nimiään, vaan käytä lempinimiä tai etunimiä. Poikkeuksen muodostaa julkisuuden henkilö, josta voit käyttää kokonimeä.",
+        "p1": "Ihmisten yksityisyyttä tulee suojella. Jos muistoosi liittyy muita ihmisiä, älä kerro heidän koko nimiään, vaan käytä lempinimiä tai etunimiä. Poikkeuksen muodostaa julkisuuden henkilö, josta voit käyttää koko nimeä.",
         "p2": "Mikäli lisäät muistoon valokuvan, niin varmista, että sinulla on oikeus sen julkaisuun.",
         "p3": "Museokeskuksella on oikeus poistaa sivustolta materiaali, joka on ilmoitettu epäasialliseksi."
     },
     "opportunity": {
-        "title": "Hyvä mahdollisuus",
+        "title": "Sivustolla voit",
         "p1": "muistella menneitä ja lueskella muiden jakamia tarinoita.",
         "p2": "ottaa selvää oman lähialueen historiasta.",
-        "p3": "Tutustua Turkuun ja nähdä kaupunki uusin silmin."
+        "p3": "tutustua Turkuun ja nähdä kaupunki uusin silmin."
     },
     "who": {
         "title": "Lisätietoa meistä",
-        "p1": "Turun museokeskus vastaa Turun kaupungin kulttuuri-, taide- ja luonnonhistoriallisesta museotoiminnasta. Se muodostaa ja ylläpitää esine- ja taidekokoelmia sekä edistää kulttuuriympäristön säilymistä. Museokeskus välittää kulttuuriperintöä sekä visuaalista kulttuuria: tutkimustyö ja tiedon jakaminen näyttelyiden ja julkaisujen kautta ovat museotoiminnan perusta."
+        "p1": "Turun museokeskus",
+        "p2": " vastaa Turun kaupungin kulttuuri-, taide- ja luonnonhistoriallisesta museotoiminnasta. Se muodostaa ja ylläpitää esine-, taide- ja arkistokokoelmia, sekä edistää kulttuuriympäristön säilymistä. Museokeskus välittää kulttuuriperintöä sekä visuaalista kulttuuria: tutkimustyö ja tiedon jakaminen näyttelyiden ja julkaisujen kautta ovat museotoiminnan perusta."
     },
     "rights": {
         "title": "Oikeudet tallennettuun materiaaliin",
-        "p1": "Tallentamalla materiaalia verkkosivustolle tallentaja antaa Turun muesokeskukselle täydet oikeudet materiaaliin. Turun museokeskus käyttää materiaalia omassa toiminassaan sekä mahdollistaa sen käytettävyyden muille CC by nd 4.0 mukaisesti.",
-        "p2": "CC by 4.0 tarkoittaa sitä, että materiaalia saa jakaa avoimesti, ts kopioida ja levittää sitä edelleen missä tahansa välineessä ja muodossa ja myös kaupallisesti.",
-        "p3": "Turun museokeskus käsittelee henkilötietoja Tietosuojalaki 4 § (art 6e) ja 6§ (art 9) mukaisin perustein. "
+        "p1": "Turun museokeskus toivoo, että palvelun kautta lahjoitettua aineistoa voidaan käyttää mahdollisimman monipuolisesti. Museo käyttää materiaalia omassa toiminnassaan sekä mahdollistaa sen käytettävyyden muille CC BY 4.0 mukaisesti.",
+        "p2": "Sivustolle ladattava sisältö lisensoidaan avoimen kulttuurin Creative Commons -lisenssillä CC BY 4.0. Lisenssi antaa rajoittamattoman oikeuden käyttää sisältöä, myös muutettuna, ja se mahdollistaa kaupallisen käytön. Aineiston käytön yhteydessä tekijä on mainittava.",
+        "p3": "Lisätietoa CC BY 4.0 lisenssistä",
+        "p4": "Tallentamalla aineistoa sivustolle hyväksyt sen jatkokäytön lisenssin CC BY 4.0 mukaisesti. Muistathan tallentaa vain itse kirjoittamaasi tekstiä ja itse ottamiasi kuvia. Vastaat itse siitä, että sinulla on oikeudet kuvaan ja sen jakamiseen.",
+        "p5": "Turun museokeskus käsittelee henkilötietoja Tietosuojalaki 4 § (art 6e) ja 6§ (art 9) mukaisin perustein."
     },
     "what": {
         "title": "Minkälaisia muistoja voit lisätä sivustolle?",

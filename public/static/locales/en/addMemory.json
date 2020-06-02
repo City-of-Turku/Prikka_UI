@@ -3,14 +3,14 @@
     "warning": "Warning : You're not logged, your memory will be published as \"Anonymous\"",
     "info_title": "Informations",
     "title_PH": "Title",
-    "category_PH": "Category",
+    "category_PH": "Topic",
     "description_PH": "Description",
     "map_title": "Position",
     "continue_button": "Submit",
     "success": "Memory created",
     "image_info": "Max image size 10MB",
     "upload_button_text": "Upload",
-    "category": "Category",
+    "category": "Topic",
     "alternativeAll": "All"
 
 }

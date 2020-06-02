@@ -1,28 +1,28 @@
 {
     "title": "Admin",
-    "titleAddNewCategory": "Lägg till en ny kategori",
-    "titleCategories": "Befintliga kategorier",
-    "titleSelectedCategory": "Vald kategori",
+    "titleAddNewCategory": "Lägg till ett nytt tema",
+    "titleCategories": "Befintliga teman",
+    "titleSelectedCategory": "Valt tema",
 
-    "categoryName": "Kategori namn",
-    "categoryDescription": "Kategori beskrivning",
+    "categoryName": "Tema namn",
+    "categoryDescription": "Tema beskrivning",
 
-    "buttonAddCategory": "Spara en ny kategori",
-    "buttonUpdateCategory": "Uppdatera vald kategori",
+    "buttonAddCategory": "Spara ett nytt tema",
+    "buttonUpdateCategory": "Uppdatera valt tema",
 
     "titleRegistredUsers": "Registrerade användare",
     "userTable": {
         "headerUserName": "Användarnamn",
         "headerEmail": "E-postadress",
         "headerIsAdmin": "Admin-rättigheter",
-        "buttonAddAdminRole": "Lägg till admin-rättigheter",
-        "buttonRemoveAdminRole": "Ta bort admin-rättigheter"
+        "buttonAddAdminRole": "Lägg till admin-rollen",
+        "buttonRemoveAdminRole": "Ta bort admin-rollen"
     },
 
     "deleteDialog": {
-        "buttonDelete": "Radera vald kategori",
-        "deleteTitle": "Radera en kategori",
-        "deleteConfirmQuestion": "Är ni säker på att ni vill radera valda kategori?",
+        "buttonDelete": "Radera valt tema",
+        "deleteTitle": "Radera ett tema",
+        "deleteConfirmQuestion": "Är ni säker på att ni vill radera valda tema?",
         "deleteConfirmInstruction": "Skriv 'Ja' för att bekräfta raderningen.",
         "deleteConfirmInstruction2": "Vänligen skriv 'Ja' för att bekräfta.",
         "confirm": "Bekräfta",
