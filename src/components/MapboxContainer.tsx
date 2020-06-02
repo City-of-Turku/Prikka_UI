@@ -76,7 +76,7 @@ const MapboxContainer: React.FC<IMapboxContainer> = ({
         "sources": {
             "osm": {
                 type: 'raster',
-                tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+                tiles: ["https://maptiles.turku.fi/styles/hel-osm-bright/{z}/{x}/{y}.png"],
                 tileSize: 256,
                 attribution: 'Map tiles by <a target="_top" rel="noopener" href="https://tile.openstreetmap.org/">OpenStreetMap tile servers</a>, under the <a target="_top" rel="noopener" href="https://operations.osmfoundation.org/policies/tiles/">tile usage policy</a>. Data by <a target="_top" rel="noopener" href="http://openstreetmap.org">OpenStreetMap</a>'
             }/*,
