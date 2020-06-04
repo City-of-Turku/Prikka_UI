@@ -15,6 +15,9 @@ export type Memory = {
     userId: number;
     categoryId: number;
     photo: any;
+    photographer: string;
+    whenIsPhotoTaken: string;
+    whereIsPhotoTaken: string;
     Reports: {
         id: number;
     }

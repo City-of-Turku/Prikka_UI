@@ -7,27 +7,21 @@
  */
 
 // --- IMPORTS ---
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Layout from '../components/Layout';
-import { apis } from '../services/apis';
-import { withTranslation } from '../i18n';
-import {
-    Typography,
-    Grid,
-    Paper,
-    TextField,
-    Box,
-    Button,
-} from '@material-ui/core';
-import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
+import {apis} from '../services/apis';
+import {withTranslation} from '../i18n';
+import {Box, Button, Grid, Paper, TextField, Typography,} from '@material-ui/core';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import PinpointMap from '../components/PinpointMap';
-import { AxiosError, AxiosResponse } from 'axios';
-import { useSnackbarContext } from '../contexts/SnackbarContext';
+import {AxiosError, AxiosResponse} from 'axios';
+import {useSnackbarContext} from '../contexts/SnackbarContext';
 import Router from 'next/router';
 import CategorySelect from '../components/CategorySelect';
-import { Categories } from '../types';
+import {Categories} from '../types';
 import Head from 'next/head';
-import { NextPage } from 'next';
+import {NextPage} from 'next';
+import CardMedia from "@material-ui/core/CardMedia";
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -46,12 +40,22 @@ const useStyles = makeStyles((theme: Theme) =>
         item: {
             paddingBottom: '16px',
         },
+        itemDoubble: {
+            margin: theme.spacing(2),
+            paddingBottom: '32px',
+            width: 400,
+        },
         paper: {
             borderRadius: '8px',
             backgroundColor: theme.palette.background.paper,
         },
         input: {
             display: 'none',
+        },
+        media: {
+            paddingLeft: '16px',
+            height: 70,
+            width: 150,
         },
     }),
 );
@@ -67,6 +71,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     //Contexts
     const classes = useStyles();
     const snackbarContext = useSnackbarContext();
+
     //States
     const [markerPosition, setMarkerPosition] = useState<number[] | undefined>(
         undefined,
@@ -81,15 +86,20 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     //Image upload
     const [file, setFile] = useState('');
     const [filename, setFilename] = useState('');
+    const [fileUrl, setFileUrl] = useState('');
     const [uploadedFile, setUploadedFile] = useState({});
+    const [photographer, setPhotographer] = useState<string>('');
+    const [whenIsPhotoTaken, setWhenIsPhotoTaken] = useState<string>('');
+    const [whereIsPhotoTaken, setWhereIsPhotoTaken] = useState<string>('');
 
     //Adds filename when file is added
     const onChange = (e) => {
         setFile(e.target.files[0]);
         setFilename(e.target.files[0].name);
+        setFileUrl( URL.createObjectURL(e.target.files[0]));
     };
 
-/*     const onSubmit = async e => {
+    /*     const onSubmit = async e => {
         e.preventDefault();
         const formData = new FormData();
         formData.append('file', file);
@@ -140,24 +150,21 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                 'Please enter a description for your memory',
             );
         } else {
-            // to do: data variable not that useful anymore
-            // TODO Rob
             var formData = new FormData();
             var data = {
-                title: title,
-                categoryId: category,
-                description: description,
-                photo: file,
                 position: {
                     type: 'Point',
                     coordinates: [markerPosition[1], markerPosition[0]],
-                },
+                }
             };
             formData.append('title', title);
             formData.append('categoryId', category);
             formData.append('description', description);
             formData.append('file', file);
             formData.append('position', JSON.stringify(data.position));
+            formData.append('photographer', photographer);
+            formData.append('whenIsPhotoTaken', whenIsPhotoTaken);
+            formData.append('whereIsPhotoTaken', whereIsPhotoTaken);
             apis.memories
                 .createMemory(formData)
                 .then((res: AxiosResponse) => {
@@ -182,6 +189,74 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
         setDescription(event.target.value);
+    };
+    const handlePhotographerChange = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+        setPhotographer(event.target.value);
+    };
+    const handleWhenIsPhotoTakenChange = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+        setWhenIsPhotoTaken(event.target.value);
+    };
+    const handleWhereIsPhotoTakenChange = (
+        event: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+        setWhereIsPhotoTaken(event.target.value);
+    };
+
+    const displayPhotoMetaInformation = () => {
+        if (fileUrl){
+        return (
+
+            <>
+            <Grid container spacing={4}>
+                <Grid container xs={6}>
+                    <TextField
+                        className={classes.itemDoubble}
+                        required
+                        id="outlined-basic"
+                        label={t("photographer_PH")}
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        value={photographer}
+                        onChange={handlePhotographerChange}
+                    />
+                </Grid>
+                <Grid container xs={6}>
+                    <CardMedia
+                        className={classes.media}
+                        image={fileUrl}
+                        title="Memory Picture"
+                    />
+                </Grid>
+            </Grid>
+            <TextField
+            className={classes.item}
+            required
+            id="outlined-basic"
+            label={t("whenIsPhotoTaken_PH")}
+            variant="outlined"
+            size="small"
+            fullWidth
+            value={whenIsPhotoTaken}
+            onChange={handleWhenIsPhotoTakenChange}
+            />
+            <TextField
+                className={classes.item}
+                required={false}
+                id="outlined-basic"
+                label={t("whereIsPhotoTaken_PH")}
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={whereIsPhotoTaken}
+                onChange={handleWhereIsPhotoTakenChange}
+            />
+            </>
+        )}
     };
 
     return (
@@ -248,19 +323,6 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                             value={title}
                                             onChange={handleTitleChange}
                                         />
-                                        {/* 
-                    <TextField
-                        className={classes.item}
-                        required
-                        id="outlined-basic"
-                        label="Category"
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={category}
-                        onChange={handleCategoryChange}
-                    />
-                    */}
                                         <CategorySelect
                                             t={t}
                                             categories={categories}
@@ -277,7 +339,6 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                                 paddingBottom: '16px',
                                             }}
                                         ></div>
-
                                         <TextField
                                             id="outlined-multiline"
                                             label={t("description_PH")}
@@ -311,6 +372,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                                 </Typography>
                                             </label>
                                         </div> }
+                                        {displayPhotoMetaInformation()}
                                     </form>
                                 </Box>
                             </Paper>
