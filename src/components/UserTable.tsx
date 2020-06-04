@@ -23,18 +23,20 @@ interface IUserTable {
     t(key, opts?): Function;
     users: Users;
     controls?: boolean;
+    handleRefresch?(): void;
 }
 
 const UserTable: React.FC<IUserTable> = ({
     t,
     users,
     controls,
+    handleRefresch,
 }) => {
 
     const displayUsers = (users) => (
         <>
             {users.rows.map(user => (
-                <UserRow t={t} user={user}></UserRow>
+                <UserRow t={t} user={user} handleRefresch={handleRefresch}></UserRow>
             ))}
         </>
     );

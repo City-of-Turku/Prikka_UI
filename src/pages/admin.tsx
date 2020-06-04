@@ -30,6 +30,7 @@ import Head from 'next/head';
 import UserTable from "../components/UserTable";
 import DeleteDialog from "../components/DeleteDialog";
 import CardActions from "@material-ui/core/CardActions";
+import MemoryCard from "../components/MemoryCard";
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -141,6 +142,9 @@ const Admin: NextPage<IAdmin & any> = ({
             .adminCreateCategory(model)
             .then((res: AxiosResponse) => {
                 snackbarContext.displaySuccessSnackbar('Category added');
+                getAllCategories();
+                setCategoryName("");
+                setCategoryDescription("");
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
@@ -156,6 +160,7 @@ const Admin: NextPage<IAdmin & any> = ({
             .adminUpdateCategory(categoryUpdatedId,model)
             .then((res: AxiosResponse) => {
                 snackbarContext.displaySuccessSnackbar('Category updated');
+                getAllCategories();
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
@@ -167,6 +172,10 @@ const Admin: NextPage<IAdmin & any> = ({
             .adminDeleteCategoryById(categoryUpdatedId)
             .then((res: AxiosResponse) => {
                 snackbarContext.displaySuccessSnackbar('Category deleted');
+                getAllCategories();
+                setCategoryUpdatedId(0);
+                setCategoryUpdatedName("");
+                setCategoryUpdatedDescription("");
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
@@ -330,7 +339,7 @@ const Admin: NextPage<IAdmin & any> = ({
         if (users === null || users.count === 0) {
             component = <div>Empty list>/</div>;
         } else {
-            component = <UserTable t={t} users={users} controls={true}/>
+            component = <UserTable t={t} users={users} controls={true} handleRefresch={() => getAllUsers()}/>
         };
         return component;
     };

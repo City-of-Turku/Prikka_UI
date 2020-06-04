@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import {User} from '../types';
+import {User, Users} from '../types';
 import {TableCell, TableRow} from "@material-ui/core";
 import {apis} from "../services/apis";
 import {AxiosError, AxiosResponse} from "axios";
@@ -15,12 +15,14 @@ interface IUserRow {
     t(key, opts?): Function;
     user: User;
     controls?: boolean;
+    handleRefresch(): void
 }
 
 const UserRow: React.FC<IUserRow> = ({
     t,
     user,
     controls,
+    handleRefresch
 }) => {
 
     const snackbarContext = useSnackbarContext();
@@ -40,6 +42,7 @@ const UserRow: React.FC<IUserRow> = ({
             .adminUpdateUserById(userId,model)
             .then((res: AxiosResponse) => {
                 snackbarContext.displaySuccessSnackbar('User updated');
+                handleRefresch();
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
