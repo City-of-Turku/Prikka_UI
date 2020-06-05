@@ -3,6 +3,7 @@
     "description": "Tässä ovat kaikki muistot joille on tullut valituksia.",
     "emptyReportedMemoryList": "Tällä hetkellä ei ole muistoja jolle on annettu valituksia.",
     "reportedMemoryCard": {
+        "buttonDeleteMemory": "Poista muisto",
         "buttonMoveMemoryToArchive": "Siirrä muisto arkistoon",
         "archiveReason": "Arkistoinnin syy"
     },

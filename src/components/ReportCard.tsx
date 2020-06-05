@@ -8,8 +8,6 @@ import Button from '@material-ui/core/Button';
 import {MemoryReport} from '../types';
 import Moment from 'react-moment';
 import {TableCell, TableRow} from "@material-ui/core";
-import {apis} from "../services/apis";
-import {AxiosError, AxiosResponse} from "axios";
 import {useSnackbarContext} from "../contexts/SnackbarContext";
 import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
@@ -23,33 +21,27 @@ const useStyles = makeStyles({
     },
 });
 
-
 interface IReportCard {
     t(key, opts?): Function;
     memoryReport: MemoryReport;
+    handleSubmitUpdateActionForReport?(invalid: boolean): void;
 }
 
 const ReportCard: React.FC<IReportCard> = ({
     t,
-    memoryReport
+    memoryReport,
+    handleSubmitUpdateActionForReport
 }) => {
 
     const classes = useStyles();
     const snackbarContext = useSnackbarContext();
 
-    const handleSubmitNoActionForReport = (props) => {
-        const data = {
-            invalid: !(memoryReport.invalid),
-        };
-        apis.admin
-            .adminUpdateMemoryReportsById((memoryReport.id), data)
-            .then((res: AxiosResponse) => {
-                snackbarContext.displaySuccessSnackbar('Memory report updated');
-            })
-            .catch((err: AxiosError) => {
-                snackbarContext.displayErrorSnackbar('Error');
-            });
-    };
+    const handleSubmitUpdateActionForReportLocal = () => {
+        // Set the invalid paramter to be opposite to the one in the table.
+        // For the moment it is only possible to set it to true but
+        // the function supports both ways.
+        handleSubmitUpdateActionForReport(!(memoryReport.invalid));
+    }
 
     const showActionButton = () => {
         if (memoryReport.invalid === true) {
@@ -60,7 +52,7 @@ const ReportCard: React.FC<IReportCard> = ({
             )
         }
         return (
-            <Button size="small" color="primary" onClick={handleSubmitNoActionForReport}>
+            <Button size="small" color="primary" onClick={handleSubmitUpdateActionForReportLocal}>
                 {t('reportCard.buttonNoAction')}
             </Button>
         )

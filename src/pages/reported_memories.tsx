@@ -17,6 +17,7 @@ import {NextPage} from 'next';
 import Head from 'next/head';
 import CardContent from "@material-ui/core/CardContent";
 import ReportedMemoryCard from "../components/ReportedMemoryCard";
+import {AxiosError, AxiosResponse} from "axios";
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -89,6 +90,39 @@ const ReportedMemory: NextPage<IReportedMemory & any> = ({
             });
     };
 
+    const handleDeleteMemory = (index: number, memoryId: number) => {
+        apis.admin
+            .adminDeleteMemoryById(memoryId)
+            .then((res) => {
+                const newMemoryList = reportedMemories;
+                newMemoryList.rows.splice(index, 1);
+                setReportedMemories(newMemoryList);
+                snackbarContext.displaySuccessSnackbar('memoryDeleted');
+            })
+            .catch((err) => {
+                snackbarContext.displayErrorSnackbar('Error deleting memory');
+            });
+    };
+
+    // TODO After this call, archiveReason still remembers the previos text.
+    // Check this by moving the fist memory to archive for a list with at least two reported memories.
+    const handleSubmitMoveMemoryToArchive = (index: number, memoryId: number, archiveReason: string) => {
+        const data = {
+            archiveReason: archiveReason,
+        };
+        apis.admin
+            .adminUpdateMemoryById((memoryId), data)
+            .then((res: AxiosResponse) => {
+                const newMemoryList = reportedMemories;
+                newMemoryList.rows.splice(index, 1);
+                setReportedMemories(newMemoryList);
+                snackbarContext.displaySuccessSnackbar('Memory moved to archive');
+            })
+            .catch((err: AxiosError) => {
+                snackbarContext.displayErrorSnackbar('Error');
+            });
+    };
+
     const displayReportedMemories = () => {
         let component;
 
@@ -115,9 +149,11 @@ const ReportedMemory: NextPage<IReportedMemory & any> = ({
                     <Grid key={index} item xs={12}>
                         <ReportedMemoryCard
                             t={t}
-//                            handleDeleteMemory={() =>
-//                                handleDeleteMemory(index, memory.id)
-//                           }
+                            handleDeleteMemory={() =>
+                                handleDeleteMemory(index, memory.id)
+                            }
+                            handleSubmitMoveMemoryToArchive={(archiveReason) =>
+                                handleSubmitMoveMemoryToArchive(index, memory.id, archiveReason)}
                             memory={memory}
                             category={categories.filter (item => item.id == memory.categoryId)[0]}
                             controls={true}

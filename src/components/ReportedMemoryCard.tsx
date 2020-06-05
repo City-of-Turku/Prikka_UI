@@ -11,7 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import {Category, Memory} from '../types';
+import {Category, Memory, MemoryReport} from '../types';
 import Moment from 'react-moment';
 import {Table, TableCell, TableRow, TextField} from "@material-ui/core";
 import {apis} from "../services/apis";
@@ -38,6 +38,7 @@ interface IMemoryCard {
     category: Category;
     controls?: boolean;
     handleDeleteMemory?(): void;
+    handleSubmitMoveMemoryToArchive?(archiveReason: string): void;
 }
 
 function getImageUrl(photo) {
@@ -54,6 +55,7 @@ const MemoryCard: React.FC<IMemoryCard> = ({
     category,
     controls,
     handleDeleteMemory,
+    handleSubmitMoveMemoryToArchive
 }) => {
 
     const classes = useStyles();
@@ -62,18 +64,36 @@ const MemoryCard: React.FC<IMemoryCard> = ({
 
     const [archiveReason, setArchiveReason] = useState<string>('');
 
-    const handleSubmitMoveMemoryToArchive = () => {
+    const handleSubmitUpdateActionForReport = (report: MemoryReport, invalid: boolean) => {
         const data = {
-            archiveReason: archiveReason,
+            invalid: invalid,
         };
         apis.admin
-            .adminUpdateMemoryById((memory.id), data)
+            .adminUpdateMemoryReportsById((report.id), data)
             .then((res: AxiosResponse) => {
-                snackbarContext.displaySuccessSnackbar('Memory moved to archive');
+                // TODO This refresch of the memoryreport status does not work
+                // Check handleDeleteMemory in reported_memories.tsx
+                fetchOneMemory(memory.id);
+                snackbarContext.displaySuccessSnackbar('Memory report updated');
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
             });
+    };
+
+    const fetchOneMemory = (memoryId: number) => {
+        apis.memories
+            .getMemoryById(memoryId)
+            .then((res: AxiosResponse) => {
+                memory = res.data;
+            })
+            .catch((err: AxiosError) => {
+                // Error
+            });
+    };
+
+    const handleSubmitMoveMemoryToArchiveLocal = () => {
+        handleSubmitMoveMemoryToArchive(archiveReason);
     };
 
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,7 +116,13 @@ const MemoryCard: React.FC<IMemoryCard> = ({
     const displayReportsForMemory = ({Reports}) => (
         <>
             {Reports.map(report => (
-                <ReportCard t={t} memoryReport={report}></ReportCard>
+                <ReportCard
+                    t={t}
+                    memoryReport={report}
+                    handleSubmitUpdateActionForReport={(invalid) =>
+                        handleSubmitUpdateActionForReport(report, invalid)}
+                >
+                </ReportCard>
             ))}
         </>
     );
@@ -157,7 +183,10 @@ const MemoryCard: React.FC<IMemoryCard> = ({
             </CardActionArea>
             {controls ? (
                 <CardActions>
-                    <Button size="small" color="primary" onClick={handleSubmitMoveMemoryToArchive}>
+                    <Button size="small" color="primary" onClick={handleDeleteMemory}>
+                        {t('reportedMemoryCard.buttonDeleteMemory')}
+                    </Button>
+                    <Button size="small" color="primary" onClick={handleSubmitMoveMemoryToArchiveLocal}>
                         {t('reportedMemoryCard.buttonMoveMemoryToArchive')}
                     </Button>
                     <form className={classes.archiveReason} noValidate autoComplete="off">
