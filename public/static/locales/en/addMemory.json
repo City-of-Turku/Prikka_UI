@@ -9,6 +9,7 @@
     "whenIsPhotoTaken_PH": "When is the photo taken?",
     "whereIsPhotoTaken_PH": "Where is the photo taken?",
     "map_title": "Position",
+    "map_title_instruction": "You can mark the position for the memory on the map by clicking the left button of the mouse.",
     "continue_button": "Submit",
     "success": "Memory created",
     "image_info": "Max image size 10MB",

@@ -10,6 +10,7 @@
     "whenIsPhotoTaken_PH": "När är bilden tagen",
     "whereIsPhotoTaken_PH": "Var är bilden tagen?",
     "map_title": "Plats",
+    "map_title_instruction": "Du kan markera platsen för minnet på kartan genom att trycka på musens vänstra knapp.",
     "continue_button": "Skicka in",
     "success": "Minne skapat",
     "image_info": "Maximal fil storlek 10MB",

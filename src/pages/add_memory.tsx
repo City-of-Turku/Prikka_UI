@@ -390,6 +390,9 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                     >
                                         {t('map_title')}
                                     </Typography>
+                                    <Typography>
+                                        {t('map_title_instruction')}
+                                    </Typography>
                                     <PinpointMap
                                         handleClickPositionCallback={
                                             handleClickPositionCallback
