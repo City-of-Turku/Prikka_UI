@@ -23,11 +23,17 @@ export const setCookies = (cookie) => {
 
 //axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
+const basePathUsers = '/user-management'
+const basePathMemories = '/memory-management';
+const basePathAuth = '/auth-management';
+const basePathCategories = '/category-management';
+
+
+
 /* --- MEMORIES MANAGEMENT ---
  *  api : /memory-management
  */
 
-const basePathMemories = '/memory-management';
 
 /**
  * POST : add one memory to database
@@ -102,7 +108,6 @@ const adminUpdateMemoryReportsById = (id: any, payload: any) =>
  *  api : /auth-management
  */
 
-const basePathAuth = '/auth-management';
 
 /**
  * POST : check login for a local user
@@ -155,7 +160,6 @@ const isLogged = () => {
 /* --- CATEGORIES MANAGEMENT ---
  *  api : /category-management
  */
-const basePathCategories = '/category-management';
 
 /**
  * POST : create a category
@@ -222,6 +226,18 @@ const adminDeleteUserById = (id: any) =>
     api.delete(`/admin/${basePathAuth}/user/${id}`)
 
 
+/**
+ * GET : user id will be in the request
+ */
+const getUserById = (id: any) =>
+    api.get(`${basePathUsers}/user/${id}`);
+
+const getUser = () =>
+    api.get(`${basePathUsers}/user`);
+
+const updateUserById = (payload: any) =>
+    api.put(`${basePathUsers}/user`, payload)
+
 
 /**
  * Axios object to export, contening all the APIs to call
@@ -263,5 +279,11 @@ export const apis = {
         adminUpdateUserById,
         adminDeleteUserById,
         adminUpdateMemoryReportsById,
+    },
+    user: {
+        getUserById,
+        getUser,
+        updateUserById,
     }
+
 };

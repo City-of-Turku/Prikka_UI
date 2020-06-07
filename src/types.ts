@@ -56,8 +56,10 @@ export type Background = {
 
 export type User = {
     id: number;
+    userName: string;
     displayName: string;
     email: string;
+    yearOfBirth: string;
     admin: boolean;
     createdAt: string;
     updateAt: string;

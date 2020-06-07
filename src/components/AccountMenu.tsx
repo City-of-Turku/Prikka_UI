@@ -78,7 +78,7 @@ const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin}) => {
 
     const handleSettingsClick = (event: React.MouseEvent<EventTarget>) => {
         handleClose(event);
-        Router.push('/settings');
+        Router.push('/user_settings');
     };
     const handleMymemoriesClick = (event: React.MouseEvent<EventTarget>) => {
         handleClose(event);

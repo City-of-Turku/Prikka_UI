@@ -1,0 +1,13 @@
+{
+    "title": "Käyttäjä asetukset",
+    "userName": "Käyttäjänimi",
+    "userNameDesc": "- käyttäjänimesi näkyy ainoastaan administraattorille",
+    "displayName": "Nimimerkki",
+    "displayNameDesc": "- nimimerkkisi näkyy kaikille",
+    "yearOfBirth": "Syntymävuosi",
+    "yearOfBirthDesc": "",
+    "email": "Sähköpostiosoite",
+    "emailDesc": "",
+    "buttonUpdateUser": "Tallenna muutokset",
+    "passchange": "Vaihda Salasana"
+}

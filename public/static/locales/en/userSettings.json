@@ -1,0 +1,13 @@
+{
+    "title": "User settings",
+    "userName": "Username",
+    "userNameDesc": "- your username is only visible for the administrators",
+    "displayName": "Displayname",
+    "displayNameDesc": "- your displayname is visible for all users",
+    "yearOfBirth": "Year of birth",
+    "yearOfBirthDesc": "",
+    "email": "E-mail",
+    "emailDesc": "",
+    "buttonUpdateUser": "Save changes",
+    "passchange": "Change Password"
+}
