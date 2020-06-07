@@ -20,6 +20,10 @@ export type Memory = {
     whereIsPhotoTaken: string;
     Reports: {
         id: number;
+    },
+    User:{
+        displayName: string,
+        userName: string,
     }
 };
 

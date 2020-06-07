@@ -7,38 +7,25 @@
 // --- IMPORTS ---
 import React from 'react';
 import Moment from 'react-moment';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import {
+    Button,
+    createMuiTheme,
+    Divider,
+    Grid,
+    IconButton,
     List,
     ListItem,
-    Divider,
-    Typography,
-    Button,
-    Paper,
-    IconButton,
-    Grid,
-    createMuiTheme,
     MuiThemeProvider,
+    Paper,
+    Typography,
 } from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import ShareSharpIcon from '@material-ui/icons/ShareSharp';
 import FavoriteSharpIcon from '@material-ui/icons/FavoriteSharp';
 
-import { Memory } from '../types';
-import { red, blue } from '@material-ui/core/colors';
+import {Memory} from '../types';
+import {blue, red} from '@material-ui/core/colors';
 import ReportDialog from './ReportDialog';
-
-import Popup from 'reactjs-popup';
-import {
-    EmailIcon,
-    FacebookIcon,
-    TwitterIcon,
-    WhatsappIcon,
-    EmailShareButton,
-    FacebookShareButton,
-    TwitterShareButton,
-    WhatsappShareButton,
-} from 'react-share';
 import ShareMemoryPopup from "./ShareMemoryPopup";
 
 // --- STYLES ---
@@ -66,13 +53,14 @@ const redTheme = createMuiTheme({ palette: { primary: red } });
 const blueTheme = createMuiTheme({ palette: { primary: blue } });
 
 interface IMemoryDetails {
+    t(key, opts?): Function;
     handleUnselectMemory(): void;
     selectedMemory: Memory;
 }
 
 // component
 function Photo(props) {
-    console.log(props)
+    console.log(props);
     const photo = JSON.parse(props.photo);
     if (photo) {
         return (
@@ -88,15 +76,23 @@ function Photo(props) {
     )
 }
 
-
 // --- COMPONENT ---
 const MemoryDetails: React.FC<IMemoryDetails> = ({
+    t,
     handleUnselectMemory,
     selectedMemory,
 }) => {
     const classes = useStyles();
     const shareUrl = `${process.env.FRONT_URL}/?memory=${selectedMemory.id}`;
     const shareTitle = 'Check out this memory at Prikka';
+
+    function showUserDisplayName2() {
+        if(selectedMemory.User){
+            return (selectedMemory.User.displayName);
+        }
+        return (<>{t('anonymous')}</>);
+    };
+
     return (
         <Paper elevation={4} className={classes.root}>
             <List>
@@ -113,12 +109,12 @@ const MemoryDetails: React.FC<IMemoryDetails> = ({
 
                 {/*TODO : add picture */}
                 <ListItem alignItems="flex-start">
-                    <Typography variant="h3">{selectedMemory.title}</Typography>
+                    <Typography variant="h5">{selectedMemory.title}</Typography>
                 </ListItem>
 
                 <ListItem alignItems="flex-start">
                     <Typography variant="subtitle1">
-                        <Moment fromNow>{selectedMemory.createdAt}</Moment>
+                        <Moment fromNow>{selectedMemory.createdAt}</Moment> / {showUserDisplayName2()}
                     </Typography>
                 </ListItem>
                 <Divider variant="fullWidth" component="li" />

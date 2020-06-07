@@ -6,18 +6,18 @@
  */
 
 // --- IMPORTS ---
-import React, { useState, useEffect } from 'react';
-import { apis } from '../services/apis';
-import { i18n, withTranslation } from '../i18n';
-import { Memories, Memory, Categories } from '../types';
-import { NoSsr } from '@material-ui/core';
+import React, {useEffect, useState} from 'react';
+import {apis} from '../services/apis';
+import {withTranslation} from '../i18n';
+import {Categories, Memories, Memory} from '../types';
+import {NoSsr} from '@material-ui/core';
 import MapboxContainer from '../components/MapboxContainer';
 import PinnedSubheaderList from '../components/PinnedSubheaderList';
 import MemoryDetails from '../components/MemoryDetails';
-import { useSnackbarContext } from '../contexts/SnackbarContext';
+import {useSnackbarContext} from '../contexts/SnackbarContext';
 import Head from 'next/head';
-import { NextPage } from 'next';
-import { Router, useRouter } from 'next/router';
+import {NextPage} from 'next';
+import {useRouter} from 'next/router';
 
 // --- COMPONENT ---
 interface IIndex {
@@ -116,6 +116,7 @@ const Index: NextPage<IIndex & any> = ({
             </NoSsr>
             {selectedMemory ? (
                 <MemoryDetails
+                    t={t}
                     selectedMemory={selectedMemory}
                     handleUnselectMemory={handleUnselectMemory}
                 />

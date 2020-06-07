@@ -155,7 +155,7 @@ const MemoryCard: React.FC<IMemoryCard> = ({
                         color="textSecondary"
                         component="p"
                     >
-                        <Moment format="YYYY/MM/DD">{memory.createdAt}</Moment>
+                        <Moment format="YYYY/MM/DD">{memory.createdAt}</Moment> / {memory.User.userName}
                     </Typography>
 
                     {/* Description */}

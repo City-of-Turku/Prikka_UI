@@ -4,5 +4,6 @@
     "error": "Ett fel uppstod",
     "noMemoriesFound": "Det hittades inte några sparade minnen",
     "category": "Tema",
-    "alternativeAll": "Alla"
+    "alternativeAll": "Alla",
+    "anonymous": "Anonym"
 }

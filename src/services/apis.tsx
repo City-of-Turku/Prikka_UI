@@ -4,9 +4,8 @@
  *
  * Naming convention : https://restfulapi.net/resource-naming/
  */
-import axios, { AxiosResponse } from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import https from 'https';
-import { ApiError } from 'next/dist/next-server/server/api-utils';
 
 const agent = new https.Agent({
     rejectUnauthorized: false,
@@ -226,15 +225,17 @@ const adminDeleteUserById = (id: any) =>
     api.delete(`/admin/${basePathAuth}/user/${id}`)
 
 
-/**
- * GET : user id will be in the request
- */
-const getUserById = (id: any) =>
-    api.get(`${basePathUsers}/user/${id}`);
 
+/**
+ * GET : user id will be taken from the request
+ */
 const getUser = () =>
     api.get(`${basePathUsers}/user`);
 
+/**
+ * UPDATE : update user, user id will be taken from rquest.
+ * @param payload
+ */
 const updateUserById = (payload: any) =>
     api.put(`${basePathUsers}/user`, payload)
 
@@ -281,7 +282,6 @@ export const apis = {
         adminUpdateMemoryReportsById,
     },
     user: {
-        getUserById,
         getUser,
         updateUserById,
     }
