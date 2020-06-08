@@ -10,11 +10,20 @@ import {
     MenuItem,
     MenuList,
     ClickAwayListener,
-    Grid,
+    Grid, Typography,
 } from '@material-ui/core';
 
 // --- COMPONENT ---
 const Footer: React.FC = () => {
+
+    const handleServiceInfoClick = (event: React.MouseEvent<EventTarget>) => {
+        Router.push('/service_info');
+    };
+    const handleAccessibilityDescriptionClick = (event: React.MouseEvent<EventTarget>) => {
+        Router.push('/accessibility_description');
+    };
+
+
     return (
         <div style={{ padding: '24px 24px' }}>
             <Grid container direction="row">
@@ -27,8 +36,12 @@ const Footer: React.FC = () => {
                 <Grid item xs={6}>
                 </Grid>
                 <Grid item xs={3}>
-                    Tietoa palvelusta <br />
-                    Saavutettavuusseloste
+                    <Typography variant="body1" gutterBottom onClick={handleServiceInfoClick}>
+                        Tietoa palvelusta
+                    </Typography>
+                    <Typography variant="body1" gutterBottom onClick={handleAccessibilityDescriptionClick}>
+                        Saavutettavuusseloste
+                    </Typography>
                 </Grid>
             </Grid>
         </div>

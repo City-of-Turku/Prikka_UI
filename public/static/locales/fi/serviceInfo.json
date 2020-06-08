@@ -1,0 +1,34 @@
+{
+    "title": "Tietoa palvelusta",
+    "intro": {
+        "title": "Tietoa palvelusta",
+        "p1": "Prikka.fi on Turun museokeskuksen ylläpitämä sivusto, jonka tarkoituksena on kerätä ja tallentaa muistoja ja tarinoita tapahtumien paikkoihin liitettyinä. Muistot auttavat syventämään Turun lähihistoriaa ja kokemaan miltä kaupungissa on aiemmin näyttänyt."
+    },
+    "rights": {
+        "title": "Oikeudet tallennettuun materiaaliin",
+        "p1": "Sivustolle ladattava sisältö lisensoidaan avoimen kulttuurin Creative Commons -lisenssillä CC BY 4.0. Lisenssi antaa rajoittamattoman oikeuden käyttää sisältöä, myös muutettuna, ja se mahdollistaa kaupallisen käytön. Aineiston käytön yhteydessä tekijä on mainittava.",
+        "p2": "Lisätietoa CC BY 4.0 lisenssistä",
+        "p2link": "https://creativecommons.org/licenses/by/4.0/deed.fi",
+        "p3": "Tallentamalla aineistoa sivustolle hyväksyt sen jatkokäytön lisenssin CC BY 4.0 mukaisesti. Muistathan tallentaa vain itse kirjoittamaasi tekstiä ja itse ottamiasi kuvia. Vastaat itse siitä, että sinulla on oikeudet kuvaan ja sen jakamiseen."
+    },
+    "whatKindOfMemory": {
+        "title": "Minkälaisia muistoja voit lisätä sivustolle?",
+        "p1": "Voit lisätä sivustolle minkä tahansa Turkuun liittyvän henkilökohtaisen muistosi ja kiinnittää sen tapahtumapaikkaansa. Voit myös jakaa sivustolla kokemasi tai kuulemasi mielenkiintoiset kaupunkitarinat.",
+        "p2": "Kaikki prikka.fi -verkkosivustolle talletettu materiaali liitetään osaksi Museokeskuksen arkistokokoelmaa. Tallentamalla materiaalia hyväksyt sen tutkimus- ja esityskäytön sekä muun käytön CC BY 4.0 mukaisesti."
+    },
+    "pageAuthors": {
+        "title": "Sivuston tekijät",
+        "p1": "Sivusto on toteutettu yhteistyössä Turun museokeskuksen, Turun AMK:n Capstone –projektin sekä Weasel Software Oy:n kanssa."
+    },
+    "personRegister": {
+        "title": "Henkilörekisteri",
+        "p1": "Turun museokeskus käsittelee henkilötietoja Tietosuojalaki 4 § (art 6e) ja 6§ (art 9) mukaisin perustein.",
+        "p2": "Turun kaupungin käyttämät henkilörekisterit",
+        "p2link": "https://rekisteri.turku.fi/Saabe_data"
+    },
+    "feedback": {
+        "title": "Anna palautetta",
+        "p1": "Voit halutessasi antaa palautetta Prikka.fi -sivustoon liittyen lähettämällä sähköpostia osoitteeseen",
+        "link": "museokeskus@turku.fi"
+    }
+}
