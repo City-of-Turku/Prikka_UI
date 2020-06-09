@@ -1,9 +1,9 @@
 {
     "title": "User settings",
-    "userName": "Username",
-    "userNameDesc": "- your username is only visible for the administrators",
+    "userName": "Name",
+    "userNameDesc": "- your name is only visible for the administrators",
     "displayName": "Displayname",
-    "displayNameDesc": "- your displayname is visible for all users",
+    "displayNameDesc": "- your displayname is visible in the memory for all users",
     "yearOfBirth": "Year of birth",
     "yearOfBirthDesc": "",
     "email": "E-mail",
