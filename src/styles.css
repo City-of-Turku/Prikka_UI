@@ -20,3 +20,7 @@ body {
     font-family: 'Grand Hotel', cursive;
     font-size: 2.5rem;
 }
+
+img {
+    max-width: 100%;
+}
