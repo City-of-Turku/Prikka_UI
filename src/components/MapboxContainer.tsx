@@ -29,13 +29,12 @@ const useStyles = makeStyles((theme: Theme) =>
             //border-radius: 50%,
             cursor: 'pointer',
             backgroundRepeat: 'no-repeat',
-            position: 'absolute'
         },
         selectedMarker: {
             backgroundImage: `url(${selectedIcon})`,
             backgroundSize: 'contain',
-            width: '25px',
-            height: '41px',
+            width: '24px',
+            height: '40px',
             //border-radius: 50%,
             cursor: 'pointer',
             backgroundRepeat: 'no-repeat',
@@ -122,6 +121,8 @@ const MapboxContainer: React.FC<IMapboxContainer> = ({
                     key={memory.id}
                     latitude={memory.position.coordinates[0]}
                     longitude={memory.position.coordinates[1]}
+                    offsetLeft={-12}
+                    offsetTop={-40}
                 >
                     <div
                         className={markerClass}
