@@ -1,6 +1,7 @@
 {
 
-    "title": "Lisää uusi muisto",
+    "titleAdd": "Lisää uusi muisto",
+    "titleEdit": "Päivitä muistosi",
     "warning":"Varoitus: Et ole kirjautunut sisään, muistosi tullaan julkaisemaan \"Nimettömänä\"",
     "info_title": "Tiedot",
     "title_PH": "Otsikko",
@@ -12,6 +13,8 @@
     "map_title": "Sijainti",
     "map_title_instruction": "Voit merkitä muistosi tapahtumapaikan karttaan hiiren vasemmalla näppäimellä.",
     "continue_button": "Lähetä",
+    "save_button": "Tallenna",
+    "back_button": "Takaisin",
     "success": "Muisto luotu",
     "image_info": "Koko maksimissaan 10MB",
     "upload_button_text": "Lataa kuva",

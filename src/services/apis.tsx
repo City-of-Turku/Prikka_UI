@@ -52,7 +52,7 @@ const getMemoryById = (id: any) =>
  * PUT : update one memory in database
  */
 const updateMemoryById = (id: any, payload: any) =>
-    api.put(`${basePathMemories}/memories/${id}`, payload);
+    api.put(`${basePathMemories}/memories/${id}`, payload, { headers: { 'Content-Type': 'multipart/form-data' }});
 
 /**
  * DELETE : remove one memory from database

@@ -7,7 +7,7 @@
  */
 
 // --- IMPORTS ---
-import React, {useState} from 'react';
+import React, {memo, useEffect, useState} from 'react';
 import Layout from '../components/Layout';
 import {apis} from '../services/apis';
 import {withTranslation} from '../i18n';
@@ -18,7 +18,7 @@ import {AxiosError, AxiosResponse} from 'axios';
 import {useSnackbarContext} from '../contexts/SnackbarContext';
 import Router from 'next/router';
 import CategorySelect from '../components/CategorySelect';
-import {Categories} from '../types';
+import {Categories, Memory} from '../types';
 import Head from 'next/head';
 import {NextPage} from 'next';
 import CardMedia from "@material-ui/core/CardMedia";
@@ -60,13 +60,14 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-interface IAddMemory {
+interface IEditMemory {
     t(key: string, opts?: any): string;
+    memory: Memory;
     categories: Categories;
     isLogged: boolean;
 }
 // --- COMPONENTS ---
-const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
+const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogged }) => {
     // TODO:replace formsy with formik
     //Contexts
     const classes = useStyles();
@@ -76,7 +77,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     const [markerPosition, setMarkerPosition] = useState<number[] | undefined>(
         undefined,
     ); //Care, Mapbox use [lng,lat] and not [lat,lng]
-    const [category, setCategory] = useState<string>('');
+    const [categoryId, setCategoryId] = useState<string>('');
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
 
@@ -105,7 +106,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     };
 
     const handleCategoryFilterChange = (categoryId: string) => {
-        setCategory(categoryId);
+        setCategoryId(categoryId);
     };
 
     const handleSubmit = (): void => {
@@ -117,7 +118,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
             snackbarContext.displayWarningSnackbar(
                 'Please enter a title for your memory',
             );
-        } else if (category === '') {
+        } else if (categoryId === '') {
             snackbarContext.displayWarningSnackbar(
                 'Please select a category for your memory',
             );
@@ -134,7 +135,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                 }
             };
             formData.append('title', title);
-            formData.append('categoryId', category);
+            formData.append('categoryId', categoryId);
             formData.append('description', description);
             formData.append('file', file);
             formData.append('position', JSON.stringify(data.position));
@@ -142,15 +143,19 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
             formData.append('whenIsPhotoTaken', whenIsPhotoTaken);
             formData.append('whereIsPhotoTaken', whereIsPhotoTaken);
             apis.memories
-                .createMemory(formData)
+                .updateMemoryById(memory.id, formData)
                 .then((res: AxiosResponse) => {
-                    snackbarContext.displaySuccessSnackbar('Memory Added');
-                    Router.push('/');
+                    snackbarContext.displaySuccessSnackbar('Memory updated');
+                    Router.push('/my_memories');
                 })
                 .catch((err: AxiosError) => {
                     snackbarContext.displayErrorSnackbar('Error');
                 });
         }
+    };
+
+    const handleBack = (): void => {
+        Router.push('/my_memories');
     };
 
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -159,7 +164,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     const handleCategoryChange = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
-        setCategory(event.target.value);
+        setCategoryId(event.target.value);
     };
     const handleDescriptionChange = (
         event: React.ChangeEvent<HTMLInputElement>,
@@ -184,7 +189,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
 
     const displayPhotoMetaInformation = () => {
         if (fileUrl){
-        return (
+            return (
 
             <>
             <Grid container spacing={4}>
@@ -235,16 +240,61 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
         )}
     };
 
+    useEffect(() => {
+        if (!isLogged) {
+            window.location.href =
+                process.env.BACK_URL! + process.env.LOGIN_URL!;
+        } else {
+            setTitle(memory.title);
+            setCategoryId(memory.categoryId);
+            setDescription(memory.description);
+            setPhotographer(memory.photographer);
+            setWhenIsPhotoTaken(memory.whenIsPhotoTaken);
+            setWhereIsPhotoTaken(memory.whereIsPhotoTaken);
+            //setMarkerPosition([memory.position[0], memory.position[1]]);
+            setMarkerPosition([memory.position.coordinates[0], memory.position.coordinates[1]]);
+            //setMarkerPosition([60.455, 22.26]);
+            //latitude: memory.position.coordinates[0],
+            //    longitude: memory.position.coordinates[1],
+
+//            var data = {
+//                position: {
+//                    type: 'Point',
+//                    coordinates: [markerPosition[1], markerPosition[0]],
+//                }
+//            };
+
+            /*
+                        {"fieldname":"file",
+                            "originalname":"buss1.jpg",
+                            "encoding":"7bit",
+                            "mimetype":"image/jpeg",
+                            "destination":"./public/uploads/",
+                            "filename":"c693f2f7c470a4a5a7cfbd2e421979f6",
+                            "path":"public\\uploads\\c693f2f7c470a4a5a7cfbd2e421979f6",
+                            "size":11143}
+            */
+            setFile(memory.photo);
+            const photo = JSON.parse(memory.photo);
+            if (photo){
+                setFilename(photo.originalname);
+//                let url2 = photo.destination + photo.filename;
+                let url = process.env.BACK_URL + '/uploads/' + photo.filename;
+                setFileUrl(url);
+            }
+        }
+    }, []);
+
     return (
         <div>
             <Head>
-                <title>Add Memory</title>
+                <title>Edit Memory</title>
             </Head>
 
             <Layout>
                 {/* --- TITLE --- */}
                 <Typography variant="h3" gutterBottom>
-                    {t('titleAdd')}
+                    {t('titleEdit')}
                 </Typography>
 
                 {/* Disclaimer if not logged in */}
@@ -301,7 +351,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                         />
                                         <CategorySelect
                                             t={t}
-                                            selectedCategoryId={null}
+                                            selectedCategoryId={Number(categoryId)}
                                             categories={categories}
                                             handleCategoryFilterChange={
                                                 handleCategoryFilterChange
@@ -371,7 +421,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                         {t('map_title_instruction')}
                                     </Typography>
                                     <PinpointMap
-                                        startPosition={[]}
+                                        startPosition={[{markerPosition}[1], {markerPosition}[0]]}
                                         handleClickPositionCallback={
                                             handleClickPositionCallback
                                         }
@@ -389,7 +439,14 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                 color="primary"
                                 onClick={handleSubmit}
                             >
-                                {t('continue_button')}
+                                {t('save_button')}
+                            </Button>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={handleBack}
+                            >
+                                {t('back_button')}
                             </Button>
                         </Grid>
                     </Grid>
@@ -399,7 +456,12 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     );
 };
 
-AddMemory.getInitialProps = async () => {
+EditMemory.getInitialProps = async ({query}) => {
+    let selectedMemoryId = null;
+
+    if (query) {
+        selectedMemoryId = query.memory ? query.memory : null;
+    }
     let categories: Categories = null;
     await apis.categories
         .getAllCategories()
@@ -410,10 +472,20 @@ AddMemory.getInitialProps = async () => {
         })
         .catch((err) => console.error('Error fetching categories'));
 
+    let memory: Memory = null;
+    await apis.memories
+        .getMemoryById(selectedMemoryId)
+        .then((res) => {
+            memory = res.data;
+            console.log('Memory fetched');
+        })
+        .catch((err) => console.error('Error fetching memory'));
+
     return {
         namespacesRequired: ['common', 'addMemory', 'index'],
+        memory: memory,
         categories: categories,
     };
 };
 
-export default withTranslation('addMemory')(AddMemory as any); //TODO : create namespace for each page
+export default withTranslation('addMemory')(EditMemory as any); //TODO : create namespace for each page

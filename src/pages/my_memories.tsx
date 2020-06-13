@@ -5,20 +5,19 @@
  */
 
 // --- IMPORTS ---
-import React, { useEffect, useState } from 'react';
-import { withTranslation } from '../i18n';
-import { Typography, Grid, Card } from '@material-ui/core';
+import React, {useEffect, useState} from 'react';
+import {withTranslation} from '../i18n';
+import {Card, Grid, Typography} from '@material-ui/core';
 import CardContent from '@material-ui/core/CardContent';
 
 import Layout from '../components/Layout';
 import MemoryCard from '../components/MemoryCard';
 
 import {Categories, Memories} from '../types';
-import { apis } from '../services/apis';
-import { NextPage } from 'next';
+import {apis} from '../services/apis';
+import {NextPage} from 'next';
 import Head from 'next/head';
-import { useSnackbarContext } from '../contexts/SnackbarContext';
-import {filter} from "compression";
+import {useSnackbarContext} from '../contexts/SnackbarContext';
 
 // --- COMPONENT ---
 interface IMyMemories {

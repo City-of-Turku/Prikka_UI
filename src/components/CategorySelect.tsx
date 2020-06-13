@@ -1,10 +1,12 @@
-import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import React, {useEffect, useState} from 'react';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Categories, Category } from '../types';
+import {Categories, Category} from '../types';
+
+
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         formControl: {
@@ -20,6 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface ICategorySelect {
     t(key, opts?): Function;
+    selectedCategoryId: number;
     categories: Categories;
     handleCategoryFilterChange(categoryId: string): void;
     required?: boolean;
@@ -28,6 +31,7 @@ interface ICategorySelect {
 
 const CategorySelect: React.FC<ICategorySelect> = ({
     t,
+    selectedCategoryId,
     categories,
     handleCategoryFilterChange,
     required = false,
@@ -38,12 +42,18 @@ const CategorySelect: React.FC<ICategorySelect> = ({
 
     //States
     const [category, setCategory] = React.useState('');
+    const [startCategoryId, setStartCategoryId] = React.useState<number | undefined>(selectedCategoryId);
 
     const handleChange = (event: React.ChangeEvent<any>) => {
         const categoryId: string = event.target.value as string;
         setCategory(categoryId);
         handleCategoryFilterChange(categoryId);
     };
+
+//    useEffect(() => {
+//        setCategoryId(selectedCategoryId);
+//    }, []);
+
     return (
         <FormControl
             variant="outlined"
@@ -59,7 +69,7 @@ const CategorySelect: React.FC<ICategorySelect> = ({
             <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                value={category}
+                defaultValue={startCategoryId}
                 onChange={handleChange}
                 label={t('category')}
             >

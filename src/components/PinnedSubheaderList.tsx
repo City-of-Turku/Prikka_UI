@@ -118,6 +118,7 @@ const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
                                         <Grid item xs={6}>
                                             <CategorySelect
                                                 t={t}
+                                                selectedCategoryId={null}
                                                 categories={categories}
                                                 handleCategoryFilterChange={
                                                     handleCategoryFilterChange

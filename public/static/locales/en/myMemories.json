@@ -3,6 +3,7 @@
     "description": "Here you can see all the memories you have published.",
     "emptyMemoryList": "You have not yet added any memories.",
     "addNewMemoryComment": "Add a memory from the \"Add memory\" button.",
+    "buttonEdit": "Edit",
 
     "deleteDialog": {
         "buttonDelete": "Delete",
