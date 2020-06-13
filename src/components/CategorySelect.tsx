@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -42,7 +42,6 @@ const CategorySelect: React.FC<ICategorySelect> = ({
 
     //States
     const [category, setCategory] = React.useState('');
-    const [startCategoryId, setStartCategoryId] = React.useState<number | undefined>(selectedCategoryId);
 
     const handleChange = (event: React.ChangeEvent<any>) => {
         const categoryId: string = event.target.value as string;
@@ -50,9 +49,12 @@ const CategorySelect: React.FC<ICategorySelect> = ({
         handleCategoryFilterChange(categoryId);
     };
 
-//    useEffect(() => {
-//        setCategoryId(selectedCategoryId);
-//    }, []);
+    useEffect(() => {
+        if (selectedCategoryId!=null && selectedCategoryId!=0){
+            const tmpCategory = (categories.find(x => x.id == selectedCategoryId).name);
+            setCategory(tmpCategory);
+        }
+    }, []);
 
     return (
         <FormControl
@@ -69,7 +71,7 @@ const CategorySelect: React.FC<ICategorySelect> = ({
             <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                defaultValue={startCategoryId}
+                value={category}
                 onChange={handleChange}
                 label={t('category')}
             >

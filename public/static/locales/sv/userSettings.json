@@ -3,7 +3,7 @@
     "userName": "Namn",
     "userNameDesc": "- ditt namn syns endast för administratorerna",
     "displayName": "Synligt namn",
-    "displayNameDesc": "- detta namn är synligt i minnet för alla användare",
+    "displayNameDesc": "- det här namnet syns för alla användare för minnet",
     "yearOfBirth": "Födelseår",
     "yearOfBirthDesc": "",
     "email": "E-postadress",

@@ -42,17 +42,23 @@ const PinpointMap: React.FC<IPinpointMap> = ({
     const classes = useStyles();
 
     //States
-//    const [latitude, setLatitude] = React.useState( (originalPosition[0]));
-//    const [longitude, setLongitude] = React.useState((originalPosition[1]));
-    const [latitude, setLatitude] = React.useState( startPosition[0] | 60.455);
-    const [longitude, setLongitude] = React.useState(startPosition[1] | 22.26);
-//    const [marker, setMarker] = React.useState(null);
+    const [latitude, setLatitude] = React.useState( 60.455);
+    const [longitude, setLongitude] = React.useState(22.26);
     const [marker, setMarker] = React.useState({
         longitude: longitude,
         latitude: latitude,
-        offsetLeft: -iconSize.width / 2,
-        offsetTop: -iconSize.height,
+        offsetLeft: 0,
+        offsetTop: 0,
     });
+//    const [marker, setMarker] = React.useState({
+//        longitude: longitude,
+//        latitude: latitude,
+//        offsetLeft: -iconSize.width / 2,
+//        offsetTop: -iconSize.height,
+//    });
+
+
+//    const [marker, setMarker] = React.useState(null);
     const [viewport, setViewport] = useState({
         latitude: latitude,
         longitude: longitude,
@@ -61,22 +67,21 @@ const PinpointMap: React.FC<IPinpointMap> = ({
         pitch: 0,
     });
 
-/*    useEffect(() => {
-        if (originalPosition!=null){
+    useEffect(() => {
+        if (startPosition!=null){
+            setLatitude(startPosition[0]);
+            setLongitude(startPosition[1]);
+        }
+        /*if (startPosition!=null){
             setMarker({
-                longitude: originalPosition[0],
-                latitude: originalPosition[1],
+                longitude: startPosition[1],
+                latitude: startPosition[0],
                 offsetLeft: -iconSize.width / 2,
                 offsetTop: -iconSize.height,
-            });
-        }
-            //setMarkerPosition([memory.position[0], memory.position[1]]);
- //           setMarkerPosition([memory.position.coordinates[0], memory.position.coordinates[1]]);
-            //setMarkerPosition([60.455, 22.26]);
-            //latitude: memory.position.coordinates[0],
-            //    longitude: memory.position.coordinates[1],
+            });*/
     }, []);
-*/
+
+
     //Vars
 
     const mapStyle = {

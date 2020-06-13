@@ -249,8 +249,10 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
             setCategoryId(memory.categoryId);
             setDescription(memory.description);
             setPhotographer(memory.photographer);
-            setWhenIsPhotoTaken(memory.whenIsPhotoTaken);
-            setWhereIsPhotoTaken(memory.whereIsPhotoTaken);
+//            setWhenIsPhotoTaken(memory.whenIsPhotoTaken);
+//            setWhereIsPhotoTaken(memory.whereIsPhotoTaken);
+            setWhenIsPhotoTaken(memory.position.coordinates[0]);
+            setWhereIsPhotoTaken(memory.position.coordinates[1]);
             //setMarkerPosition([memory.position[0], memory.position[1]]);
             setMarkerPosition([memory.position.coordinates[0], memory.position.coordinates[1]]);
             //setMarkerPosition([60.455, 22.26]);
@@ -421,7 +423,8 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
                                         {t('map_title_instruction')}
                                     </Typography>
                                     <PinpointMap
-                                        startPosition={[{markerPosition}[1], {markerPosition}[0]]}
+                                        startPosition={[{markerPosition}[0], {markerPosition}[1]]}
+//                                        startPosition={markerPosition}
                                         handleClickPositionCallback={
                                             handleClickPositionCallback
                                         }
