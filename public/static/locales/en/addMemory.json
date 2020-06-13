@@ -1,5 +1,6 @@
 {
-    "title": "Add a new memory",
+    "titleAdd": "Add a new memory",
+    "titleEdit": "Update your memory",
     "warning": "Warning : You're not logged, your memory will be published as \"Anonymous\"",
     "info_title": "Informations",
     "title_PH": "Title",
@@ -11,6 +12,8 @@
     "map_title": "Position",
     "map_title_instruction": "You can mark the position for the memory on the map by clicking the left button of the mouse.",
     "continue_button": "Submit",
+    "save_button": "Save",
+    "back_button": "Back",
     "success": "Memory created",
     "image_info": "Max image size 10MB",
     "upload_button_text": "Upload",

@@ -1,9 +1,9 @@
 {
     "title": "Käyttäjä asetukset",
-    "userName": "Käyttäjänimi",
-    "userNameDesc": "- käyttäjänimesi näkyy ainoastaan administraattorille",
+    "userName": "Nimi",
+    "userNameDesc": "- nimesi näkyy ainoastaan ylläpitäjille",
     "displayName": "Nimimerkki",
-    "displayNameDesc": "- nimimerkkisi näkyy kaikille",
+    "displayNameDesc": "- nimimerkkisi näkyy muiston yhteydessä kaikille",
     "yearOfBirth": "Syntymävuosi",
     "yearOfBirthDesc": "",
     "email": "Sähköpostiosoite",

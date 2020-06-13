@@ -14,6 +14,8 @@ import {Category, Memory} from '../types';
 import DeleteDialog from './DeleteDialog';
 import Moment from 'react-moment';
 import ShareMemoryPopup from "./ShareMemoryPopup";
+import Link from "next/link";
+import {Button} from "@material-ui/core";
 
 const useStyles = makeStyles({
     root: {
@@ -47,12 +49,13 @@ const MemoryCard: React.FC<IMemoryCard> = ({
     memory,
     category,
     controls,
-    handleDeleteMemory,
+    handleDeleteMemory
 }) => {
     const classes = useStyles();
     const imageUrl = getImageUrl(JSON.parse(memory.photo));
     const shareUrl = `${process.env.FRONT_URL}/?memory=${memory.id}`;
     const shareTitle = 'Check out this memory at Prikka';
+    const editUrl = `/edit_memory/?memory=${memory.id}`;
 
     return (
         <Card className={classes.root}>
@@ -100,6 +103,11 @@ const MemoryCard: React.FC<IMemoryCard> = ({
             {controls ? (
                 <CardActions>
                     <ShareMemoryPopup shareMemoryUrl={shareUrl} shareMemoryTitle={shareTitle} />
+                    <Link href={editUrl} passHref>
+                        <Button component="a" >
+                            {t('buttonEdit')}
+                        </Button>
+                    </Link>
                     <DeleteDialog
                         t={t}
                         handleDelete={handleDeleteMemory}

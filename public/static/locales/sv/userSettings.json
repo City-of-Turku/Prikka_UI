@@ -1,9 +1,9 @@
 {
     "title": "Användar inställningar",
-    "userName": "Användarnamn",
-    "userNameDesc": "- ditt användarnamn syns endast för administratorerna",
+    "userName": "Namn",
+    "userNameDesc": "- ditt namn syns endast för administratorerna",
     "displayName": "Synligt namn",
-    "displayNameDesc": "- detta namn syns för alla",
+    "displayNameDesc": "- detta namn är synligt i minnet för alla användare",
     "yearOfBirth": "Födelseår",
     "yearOfBirthDesc": "",
     "email": "E-postadress",

@@ -3,6 +3,8 @@
     "description":"Här är alla minnen listade som du publiserat.",
     "emptyMemoryList": "Du har inte ännu lagt till några minnen.",
     "addNewMemoryComment": "Lägg till ett minne från \"Lägg till minnen\" knappen.",
+    "buttonEdit": "Ändra",
+
     "deleteDialog": {
         "buttonDelete": "Radera",
         "deleteTitle": "Radera ett minne",
