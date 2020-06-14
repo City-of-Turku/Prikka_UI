@@ -3,6 +3,12 @@
  * Prevent mistakes
  */
 
+export type Background = {
+    id: number;
+    title: string;
+    credit: string;
+};
+
 export type Memory = {
     id: number;
     title: string;
@@ -32,15 +38,6 @@ export type Memories = {
     rows: Memory[];
 };
 
-export type Category = {
-    id: number;
-    name: string;
-    description: string;
-    createdAt: string;
-};
-
-export type Categories = Category[];
-
 export type MemoryReport = {
     id: number;
     title: string;
@@ -52,11 +49,30 @@ export type MemoryReport = {
     invalid: boolean;
 };
 
-export type Background = {
+export type Campaign = {
     id: number;
-    title: string;
-    credit: string;
+    titleFI: string;
+    descriptionFI: string;
+    titleSV: string;
+    descriptionSV: string;
+    titleEN: string;
+    descriptionEN: string;
+    createdAt: string;
 };
+
+export type Campaigns = {
+    count: number;
+    rows: Campaign[];
+};
+
+export type Category = {
+    id: number;
+    name: string;
+    description: string;
+    createdAt: string;
+};
+
+export type Categories = Category[];
 
 export type User = {
     id: number;

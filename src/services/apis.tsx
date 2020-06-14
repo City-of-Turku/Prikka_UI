@@ -22,17 +22,17 @@ export const setCookies = (cookie) => {
 
 //axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
-const basePathUsers = '/user-management'
-const basePathMemories = '/memory-management';
 const basePathAuth = '/auth-management';
+const basePathCampaigns = '/campaign-management';
 const basePathCategories = '/category-management';
+const basePathMemories = '/memory-management';
+const basePathUsers = '/user-management';
 
 
 
-/* --- MEMORIES MANAGEMENT ---
- *  api : /memory-management
- */
-
+/**************************************************************
+ ****************** MEMORY MANAGEMENT *************************
+ *************************************************************/
 
 /**
  * POST : add one memory to database
@@ -78,6 +78,13 @@ const getMemoriesByCategory = (categoryId: any) =>
  */
 const getUserMemories = () => api.get(`${basePathMemories}/mymemories`);
 
+
+
+/**************************************************************
+ *  MEMORY MANAGEMENT                                         *
+ *  api : /memory-management                                  *
+ *************************************************************/
+
 /**
  * POST : create a report for a memory
  * @param {*} payload
@@ -100,13 +107,14 @@ const getMemoryReportsById = (id: any) =>
  *  PUT : update memory report
  */
 const adminUpdateMemoryReportsById = (id: any, payload: any) =>
-    api.put(`/admin/${basePathAuth}/reports/${id}`, payload)
+    api.put(`/admin/${basePathAuth}/reports/${id}`, payload);
 
 
-/* --- AUTH MANAGEMENT ---
- *  api : /auth-management
- */
 
+/**************************************************************
+ *  AUTH MANAGEMENT                                           *
+ *  api : /auth-management                                    *
+ *************************************************************/
 
 /**
  * POST : check login for a local user
@@ -156,9 +164,28 @@ const isLogged = () => {
     return api.get(`${basePathAuth}/logged`);
 };
 
-/* --- CATEGORIES MANAGEMENT ---
- *  api : /category-management
+
+/**************************************************************
+ *  CAMPAIGN MANAGEMENT                                       *
+ *  api : /campaign-management                                *
+ *************************************************************/
+
+/**
+ * GET : get all campaigns
  */
+const getAllCampaigns = () => api.get(`${basePathCampaigns}/campaigns`);
+
+/**
+ * GET : get all campaigns
+ */
+const getCampaignById = (id: any) => api.get(`${basePathCampaigns}/campaigns/${id}`);
+
+
+
+/**************************************************************
+ *  CATEGORY MANAGEMENT                                       *
+ *  api : /category-management                                *
+ *************************************************************/
 
 /**
  * POST : create a category
@@ -172,59 +199,83 @@ const createCategory = (payload: any) =>
 const getAllCategories = () => api.get(`${basePathCategories}/categories`);
 
 
-/**
- * --- ADMIN INTERFACE ---
- */
+/**************************************************************
+ *  ADMIN INTERFACE                                           *
+ *  api : ????                                                *
+ *************************************************************/
 
 /**
- * POST : create category
+ * POST : admin create campaign
+ */
+const adminCreateCampaign = (payload: any) =>
+    api.post(`/admin/${basePathCampaigns}/campaigns`, payload);
+
+/**
+ *  PUT : admin update campaign by id
+ */
+const adminUpdateCampaignById = (id: any, payload: any) =>
+    api.put(`/admin/${basePathCampaigns}/campaigns/${id}`, payload);
+
+/**
+ *  DELETE : admin delete campaign by id
+ */
+const adminDeleteCampaignById = (id: any) =>
+    api.delete(`/admin/${basePathCampaigns}/campaigns/${id}`);
+
+/**
+ * POST : admin create category
  */
 const adminCreateCategory = (payload: any) =>
-    api.post(`/admin/${basePathCategories}/categories`, payload)
+    api.post(`/admin/${basePathCategories}/categories`, payload);
 
 /**
- *  PUT : update category
+ *  PUT : admin update category
  */ 
 const adminUpdateCategory = (id: any, payload: any) => 
-    api.put(`/admin/${basePathCategories}/categories/${id}`, payload)
+    api.put(`/admin/${basePathCategories}/categories/${id}`, payload);
 
 /**
  *  DELETE : admin delete category by id
  */
 const adminDeleteCategoryById = (id: any) =>
-    api.delete(`/admin/${basePathCategories}/categories/${id}`)
+    api.delete(`/admin/${basePathCategories}/categories/${id}`);
 
 /**
  *  UPDATE : admin update memory by id
  */
 const adminUpdateMemoryById = (id: any, payload: any) =>
-    api.put(`/admin/${basePathMemories}/memories/${id}`, payload)
+    api.put(`/admin/${basePathMemories}/memories/${id}`, payload);
 
 /**
  *  DELETE : admin delete memory by id
  */
 const adminDeleteMemoryById = (id: any) =>
-    api.delete(`/admin/${basePathMemories}/memories/${id}`)
+    api.delete(`/admin/${basePathMemories}/memories/${id}`);
 
 /**
  * GET : admin get all users
  */
 const adminGetAllUsers = () =>
-    api.get(`/admin/${basePathAuth}/user`)
+    api.get(`/admin/${basePathAuth}/user`);
 
 /**
  * UPDATE : admin update admin-right for user by id
  */
 const adminUpdateUserById = (id: any, payload: any) =>
-    api.put(`/admin/${basePathAuth}/user/${id}`, payload)
+    api.put(`/admin/${basePathAuth}/user/${id}`, payload);
 
 /**
  * DELETE : admin delete user by id
  */
 const adminDeleteUserById = (id: any) =>
-    api.delete(`/admin/${basePathAuth}/user/${id}`)
+    api.delete(`/admin/${basePathAuth}/user/${id}`);
 
 
+
+/**************************************************************
+ *  USER MANAGEMENT                                           *
+ *  api : /user-management                                    *
+ *************************************************************/
 
 /**
  * GET : user id will be taken from the request
@@ -237,7 +288,7 @@ const getUser = () =>
  * @param payload
  */
 const updateUserById = (payload: any) =>
-    api.put(`${basePathUsers}/user`, payload)
+    api.put(`${basePathUsers}/user`, payload);
 
 
 /**
@@ -266,11 +317,18 @@ export const apis = {
         facebookRedirect,
         isLogged,
     },
+    campaigns: {
+        getAllCampaigns,
+        getCampaignById,
+    },
     categories: {
         createCategory,
         getAllCategories,
     },
     admin: {
+        adminCreateCampaign,
+        adminUpdateCampaignById,
+        adminDeleteCampaignById,
         adminCreateCategory,
         adminUpdateCategory,
         adminDeleteCategoryById,

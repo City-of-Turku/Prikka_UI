@@ -116,7 +116,7 @@ const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged }) => {
 
                 {/* Home */}
                 <Typography variant="h6">
-                    <Link href="/" passHref>
+                    <Link href="/campaigns" passHref>
                         <Button component="a" className={classes.nav}>
                             {t('menubar.campaign')}
                         </Button>

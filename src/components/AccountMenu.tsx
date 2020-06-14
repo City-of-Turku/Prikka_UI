@@ -92,6 +92,11 @@ const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin}) => {
         handleClose(event);
         Router.push('/admin');
     };
+    const handleCampaignClick = (event: React.MouseEvent<EventTarget>) => {
+        handleClose(event);
+        Router.push('/admin_campaigns');
+    };
+
     //TODO Check how this param is sent here
     isAdmin = true;
     return (
@@ -146,7 +151,12 @@ const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin}) => {
                                         <MenuItem onClick={handleAdminClick}>
                                             {t('accountmenu.configurations')}
                                         </MenuItem>
-                                        ) : null}
+                                    ) : null}
+                                    {isAdmin ? (
+                                        <MenuItem onClick={handleCampaignClick}>
+                                            {t('accountmenu.campaigns')}
+                                        </MenuItem>
+                                    ) : null}
                                     <MenuItem onClick={handleSettingsClick}>
                                         {t('accountmenu.settings')}
                                     </MenuItem>

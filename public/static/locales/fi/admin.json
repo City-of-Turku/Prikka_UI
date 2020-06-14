@@ -28,6 +28,18 @@
         "confirm": "Vahvista",
         "cancel": "Peruta",
         "delete": "Poista"
-    }
+    },
 
+    "adminCampaign": {
+        "title": "Kampanjat",
+        "titleFI": "Otsikko (FI)",
+        "titleSV": "Otsikko (SV)",
+        "titleEN": "Otsikko (EN)",
+        "descriptionFI": "Teksti (FI)",
+        "descriptionSV": "Teksti (SV)",
+        "descriptionEN": "Teksti (EN)",
+        "buttonSave": "Tallenna",
+        "buttonDelete": "Poista",
+        "buttonAdd": "Luo uuden kampanjan"
+    }
 }

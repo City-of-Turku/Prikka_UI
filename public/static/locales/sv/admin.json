@@ -28,6 +28,18 @@
         "confirm": "Bekräfta",
         "cancel": "Ångra",
         "delete": "Radera"
-    }
+    },
 
+    "adminCampaign": {
+        "title": "Kampanjer",
+        "titleFI": "Rubrik (FI)",
+        "titleSV": "Rubrik (SV)",
+        "titleEN": "Rubrik (EN)",
+        "descriptionFI": "Text (FI)",
+        "descriptionSV": "Text (SV)",
+        "descriptionEN": "Text (EN)",
+        "buttonSave": "Spara",
+        "buttonDelete": "Radera",
+        "buttonAdd": "Skapa en ny kampanj"
+    }
 }

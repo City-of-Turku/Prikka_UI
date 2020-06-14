@@ -28,5 +28,18 @@
         "confirm": "Confirm",
         "cancel": "Cancel",
         "delete": "Delete"
+    },
+
+    "adminCampaign": {
+        "title": "Campaigns",
+        "titleFI": "Header (FI)",
+        "titleSV": "Header (SV)",
+        "titleEN": "Header (EN)",
+        "descriptionFI": "Description (FI)",
+        "descriptionSV": "Description (SV)",
+        "descriptionEN": "Description (EN)",
+        "buttonSave": "Save",
+        "buttonDelete": "Delete",
+        "buttonAdd": "Create a new campaign"
     }
 }
