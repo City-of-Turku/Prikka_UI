@@ -22,7 +22,6 @@ import {useRouter} from 'next/router';
 // --- COMPONENT ---
 interface IIndex {
     t(key: string, opts?: any): string;
-    memories: Memories;
     categories: Categories;
     isLogged: boolean;
     selectedMemoryId: string;
@@ -30,7 +29,6 @@ interface IIndex {
 
 const Index: NextPage<IIndex & any> = ({
     t,
-    memories,
     categories,
     isLogged,
     selectedMemoryId,
@@ -42,12 +40,10 @@ const Index: NextPage<IIndex & any> = ({
     //States
     const [selectedMemory, setSelectedMemory] = useState<Memory>(null);
 
-    const [isFiltered, setIsFiltered] = useState<boolean>(false);
-
-    const [unFilteredMemories, setUnFilteredMemories] = useState<Memories>(
-        memories,
-    );
-    const [filteredMemories, setFilteredMemories] = useState<Memories>(null);
+    const [memories, setMemories] = useState<Memories>();
+    const [categoryId, setCategoryId] = useState<string>('');
+    const [page, setpage] = useState<number>(1);
+    const [amount, setAmount] = useState<number>(0);
 
     let queryString = '';
 
@@ -62,28 +58,35 @@ const Index: NextPage<IIndex & any> = ({
         router.replace('/', '/', { shallow: true });
     };
 
-    const handleCategoryFilterChange = (categoryId: string) => {
-        if (categoryId === '') {
-            setIsFiltered(false);
-        } else {
-            apis.memories
-                .getMemoriesByCategory(categoryId)
-                .then((res) => {
-                    setFilteredMemories(res.data);
-                    snackbarContext.displaySuccessSnackbar('Filter Applied');
-                })
-                .catch((err) => {
+    const handlePageFilterChange = (page: number) => {
+        setpage(page);
+        getMemories(page, categoryId);
+    };
+
+    const handleCategoryFilterChange = (categoryIdTmp: string) => {
+        setCategoryId(categoryIdTmp);
+        setpage(1);
+        getMemories( page, categoryIdTmp);
+    };
+
+    const getMemories = async (page: number, categoryId: string) => {
+        apis.memories
+            .getAllMemories(page, categoryId)
+            .then((res) => {
+                let memoriesTmp = res.data;
+                setMemories(memoriesTmp);
+                setAmount(memoriesTmp.count);
+                console.log('Memories fetched: ', memoriesTmp.count);
+            })
+            .catch((err) => {
+                if (categoryId!=null){
                     snackbarContext.displayWarningSnackbar(
                         'No memories in this category',
                     );
-                    console.log(err);
-                });
-            setIsFiltered(true);
-        }
-    };
-
-    const getMemories = () => {
-        return isFiltered ? filteredMemories : unFilteredMemories;
+                }
+                setMemories(null);
+                console.error('Error fetching memories', err)
+            });
     };
 
     useEffect(() => {
@@ -97,6 +100,8 @@ const Index: NextPage<IIndex & any> = ({
                 .catch((err) => {
                     console.log(err);
                 });
+        } else {
+            getMemories(1, '');
         }
     }, []);
 
@@ -109,7 +114,7 @@ const Index: NextPage<IIndex & any> = ({
             {/* Only rendered client side */}
             <NoSsr>
                 <MapboxContainer
-                    memories={getMemories()}
+                    memories={memories}
                     selectedMemory={selectedMemory}
                     handleSelectMemory={handleSelectMemory}
                 />
@@ -123,10 +128,11 @@ const Index: NextPage<IIndex & any> = ({
             ) : (
                 <PinnedSubheaderList
                     t={t}
-                    memories={getMemories()}
+                    memories={memories}
                     handleSelectMemory={handleSelectMemory}
                     categories={categories}
                     handleCategoryFilterChange={handleCategoryFilterChange}
+                    handlePageFilterChange={handlePageFilterChange}
                 />
             )}
         </div>
@@ -144,16 +150,6 @@ Index.getInitialProps = async ({ req, query }) => {
         selectedMemoryId = query.memory ? query.memory : null;
     }
 
-    let memories: Memories;
-    await apis.memories
-        .getAllMemories()
-        .then((res) => {
-            memories = res.data;
-
-            console.log('Memories fetched: ', memories.count);
-        })
-        .catch((err) => console.error('Error fetching memories', err));
-
     let categories: Categories;
     await apis.categories
         .getAllCategories()
@@ -166,7 +162,6 @@ Index.getInitialProps = async ({ req, query }) => {
 
     return {
         namespacesRequired: ['common', 'index'],
-        memories,
         categories,
         selectedMemoryId,
     };

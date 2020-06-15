@@ -6,17 +6,11 @@
 
 // --- IMPORTS ---
 import React from 'react';
-import { Memories, Memory, Categories } from '../types';
-import {
-    List,
-    ListItem,
-    ListItemText,
-    ListSubheader,
-    Paper,
-    Grid,
-} from '@material-ui/core';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import {Categories, Memories, Memory} from '../types';
+import {Grid, List, ListItem, ListItemText, ListSubheader, Paper} from '@material-ui/core';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import CategorySelect from './CategorySelect';
+import {Pagination} from '@material-ui/lab';
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -31,6 +25,11 @@ const useStyles = makeStyles((theme: Theme) =>
             marginLeft: theme.spacing(4),
             overflow: 'auto',
             maxHeight: 550,
+        },
+        root2: {
+            '& > *': {
+                marginTop: theme.spacing(2),
+            },
         },
         list: {},
         listSection: {
@@ -54,6 +53,7 @@ interface IPinnedSubheaderList {
     handleSelectMemory(memory: Memory): void;
     categories: Categories;
     handleCategoryFilterChange(categoryId: string): void;
+    handlePageFilterChange(page: number): void;
 }
 // --- COMPONENT ---
 const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
@@ -62,11 +62,30 @@ const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
     handleSelectMemory,
     categories,
     handleCategoryFilterChange,
+    handlePageFilterChange,
 }) => {
     //Contexts
     const classes = useStyles();
 
+    const [page, setPage] = React.useState(1);
+    const handlePageChange = (event: React.ChangeEvent<unknown>, value: number) => {
+        setPage(value);
+        handlePageFilterChange(value);
+    };
+
+//    // TODO This does not help for the refresch of selected page when changing category
+//    const handleCategoryFilterChangeTmp = (categoryId: string) => {
+//        setPage(1);
+//        handleCategoryFilterChange(categoryId);
+//        handlePageFilterChange(page);
+//    };
+
+
     //Functions
+    const getCount = () => {
+        return Math.ceil(((memories.count) / 10));
+    };
+
     const handleClickListItem = (
         event: React.MouseEvent<HTMLElement>,
         index: number,
@@ -95,6 +114,7 @@ const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
             );
         });
     };
+
     return (
         <Paper elevation={4} className={classes.root}>
             {/* Header */}
@@ -131,7 +151,11 @@ const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
 
                             {/* List or error message */}
                             {memories ? (
-                                generateMemoryList()
+                                <div className={classes.root2}>
+                                    {/* <Typography>Debug:  Page: {page}  Amount: {memories.count}</Typography> */}
+                                    <Pagination count={getCount()} page={page} onChange={handlePageChange} size="small"/>
+                                    {generateMemoryList()}
+                                </div>
                             ) : (
                                 <ListItem>
                                     <ListItemText

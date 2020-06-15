@@ -35,6 +35,29 @@ const basePathUsers = '/user-management';
  *************************************************************/
 
 /**
+ * GET : get all memories
+ */
+const getAllMemories = (page: any, categoryId: any) =>
+    api.get(`${basePathMemories}/memories`, {
+        params: {
+            page: page,
+            categoryId: categoryId },
+    });
+
+/**
+ * GET : get all memories from a specific category
+ */
+const getMemoriesByCategory = (categoryId: any) =>
+    api.get(`${basePathMemories}/memories`, {
+        params: { categoryId: categoryId },
+    });
+
+/**
+ * GET : get all memories from one user
+ */
+const getUserMemories = () => api.get(`${basePathMemories}/mymemories`);
+
+/**
  * POST : add one memory to database
  * @param {*} payload
  */
@@ -60,28 +83,9 @@ const updateMemoryById = (id: any, payload: any) =>
 const deleteMemoryById = (id: any) =>
     api.delete(`${basePathMemories}/memories/${id}`);
 
-/**
- * GET : get all memories from database
- */
-const getAllMemories = () => api.get(`${basePathMemories}/memories`);
-
-/**
- * GET : get all memories from a specific category
- */
-const getMemoriesByCategory = (categoryId: any) =>
-    api.get(`${basePathMemories}/memories`, {
-        params: { categoryId: categoryId },
-    });
-
-/**
- * GET : get all memories from one user
- */
-const getUserMemories = () => api.get(`${basePathMemories}/mymemories`);
-
-
 
 /**************************************************************
- *  MEMORY MANAGEMENT                                         *
+ *  REPORTED MEMORY MANAGEMENT                                         *
  *  api : /memory-management                                  *
  *************************************************************/
 
@@ -92,6 +96,7 @@ const getUserMemories = () => api.get(`${basePathMemories}/mymemories`);
 const createMemoryReport = (payload: any) =>
     api.post(`${basePathMemories}/reports`, payload);
 
+// TODO Move these three to admin part
 /**
  * GET : get all reported memories
  */
