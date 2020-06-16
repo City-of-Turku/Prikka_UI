@@ -10,6 +10,8 @@
     "buttonAddCategory": "Save new topic",
     "buttonUpdateCategory": "Update selected topic",
 
+    "notAllowed": "You are not allowed to see this information.",
+
     "titleRegistredUsers": "Registered users",
     "userTable": {
         "headerUserName": "User name",

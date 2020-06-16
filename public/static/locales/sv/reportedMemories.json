@@ -2,6 +2,7 @@
     "title": "Minnen som blivit rapporterade",
     "description": "Här är alla minnen som blivit rapporterade.",
     "emptyReportedMemoryList": "För tillfället är inget minne rapporterat.",
+    "notAllowed": "Du har inte rätt att se den här informationen.",
     "reportedMemoryCard": {
         "buttonDeleteMemory": "Radera minnet",
         "buttonMoveMemoryToArchive": "Flytta minnet till arkivet",

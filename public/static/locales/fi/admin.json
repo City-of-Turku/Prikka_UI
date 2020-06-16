@@ -10,6 +10,8 @@
     "buttonAddCategory": "Tallenna uusi teema",
     "buttonUpdateCategory": "Päivitä valittu teema",
 
+    "notAllowed": "Sinulla ei ole oikeus nähdä nämä tiedot.",
+
     "titleRegistredUsers": "Rekisteröidyt käyttäjät",
     "userTable": {
         "headerUserName": "Käyttäjänimi",

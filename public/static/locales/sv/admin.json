@@ -10,6 +10,8 @@
     "buttonAddCategory": "Spara ett nytt tema",
     "buttonUpdateCategory": "Uppdatera valt tema",
 
+    "notAllowed": "Du har inte rätt att se den här informationen.",
+
     "titleRegistredUsers": "Registrerade användare",
     "userTable": {
         "headerUserName": "Användarnamn",

@@ -349,7 +349,7 @@ const Admin: NextPage<IAdmin & any> = ({
             {isLogged && isAdmin ? (
                 <div>
                     <Head>
-                        <title>Admin</title>
+                        <title>Admin configurations</title>
                     </Head>
 
                     <Layout>
@@ -384,7 +384,22 @@ const Admin: NextPage<IAdmin & any> = ({
 
                     </Layout>
                 </div>
-            ) : null}
+            ) : (
+                <div>
+                    <Head>
+                        <title>Admin configurations</title>
+                    </Head>
+
+                    <Layout>
+                        <Typography variant="h6" gutterBottom>
+                            {t('title')}
+                        </Typography>
+                        <Typography variant="body1" gutterBottom>
+                            {t('notAllowed')}
+                        </Typography>
+                    </Layout>
+                </div>
+            )}
         </div>
     ); //TODO : edit or remove cat, display confirmation window with string to enter
 };

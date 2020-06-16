@@ -189,7 +189,22 @@ const ReportedMemory: NextPage<IReportedMemory & any> = ({
 
                     </Layout>
                 </div>
-            ) : null}
+            ) : (
+                <div>
+                    <Head>
+                        <title>Reported Memories</title>
+                    </Head>
+
+                    <Layout>
+                        <Typography variant="h6" gutterBottom>
+                            {t('title')}
+                        </Typography>
+                        <Typography variant="body1" gutterBottom>
+                            {t('notAllowed')}
+                        </Typography>
+                    </Layout>
+                </div>
+            )}
         </div>
     ); //TODO : edit or remove cat, display confirmation window with string to enter
 };
