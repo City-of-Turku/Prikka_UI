@@ -96,21 +96,31 @@ const UserSettings: NextPage<IUserSettings & any> = ({ t, isLogged }) => {
     };
 
     const handleUserUpdateSubmit = () => {
-        const model = {
-            userName: userName,
-            yearOfBirth: yearOfBirth,
-            displayName: displayName,
-            email: email
-        };
-        apis.user
-            .updateUserById(model)
-            .then((res: AxiosResponse) => {
-                snackbarContext.displaySuccessSnackbar('User updated');
-                getUser();
-            })
-            .catch((err: AxiosError) => {
-                snackbarContext.displayErrorSnackbar('Error');
-            });
+        if (displayName === '') {
+            snackbarContext.displayWarningSnackbar(
+                'Nickname cannot be empty!',
+            );
+        } else if (email === '') {
+            snackbarContext.displayWarningSnackbar(
+                'E-mail cannot be empty!',
+            );
+        } else {
+            const model = {
+                userName: userName,
+                yearOfBirth: yearOfBirth,
+                displayName: displayName,
+                email: email
+            };
+            apis.user
+                .updateUserById(model)
+                .then((res: AxiosResponse) => {
+                    snackbarContext.displaySuccessSnackbar('User updated');
+                    getUser();
+                })
+                .catch((err: AxiosError) => {
+                    snackbarContext.displayErrorSnackbar('Error');
+                });
+        }
     };
 
     return (
@@ -156,6 +166,7 @@ const UserSettings: NextPage<IUserSettings & any> = ({ t, isLogged }) => {
                             <Grid item xs={8}>
                                 <TextField
                                     variant="outlined"
+                                    required={true}
                                     //label={t('displayName')}
                                     value={displayName}
                                     onChange={handleDisplayNameChange}
@@ -189,6 +200,7 @@ const UserSettings: NextPage<IUserSettings & any> = ({ t, isLogged }) => {
                             <Grid item xs={8}>
                                 <TextField
                                     variant="outlined"
+                                    required={true}
                                     //label={t('email')}
                                     value={email}
                                     onChange={handleEmailChange}
