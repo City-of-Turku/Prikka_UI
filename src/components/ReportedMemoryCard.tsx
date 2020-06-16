@@ -100,6 +100,16 @@ const MemoryCard: React.FC<IMemoryCard> = ({
         setArchiveReason(event.target.value);
     };
 
+    const getUserName = () => {
+        if (memory.User===null){
+            return "Anonymous";
+        }
+        if (memory.User.userName===''){
+            return memory.User.displayName;
+        }
+        return memory.User.userName;
+    };
+
     const displayHeaders = () => {
         return (
             <>
@@ -155,7 +165,7 @@ const MemoryCard: React.FC<IMemoryCard> = ({
                         color="textSecondary"
                         component="p"
                     >
-                        <Moment format="YYYY/MM/DD">{memory.createdAt}</Moment> / {memory.User.userName}
+                        <Moment format="YYYY/MM/DD">{memory.createdAt}</Moment> / {getUserName()}
                     </Typography>
 
                     {/* Description */}
