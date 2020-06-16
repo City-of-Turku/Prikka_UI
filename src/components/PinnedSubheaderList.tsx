@@ -159,8 +159,8 @@ const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
                             ) : (
                                 <ListItem>
                                     <ListItemText
-                                        primary={t('error')}
-                                        secondary={t('noMemoriesFound')}
+                                        primary={t('noMemoriesFound')}
+                                        secondary={t('noMemoriesFoundDescription')}
                                     />
                                 </ListItem>
                             )}

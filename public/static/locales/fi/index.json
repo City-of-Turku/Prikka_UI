@@ -3,6 +3,7 @@
     "recentMemories": "Viimeksi liitetyt muistot",
     "error": "Tapahtui virhe",
     "noMemoriesFound": "Ei löytynyt tallennettuja muistoja.",
+    "noMemoriesFoundDescription": "Ole ensimmäinen joka lisää muiston tällä teemalla!",
     "category": "Teema",
     "alternativeAll": "Kaikki",
     "anonymous": "Anonyymi"
