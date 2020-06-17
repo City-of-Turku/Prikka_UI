@@ -44,42 +44,29 @@ const PinpointMap: React.FC<IPinpointMap> = ({
     //States
     const [latitude, setLatitude] = React.useState( 60.455);
     const [longitude, setLongitude] = React.useState(22.26);
+    const [startPositionSet, setStartPositionSet] = React.useState(false);
     const [marker, setMarker] = React.useState({
-        longitude: longitude,
         latitude: latitude,
+        longitude: longitude,
         offsetLeft: 0,
         offsetTop: 0,
     });
-//    const [marker, setMarker] = React.useState({
-//        longitude: longitude,
-//        latitude: latitude,
-//        offsetLeft: -iconSize.width / 2,
-//        offsetTop: -iconSize.height,
-//    });
-
-
-//    const [marker, setMarker] = React.useState(null);
     const [viewport, setViewport] = useState({
-        latitude: latitude,
         longitude: longitude,
+        latitude: latitude,
         zoom: 13,
         bearing: 0,
         pitch: 0,
     });
 
     useEffect(() => {
-        if (startPosition!=null){
+        if (startPositionSet == false && startPosition[0] != undefined && startPosition[1] != undefined){
             setLatitude(startPosition[0]);
             setLongitude(startPosition[1]);
+            setMarkerAndView(startPosition[0],startPosition[1]);
+            setStartPositionSet(true);
         }
-        /*if (startPosition!=null){
-            setMarker({
-                longitude: startPosition[1],
-                latitude: startPosition[0],
-                offsetLeft: -iconSize.width / 2,
-                offsetTop: -iconSize.height,
-            });*/
-    }, []);
+    }, [startPosition]);
 
 
     //Vars
@@ -116,16 +103,30 @@ const PinpointMap: React.FC<IPinpointMap> = ({
             }*/
         ],
     };
-
-    //Functions
-    const handleClick = ({ lngLat: [longitude, latitude] }) => {
+    const setMarkerAndView = (latitude, longitude ) => {
         setMarker({
-            longitude,
             latitude,
+            longitude,
             offsetLeft: -iconSize.width / 2,
             offsetTop: -iconSize.height,
         });
-        handleClickPositionCallback([longitude, latitude]); //Callback
+        setViewport( {
+            latitude,
+            longitude,
+            zoom: 13,
+            bearing: 0,
+            pitch: 0,
+        });
+    };
+    //Functions
+    const handleClick = ({ lngLat: [longitude, latitude] }) => {
+        setMarker({
+            latitude,
+            longitude,
+            offsetLeft: -iconSize.width / 2,
+            offsetTop: -iconSize.height,
+        });
+        handleClickPositionCallback([latitude, longitude]); //Callback
     };
 
     return (

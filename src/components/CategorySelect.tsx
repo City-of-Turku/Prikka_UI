@@ -5,7 +5,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {Categories, Category} from '../types';
-
+import {i18n} from "../i18n";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -42,6 +42,7 @@ const CategorySelect: React.FC<ICategorySelect> = ({
 
     //States
     const [category, setCategory] = React.useState('');
+    const [localename, setLocalename] = React.useState<string>('');
 
     const handleChange = (event: React.ChangeEvent<any>) => {
         const categoryId: string = event.target.value as string;
@@ -50,12 +51,14 @@ const CategorySelect: React.FC<ICategorySelect> = ({
     };
 
     useEffect(() => {
+        let temp = 'name' +i18n.language.toUpperCase();
+        setLocalename(temp);
+        console.log(localename);
         if (selectedCategoryId!=null && selectedCategoryId!=0){
             const tmpCategory = (categories.find(x => x.id == selectedCategoryId).name);
             setCategory(tmpCategory);
         }
-    }, []);
-
+    });
     return (
         <FormControl
             variant="outlined"
@@ -80,7 +83,7 @@ const CategorySelect: React.FC<ICategorySelect> = ({
                     ? categories.map((category: Category, index: number) => {
                           return (
                               <MenuItem key={index} value={category.id}>
-                                  {category.name}
+                                  {category[localename]}
                               </MenuItem>
                           );
                       })

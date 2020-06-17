@@ -22,6 +22,7 @@ import {Categories, Memory} from '../types';
 import Head from 'next/head';
 import {NextPage} from 'next';
 import CardMedia from "@material-ui/core/CardMedia";
+import {i18n} from "../i18n";
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -74,9 +75,7 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
     const snackbarContext = useSnackbarContext();
 
     //States
-    const [markerPosition, setMarkerPosition] = useState<number[] | undefined>(
-        undefined,
-    ); //Care, Mapbox use [lng,lat] and not [lat,lng]
+    const [markerPosition, setMarkerPosition] = useState<number[]>([]); //Care, Mapbox use [lng,lat] and not [lat,lng]
     const [categoryId, setCategoryId] = useState<string>('');
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
@@ -131,7 +130,7 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
             var data = {
                 position: {
                     type: 'Point',
-                    coordinates: [markerPosition[1], markerPosition[0]],
+                    coordinates: [markerPosition[0], markerPosition[1]],
                 }
             };
             formData.append('title', title);
@@ -215,15 +214,15 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
                 </Grid>
             </Grid>
             <TextField
-            className={classes.item}
-            required
-            id="outlined-basic"
-            label={t("whenIsPhotoTaken_PH")}
-            variant="outlined"
-            size="small"
-            fullWidth
-            value={whenIsPhotoTaken}
-            onChange={handleWhenIsPhotoTakenChange}
+                className={classes.item}
+                required
+                id="outlined-basic"
+                label={t("whenIsPhotoTaken_PH")}
+                variant="outlined"
+                size="small"
+                fullWidth
+                value={whenIsPhotoTaken}
+                onChange={handleWhenIsPhotoTakenChange}
             />
             <TextField
                 className={classes.item}
@@ -251,10 +250,10 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
             setPhotographer(memory.photographer);
 //            setWhenIsPhotoTaken(memory.whenIsPhotoTaken);
 //            setWhereIsPhotoTaken(memory.whereIsPhotoTaken);
-            setWhenIsPhotoTaken(memory.position.coordinates[0]);
-            setWhereIsPhotoTaken(memory.position.coordinates[1]);
+/*            setWhenIsPhotoTaken(memory.position.coordinates[0]);
+            setWhereIsPhotoTaken(memory.position.coordinates[1]);*/
             //setMarkerPosition([memory.position[0], memory.position[1]]);
-            setMarkerPosition([memory.position.coordinates[0], memory.position.coordinates[1]]);
+            setMarkerPosition(memory.position.coordinates);
             //setMarkerPosition([60.455, 22.26]);
             //latitude: memory.position.coordinates[0],
             //    longitude: memory.position.coordinates[1],
@@ -355,6 +354,7 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
                                             t={t}
                                             selectedCategoryId={Number(categoryId)}
                                             categories={categories}
+                                            language={i18n.language}
                                             handleCategoryFilterChange={
                                                 handleCategoryFilterChange
                                             }
@@ -423,8 +423,7 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
                                         {t('map_title_instruction')}
                                     </Typography>
                                     <PinpointMap
-                                        startPosition={[{markerPosition}[0], {markerPosition}[1]]}
-//                                        startPosition={markerPosition}
+                                        startPosition={[markerPosition[0], markerPosition[1]]}
                                         handleClickPositionCallback={
                                             handleClickPositionCallback
                                         }

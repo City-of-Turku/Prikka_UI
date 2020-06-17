@@ -155,7 +155,6 @@ Index.getInitialProps = async ({ req, query }) => {
         .getAllCategories()
         .then((res) => {
             categories = res.data.categories;
-
             console.log('Categories fetched: ', categories.length);
         })
         .catch((err) => console.error('Error fetching categories'));

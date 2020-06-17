@@ -130,7 +130,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
             var data = {
                 position: {
                     type: 'Point',
-                    coordinates: [markerPosition[1], markerPosition[0]],
+                    coordinates: [markerPosition[0], markerPosition[1]],
                 }
             };
             formData.append('title', title);

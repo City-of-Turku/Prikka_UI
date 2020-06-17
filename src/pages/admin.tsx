@@ -7,7 +7,7 @@
 
 // --- IMPORTS ---
 import React, {useEffect, useState} from 'react';
-import {withTranslation} from '../i18n';
+import {withTranslation,i18n} from '../i18n';
 import {
     Button,
     createStyles,
@@ -186,15 +186,18 @@ const Admin: NextPage<IAdmin & any> = ({
         event: React.MouseEvent<HTMLDivElement, MouseEvent>,
         index: number,
     ) => {
+        let name = 'name' +i18n.language.toUpperCase();
+        let description = 'description' +i18n.language.toUpperCase();
         setSelectedIndex(index);
 //        setCategoryUpdatedId(selectedIndex);
         const categorySelected: Category = categories[selectedIndex];
         setCategoryUpdatedId(categorySelected.id);
-        setCategoryUpdatedName(categorySelected.name);
-        setCategoryUpdatedDescription(categorySelected.description);
+        setCategoryUpdatedName(categorySelected[name]);
+        setCategoryUpdatedDescription(categorySelected[description]);
     };
 
     const generateCategoryListItems = () => {
+        let name = 'name' +i18n.language.toUpperCase();
         return categories.map((category: Category, index: number) => {
             return (
                 <ListItem
@@ -202,7 +205,7 @@ const Admin: NextPage<IAdmin & any> = ({
                     selected={selectedIndex === index}
                     onClick={(event) => handleListItemClick(event, index)}
                 >
-                    <ListItemText primary={category.name} />
+                    <ListItemText primary={category[name]} />
                 </ListItem>
             );
         });

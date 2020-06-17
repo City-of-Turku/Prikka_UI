@@ -138,8 +138,8 @@ const MapboxContainer: React.FC<IMapboxContainer> = ({
     const goToSelectedMemory = () => {
         const newViewport = {
             ...viewport,
-            longitude: selectedMemory.position.coordinates[1],
             latitude: selectedMemory.position.coordinates[0],
+            longitude: selectedMemory.position.coordinates[1],
             zoom: 14,
             transitionDuration: 2000,
             transitionInterpolator: new FlyToInterpolator(),
