@@ -48,7 +48,11 @@ const ReportDialog: React.FC<IReportDialog> = ({ memory }) => {
         apis.memories
             .createMemoryReport(data)
             .then((res: AxiosResponse) => {
-                snackbarContext.displaySuccessSnackbar('Memory Reported');
+                if (res.data == 'Memory already reported by user.'){
+                    snackbarContext.displayErrorSnackbar('You can only report a memory once.');
+                }else{
+                    snackbarContext.displaySuccessSnackbar('Memory reported');
+                }
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
