@@ -31,6 +31,11 @@ import UserTable from "../components/UserTable";
 import DeleteDialog from "../components/DeleteDialog";
 import CardActions from "@material-ui/core/CardActions";
 import MemoryCard from "../components/MemoryCard";
+import {Table, TableBody, TableCell, TableRow, TableContainer, TableHead} from "@material-ui/core";
+import {withStyles} from '@material-ui/core/styles';
+import { EditRounded, AddCircleRounded, DeleteRounded } from '@material-ui/icons';
+
+
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -42,8 +47,23 @@ const useStyles = makeStyles((theme: Theme) =>
             overflow: 'auto',
             backgroundColor: theme.palette.background.paper,
         },
+        textField: {
+            marginLeft: theme.spacing(1),
+            marginRight: theme.spacing(1),
+            width: '35ch',
+          },
     }),
 );
+
+const StyledTableCell = withStyles((theme) => ({
+    head: {
+        backgroundColor: theme.palette.common.black,
+        color: theme.palette.common.white,
+    },
+    body: {
+        fontSize: 14,
+    },
+}))(TableCell);
 
 // --- COMPONENT ---
 interface IAdmin {
@@ -51,6 +71,7 @@ interface IAdmin {
     categories: Categories;
     isLogged: boolean;
     isAdmin: boolean;
+    categoryUpdatedName: {nameFI: string; nameSE: string; nameEn: string;}
 }
 
 const Admin: NextPage<IAdmin & any> = ({
@@ -66,11 +87,17 @@ const Admin: NextPage<IAdmin & any> = ({
     //States
     const [categories, setCategories] = useState<Categories | null>(null)
     const [users, setUsers] = useState<Users | null>(null);
-
+    const [showEditCategory, setShowEditCategory] = useState<boolean>(false);
+    const [showAddCategory, setShowAddCategory] = useState<boolean>(false);
     const [categoryName, setCategoryName] = useState<string>('');
     const [categoryDescription, setCategoryDescription] = useState<string>('');
     const [categoryUpdatedId, setCategoryUpdatedId] = useState<number>(0);
-    const [categoryUpdatedName, setCategoryUpdatedName] = useState<string>('');
+    // const [categoryUpdatedName, setCategoryUpdatedName] = useState<string>('');
+    const [categoryUpdatedName, setCategoryUpdatedName] = React.useState({
+        nameFI: "",
+        nameSV: "",
+        nameEN: "",
+    });
     const [categoryUpdatedDescription, setCategoryUpdatedDescription] = useState<string>('');
     const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
@@ -122,9 +149,27 @@ const Admin: NextPage<IAdmin & any> = ({
     };
     const handleCategoryNameChangeUpdate = (
         event: React.ChangeEvent<HTMLInputElement>,
+        name: string
     ) => {
-        setCategoryUpdatedName(event.target.value);
-//        setCategoryUpdatedId(selectedIndex);
+        if(name === 'nameFI'){
+            setCategoryUpdatedName({
+                nameFI: event.target.value,
+                nameSV: categoryUpdatedName['nameSV'],
+                nameEN: categoryUpdatedName['nameEN']
+            });
+        } else if(name === 'nameSV') {
+            setCategoryUpdatedName({
+                nameFI: categoryUpdatedName['nameFI'],
+                nameSV: event.target.value,
+                nameEN: categoryUpdatedName['nameEN']
+            });
+        } else {
+            setCategoryUpdatedName({
+                nameFI: categoryUpdatedName['nameFI'],
+                nameSV: categoryUpdatedName['nameSV'],
+                nameEN: event.target.value
+            });
+        }
     };
     const handleCategoryDescriptionChangeUpdate = (
         event: React.ChangeEvent<HTMLInputElement>,
@@ -135,16 +180,24 @@ const Admin: NextPage<IAdmin & any> = ({
 
     const handleCategoryCreateSubmit = () => {
         const model = {
-            name: categoryName,
-            description: categoryDescription,
+            nameFI: categoryUpdatedName['nameFI'],
+            nameSV: categoryUpdatedName['nameSV'],
+            nameEN: categoryUpdatedName['nameEN'],
+            descriptionFI: categoryDescription,
+            descriptionSV: "",
+            descriptionEN: ""
         };
         apis.admin
             .adminCreateCategory(model)
             .then((res: AxiosResponse) => {
                 snackbarContext.displaySuccessSnackbar('Category added');
                 getAllCategories();
-                setCategoryName("");
-                setCategoryDescription("");
+                setCategoryUpdatedName({
+                    nameFI: '',
+                    nameSV: '',
+                    nameEN: ''
+                });
+                setCategoryUpdatedDescription('');
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
@@ -153,8 +206,10 @@ const Admin: NextPage<IAdmin & any> = ({
 
     const handleCategoryUpdateSubmit = () => {
         const model = {
-            name: categoryUpdatedName,
-            description: categoryUpdatedDescription,
+            nameFI: categoryUpdatedName['nameFI'],
+            nameSV: categoryUpdatedName['nameSV'],
+            nameEN: categoryUpdatedName['nameEN'],
+            descriptionFI: categoryUpdatedDescription,
         };
         apis.admin
             .adminUpdateCategory(categoryUpdatedId,model)
@@ -166,7 +221,28 @@ const Admin: NextPage<IAdmin & any> = ({
                 snackbarContext.displayErrorSnackbar('Error');
             });
     };
+    const handleCategoryUpdateCancel= () => {
+        setShowEditCategory(false);
+        resetCategoryNameState();
+    };
+    const handleAddCategory = () => {
+        if(showEditCategory)
+            handleCategoryUpdateCancel();
+        setShowAddCategory(true);
+    };
+    const handleAddCategoryCancel= () => {
+        setShowAddCategory(false);
+        resetCategoryNameState();
+    };
 
+    const resetCategoryNameState = () => {
+        setCategoryUpdatedName({
+            nameFI: '',
+            nameSV: '',
+            nameEN: ''
+        });
+        setCategoryUpdatedDescription('');
+    };
     const handleCategoryDeleteSubmit = () => {
         apis.admin
             .adminDeleteCategoryById(categoryUpdatedId)
@@ -174,41 +250,16 @@ const Admin: NextPage<IAdmin & any> = ({
                 snackbarContext.displaySuccessSnackbar('Category deleted');
                 getAllCategories();
                 setCategoryUpdatedId(0);
-                setCategoryUpdatedName("");
-                setCategoryUpdatedDescription("");
+                setCategoryUpdatedName({
+                    nameFI: '',
+                    nameSV: '',
+                    nameEN: ''
+                });
+                setCategoryUpdatedDescription('');
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
             });
-    };
-
-    const handleListItemClick = (
-        event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-        index: number,
-    ) => {
-        let name = 'name' +i18n.language.toUpperCase();
-        let description = 'description' +i18n.language.toUpperCase();
-        setSelectedIndex(index);
-//        setCategoryUpdatedId(selectedIndex);
-        const categorySelected: Category = categories[selectedIndex];
-        setCategoryUpdatedId(categorySelected.id);
-        setCategoryUpdatedName(categorySelected[name]);
-        setCategoryUpdatedDescription(categorySelected[description]);
-    };
-
-    const generateCategoryListItems = () => {
-        let name = 'name' +i18n.language.toUpperCase();
-        return categories.map((category: Category, index: number) => {
-            return (
-                <ListItem
-                    button
-                    selected={selectedIndex === index}
-                    onClick={(event) => handleListItemClick(event, index)}
-                >
-                    <ListItemText primary={category[name]} />
-                </ListItem>
-            );
-        });
     };
 
     const generateCategoryDetails = () => {
@@ -218,12 +269,27 @@ const Admin: NextPage<IAdmin & any> = ({
                     {t('titleSelectedCategory')}
                 </Typography>
                 <form noValidate autoComplete="false">
-                    <div>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <TextField
                             variant="outlined"
-                            label={t('categoryName')}
-                            value={categoryUpdatedName}
-                            onChange={handleCategoryNameChangeUpdate}
+                            label={t('categoryNameFi')}
+                            value={categoryUpdatedName['nameFI']}
+                            className={classes.textField}
+                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameFI')}
+                        ></TextField>
+                        <TextField
+                            variant="outlined"
+                            label={t('categoryNameSv')}
+                            value={categoryUpdatedName['nameSV']}
+                            className={classes.textField}
+                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameSV')}
+                        ></TextField>
+                        <TextField
+                            variant="outlined"
+                            label={t('categoryNameEn')}
+                            value={categoryUpdatedName['nameEN']}
+                            className={classes.textField}
+                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameEN')}
                         ></TextField>
                     </div>
                     <br />
@@ -247,29 +313,48 @@ const Admin: NextPage<IAdmin & any> = ({
                         </Button>
                     </div>
                     <br />
-                    <DeleteDialog
-                        t={t}
-                        handleDelete={handleCategoryDeleteSubmit}
-                        type={"category"}
-                    />
+                    <div>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleCategoryUpdateCancel}
+                        >
+                            {t('buttonCancel')}
+                        </Button>
+                    </div>
                 </form>
-            </div>
+            </div>     
         );
     };
 
     const displayAddCategory = () => {
         return (
-            <Grid item xs={4}>
+            <Grid item xs={12}>
                 <Typography variant="h6" gutterBottom>
                     {t('titleAddNewCategory')}
                 </Typography>
                 <form noValidate autoComplete="false">
-                    <div>
+                    <div style={{ display: 'flex', flexDirection: 'row' }}>
+                     <TextField
+                            variant="outlined"
+                            label={t('categoryNameFi')}
+                            value={categoryUpdatedName['nameFI']}
+                            className={classes.textField}
+                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameFI')}
+                        ></TextField>
                         <TextField
                             variant="outlined"
-                            label={t('categoryName')}
-                            onChange={handleCategoryNameChange}
-                            value={categoryName}
+                            label={t('categoryNameSv')}
+                            value={categoryUpdatedName['nameSV']}
+                            className={classes.textField}
+                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameSV')}
+                        ></TextField>
+                        <TextField
+                            variant="outlined"
+                            label={t('categoryNameEn')}
+                            value={categoryUpdatedName['nameEN']}
+                            className={classes.textField}
+                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameEN')}
                         ></TextField>
                     </div>
                     <br />
@@ -295,29 +380,89 @@ const Admin: NextPage<IAdmin & any> = ({
                             {t('buttonAddCategory')}
                         </Button>
                     </div>
+                    <br />
+                    <div>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleAddCategoryCancel}
+                        >
+                            {t('buttonCancel')}
+                        </Button>
+                    </div>
                 </form>
             </Grid>
         )
     };
+   
+    const handleListItemClick = (
+        event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+        index: number,
+    ) => {
+        setSelectedIndex(index);
+        if(showAddCategory === true)
+            handleAddCategoryCancel();
+        setShowEditCategory(true);
+        // let name = 'name' +i18n.language.toUpperCase();
+        // let description = 'description' +i18n.language.toUpperCase();
+//        setCategoryUpdatedId(selectedIndex);
+        const categorySelected: Category = categories[index];
+        setCategoryUpdatedId(categorySelected.id);
+        setCategoryUpdatedName({
+            nameFI: categorySelected['nameFI'],
+            nameSV: categorySelected['nameSV'],
+            nameEN: categorySelected['nameEN']
+        });
+        setCategoryUpdatedDescription(categorySelected['descriptionFI']); 
+        // Saved into finnish description col. for now, not shown to public, might change in future versions
+    };
+
+    const generateCategoryListItems = () => {
+        return categories.map((category: Category, index: number) => {
+            return (
+                <TableRow>
+                    <TableCell>{category['nameFI']}</TableCell>
+                    <TableCell>{category['nameSV']}</TableCell>
+                    <TableCell>{category['nameEN']}</TableCell>
+                    <TableCell>{category['descriptionFI']}</TableCell>
+                    <TableCell style={{ width:'100px'}}>
+                        <EditRounded  onClick={(event) => handleListItemClick(event, index)} style={{ marginRight: '10px', fontSize: '1.3rem', cursor: 'pointer' }}/>
+                        <DeleteRounded onClick={(event) => handleCategoryDeleteSubmit()} style={{ fontSize: '1.3rem', cursor: 'pointer' }}/>
+                        {/* <DeleteDialog
+                        t={t}
+                        handleDelete={handleCategoryDeleteSubmit}
+                        type={"category"}
+                        /> */}
+                    </TableCell>
+                </TableRow>
+            );
+        });
+    };
 
     const displayCategoryList = () => {
         return (
-            <Grid container item xs={4}>
+            <Grid container item xs={12}>
                     <Typography variant="h6">
                         {t('titleCategories')}
                     </Typography>
                 <Grid container item xs={12} spacing={3}>
                     <Grid item xs={12}>
-                        <div className={classes.categoryList}>
-                            <List
-                                component="nav"
-                                aria-label="main mailbox folders"
-                            >
-                                {categories
-                                    ? generateCategoryListItems()
-                                    : null}
-                            </List>
-                        </div>
+                            <TableContainer>
+                                <Table>
+                                    <TableHead>
+                                        <StyledTableCell >{t('categoryTable.headerFi')}</StyledTableCell>
+                                        <StyledTableCell>{t('categoryTable.headerSv')}</StyledTableCell>
+                                        <StyledTableCell>{t('categoryTable.headerEn')}</StyledTableCell>
+                                        <StyledTableCell>{t('categoryTable.descrEn')}</StyledTableCell>
+                                    </TableHead>
+                                    <TableBody>
+                                        {categories
+                                        ? generateCategoryListItems()
+                                        : null}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                            <AddCircleRounded onClick={(event) => handleAddCategory()} style={{ marginTop: '20px', fontSize: '2.5rem', cursor: 'pointer'}}/>
                     </Grid>
                 </Grid>
             </Grid>
@@ -326,7 +471,7 @@ const Admin: NextPage<IAdmin & any> = ({
 
     const displaySelectedCategory = () => {
         return (
-            <Grid item xs={4}>
+            <Grid item xs={12}>
                 {categories
                     ? generateCategoryDetails()
                     : null}
@@ -346,7 +491,7 @@ const Admin: NextPage<IAdmin & any> = ({
         };
         return component;
     };
-
+    
     return (
         <div>
             {isLogged && isAdmin ? (
@@ -362,14 +507,14 @@ const Admin: NextPage<IAdmin & any> = ({
 
                         {/*** Categories ********************/}
                         <Grid container spacing={4} >
-                            {/* Add Category */}
-                            {displayAddCategory()}
-
                             {/* CategoryList */}
                             {displayCategoryList()}
 
+                            {/* Add Category */}
+                            {showAddCategory == true ? displayAddCategory() : ""}
+
                             {/* Selected category */}
-                            {displaySelectedCategory()}
+                            {showEditCategory == true ? displaySelectedCategory() : ""}
                         </Grid>
 
                         <div style={{ height: '10vh' }} />

@@ -9,6 +9,7 @@
 
     "buttonAddCategory": "Save new topic",
     "buttonUpdateCategory": "Update selected topic",
+    "buttonCancel": "Cancel",
 
     "notAllowed": "You are not allowed to see this information.",
 
@@ -20,7 +21,12 @@
         "buttonAddAdminRole": "Add admin role",
         "buttonRemoveAdminRole": "Remove admin role"
     },
-
+    "categoryTable": {
+        "headerFi": "Finnish",
+        "headerSv": "Swedish",
+        "headerEn": "English",
+        "descrEn": "Description"
+    },
     "deleteDialog": {
         "buttonDelete": "Delete selected topic",
         "deleteTitle": "Delete topic",

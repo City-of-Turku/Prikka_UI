@@ -4,11 +4,15 @@
     "titleCategories": "Befintliga teman",
     "titleSelectedCategory": "Valt tema",
 
-    "categoryName": "Tema namn",
+    "categoryName": "Temanamn",
+    "categoryNameFi": "Namn (Fi)",
+    "categoryNameSv": "Namn (Sv)",
+    "categoryNameEn": "Namn (En)",
     "categoryDescription": "Tema beskrivning",
 
     "buttonAddCategory": "Spara ett nytt tema",
     "buttonUpdateCategory": "Uppdatera valt tema",
+    "buttonCancel": "Avbryt",
 
     "notAllowed": "Du har inte rätt att se den här informationen.",
 
@@ -20,7 +24,12 @@
         "buttonAddAdminRole": "Lägg till admin-rollen",
         "buttonRemoveAdminRole": "Ta bort admin-rollen"
     },
-
+    "categoryTable": {
+        "headerFi": "Finska",
+        "headerSv": "Svenska",
+        "headerEn": "Engelska",
+        "descrEn": "Beskrivning"
+    },
     "deleteDialog": {
         "buttonDelete": "Radera valt tema",
         "deleteTitle": "Radera ett tema",

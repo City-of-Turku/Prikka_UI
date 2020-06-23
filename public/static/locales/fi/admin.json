@@ -5,10 +5,14 @@
     "titleSelectedCategory": "Valittu teema",
 
     "categoryName": "Teemanimi",
+    "categoryNameFi": "Nimi(Fi)",
+    "categoryNameSv": "Nimi (Sv)",
+    "categoryNameEn": "Nimi (En)",
     "categoryDescription": "Teemakuvaus",
 
     "buttonAddCategory": "Tallenna uusi teema",
     "buttonUpdateCategory": "Päivitä valittu teema",
+    "buttonCancel": "Cancel",
 
     "notAllowed": "Sinulla ei ole oikeus nähdä nämä tiedot.",
 
@@ -20,7 +24,12 @@
         "buttonAddAdminRole": "Lisää admin rooli",
         "buttonRemoveAdminRole": "Poista admin rooli"
     },
-
+    "categoryTable": {
+        "headerFi": "Suomi",
+        "headerSv": "Ruotsi",
+        "headerEn": "Englanti",
+        "descrEn": "Kuvaus"
+    },
     "deleteDialog": {
         "buttonDelete": "Poista valittu teemaa",
         "deleteTitle": "Poista teemaa",
