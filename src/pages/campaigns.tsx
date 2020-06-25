@@ -36,8 +36,8 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
 
     const classes = useStyles();
 
-    const handleAddMemory = (): void => {
-        Router.push('/add_memory');
+    const handleAddMemory = (categoryId): void => {
+        Router.push('/add_memory/?categoryId='+categoryId);
     };
 
     const showI18nHeader = (campaign) => {
@@ -79,6 +79,7 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
             );
         } else {
             component = campaigns.rows.map((campaign, index) => {
+                let tmpCategoryId = campaign.categoryId;
                 return (
                     <Grid key={index} item xs={12}>
                         <Paper elevation={3} className={classes.paper}>
@@ -90,7 +91,7 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
                                 <Button
                                     variant="contained"
                                     color="primary"
-                                    onClick={handleAddMemory}
+                                    onClick={() => handleAddMemory(tmpCategoryId)}
                                 >
                                     {t('buttonAddMemory')}
                                 </Button>

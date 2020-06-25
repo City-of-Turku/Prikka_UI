@@ -3,13 +3,15 @@
  */
 
 import React, {useEffect, useState} from 'react';
-import {Campaign} from '../types';
+import {Campaign, Categories} from '../types';
 import Moment from 'react-moment';
 import {useSnackbarContext} from "../contexts/SnackbarContext";
-import {Button, Grid, makeStyles, Paper, TextField, Typography} from '@material-ui/core';
+import {Button, Grid, makeStyles, Paper, TableCell, TextField, Typography} from '@material-ui/core';
 import theme from "../theme";
 import {apis} from "../services/apis";
 import {AxiosError, AxiosResponse} from "axios";
+import Checkbox from "@material-ui/core/Checkbox";
+import CategorySelect from './CategorySelect';
 
 
 const useStyles = makeStyles({
@@ -25,6 +27,7 @@ const useStyles = makeStyles({
 interface ICampaignCard {
     t(key, opts?): Function;
     campaign: Campaign;
+    categories: Categories;
     controls?: boolean;
     handleRefresch?(): void;
 }
@@ -32,6 +35,7 @@ interface ICampaignCard {
 const CampaignCard: React.FC<ICampaignCard> = ({
     t,
     campaign,
+    categories,
     controls,
     handleRefresch
 }) => {
@@ -47,6 +51,8 @@ const CampaignCard: React.FC<ICampaignCard> = ({
     const [campaignDescriptionFI, setCampaignDescriptionFI] = useState<string>('');
     const [campaignDescriptionSV, setCampaignDescriptionSV] = useState<string>('');
     const [campaignDescriptionEN, setCampaignDescriptionEN] = useState<string>('');
+    const [campaignCategory, setCampaignCategory] = useState<string>('');
+    const [campaignIsPublic, setCampaignIsPublic] = useState<boolean>(false);
 
     useEffect(() => {
         if (campaign!=null) {
@@ -56,6 +62,11 @@ const CampaignCard: React.FC<ICampaignCard> = ({
             setCampaignDescriptionFI(campaign.descriptionFI);
             setCampaignDescriptionSV(campaign.descriptionSV);
             setCampaignDescriptionEN(campaign.descriptionEN);
+            let tmpCategoryId = campaign.categoryId;
+            if (tmpCategoryId!=null){
+                setCampaignCategory(tmpCategoryId.toString());
+            }
+            setCampaignIsPublic(campaign.isPublic);
         }
     }, []);
 
@@ -69,6 +80,8 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                 descriptionFI: campaignDescriptionFI,
                 descriptionSV: campaignDescriptionSV,
                 descriptionEN: campaignDescriptionEN,
+                isPublic: campaignIsPublic,
+                categoryId: campaignCategory,
             };
 
             apis.admin
@@ -89,6 +102,11 @@ const CampaignCard: React.FC<ICampaignCard> = ({
             campaign.descriptionFI=campaignDescriptionFI;
             campaign.descriptionSV=campaignDescriptionSV;
             campaign.descriptionEN=campaignDescriptionEN;
+            campaign.isPublic=campaignIsPublic;
+            if (campaignCategory!=null){
+                let tmpCategoryId = Number(campaignCategory);
+                campaign.categoryId=tmpCategoryId;
+            }
             apis.admin
                 .adminUpdateCampaignById((campaign.id), campaign)
                 .then((res: AxiosResponse) => {
@@ -124,19 +142,46 @@ const CampaignCard: React.FC<ICampaignCard> = ({
             });
     };
 
-
     return (
         <Paper elevation={3} className={classes.paper}>
 
-            <Typography
-                variant="body2"
-                color="textSecondary"
-                component="p"
-            >
-                {campaign ? (
-                    <Moment format="YYYY/MM/DD">{campaign.createdAt}</Moment>
-                ):null}
-            </Typography>
+            <Grid container item xs={12} spacing={3}>
+                <Grid item xs={3}>
+                    <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                    >
+                        {t("adminCampaign.created")}: &nbsp;&nbsp;
+                        {campaign ? (
+                            <Moment format="YYYY/MM/DD">{campaign.createdAt}</Moment>
+                        ):null}
+                    </Typography>
+                </Grid>
+                <Grid item xs={6}>
+                    <CategorySelect
+                        t={t}
+                        selectedCategoryId={null}
+                        categories={categories}
+                        handleCategoryFilterChange={categoryId => setCampaignCategory(categoryId)}
+                        required={false}
+                        fullWidth={true}
+                    />
+                </Grid>
+                <Grid item xs={3}>
+                    <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                    >
+                        <Checkbox title="Is public"
+                                  checked={campaignIsPublic}
+                                  onChange={event => setCampaignIsPublic(event.target.checked)}/>
+                        {t('adminCampaign.isPublic')}
+                    </Typography>
+                </Grid>
+            </Grid>
+
             <div style={{ height: '2vh' }} />
 
             <form noValidate autoComplete="false">
@@ -213,6 +258,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                     >
                         {t('adminCampaign.buttonSave')}
                     </Button>
+
                     <Button
                         variant="contained"
                         color="primary"

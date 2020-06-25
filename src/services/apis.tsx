@@ -210,6 +210,11 @@ const getAllCategories = () => api.get(`${basePathCategories}/categories`);
  *************************************************************/
 
 /**
+ * GET : admin get all campaigns
+ */
+const adminGetAllCampaigns = () => api.get(`/admin/${basePathCampaigns}/campaigns`);
+
+/**
  * POST : admin create campaign
  */
 const adminCreateCampaign = (payload: any) =>
@@ -331,6 +336,7 @@ export const apis = {
         getAllCategories,
     },
     admin: {
+        adminGetAllCampaigns,
         adminCreateCampaign,
         adminUpdateCampaignById,
         adminDeleteCampaignById,

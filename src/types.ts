@@ -59,6 +59,9 @@ export type Campaign = {
     titleEN: string;
     descriptionEN: string;
     createdAt: string;
+    displayName: string;
+    categoryId: number;
+    isPublic: boolean;
 };
 
 export type Campaigns = {

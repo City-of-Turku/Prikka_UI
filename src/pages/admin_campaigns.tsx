@@ -9,7 +9,7 @@ import {Button, Card, createStyles, Grid, makeStyles, Theme, Typography,} from '
 import Layout from '../components/Layout';
 import {apis} from '../services/apis';
 import {useSnackbarContext} from '../contexts/SnackbarContext';
-import {Campaigns} from '../types';
+import {Campaigns, Categories} from '../types';
 import {NextPage} from 'next';
 import Head from 'next/head';
 import CampaignCard from "../components/CampaignCard";
@@ -30,12 +30,14 @@ const useStyles = makeStyles((theme: Theme) =>
 // --- COMPONENT ---
 interface IAdminCampaign {
     t(key: string, opts?: any): string;
+    categories: Categories;
     isLogged: boolean;
     isAdmin: boolean;
 }
 
 const AdminCampaign: NextPage<IAdminCampaign & any> = ({
     t,
+    categories,
     isLogged,
     isAdmin,
 }) => {
@@ -59,8 +61,8 @@ const AdminCampaign: NextPage<IAdminCampaign & any> = ({
 
     const getAllCampaigns = async () => {
         setNewCampaign(null);
-        await apis.campaigns
-            .getAllCampaigns()
+        await apis.admin
+            .adminGetAllCampaigns()
             .then((res) => {
                 let campaigns = res.data;
                 setCampaigns(campaigns);
@@ -100,6 +102,7 @@ const AdminCampaign: NextPage<IAdminCampaign & any> = ({
                         <CampaignCard
                             t={t}
                             campaign={campaign}
+                            categories={categories}
                             controls={true}
                             handleRefresch={() => getAllCampaigns()}
                         />
@@ -136,6 +139,7 @@ const AdminCampaign: NextPage<IAdminCampaign & any> = ({
                                 <CampaignCard
                                     t={t}
                                     campaign={null}
+                                    categories={categories}
                                     controls={true}
                                     handleRefresch={() => getAllCampaigns()}
                                 />
@@ -160,7 +164,17 @@ const AdminCampaign: NextPage<IAdminCampaign & any> = ({
 
 // --- POPULATE PAGE ---
 AdminCampaign.getInitialProps = async (ctx: any) => {
-    return {namespacesRequired: ['common', 'admin'],};
+    let categories: Categories = null;
+    await apis.categories
+        .getAllCategories()
+        .then((res) => {
+            categories = res.data.categories;
+        })
+        .catch((err) => console.error('Error fetching categories'));
+    return {
+        namespacesRequired: ['common', 'admin'],
+        categories: categories,
+    };
 };
 
 export default withTranslation('admin')(AdminCampaign as any);
