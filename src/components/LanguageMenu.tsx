@@ -77,7 +77,7 @@ const LanguageMenu = ({ t, i18n }) => {
                 aria-haspopup="true"
                 onClick={handleToggle}
                 aria-label="Change language"
-                startIcon={<TranslateIcon />}
+                //startIcon={<TranslateIcon />}
                 endIcon={<ExpandMoreIcon />}
             >
                 {selectedIndex}
