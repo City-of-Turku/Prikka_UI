@@ -7,7 +7,7 @@
  */
 
 // --- IMPORTS ---
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Layout from '../components/Layout';
 import {apis} from '../services/apis';
 import {withTranslation} from '../i18n';
@@ -62,11 +62,12 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface IAddMemory {
     t(key: string, opts?: any): string;
+    selectedCategoryId: string;
     categories: Categories;
     isLogged: boolean;
 }
 // --- COMPONENTS ---
-const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
+const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categories, isLogged }) => {
     // TODO:replace formsy with formik
     //Contexts
     const classes = useStyles();
@@ -76,7 +77,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     const [markerPosition, setMarkerPosition] = useState<number[] | undefined>(
         undefined,
     ); //Care, Mapbox use [lng,lat] and not [lat,lng]
-    const [category, setCategory] = useState<string>('');
+    const [categoryId, setCategoryId] = useState<string>(selectedCategoryId);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
 
@@ -94,9 +95,15 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
 
     //Adds filename when file is added
     const onChange = (e) => {
-        setFile(e.target.files[0]);
-        setFilename(e.target.files[0].name);
-        setFileUrl( URL.createObjectURL(e.target.files[0]));
+        if (e.target.files[0].size > 10485760){
+            snackbarContext.displayWarningSnackbar(
+                'The image cannot be bigger then 10 MB.',
+            );
+        } else {
+            setFile(e.target.files[0]);
+            setFilename(e.target.files[0].name);
+            setFileUrl( URL.createObjectURL(e.target.files[0]));
+        }
     };
 
     //Functions
@@ -105,27 +112,36 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     };
 
     const handleCategoryFilterChange = (categoryId: string) => {
-        setCategory(categoryId);
+        setCategoryId(categoryId);
     };
 
     const handleSubmit = (): void => {
         if (markerPosition === undefined) {
             snackbarContext.displayWarningSnackbar(
-                'Please select a position on the map',
+                'Please select a position on the map for your memory!',
             );
         } else if (title === '') {
             snackbarContext.displayWarningSnackbar(
-                'Please enter a title for your memory',
+                'Please enter a title for your memory!',
             );
-        } else if (category === '') {
+        } else if (categoryId === '') {
             snackbarContext.displayWarningSnackbar(
-                'Please select a category for your memory',
+                'Please select a category for your memory!',
             );
         } else if (description === '') {
             snackbarContext.displayWarningSnackbar(
-                'Please enter a description for your memory',
+                'Please enter a description for your memory!',
             );
-        } else {
+// TODO
+/*        } else if (file !== '' && photographer === '') {
+            snackbarContext.displayWarningSnackbar(
+                'Please enter photographer for your photo!',
+            );
+        } else if (file !== '' && whenIsPhotoTaken === '') {
+            snackbarContext.displayWarningSnackbar(
+                'Please enter when photo is taken!',
+            );
+*/        } else {
             var formData = new FormData();
             var data = {
                 position: {
@@ -134,7 +150,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                 }
             };
             formData.append('title', title);
-            formData.append('categoryId', category);
+            formData.append('categoryId', categoryId);
             formData.append('description', description);
             formData.append('file', file);
             formData.append('position', JSON.stringify(data.position));
@@ -159,7 +175,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     const handleCategoryChange = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
-        setCategory(event.target.value);
+        setCategoryId(event.target.value);
     };
     const handleDescriptionChange = (
         event: React.ChangeEvent<HTMLInputElement>,
@@ -235,6 +251,12 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
         )}
     };
 
+/*    useEffect(() => {
+        if (selectedCategoryId!=null) {
+            setCategoryId(selectedCategoryId);
+        }
+    }, []);
+*/
     return (
         <div>
             <Head>
@@ -301,7 +323,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                         />
                                         <CategorySelect
                                             t={t}
-                                            selectedCategoryId={null}
+                                            selectedCategoryId={selectedCategoryId}
                                             categories={categories}
                                             handleCategoryFilterChange={
                                                 handleCategoryFilterChange
@@ -345,7 +367,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
                                                 >
                                                     {t("upload_button_text")}
                                                 </Button>
-                                                    &nbsp;&nbsp;&nbsp;{t("image_info")}&nbsp;&nbsp;&nbsp;{filename}
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{filename}
                                                 </Typography>
                                             </label>
                                         </div> }
@@ -399,7 +421,13 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, categories, isLogged }) => {
     );
 };
 
-AddMemory.getInitialProps = async () => {
+AddMemory.getInitialProps = async ({query}) => {
+
+    let selectedCategoryId = null;
+    if (query) {
+        selectedCategoryId = query.categoryId ? query.categoryId : null;
+    }
+
     let categories: Categories = null;
     await apis.categories
         .getAllCategories()
@@ -412,6 +440,7 @@ AddMemory.getInitialProps = async () => {
 
     return {
         namespacesRequired: ['common', 'addMemory', 'index'],
+        selectedCategoryId,
         categories: categories,
     };
 };

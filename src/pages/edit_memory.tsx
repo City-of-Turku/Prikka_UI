@@ -64,24 +64,28 @@ const useStyles = makeStyles((theme: Theme) =>
 interface IEditMemory {
     t(key: string, opts?: any): string;
     memory: Memory;
+    selectedCategoryId: string;
     categories: Categories;
     isLogged: boolean;
 }
 // --- COMPONENTS ---
-const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogged }) => {
+const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, selectedCategoryId, categories, isLogged }) => {
     // TODO:replace formsy with formik
+    // TODO 26.6.2020 Robert, check if selectedCategoryId is needed as a param to this page or
+    // if memory.categoryId is enough
+
     //Contexts
     const classes = useStyles();
     const snackbarContext = useSnackbarContext();
 
     //States
     const [markerPosition, setMarkerPosition] = useState<number[]>([]); //Care, Mapbox use [lng,lat] and not [lat,lng]
-    const [categoryId, setCategoryId] = useState<string>('');
+    const [categoryId, setCategoryId] = useState<string>(selectedCategoryId);
     const [title, setTitle] = useState<string>('');
     const [description, setDescription] = useState<string>('');
 
     //Vars
-    const center = [60.455, 22.26];
+//    const center = [60.455, 22.26];
 
     //Image upload
     const [file, setFile] = useState('');
@@ -94,9 +98,15 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
 
     //Adds filename when file is added
     const onChange = (e) => {
-        setFile(e.target.files[0]);
-        setFilename(e.target.files[0].name);
-        setFileUrl( URL.createObjectURL(e.target.files[0]));
+        if (e.target.files[0].size > 10485760){
+            snackbarContext.displayWarningSnackbar(
+                'The image cannot be bigger then 10 MB.',
+            );
+        } else {
+            setFile(e.target.files[0]);
+            setFilename(e.target.files[0].name);
+            setFileUrl( URL.createObjectURL(e.target.files[0]));
+        }
     };
 
     //Functions
@@ -111,21 +121,30 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
     const handleSubmit = (): void => {
         if (markerPosition === undefined) {
             snackbarContext.displayWarningSnackbar(
-                'Please select a position on the map',
+                'Please select a position on the map for your memory!',
             );
         } else if (title === '') {
             snackbarContext.displayWarningSnackbar(
-                'Please enter a title for your memory',
+                'Please enter a title for your memory!',
             );
         } else if (categoryId === '') {
             snackbarContext.displayWarningSnackbar(
-                'Please select a category for your memory',
+                'Please select a category for your memory!',
             );
         } else if (description === '') {
             snackbarContext.displayWarningSnackbar(
-                'Please enter a description for your memory',
+                'Please enter a description for your memory!',
             );
-        } else {
+// TODO
+/*        } else if (file !== '' && photographer === '') {
+            snackbarContext.displayWarningSnackbar(
+                'Please enter photographer for your photo!',
+            );
+        } else if (file !== '' && whenIsPhotoTaken === '') {
+            snackbarContext.displayWarningSnackbar(
+                'Please enter when photo is taken!',
+            );
+*/        } else {
             var formData = new FormData();
             var data = {
                 position: {
@@ -160,11 +179,11 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setTitle(event.target.value);
     };
-    const handleCategoryChange = (
+/*    const handleCategoryChange = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
         setCategoryId(event.target.value);
-    };
+    };*/
     const handleDescriptionChange = (
         event: React.ChangeEvent<HTMLInputElement>,
     ) => {
@@ -248,24 +267,10 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
             setCategoryId(memory.categoryId);
             setDescription(memory.description);
             setPhotographer(memory.photographer);
-//            setWhenIsPhotoTaken(memory.whenIsPhotoTaken);
-//            setWhereIsPhotoTaken(memory.whereIsPhotoTaken);
-/*            setWhenIsPhotoTaken(memory.position.coordinates[0]);
-            setWhereIsPhotoTaken(memory.position.coordinates[1]);*/
-            //setMarkerPosition([memory.position[0], memory.position[1]]);
+            setWhenIsPhotoTaken(memory.whenIsPhotoTaken);
+            setWhereIsPhotoTaken(memory.whereIsPhotoTaken);
             setMarkerPosition(memory.position.coordinates);
-            //setMarkerPosition([60.455, 22.26]);
-            //latitude: memory.position.coordinates[0],
-            //    longitude: memory.position.coordinates[1],
-
-//            var data = {
-//                position: {
-//                    type: 'Point',
-//                    coordinates: [markerPosition[1], markerPosition[0]],
-//                }
-//            };
-
-            /*
+            /* DO not delete
                         {"fieldname":"file",
                             "originalname":"buss1.jpg",
                             "encoding":"7bit",
@@ -279,7 +284,6 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
             const photo = JSON.parse(memory.photo);
             if (photo){
                 setFilename(photo.originalname);
-//                let url2 = photo.destination + photo.filename;
                 let url = process.env.BACK_URL + '/uploads/' + photo.filename;
                 setFileUrl(url);
             }
@@ -352,9 +356,8 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
                                         />
                                         <CategorySelect
                                             t={t}
-                                            selectedCategoryId={Number(categoryId)}
+                                            selectedCategoryId={selectedCategoryId}
                                             categories={categories}
-                                            language={i18n.language}
                                             handleCategoryFilterChange={
                                                 handleCategoryFilterChange
                                             }
@@ -397,7 +400,7 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
                                                 >
                                                     {t("upload_button_text")}
                                                 </Button>
-                                                    &nbsp;&nbsp;&nbsp;{t("image_info")}&nbsp;&nbsp;&nbsp;{filename}
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{filename}
                                                 </Typography>
                                             </label>
                                         </div> }
@@ -424,9 +427,7 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, categories, isLogg
                                     </Typography>
                                     <PinpointMap
                                         startPosition={[markerPosition[0], markerPosition[1]]}
-                                        handleClickPositionCallback={
-                                            handleClickPositionCallback
-                                        }
+                                        handleClickPositionCallback={handleClickPositionCallback}
                                     />
                                 </Box>
                             </Paper>
@@ -486,6 +487,7 @@ EditMemory.getInitialProps = async ({query}) => {
     return {
         namespacesRequired: ['common', 'addMemory', 'index'],
         memory: memory,
+        selectedCategoryId: memory.categoryId,
         categories: categories,
     };
 };

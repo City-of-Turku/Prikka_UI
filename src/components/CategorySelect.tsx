@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface ICategorySelect {
     t(key, opts?): Function;
-    selectedCategoryId: number;
+    selectedCategoryId: string;
     categories: Categories;
     handleCategoryFilterChange(categoryId: string): void;
     required?: boolean;
@@ -41,24 +41,35 @@ const CategorySelect: React.FC<ICategorySelect> = ({
     const classes = useStyles();
 
     //States
-    const [category, setCategory] = React.useState('');
+    const [categoryId, setCategoryId] = React.useState(selectedCategoryId);
     const [localename, setLocalename] = React.useState<string>('');
 
     const handleChange = (event: React.ChangeEvent<any>) => {
         const categoryId: string = event.target.value as string;
-        setCategory(categoryId);
+        setCategoryId(categoryId);
         handleCategoryFilterChange(categoryId);
     };
 
+/*    const preSelectCategory = () => {
+        if (selectedCategoryId!=null && selectedCategoryId!='0'){
+            const tmpCategory = (categories.find(x => x.id.toString() == selectedCategoryId).name);
+            setCategory(tmpCategory);
+            //selectedCategoryId = null;
+        };
+    };
+*/
     useEffect(() => {
         let temp = 'name' +i18n.language.toUpperCase();
         setLocalename(temp);
-        console.log(localename);
-        if (selectedCategoryId!=null && selectedCategoryId!=0){
-            const tmpCategory = (categories.find(x => x.id == selectedCategoryId).name);
+//        console.log(localename);
+//        preSelectCategory();
+        /*if (selectedCategoryId!=null && selectedCategoryId!='0'){
+            const tmpCategory = (categories.find(x => x.id.toString() == selectedCategoryId).name);
             setCategory(tmpCategory);
-        }
+            selectedCategoryId = null;
+        }*/
     });
+
     return (
         <FormControl
             variant="outlined"
@@ -74,7 +85,7 @@ const CategorySelect: React.FC<ICategorySelect> = ({
             <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
-                value={category}
+                value={categoryId}
                 onChange={handleChange}
                 label={t('category')}
             >
