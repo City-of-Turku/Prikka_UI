@@ -43,6 +43,8 @@
 
     "adminCampaign": {
         "title": "Kampanjat",
+        "created": "Luotu",
+        "isPublic": "Kampanja on julkaistu",
         "titleFI": "Otsikko (FI)",
         "titleSV": "Otsikko (SV)",
         "titleEN": "Otsikko (EN)",
@@ -52,5 +54,7 @@
         "buttonSave": "Tallenna",
         "buttonDelete": "Poista",
         "buttonAdd": "Luo uuden kampanjan"
-    }
+    },
+    "category": "Teema",
+    "alternativeAll": "Kaikki"
 }

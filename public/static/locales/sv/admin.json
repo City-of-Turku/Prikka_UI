@@ -43,6 +43,8 @@
 
     "adminCampaign": {
         "title": "Kampanjer",
+        "created": "Skapad",
+        "isPublic": "Kampanjen är synlig för alla",
         "titleFI": "Rubrik (FI)",
         "titleSV": "Rubrik (SV)",
         "titleEN": "Rubrik (EN)",
@@ -52,5 +54,7 @@
         "buttonSave": "Spara",
         "buttonDelete": "Radera",
         "buttonAdd": "Skapa en ny kampanj"
-    }
+    },
+    "category": "Tema",
+    "alternativeAll": "Alla"
 }

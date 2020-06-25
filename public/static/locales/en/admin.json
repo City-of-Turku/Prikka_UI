@@ -40,6 +40,8 @@
 
     "adminCampaign": {
         "title": "Campaigns",
+        "created": "Created",
+        "isPublic": "The campaign is public",
         "titleFI": "Header (FI)",
         "titleSV": "Header (SV)",
         "titleEN": "Header (EN)",
@@ -49,5 +51,7 @@
         "buttonSave": "Save",
         "buttonDelete": "Delete",
         "buttonAdd": "Create a new campaign"
-    }
+    },
+    "category": "Topic",
+    "alternativeAll": "All"
 }
