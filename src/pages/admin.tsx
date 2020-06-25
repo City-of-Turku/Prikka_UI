@@ -7,15 +7,18 @@
 
 // --- IMPORTS ---
 import React, {useEffect, useState} from 'react';
-import {withTranslation,i18n} from '../i18n';
+import {withTranslation} from '../i18n';
 import {
     Button,
     createStyles,
     Grid,
-    List,
-    ListItem,
-    ListItemText,
     makeStyles,
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
     TextField,
     Theme,
     Typography,
@@ -28,13 +31,8 @@ import {Categories, Category, Users} from '../types';
 import {NextPage} from 'next';
 import Head from 'next/head';
 import UserTable from "../components/UserTable";
-import DeleteDialog from "../components/DeleteDialog";
-import CardActions from "@material-ui/core/CardActions";
-import MemoryCard from "../components/MemoryCard";
-import {Table, TableBody, TableCell, TableRow, TableContainer, TableHead} from "@material-ui/core";
 import {withStyles} from '@material-ui/core/styles';
-import { EditRounded, AddCircleRounded, DeleteRounded } from '@material-ui/icons';
-
+import {AddCircleRounded, DeleteRounded, EditRounded} from '@material-ui/icons';
 
 
 // --- STYLES ---
@@ -89,16 +87,13 @@ const Admin: NextPage<IAdmin & any> = ({
     const [users, setUsers] = useState<Users | null>(null);
     const [showEditCategory, setShowEditCategory] = useState<boolean>(false);
     const [showAddCategory, setShowAddCategory] = useState<boolean>(false);
-    const [categoryName, setCategoryName] = useState<string>('');
     const [categoryDescription, setCategoryDescription] = useState<string>('');
     const [categoryUpdatedId, setCategoryUpdatedId] = useState<number>(0);
-    // const [categoryUpdatedName, setCategoryUpdatedName] = useState<string>('');
-    const [categoryUpdatedName, setCategoryUpdatedName] = React.useState({
+    const [categoryName, setCategoryName] = React.useState({
         nameFI: "",
         nameSV: "",
         nameEN: "",
     });
-    const [categoryUpdatedDescription, setCategoryUpdatedDescription] = useState<string>('');
     const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
     useEffect(() => {
@@ -116,12 +111,12 @@ const Admin: NextPage<IAdmin & any> = ({
             .getAllCategories()
             .then((res) => {
                 let categories = res.data.categories;
-                setCategories(categories)
-                console.log(categories)
+                setCategories(categories);
+                console.log(categories);
                 console.log('Categories fetched: ', categories.length);
             })
             .catch((err) => console.error('Error fetching categories', err));
-    }
+    };
 
     const getAllUsers = async () => {
         let tempUsers: Users;
@@ -137,52 +132,36 @@ const Admin: NextPage<IAdmin & any> = ({
             });
     };
 
-    const handleCategoryNameChange = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-        setCategoryName(event.target.value);
-    };
-    const handleCategoryDescriptionChange = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-        setCategoryDescription(event.target.value);
-    };
     const handleCategoryNameChangeUpdate = (
-        event: React.ChangeEvent<HTMLInputElement>,
-        name: string
+        name: string,
+        param: string
     ) => {
-        if(name === 'nameFI'){
-            setCategoryUpdatedName({
-                nameFI: event.target.value,
-                nameSV: categoryUpdatedName['nameSV'],
-                nameEN: categoryUpdatedName['nameEN']
+        if(param === 'nameFI'){
+            setCategoryName({
+                nameFI: name,
+                nameSV: categoryName['nameSV'],
+                nameEN: categoryName['nameEN']
             });
-        } else if(name === 'nameSV') {
-            setCategoryUpdatedName({
-                nameFI: categoryUpdatedName['nameFI'],
-                nameSV: event.target.value,
-                nameEN: categoryUpdatedName['nameEN']
+        } else if(param === 'nameSV') {
+            setCategoryName({
+                nameFI: categoryName['nameFI'],
+                nameSV: name,
+                nameEN: categoryName['nameEN']
             });
         } else {
-            setCategoryUpdatedName({
-                nameFI: categoryUpdatedName['nameFI'],
-                nameSV: categoryUpdatedName['nameSV'],
-                nameEN: event.target.value
+            setCategoryName({
+                nameFI: categoryName['nameFI'],
+                nameSV: categoryName['nameSV'],
+                nameEN: name
             });
         }
-    };
-    const handleCategoryDescriptionChangeUpdate = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-        setCategoryUpdatedDescription(event.target.value);
-//        setCategoryUpdatedId(selectedIndex);
     };
 
     const handleCategoryCreateSubmit = () => {
         const model = {
-            nameFI: categoryUpdatedName['nameFI'],
-            nameSV: categoryUpdatedName['nameSV'],
-            nameEN: categoryUpdatedName['nameEN'],
+            nameFI: categoryName['nameFI'],
+            nameSV: categoryName['nameSV'],
+            nameEN: categoryName['nameEN'],
             descriptionFI: categoryDescription,
             descriptionSV: "",
             descriptionEN: ""
@@ -192,12 +171,12 @@ const Admin: NextPage<IAdmin & any> = ({
             .then((res: AxiosResponse) => {
                 snackbarContext.displaySuccessSnackbar('Category added');
                 getAllCategories();
-                setCategoryUpdatedName({
+                setCategoryName({
                     nameFI: '',
                     nameSV: '',
                     nameEN: ''
                 });
-                setCategoryUpdatedDescription('');
+                setCategoryDescription('');
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
@@ -206,10 +185,10 @@ const Admin: NextPage<IAdmin & any> = ({
 
     const handleCategoryUpdateSubmit = () => {
         const model = {
-            nameFI: categoryUpdatedName['nameFI'],
-            nameSV: categoryUpdatedName['nameSV'],
-            nameEN: categoryUpdatedName['nameEN'],
-            descriptionFI: categoryUpdatedDescription,
+            nameFI: categoryName['nameFI'],
+            nameSV: categoryName['nameSV'],
+            nameEN: categoryName['nameEN'],
+            descriptionFI: categoryDescription,
         };
         apis.admin
             .adminUpdateCategory(categoryUpdatedId,model)
@@ -236,12 +215,12 @@ const Admin: NextPage<IAdmin & any> = ({
     };
 
     const resetCategoryNameState = () => {
-        setCategoryUpdatedName({
+        setCategoryName({
             nameFI: '',
             nameSV: '',
             nameEN: ''
         });
-        setCategoryUpdatedDescription('');
+        setCategoryDescription('');
     };
     const handleCategoryDeleteSubmit = () => {
         apis.admin
@@ -250,12 +229,12 @@ const Admin: NextPage<IAdmin & any> = ({
                 snackbarContext.displaySuccessSnackbar('Category deleted');
                 getAllCategories();
                 setCategoryUpdatedId(0);
-                setCategoryUpdatedName({
+                setCategoryName({
                     nameFI: '',
                     nameSV: '',
                     nameEN: ''
                 });
-                setCategoryUpdatedDescription('');
+                setCategoryDescription('');
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Error');
@@ -272,35 +251,37 @@ const Admin: NextPage<IAdmin & any> = ({
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                         <TextField
                             variant="outlined"
-                            label={t('categoryNameFi')}
-                            value={categoryUpdatedName['nameFI']}
+                            label={t('categoryNameFI')}
+                            value={categoryName['nameFI']}
                             className={classes.textField}
-                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameFI')}
+                            onChange={event => handleCategoryNameChangeUpdate(event.target.value,'nameFI')}
                         ></TextField>
                         <TextField
                             variant="outlined"
-                            label={t('categoryNameSv')}
-                            value={categoryUpdatedName['nameSV']}
+                            label={t('categoryNameSV')}
+                            value={categoryName['nameSV']}
                             className={classes.textField}
-                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameSV')}
+                            onChange={event => handleCategoryNameChangeUpdate(event.target.value,'nameSV')}
                         ></TextField>
                         <TextField
                             variant="outlined"
-                            label={t('categoryNameEn')}
-                            value={categoryUpdatedName['nameEN']}
+                            label={t('categoryNameEN')}
+                            value={categoryName['nameEN']}
                             className={classes.textField}
-                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameEN')}
+                            onChange={event => handleCategoryNameChangeUpdate(event.target.value,'nameEN')}
                         ></TextField>
                     </div>
                     <br />
                     <div>
+                        <Grid item xs={12}>
                         <TextField
                             variant="outlined"
                             multiline rows={4}
                             label={t('categoryDescription')}
-                            value={categoryUpdatedDescription}
-                            onChange={handleCategoryDescriptionChangeUpdate}
+                            value={categoryDescription}
+                            onChange={event => setCategoryDescription(event.target.value)}
                         ></TextField>
+                        </Grid>
                     </div>
                     <br />
                     <div>
@@ -311,9 +292,7 @@ const Admin: NextPage<IAdmin & any> = ({
                         >
                             {t('buttonUpdateCategory')}
                         </Button>
-                    </div>
-                    <br />
-                    <div>
+                        &nbsp;&nbsp;
                         <Button
                             variant="contained"
                             color="primary"
@@ -337,38 +316,38 @@ const Admin: NextPage<IAdmin & any> = ({
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
                      <TextField
                             variant="outlined"
-                            label={t('categoryNameFi')}
-                            value={categoryUpdatedName['nameFI']}
+                            label={t('categoryNameFI')}
+                            value={categoryName['nameFI']}
                             className={classes.textField}
-                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameFI')}
+                            onChange={event => handleCategoryNameChangeUpdate(event.target.value,'nameFI')}
                         ></TextField>
                         <TextField
                             variant="outlined"
-                            label={t('categoryNameSv')}
-                            value={categoryUpdatedName['nameSV']}
+                            label={t('categoryNameSV')}
+                            value={categoryName['nameSV']}
                             className={classes.textField}
-                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameSV')}
+                            onChange={event => handleCategoryNameChangeUpdate(event.target.value,'nameSV')}
                         ></TextField>
                         <TextField
                             variant="outlined"
-                            label={t('categoryNameEn')}
-                            value={categoryUpdatedName['nameEN']}
+                            label={t('categoryNameEN')}
+                            value={categoryName['nameEN']}
                             className={classes.textField}
-                            onChange={(e) => handleCategoryNameChangeUpdate(e,'nameEN')}
+                            onChange={event => handleCategoryNameChangeUpdate(event.target.value,'nameEN')}
                         ></TextField>
                     </div>
                     <br />
                     <div>
+                        <Grid item xs={12}>
                         <TextField
                             variant="outlined"
                             multiline
                             rows={4}
                             label={t('categoryDescription')}
                             value={categoryDescription}
-                            onChange={
-                                handleCategoryDescriptionChange
-                            }
+                            onChange={event => setCategoryDescription(event.target.value)}
                         ></TextField>
+                        </Grid>
                     </div>
                     <br />
                     <div>
@@ -379,9 +358,7 @@ const Admin: NextPage<IAdmin & any> = ({
                         >
                             {t('buttonAddCategory')}
                         </Button>
-                    </div>
-                    <br />
-                    <div>
+                        &nbsp;&nbsp;
                         <Button
                             variant="contained"
                             color="primary"
@@ -395,25 +372,22 @@ const Admin: NextPage<IAdmin & any> = ({
         )
     };
    
-    const handleListItemClick = (
-        event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    const handleCategoryListItemClick = (
+        event: React.MouseEvent<SVGSVGElement>,
         index: number,
     ) => {
         setSelectedIndex(index);
         if(showAddCategory === true)
             handleAddCategoryCancel();
         setShowEditCategory(true);
-        // let name = 'name' +i18n.language.toUpperCase();
-        // let description = 'description' +i18n.language.toUpperCase();
-//        setCategoryUpdatedId(selectedIndex);
         const categorySelected: Category = categories[index];
         setCategoryUpdatedId(categorySelected.id);
-        setCategoryUpdatedName({
+        setCategoryName({
             nameFI: categorySelected['nameFI'],
             nameSV: categorySelected['nameSV'],
             nameEN: categorySelected['nameEN']
         });
-        setCategoryUpdatedDescription(categorySelected['descriptionFI']); 
+        setCategoryDescription(categorySelected['descriptionFI']);
         // Saved into finnish description col. for now, not shown to public, might change in future versions
     };
 
@@ -426,7 +400,7 @@ const Admin: NextPage<IAdmin & any> = ({
                     <TableCell>{category['nameEN']}</TableCell>
                     <TableCell>{category['descriptionFI']}</TableCell>
                     <TableCell style={{ width:'100px'}}>
-                        <EditRounded  onClick={(event) => handleListItemClick(event, index)} style={{ marginRight: '10px', fontSize: '1.3rem', cursor: 'pointer' }}/>
+                        <EditRounded  onClick={(event) => handleCategoryListItemClick(event, index)} style={{ marginRight: '10px', fontSize: '1.3rem', cursor: 'pointer' }}/>
                         <DeleteRounded onClick={(event) => handleCategoryDeleteSubmit()} style={{ fontSize: '1.3rem', cursor: 'pointer' }}/>
                         {/* <DeleteDialog
                         t={t}
@@ -450,10 +424,10 @@ const Admin: NextPage<IAdmin & any> = ({
                             <TableContainer>
                                 <Table>
                                     <TableHead>
-                                        <StyledTableCell >{t('categoryTable.headerFi')}</StyledTableCell>
-                                        <StyledTableCell>{t('categoryTable.headerSv')}</StyledTableCell>
-                                        <StyledTableCell>{t('categoryTable.headerEn')}</StyledTableCell>
-                                        <StyledTableCell>{t('categoryTable.descrEn')}</StyledTableCell>
+                                        <StyledTableCell >{t('categoryTable.headerFI')}</StyledTableCell>
+                                        <StyledTableCell>{t('categoryTable.headerSV')}</StyledTableCell>
+                                        <StyledTableCell>{t('categoryTable.headerEN')}</StyledTableCell>
+                                        <StyledTableCell>{t('categoryTable.description')}</StyledTableCell>
                                     </TableHead>
                                     <TableBody>
                                         {categories

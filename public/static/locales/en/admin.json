@@ -5,10 +5,13 @@
     "titleSelectedCategory": "Selected topic",
 
     "categoryName": "Topic name",
+    "categoryNameFI": "Name (FI)",
+    "categoryNameSV": "Name (SV)",
+    "categoryNameEN": "Name (EN)",
     "categoryDescription": "Topic description",
 
     "buttonAddCategory": "Save new topic",
-    "buttonUpdateCategory": "Update selected topic",
+    "buttonUpdateCategory": "Update topic",
     "buttonCancel": "Cancel",
 
     "notAllowed": "You are not allowed to see this information.",
@@ -22,10 +25,10 @@
         "buttonRemoveAdminRole": "Remove admin role"
     },
     "categoryTable": {
-        "headerFi": "Finnish",
-        "headerSv": "Swedish",
-        "headerEn": "English",
-        "descrEn": "Description"
+        "headerFi": "Name (Fi)",
+        "headerSv": "Name (Sv)",
+        "headerEn": "Name (En)",
+        "description": "Description"
     },
     "deleteDialog": {
         "buttonDelete": "Delete selected topic",
