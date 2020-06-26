@@ -71,8 +71,12 @@ export type Campaigns = {
 
 export type Category = {
     id: number;
-    name: string;
-    description: string;
+    nameFI: string;
+    nameSV: string;
+    nameEN: string;
+    descriptionFI: string;
+    descriptionSV: string;
+    descriptionEN: string;
     createdAt: string;
 };
 

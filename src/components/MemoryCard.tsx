@@ -16,6 +16,7 @@ import Moment from 'react-moment';
 import ShareMemoryPopup from "./ShareMemoryPopup";
 import Link from "next/link";
 import {Button} from "@material-ui/core";
+import {i18n} from "../i18n";
 
 const useStyles = makeStyles({
     root: {
@@ -57,6 +58,8 @@ const MemoryCard: React.FC<IMemoryCard> = ({
     const shareTitle = 'Check out this memory at Prikka';
     const editUrl = `/edit_memory/?memory=${memory.id}`;
 
+    let localeName = 'name' +i18n.language.toUpperCase();
+
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -78,7 +81,7 @@ const MemoryCard: React.FC<IMemoryCard> = ({
                         color="textSecondary"
                         component="p"
                     >
-                        {category.name}
+                        {category[localeName]}
                     </Typography>
 
                     {/* Date */}
