@@ -42,7 +42,7 @@
     },
 
     "adminCampaign": {
-        "title": "Campaigns",
+        "title": "Campaigns - maintenance",
         "created": "Created",
         "isPublic": "The campaign is public",
         "titleFI": "Header (FI)",

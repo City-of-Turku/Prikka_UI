@@ -42,7 +42,7 @@
     },
 
     "adminCampaign": {
-        "title": "Kampanjer",
+        "title": "Kampanjer - underhåll",
         "created": "Skapad",
         "isPublic": "Kampanjen är synlig för alla",
         "titleFI": "Rubrik (FI)",

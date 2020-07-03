@@ -42,7 +42,7 @@
     },
 
     "adminCampaign": {
-        "title": "Kampanjat",
+        "title": "Kampanjat - ylläpito",
         "created": "Luotu",
         "isPublic": "Kampanja on julkaistu",
         "titleFI": "Otsikko (FI)",
