@@ -61,6 +61,14 @@ const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged, isAdmin }) => {
     //Contexts
     const classes = useStyles();
 
+    /* Annoying solution to strange problem.. Can not pass isAdmin directly into AccountMeny any other way than {...admin} without breaking build...
+    *  admin={isAdmin} gives error:  Type '{ isAdmin: boolean; }' is not assignable to type 'IntrinsicAttributes & Pick<WithTranslation, never> & WithTranslationProps & { children?: ReactNode; }
+    * even though isAdmin: boolean is in the AccountMenu interface. Exporting interface does not help.
+    * */
+    const admin = {
+        isAdmin
+    }
+
     //Vars
     const logo = '/images/logo192.png';
     const turkuLogo = '/images/turku_logo_black.png';
@@ -127,7 +135,7 @@ const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged, isAdmin }) => {
                 <Typography variant="h6">
                     {isLogged ? (
                         <Box className={classes.nav}>
-                            <AccountMenu isAdmin={isAdmin}/>
+                            <AccountMenu {...admin}/>
                         </Box>
                     ) : (
                         <Button
