@@ -129,8 +129,6 @@ const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin}) => {
                                     : 'center bottom',
                         }}
                     >
-                        {/* Content */}
-
                         <Paper>
                             <ClickAwayListener onClickAway={handleClose}>
                                 <MenuList
