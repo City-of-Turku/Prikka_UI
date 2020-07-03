@@ -98,7 +98,6 @@ const AccountMenu: React.FC<IAccountMenu> = ({ t, isAdmin}) => {
     };
 
     //TODO Check how this param is sent here
-    isAdmin = true;
     return (
         <div id="account-menu">
             {/* Account button */}

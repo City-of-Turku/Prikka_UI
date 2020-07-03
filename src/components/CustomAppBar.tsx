@@ -54,10 +54,10 @@ const useStyles = makeStyles((theme: Theme) =>
 interface ICustomAppBar {
     t(key, opts?): Function;
     isLogged: boolean;
+    isAdmin: boolean;
 }
-
 // --- COMPONENT ---
-const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged }) => {
+const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged, isAdmin }) => {
     //Contexts
     const classes = useStyles();
 
@@ -127,7 +127,7 @@ const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged }) => {
                 <Typography variant="h6">
                     {isLogged ? (
                         <Box className={classes.nav}>
-                            <AccountMenu />
+                            <AccountMenu isAdmin={isAdmin}/>
                         </Box>
                     ) : (
                         <Button
