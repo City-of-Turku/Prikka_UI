@@ -298,7 +298,7 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, selectedCategoryId
 
             <Layout>
                 {/* --- TITLE --- */}
-                <Typography variant="h3" gutterBottom>
+                <Typography variant="h4" gutterBottom>
                     {t('titleEdit')}
                 </Typography>
 

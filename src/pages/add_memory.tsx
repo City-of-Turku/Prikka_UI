@@ -265,7 +265,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
 
             <Layout>
                 {/* --- TITLE --- */}
-                <Typography variant="h3" gutterBottom>
+                <Typography variant="h4" gutterBottom>
                     {t('titleAdd')}
                 </Typography>
 

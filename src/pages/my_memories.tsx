@@ -114,7 +114,7 @@ const MyMemories: NextPage<IMyMemories & any> = ({ t, categories, isLogged }) =>
                         <title>My Memories</title>
                     </Head>
                     <Layout>
-                        <Typography variant="h3" gutterBottom>
+                        <Typography variant="h4" gutterBottom>
                             {t('title')}
                         </Typography>
                         <div>

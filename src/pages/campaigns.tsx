@@ -42,11 +42,11 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
 
     const showI18nHeader = (campaign) => {
         if (i18n.language=='fi')
-            return ( <Typography variant="h4">{campaign.titleFI}</Typography>);
+            return ( <Typography variant="h5">{campaign.titleFI}</Typography>);
         if (i18n.language=='sv')
-            return ( <Typography variant="h4">{campaign.titleSV}</Typography>);
+            return ( <Typography variant="h5">{campaign.titleSV}</Typography>);
         if (i18n.language=='en')
-            return ( <Typography variant="h4">{campaign.titleEN}</Typography>);
+            return ( <Typography variant="h5">{campaign.titleEN}</Typography>);
     };
 
     const showI18nText = (campaign) => {
@@ -140,7 +140,7 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
                 </Head>
 
                 <Layout>
-                    <Typography variant="h3">{t('title')}</Typography>
+                    <Typography variant="h4">{t('title')}</Typography>
                     <div style={{ height: '5vh' }} />
                     <Paper elevation={3} className={classes.paper}>
                         <Typography variant="body1" gutterBottom>

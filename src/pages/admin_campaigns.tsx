@@ -122,11 +122,11 @@ const AdminCampaign: NextPage<IAdminCampaign & any> = ({
                     </Head>
 
                     <Layout>
-                        <Typography variant="h3" gutterBottom>
+                        <Typography variant="h4" gutterBottom>
                             {t('adminCampaign.title')}
                         </Typography>
 
-                        <div style={{ height: '10vh' }} />
+                        <div style={{ height: '4vh' }} />
 
                         <Grid container spacing={2}>
                             {displayCampaigns()}

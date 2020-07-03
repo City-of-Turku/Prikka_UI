@@ -174,7 +174,7 @@ const ReportedMemory: NextPage<IReportedMemory & any> = ({
                     </Head>
 
                     <Layout>
-                        <Typography variant="h3" gutterBottom>
+                        <Typography variant="h4" gutterBottom>
                             {t('title')}
                         </Typography>
                         <Typography variant="body1" gutterBottom>

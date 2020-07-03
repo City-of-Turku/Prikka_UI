@@ -132,7 +132,7 @@ const UserSettings: NextPage<IUserSettings & any> = ({ t, isLogged }) => {
                     </Head>
 
                     <Layout>
-                    <Typography variant="h3">{t('title')}</Typography>
+                    <Typography variant="h4">{t('title')}</Typography>
                     <div style={{ height: '5vh' }} />
 
                     <form noValidate autoComplete="false">

@@ -213,7 +213,7 @@ const About: NextPage<any> = ({ t }) => {
             </Head>
             <Layout>
                 {/* Title */}
-                <Typography variant="h3" gutterBottom>
+                <Typography variant="h4" gutterBottom>
                     {t('title')}
                 </Typography>
                 <Intro />
