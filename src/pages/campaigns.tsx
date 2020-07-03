@@ -6,7 +6,7 @@
 // --- IMPORTS ---
 import React from 'react';
 import {i18n, withTranslation} from '../i18n';
-import {Button, Card, createStyles, Grid, makeStyles, Paper, Theme, Typography} from '@material-ui/core';
+import {Button, Card, createStyles, Grid, makeStyles, Paper, TextField, Theme, Typography} from '@material-ui/core';
 import Layout from '../components/Layout';
 import Head from 'next/head';
 import {apis} from "../services/apis";
@@ -51,11 +51,38 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
 
     const showI18nText = (campaign) => {
         if (i18n.language=='fi')
-            return ( <Typography variant="body1" gutterBottom>{campaign.descriptionFI}</Typography> );
+            return (
+                <TextField
+                    variant="outlined"
+                    multiline
+                    fullWidth={true}
+                    rows={10}
+                    value={campaign.descriptionFI}
+                    disabled={true}
+                ></TextField>
+            );
         if (i18n.language=='sv')
-            return ( <Typography variant="body1" gutterBottom>{campaign.descriptionSV}</Typography> );
+            return (
+                <TextField
+                    variant="outlined"
+                    multiline
+                    fullWidth={true}
+                    rows={10}
+                    value={campaign.descriptionSV}
+                    disabled={true}
+                ></TextField>
+            );
         if (i18n.language=='en')
-            return ( <Typography variant="body1" gutterBottom>{campaign.descriptionEN}</Typography> );
+            return (
+                <TextField
+                    variant="outlined"
+                    multiline
+                    fullWidth={true}
+                    rows={10}
+                    value={campaign.descriptionEN}
+                    disabled={true}
+                ></TextField>
+            );
     };
 
     const displayCampaigns = () => {
