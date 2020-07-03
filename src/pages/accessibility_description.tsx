@@ -37,16 +37,79 @@ const AccessibilityDescription: NextPage<any> = ({ t }) => {
                     {t('intro.title')}
                 </Typography>
                 <Typography variant="body1">{t('intro.p1')}</Typography>
+                <Typography variant="body1" gutterBottom>
+                    <a href={t('intro.p2link')} target={"_blank"}>{t('intro.p2')}</a>
+                </Typography>
             </>
         );
     };
 
-    const Rights = () => {
+    const Part1 = () => {
         return (
             <>
                 <Typography variant="h5" gutterBottom>
-                    {t('rights.title')}
+                    {t('part1.title')}
                 </Typography>
+                <Typography variant="body1">{t('part1.p1')}</Typography>
+            </>
+        );
+    };
+
+    const Part2 = () => {
+        return (
+            <>
+                <Typography variant="h5" gutterBottom>
+                    {t('part2.title')}
+                </Typography>
+                <Typography variant="body1">{t('part2.p1')}</Typography>
+            </>
+        );
+    };
+
+    const Part3 = () => {
+        return (
+            <>
+                <Typography variant="h5" gutterBottom>
+                    {t('part3.title')}
+                </Typography>
+                <Typography variant="body1">{t('part3.p1')}</Typography>
+                <Typography variant="body1">{t('part3.p2')}</Typography>
+                <Typography variant="body1" gutterBottom>
+                    <a href={t('part3.p3link')} target={"_blank"}>{t('part3.p3')}</a>
+                </Typography>
+                <Typography variant="body1">{t('part3.p4')}</Typography>
+                <Typography variant="body1">{t('part3.p5')}</Typography>
+            </>
+        );
+    };
+
+    const Part4 = () => {
+        return (
+            <>
+                <Typography variant="h5" gutterBottom>
+                    {t('part4.title')}
+                </Typography>
+                <Typography variant="body1">{t('part4.p1')}</Typography>
+            </>
+        );
+    };
+
+    const Part5 = () => {
+        return (
+            <>
+                <Typography variant="h5" gutterBottom>
+                    {t('part5.title')}
+                </Typography>
+                <Typography variant="body1">{t('part5.p1')}</Typography>
+            </>
+        );
+    };
+
+    const Footer = () => {
+        return (
+            <>
+                <Typography variant="body1">{t('footerText')}</Typography>
+                <Typography variant="body1">{t('footerDate')}</Typography>
             </>
         );
     };
@@ -58,11 +121,23 @@ const AccessibilityDescription: NextPage<any> = ({ t }) => {
             </Head>
             <Layout>
                 <Paper elevation={3} className={classes.paper}>
-                    <Typography variant="h3" gutterBottom>
+                    <Typography variant="h4" gutterBottom>
                         {t('title')}
                     </Typography>
+                    <div style={{ height: '2vh' }} />
                     <Intro />
-                    <Rights />
+                    <div style={{ height: '4vh' }} />
+                    <Part1 />
+                    <div style={{ height: '4vh' }} />
+                    <Part2 />
+                    <div style={{ height: '4vh' }} />
+                    <Part3 />
+                    <div style={{ height: '4vh' }} />
+                    <Part4 />
+                    <div style={{ height: '4vh' }} />
+                    <Part5 />
+                    <div style={{ height: '4vh' }} />
+                    <Footer />
                 </Paper>
             </Layout>
         </div>

@@ -1,10 +1,36 @@
 {
-    "title": "Saavutettavuusseloste",
+    "title": "Prikka.fi sivuston saavutettavuusseloste",
     "intro": {
         "title": "Saavutettavuusseloste",
-        "p1": ""
+        "p1": "Prikka.fi -sivusto on testausvaiheessa oleva verkkosivusto, josta tullaan laatimaan tarkempi saavutettavuusseloste syksyllä 2020. Prikka.fi -sivustolla kerätään kaupunkilaisten muistoja ja tarinoita, jotka liitetään paikkakohtaisena tietona Turun kaupungin palvelukarttaan. Palvelukartan saavutettavuusseloste löytyy osoitteesta ",
+        "p2": "https://palvelukartta.turku.fi/",
+        "p2link": "https://palvelukartta.turku.fi/"
     },
-    "rights": {
-        "title": "TODO"
-    }
+    "part1": {
+        "title": "Huomasitko saavutettavuuspuutteen digipalvelussamme? Kerro se meille ja teemme parhaamme puutteen korjaamiseksi.",
+        "p1": "-sähköpostiosoite-"
+    },
+    "part2": {
+        "title": "Valvontaviranomainen",
+        "p1": "Jos huomaat sivustolla saavutettavuusongelmia, anna ensin palautetta sivuston ylläpitäjälle.  Vastauksessa voi mennä 14 päivää. Jos et ole tyytyväinen saamaasi vastaukseen tai et saa vastausta lainkaan kahden viikon aikana, voit antaa palautteen Etelä-Suomen aluehallintovirastoon. Etelä-Suomen aluehallintoviraston sivulla kerrotaan tarkasti, miten valituksen voi tehdä ja miten asia käsitellään."
+    },
+    "part3": {
+        "title": "Valvontaviranomaisen yhteystiedot",
+        "p1": "Etelä-Suomen aluehallintovirasto",
+        "p2": "Saavutettavuuden valvonnan yksikkö",
+        "p3": "www.saavutettavuusvaatimukset.fi",
+        "p3link": "https://www.saavutettavuusvaatimukset.fi",
+        "p4": "saavutettavuus(at)avi.fi",
+        "p5": "puhelinnumero vaihde 0295 016 000"
+    },
+    "part4": {
+        "title": "Teemme Turun kaupungilla jatkuvasti työtä saavutettavuuden parantamiseksi",
+        "p1": "Olemme sitoutuneet digipalveluiden saavutettavuuden parantamiseen Turun kaupungin saavutettavuusosaamista kehitetään suunnitelmallisesti ja määrätietoisesti. Kaupungin saavutettavuuden puitesopimustoimittajat tulevat arvioimaan kaupungin nykyiset verkkopalvelut. Arvioinnin perusteella palveluiden saavutettavuutta kehitetään lain vaatimalle tasolle kunkin palvelun määräaikaan mennessä. Uusien verkkopalveluiden kehittämisessä ja hankinnassa saavutettavuus huomioidaan alusta lähtien. Saavutettavuuskoulutusta järjestetään kaikille osapuolille, jotka osallistuvat verkkopalveluiden kehittämiseen ja niiden sisältöjen tuottamiseen. Kaupungissa on käynnissä projekti Saavutettavuuslain vaatimusten täyttäminen."
+    },
+    "part5": {
+        "title": "Tarjoamme tukea käyttäjille joille digipalvelut eivät ole saavutettavissa",
+        "p1": "Turun kaupungin asiointipisteistä Skanssin Monitorissa (Skanssinkatu 10, 20730 Turku, puhelin 040 160 4556) sekä tulevassa kauppatorin Monitorissa (Aurakatu 8, 20100 Turku) ja kirjastoissa on mahdollisuus saada digitukea."
+    },
+    "footerText": "Tämä verkkosivusto on julkaistu",
+    "footerDate": "05.08.2020"
 }
