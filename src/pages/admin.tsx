@@ -459,7 +459,7 @@ const Admin: NextPage<IAdmin & any> = ({
         // This table can be reached only if there exits at least one logged in user.
         // Therefore the null value is not even a possible situation.
         if (users === null || users.count === 0) {
-            component = <div>Empty list>/</div>;
+            component = <div>Empty list</div>;
         } else {
             component = <UserTable t={t} users={users} controls={true} handleRefresch={() => getAllUsers()}/>
         };
