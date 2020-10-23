@@ -4,6 +4,7 @@
         "memories": "My Memories",
         "about": "Tietoja palvelusta",
         "campaign": "Kampanjat",
+        "subjects": "Aiheet",
         "addmemory": "Lisää Muisto",
         "login": "Kirjaudu",
         "logout": "kirjaudu ulos"
@@ -14,6 +15,7 @@
         "reportedmemories": "Raportoidut muistot",
         "configurations": "Ylläpito",
         "campaigns": "Kampanjat",
+        "subjects": "Aiheet",
         "settings": "Käyttäjä asetukset",
         "login": "Kirjaudu",
         "logout": "Kirjaudu ulos"

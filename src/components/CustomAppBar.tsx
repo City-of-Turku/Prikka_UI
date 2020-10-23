@@ -90,7 +90,7 @@ const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged, isAdmin }) => {
 
                 {/* Add memory */}
 
-                <Link href="/add_memory" passHref>
+                <Link href="/campaigns" passHref>
                     <Button
                         component="a"
                         variant="contained"
@@ -126,7 +126,7 @@ const CustomAppBar: React.FC<ICustomAppBar> = ({ t, isLogged, isAdmin }) => {
                 <Typography variant="h6">
                     <Link href="/campaigns" passHref>
                         <Button component="a" className={classes.nav}>
-                            {t('menubar.campaign')}
+                            {t('menubar.subjects')}
                         </Button>
                     </Link>
                 </Typography>
