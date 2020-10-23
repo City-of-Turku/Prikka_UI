@@ -5,6 +5,11 @@
     "addNewMemoryComment": "Add a memory from the \"Add memory\" button.",
     "buttonEdit": "Edit",
 
+    "shareMemory": {
+        "buttonShare": "Share",
+        "shareTitle": "Share this memory on social media"
+    },
+
     "deleteDialog": {
         "buttonDelete": "Delete",
         "deleteTitle": "Delete memory",

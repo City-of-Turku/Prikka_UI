@@ -105,7 +105,7 @@ const MemoryCard: React.FC<IMemoryCard> = ({
             </CardActionArea>
             {controls ? (
                 <CardActions>
-                    <ShareMemoryPopup shareMemoryUrl={shareUrl} shareMemoryTitle={shareTitle} />
+                    <ShareMemoryPopup t={t} shareMemoryUrl={shareUrl} shareMemoryTitle={shareTitle} />
                     <Link href={editUrl} passHref>
                         <Button component="a" >
                             {t('buttonEdit')}

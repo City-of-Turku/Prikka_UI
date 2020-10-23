@@ -1,18 +1,23 @@
 {
     "title": "Muistoni",
-    "description": "Tässä ovat kaikki julkaisemesi muistot.",
+    "description": "Tässä ovat kaikki julkaisemasi muistot.",
     "emptyMemoryList": "Ei ole vielä lisännyt muistoja.",
     "addNewMemoryComment": "Lisää muiston \"Lisää muisto\" napista.",
     "buttonEdit": "Päivitä",
 
+    "shareMemory": {
+        "buttonShare": "Jaa",
+        "shareTitle": "Jaa muisto sosiaalisessa mediassa"
+    },
+
     "deleteDialog": {
         "buttonDelete": "Poista",
         "deleteTitle": "Poista muisto",
-        "deleteConfirmQuestion": "Oletteko varma että haluatte poistaa muistonne?",
-        "deleteConfirmInstruction": "Kirjoita 'Kyllä' vahistaksenne poiston.",
+        "deleteConfirmQuestion": "Oletko varma, että haluat poistaa muistosi?",
+        "deleteConfirmInstruction": "Kirjoita “Kyllä” vahvistaaksesi poiston.",
         "deleteConfirmInstruction2": "Ystävällisesti kirjoita 'Kyllä' vahvistaksenne poiston",
         "confirm": "Vahvista",
-        "cancel": "Peruta",
+        "cancel": "Peruuta",
         "delete": "Poista"
     }
 }

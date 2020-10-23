@@ -25,9 +25,9 @@
         "buttonRemoveAdminRole": "Remove admin role"
     },
     "categoryTable": {
-        "headerFi": "Name (Fi)",
-        "headerSv": "Name (Sv)",
-        "headerEn": "Name (En)",
+        "headerFI": "Name (Fi)",
+        "headerSV": "Name (Sv)",
+        "headerEN": "Name (En)",
         "description": "Description"
     },
     "deleteDialog": {

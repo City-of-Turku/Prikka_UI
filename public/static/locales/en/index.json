@@ -6,5 +6,10 @@
     "noMemoriesFoundDescription": "Be the first one to add one to this topic!",
     "category": "Topic",
     "alternativeAll": "All",
-    "anonymous": "Anonymous"
+    "anonymous": "Anonymous",
+
+    "shareMemory": {
+        "buttonShare": "Share",
+        "shareTitle": "Share this memory on social media"
+    }
 }

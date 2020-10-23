@@ -13,10 +13,12 @@ import {
 } from "react-share";
 
 interface IShareMemoryPopup {
+    t(key, opts?): Function;
     shareMemoryUrl: string;
     shareMemoryTitle: string;
 }
 const ShareMemoryPopup: React.FC<IShareMemoryPopup> = ({
+    t,
     shareMemoryUrl,
     shareMemoryTitle
 }) => {
@@ -28,16 +30,16 @@ const ShareMemoryPopup: React.FC<IShareMemoryPopup> = ({
                     <Button
                         variant="contained"
                         color="primary"
-                        startIcon={<ShareSharpIcon />}
+                        startIcon={<ShareSharpIcon/>}
                     >
-                        Share
+                        {t('shareMemory.buttonShare')}
                     </Button>
                 }
                 modal
             >
                 <div>
                     <Typography variant="h4">
-                        Share this memory on social media
+                        {t('shareMemory.shareTitle')}
                     </Typography>
                     <Divider />
 

@@ -130,19 +130,19 @@ const MemoryDetails: React.FC<IMemoryDetails> = ({
                 <Divider variant="fullWidth" component="li" />
                 <ListItem>
                     <Grid container justify="center" spacing={2}>
+                        {/*<Grid item>*/}
+                        {/*    <MuiThemeProvider theme={redTheme}>*/}
+                        {/*        <Button*/}
+                        {/*            variant="contained"*/}
+                        {/*            color="primary"*/}
+                        {/*            startIcon={<FavoriteSharpIcon />}*/}
+                        {/*        >*/}
+                        {/*            Favorite*/}
+                        {/*        </Button>*/}
+                        {/*    </MuiThemeProvider>*/}
+                        {/*</Grid>*/}
                         <Grid item>
-                            <MuiThemeProvider theme={redTheme}>
-                                <Button
-                                    variant="contained"
-                                    color="primary"
-                                    startIcon={<FavoriteSharpIcon />}
-                                >
-                                    Favorite
-                                </Button>
-                            </MuiThemeProvider>
-                        </Grid>
-                        <Grid item>
-                            <ShareMemoryPopup shareMemoryUrl={shareUrl} shareMemoryTitle={shareTitle} />
+                            <ShareMemoryPopup t={t} shareMemoryUrl={shareUrl} shareMemoryTitle={shareTitle} />
                         </Grid>
                     </Grid>
                     <ReportDialog memory={selectedMemory} />

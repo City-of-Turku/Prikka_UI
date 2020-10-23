@@ -5,6 +5,11 @@
     "addNewMemoryComment": "Lägg till ett minne från \"Lägg till minnen\" knappen.",
     "buttonEdit": "Ändra",
 
+    "shareMemory": {
+        "buttonShare": "Dela",
+        "shareTitle": "Dela minnet i sociala medier"
+    },
+
     "deleteDialog": {
         "buttonDelete": "Radera",
         "deleteTitle": "Radera ett minne",

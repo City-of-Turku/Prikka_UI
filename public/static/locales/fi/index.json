@@ -6,5 +6,10 @@
     "noMemoriesFoundDescription": "Ole ensimmäinen joka lisää muiston tällä teemalla!",
     "category": "Teema",
     "alternativeAll": "Kaikki",
-    "anonymous": "Anonyymi"
+    "anonymous": "Anonyymi",
+
+    "shareMemory": {
+        "buttonShare": "Jaa",
+        "shareTitle": "Jaa muisto sosiaalisessa mediassa"
+    }
 }
