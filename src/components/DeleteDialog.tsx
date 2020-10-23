@@ -38,9 +38,11 @@ const DeleteDialog: React.FC<IDeleteDialog> = ({
     };
 
     const handleSubmit = () => {
-        if (confirmMessage === 'Yes' || confirmMessage === 'Kyllä' || confirmMessage === "Ja") {
+        if (confirmMessage.toLowerCase() === 'yes'
+            || confirmMessage.toLowerCase() === 'kyllä'
+            || confirmMessage.toLowerCase() === 'kylla'
+            || confirmMessage.toLowerCase() === "ja") {
             handleDelete();
-
             handleClose();
         } else {
             snackbarContext.displayWarningSnackbar(
