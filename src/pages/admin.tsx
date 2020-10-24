@@ -222,9 +222,13 @@ const Admin: NextPage<IAdmin & any> = ({
         });
         setCategoryDescription('');
     };
-    const handleCategoryDeleteSubmit = () => {
+
+    const handleCategoryDeleteSubmit = (
+        index: number,
+    ) => {
+        const deleteCategory: Category = categories[index];
         apis.admin
-            .adminDeleteCategoryById(categoryUpdatedId)
+            .adminDeleteCategoryById(deleteCategory.id)
             .then((res: AxiosResponse) => {
                 snackbarContext.displaySuccessSnackbar('Category deleted');
                 getAllCategories();
@@ -401,7 +405,7 @@ const Admin: NextPage<IAdmin & any> = ({
                     <TableCell>{category['descriptionFI']}</TableCell>
                     <TableCell style={{ width:'100px'}}>
                         <EditRounded  onClick={(event) => handleCategoryListItemClick(event, index)} style={{ marginRight: '10px', fontSize: '1.3rem', cursor: 'pointer' }}/>
-                        <DeleteRounded onClick={(event) => handleCategoryDeleteSubmit()} style={{ fontSize: '1.3rem', cursor: 'pointer' }}/>
+                        <DeleteRounded onClick={(event) => handleCategoryDeleteSubmit(index)} style={{ fontSize: '1.3rem', cursor: 'pointer' }}/>
                         {/* <DeleteDialog
                         t={t}
                         handleDelete={handleCategoryDeleteSubmit}
