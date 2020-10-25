@@ -403,6 +403,7 @@ const Admin: NextPage<IAdmin & any> = ({
                     <TableCell>{category['nameSV']}</TableCell>
                     <TableCell>{category['nameEN']}</TableCell>
                     <TableCell>{category['descriptionFI']}</TableCell>
+                    <TableCell>{category['memoryCount']}</TableCell>
                     <TableCell style={{ width:'100px'}}>
                         <EditRounded  onClick={(event) => handleCategoryListItemClick(event, index)} style={{ marginRight: '10px', fontSize: '1.3rem', cursor: 'pointer' }}/>
                         <DeleteRounded onClick={(event) => handleCategoryDeleteSubmit(index)} style={{ fontSize: '1.3rem', cursor: 'pointer' }}/>
@@ -432,6 +433,7 @@ const Admin: NextPage<IAdmin & any> = ({
                                         <StyledTableCell>{t('categoryTable.headerSV')}</StyledTableCell>
                                         <StyledTableCell>{t('categoryTable.headerEN')}</StyledTableCell>
                                         <StyledTableCell>{t('categoryTable.description')}</StyledTableCell>
+                                        <StyledTableCell>{t('categoryTable.amount')}</StyledTableCell>
                                     </TableHead>
                                     <TableBody>
                                         {categories

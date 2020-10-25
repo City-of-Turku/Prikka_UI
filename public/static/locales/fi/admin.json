@@ -28,7 +28,8 @@
         "headerFI": "Nimi (Fi)",
         "headerSV": "Nimi (Sv)",
         "headerEN": "Nimi (En)",
-        "description": "Kuvaus"
+        "description": "Kuvaus",
+        "amount": "Muistot (kpl)"
     },
     "deleteDialog": {
         "buttonDelete": "Poista valittu teemaa",
