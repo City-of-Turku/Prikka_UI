@@ -3,8 +3,7 @@
         "home": "Homepage",
         "memories": "My Memories",
         "about": "About Us",
-        "campaign": "Campaigns",
-        "subjects": "Subjects",
+        "campaigns": "Campaigns",
         "addmemory": "Add Memory",
         "login": "Login",
         "logout": "Logout"
@@ -16,7 +15,6 @@
         "reportedmemories": "Reported memories",
         "configurations": "Configurations",
         "campaigns": "Campaigns",
-        "subjects": "Subjects",
         "settings": "User settings",
         "login": "Login",
         "logout": "LogOut"

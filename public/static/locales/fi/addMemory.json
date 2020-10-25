@@ -5,7 +5,7 @@
     "warning":"Varoitus: Et ole kirjautunut sisään, muistosi tullaan julkaisemaan \"Nimettömänä\"",
     "info_title": "Tiedot",
     "title_PH": "Otsikko",
-    "category_PH": "Teema",
+    "category_PH": "Aihe",
     "description_PH": "Kuvaus",
     "photographer_PH": "Kuvaaja",
     "whenIsPhotoTaken_PH": "Koska kuva on otettu?",
@@ -18,7 +18,7 @@
     "success": "Muisto luotu",
     "image_info": "Koko maksimissaan 10MB",
     "upload_button_text": "Lataa kuva",
-    "category": "Teema",
+    "category": "Aihe",
     "alternativeAll": "Kaikki"
 
 }

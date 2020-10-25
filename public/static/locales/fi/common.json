@@ -3,8 +3,7 @@
         "home": "Etusivu",
         "memories": "My Memories",
         "about": "Tietoja palvelusta",
-        "campaign": "Kampanjat",
-        "subjects": "Aiheet",
+        "campaigns": "Aiheet",
         "addmemory": "Lisää Muisto",
         "login": "Kirjaudu",
         "logout": "kirjaudu ulos"
@@ -14,8 +13,7 @@
         "mymemories": "Muistoni",
         "reportedmemories": "Raportoidut muistot",
         "configurations": "Ylläpito",
-        "campaigns": "Kampanjat",
-        "subjects": "Aiheet",
+        "campaigns": "Aiheet",
         "settings": "Käyttäjäasetukset",
         "login": "Kirjaudu",
         "logout": "Kirjaudu ulos"

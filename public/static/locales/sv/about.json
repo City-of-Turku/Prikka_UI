@@ -8,13 +8,12 @@
     },
     "how": {
         "title": "Hur ska jag göra?",
-        "p1": "Logga in med din e-post eller med ditt Facebook/Goohle-konto",
+        "p1": "Logga in",
         "p2": "Klicka på knappen \"lagg till minne?\" för att skapa ett minne",
         "p3": "Skriv din berättelse, lägg till en rubrik",
-        "p4": "Om du vill kan du förknippa ditt minne till ett tema",
-        "p5": "Om du vill kan du lägga till en bild som har med minnet att göra",
-        "p6": "Markera på kartan platsen som är relaterad till minnet",
-        "p7": "Publicera minnet"
+        "p4": "Om du vill kan du lägga till en bild som har med minnet att göra",
+        "p5": "Markera på kartan platsen som är relaterad till minnet",
+        "p6": "Publicera minnet"
     },
     "notice": {
         "title":"Vänligen beakta att:",
@@ -31,7 +30,7 @@
     "who": {
         "title": "Mer information om oss",
         "p1": "Åbo museicentral",
-        "p2": " ansvarar för Åbo stads kultur-, konst- och naturhistoriska museiverksamhet. Vi skapar och upprätthåller föremåls- och konstsamlingar samt främjar bevarandet av kultumiljön. Museicentralen förmedlar kulturarv och visuell kultur: forskninigsarbete och informationsutdelning genom utställningar och publikationer utgör grunden för museiverksamheten."
+        "p2": " ansvarar för Åbo stads kultur-, konst- och naturhistoriska museiverksamhet. Vi skapar och upprätthåller föremåls- och konstsamlingar samt främjar bevarandet av kultumiljön. Museicentralen förmedlar kulturarv och visuell kultur: forskningsarbete och informationsutdelning genom utställningar och publikationer utgör grunden för museiverksamheten."
     },
     "rights": {
         "title": "Rättigheter till sparat material",
@@ -44,6 +43,6 @@
     "what": {
         "title": "Vilka slags minnen kan jag lägga till på webbplatsen?",
         "p1": "Du kan lägga till vilket som helst personligt minne som har med Åbo att göra och klistra in det vid händelsplatsen. På webbplatsen kan du också dela intressanta stadshistorier som du upplevt eller hört..",
-        "p2": "Allt material som sparats pä webbplatsen prikka.fi görs till en del av Museicentralens arkivsamling. Geonom att spara material godkänner du dess användning för forskning och framförande enligt CC BY 4.0."
+        "p2": "Material som sparats pä webbplatsen prikka.fi görs till en del av Museicentralens arkivsamling. Geonom att spara material godkänner du dess användning för forskning och framförande enligt CC BY 4.0."
     }
 }

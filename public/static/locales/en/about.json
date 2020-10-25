@@ -8,17 +8,16 @@
     },
     "how": {
         "title": "How to do it",
-        "p1": "Log in with your e-mail or your Facebook/Google credentials.",
-        "p2": "Click on the \"Add memory\" button in order to create a memory.",
-        "p3": "Write your story and add a headline.",
-        "p4": "You can link your memory to a topic if you like",
-        "p5": "You can add one photo if you like",
-        "p6": "In the map, mark the place where your memory took place",
-        "p7": "Publish your memory."
+        "p1": "Log in",
+        "p2": "Click on the \"Add memory\" button in order to create a memory",
+        "p3": "Write your story and add a headline",
+        "p4": "You can add one photo if you like",
+        "p5": "In the map, mark the place where your memory took place",
+        "p6": "Publish your memory."
     },
     "notice": {
         "title": "Please note that:",
-        "p1": "You must respect the privacy of other persons. If your memory involves other people, do not share their whole names but use nicknames or first names instead. As an exception tothis rule, it is permitted to mention the whole names of public figures.",
+        "p1": "You must respect the privacy of other persons. If your memory involves other people, do not share their whole names but use nicknames or first names instead. As an exception to this rule, it is permitted to mention the whole names of public figures.",
         "p2": "If you add a photo, make sure that you have right to publish the photo.",
         "p3": "Turku Museum Centre has the right to remove any material that has been reported as inappropriate."
     },
@@ -31,7 +30,7 @@
     "who": {
         "title": "Further information about us",
         "p1": "Turku Museum Centre",
-        "p2": " is in charge of the City of Turku's culture, art and natural history museum operations. It creates and mainttains collections of objects and artwork and promote the conservation of the local cultural environment. Turku Museum Centre transmits cultural heritage and visual culture: research and sharing of information through expositions and publications forms the foundation of the museum operations."
+        "p2": " is in charge of the City of Turku's culture, art and natural history museum operations. It creates and maintains collections of objects and artwork and promote the conservation of the local cultural environment. Turku Museum Centre transmits cultural heritage and visual culture: research and sharing of information through expositions and publications forms the foundation of the museum operations."
     },
     "rights": {
         "title": "Rights for the stored material",
@@ -44,6 +43,6 @@
     "what": {
         "title": "What memories can you add to the website?",
         "p1": "You can add any personal memories related to Turku and connect them to the location in which they or an event has taken place. You can also use the website for sharing your experiences and interesting stories about the city.",
-        "p2": "All material stored on the prikka.fi website will be added to the archive collections of Museum Centre. By storing your material, you consent to the utilisation of your material for research and presentation purposes according to the CC by 4.0."
+        "p2": "Material stored on the prikka.fi website will be added to the archive collections of Museum Centre. By storing your material, you consent to the utilisation of your material for research and presentation purposes according to the CC by 4.0."
     }
 }

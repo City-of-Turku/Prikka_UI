@@ -85,11 +85,6 @@ const About: NextPage<any> = ({ t }) => {
                             {t('how.p6')}
                         </Typography>
                     </li>
-                    <li>
-                        <Typography variant="body1" gutterBottom>
-                            {t('how.p7')}
-                        </Typography>
-                    </li>
                 </ul>
                 <Notice/>
             </Paper>

@@ -8,13 +8,12 @@
     },
     "how": {
         "title": "Kuinka toimia",
-        "p1": "Kirjaudu sisään sähköpostilla tai Facebook/Google-tunnuksilla",
+        "p1": "Kirjaudu sisään",
         "p2": "Klikkaa \"Lisää muisto\" -painiketta luodaksesi muiston",
         "p3": "Kirjoita tarinasi, lisää otsikko",
-        "p4": "Halutessasi liitä tarinasi teemaan",
-        "p5": "Halutessasi lisää yksi muistoon liittyvä kuva",
-        "p6": "Merkitse kartalle paikka, johon muisto liittyy ",
-        "p7": "Julkaise muisto"
+        "p4": "Halutessasi lisää yksi muistoon liittyvä kuva",
+        "p5": "Merkitse kartalle paikka, johon muisto liittyy ",
+        "p6": "Julkaise muisto"
     },
     "notice": {
         "title": "Otathan huomioon että:",
@@ -43,7 +42,7 @@
     },
     "what": {
         "title": "Minkälaisia muistoja voit lisätä sivustolle?",
-        "p1": "Voit lisätä sivustolle minkä tahansa Turkuun liittyvän henkilökohtaisen muistosi ja kiinnnittää sen tapahtumapaikkaansa. Voit myös jakaa sivustolla kokoemasi tai kuulemasi mielenkiintoiset kaupunitarinat.",
-        "p2": "Kaikki prikka.fi-verkkosivustolle talletettu materiaali liitetään osaksi Museokeskuksen arkistokokelmaa. Tallentamalla materiaalia hyväksyt sen tutkimus- ja esityskäytön sekä muun käytön CC by 4.0 mukaisesti."
+        "p1": "Voit lisätä sivustolle minkä tahansa Turkuun liittyvän henkilökohtaisen muistosi ja kiinnittää sen tapahtumapaikkaansa. Voit myös jakaa sivustolla kokemasi tai kuulemasi mielenkiintoiset kaupunkitarinat.",
+        "p2": "prikka.fi-verkkosivustolle talletettu materiaali liitetään osaksi Museokeskuksen arkistokokelmaa. Tallentamalla materiaalia hyväksyt sen tutkimus- ja esityskäytön sekä muun käytön CC by 4.0 mukaisesti."
     }
 }

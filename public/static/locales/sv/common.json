@@ -3,8 +3,7 @@
         "home": "Startsida",
         "memories": "Mina minnen",
         "about": "Info om tjänsten",
-        "campaign": "Kampanjer",
-        "subjects": "Teman",
+        "campaigns": "Kampanjer",
         "addmemory": "Lägg till minnen",
         "login": "Logga in",
         "logout": "Logga ut"
@@ -15,7 +14,6 @@
         "reportedmemories": "Rapporterade minnen",
         "configurations": "Konfigurationer",
         "campaigns": "Kampanjer",
-        "subjects": "Teman",
         "settings": "Användar inställningar",
         "login": "Logga in",
         "logout": "Logga ut"
