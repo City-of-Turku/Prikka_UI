@@ -33,6 +33,7 @@ import Head from 'next/head';
 import UserTable from "../components/UserTable";
 import {withStyles} from '@material-ui/core/styles';
 import {AddCircleRounded, DeleteRounded, EditRounded} from '@material-ui/icons';
+import {grey} from "@material-ui/core/colors";
 
 
 // --- STYLES ---
@@ -225,24 +226,29 @@ const Admin: NextPage<IAdmin & any> = ({
 
     const handleCategoryDeleteSubmit = (
         index: number,
+        safeToDelete: boolean
     ) => {
-        const deleteCategory: Category = categories[index];
-        apis.admin
-            .adminDeleteCategoryById(deleteCategory.id)
-            .then((res: AxiosResponse) => {
-                snackbarContext.displaySuccessSnackbar('Category deleted');
-                getAllCategories();
-                setCategoryUpdatedId(0);
-                setCategoryName({
-                    nameFI: '',
-                    nameSV: '',
-                    nameEN: ''
+        if(safeToDelete) {
+            const deleteCategory: Category = categories[index];
+            apis.admin
+                .adminDeleteCategoryById(deleteCategory.id)
+                .then((res: AxiosResponse) => {
+                    snackbarContext.displaySuccessSnackbar('Category deleted');
+                    getAllCategories();
+                    setCategoryUpdatedId(0);
+                    setCategoryName({
+                        nameFI: '',
+                        nameSV: '',
+                        nameEN: ''
+                    });
+                    setCategoryDescription('');
+                })
+                .catch((err: AxiosError) => {
+                    snackbarContext.displayErrorSnackbar('Error');
                 });
-                setCategoryDescription('');
-            })
-            .catch((err: AxiosError) => {
-                snackbarContext.displayErrorSnackbar('Error');
-            });
+        } else {
+            snackbarContext.displayErrorSnackbar('Ei saa poistaa, aiheella on tallennetut muistot');
+        }
     };
 
     const generateCategoryDetails = () => {
@@ -375,7 +381,7 @@ const Admin: NextPage<IAdmin & any> = ({
             </Grid>
         )
     };
-   
+
     const handleCategoryListItemClick = (
         event: React.MouseEvent<SVGSVGElement>,
         index: number,
@@ -397,6 +403,8 @@ const Admin: NextPage<IAdmin & any> = ({
 
     const generateCategoryListItems = () => {
         return categories.map((category: Category, index: number) => {
+            const safeToDelete = category['memoryCount'] === 0;
+            console.log(safeToDelete);
             return (
                 <TableRow>
                     <TableCell>{category['nameFI']}</TableCell>
@@ -406,7 +414,9 @@ const Admin: NextPage<IAdmin & any> = ({
                     <TableCell>{category['memoryCount']}</TableCell>
                     <TableCell style={{ width:'100px'}}>
                         <EditRounded  onClick={(event) => handleCategoryListItemClick(event, index)} style={{ marginRight: '10px', fontSize: '1.3rem', cursor: 'pointer' }}/>
-                        <DeleteRounded onClick={(event) => handleCategoryDeleteSubmit(index)} style={{ fontSize: '1.3rem', cursor: 'pointer' }}/>
+                        {safeToDelete ?
+                            <DeleteRounded onClick={(event) => handleCategoryDeleteSubmit(index, safeToDelete)} style={{ fontSize: '1.3rem', cursor: 'pointer' }}/> :
+                            <DeleteRounded onClick={(event) => handleCategoryDeleteSubmit(index, safeToDelete)} style={{ fontSize: '1.3rem', cursor: 'pointer', color: '#ccc'}}/>}
                         {/* <DeleteDialog
                         t={t}
                         handleDelete={handleCategoryDeleteSubmit}
