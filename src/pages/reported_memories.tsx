@@ -97,10 +97,10 @@ const ReportedMemory: NextPage<IReportedMemory & any> = ({
                 const newMemoryList = reportedMemories;
                 newMemoryList.rows.splice(index, 1);
                 setReportedMemories(newMemoryList);
-                snackbarContext.displaySuccessSnackbar('memoryDeleted');
+                snackbarContext.displaySuccessSnackbar('Muisto poistettu');
             })
             .catch((err) => {
-                snackbarContext.displayErrorSnackbar('Error deleting memory');
+                snackbarContext.displayErrorSnackbar('Muiston poistossa tapahtui virhe');
             });
     };
 
@@ -116,10 +116,10 @@ const ReportedMemory: NextPage<IReportedMemory & any> = ({
                 const newMemoryList = reportedMemories;
                 newMemoryList.rows.splice(index, 1);
                 setReportedMemories(newMemoryList);
-                snackbarContext.displaySuccessSnackbar('Memory moved to archive');
+                snackbarContext.displaySuccessSnackbar('Muisto on siirretty arkistoon');
             })
             .catch((err: AxiosError) => {
-                snackbarContext.displayErrorSnackbar('Error');
+                snackbarContext.displayErrorSnackbar('Muiston arkistosiirrossa tapahtui virhe');
             });
     };
 

@@ -233,7 +233,7 @@ const Admin: NextPage<IAdmin & any> = ({
             apis.admin
                 .adminDeleteCategoryById(deleteCategory.id)
                 .then((res: AxiosResponse) => {
-                    snackbarContext.displaySuccessSnackbar('Category deleted');
+                    snackbarContext.displaySuccessSnackbar('Aihe poistettu');
                     getAllCategories();
                     setCategoryUpdatedId(0);
                     setCategoryName({
