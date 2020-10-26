@@ -71,51 +71,62 @@ const CampaignCard: React.FC<ICampaignCard> = ({
     }, []);
 
     const handleCampaignSubmitSave = () => {
-        if (campaign==null){
-            // Create a new campaign
-            const model = {
-                titleFI: campaignTitleFI,
-                titleSV: campaignTitleSV,
-                titleEN: campaignTitleEN,
-                descriptionFI: campaignDescriptionFI,
-                descriptionSV: campaignDescriptionSV,
-                descriptionEN: campaignDescriptionEN,
-                isPublic: campaignIsPublic,
-                categoryId: campaignCategory,
-            };
+        if (campaignCategory === '') {
+            snackbarContext.displayWarningSnackbar(
+                'Valitse aihe valintalistalta!',
+            );
+        } else  if (campaignTitleFI === '') {
+            snackbarContext.displayWarningSnackbar(
+                'Aiheen otsikko suomeksi ei saa olla tyhjä!',
+            );
+        }
+        else {
+            if (campaign==null){
+                // Create a new campaign
+                const model = {
+                    titleFI: campaignTitleFI,
+                    titleSV: campaignTitleSV,
+                    titleEN: campaignTitleEN,
+                    descriptionFI: campaignDescriptionFI,
+                    descriptionSV: campaignDescriptionSV,
+                    descriptionEN: campaignDescriptionEN,
+                    isPublic: campaignIsPublic,
+                    categoryId: campaignCategory,
+                };
 
-            apis.admin
-                .adminCreateCampaign(model)
-                .then((res: AxiosResponse) => {
-                    snackbarContext.displaySuccessSnackbar('Campaign added');
-                    handleRefresch();
-                })
-                .catch((err: AxiosError) => {
-                    snackbarContext.displayErrorSnackbar('Error');
-                });
+                apis.admin
+                    .adminCreateCampaign(model)
+                    .then((res: AxiosResponse) => {
+                        snackbarContext.displaySuccessSnackbar('Aihe on tallennettu');
+                        handleRefresch();
+                    })
+                    .catch((err: AxiosError) => {
+                        snackbarContext.displayErrorSnackbar('Aiheen tallennuksessa tapahtui virhe ');
+                    });
 
-        } else {
-            // Update existing campaign
-            campaign.titleFI=campaignTitleFI;
-            campaign.titleSV=campaignTitleSV;
-            campaign.titleEN=campaignTitleEN;
-            campaign.descriptionFI=campaignDescriptionFI;
-            campaign.descriptionSV=campaignDescriptionSV;
-            campaign.descriptionEN=campaignDescriptionEN;
-            campaign.isPublic=campaignIsPublic;
-            if (campaignCategory!=null){
-                let tmpCategoryId = Number(campaignCategory);
-                campaign.categoryId=tmpCategoryId;
+            } else {
+                // Update existing campaign
+                campaign.titleFI=campaignTitleFI;
+                campaign.titleSV=campaignTitleSV;
+                campaign.titleEN=campaignTitleEN;
+                campaign.descriptionFI=campaignDescriptionFI;
+                campaign.descriptionSV=campaignDescriptionSV;
+                campaign.descriptionEN=campaignDescriptionEN;
+                campaign.isPublic=campaignIsPublic;
+                if (campaignCategory!=null){
+                    let tmpCategoryId = Number(campaignCategory);
+                    campaign.categoryId=tmpCategoryId;
+                }
+                apis.admin
+                    .adminUpdateCampaignById((campaign.id), campaign)
+                    .then((res: AxiosResponse) => {
+                        fetchCampaignById(campaign.id);
+                        snackbarContext.displaySuccessSnackbar('Aihe on päivitetty');
+                    })
+                    .catch((err: AxiosError) => {
+                        snackbarContext.displayErrorSnackbar('Aiheen päivityksessä tapahtui virhe');
+                    });
             }
-            apis.admin
-                .adminUpdateCampaignById((campaign.id), campaign)
-                .then((res: AxiosResponse) => {
-                    fetchCampaignById(campaign.id);
-                    snackbarContext.displaySuccessSnackbar('Campaign updated');
-                })
-                .catch((err: AxiosError) => {
-                    snackbarContext.displayErrorSnackbar('Error');
-                });
         }
     };
 
@@ -135,10 +146,10 @@ const CampaignCard: React.FC<ICampaignCard> = ({
             .adminDeleteCampaignById(campaign.id)
             .then((res: AxiosResponse) => {
                 handleRefresch();
-                snackbarContext.displaySuccessSnackbar('Campaign deleted');
+                snackbarContext.displaySuccessSnackbar('Aihe on poistettu');
             })
             .catch((err: AxiosError) => {
-                snackbarContext.displayErrorSnackbar('Error');
+                snackbarContext.displayErrorSnackbar('Aiheen poistossa tapahtui virhe');
             });
     };
 
@@ -164,7 +175,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                         selectedCategoryId={null}
                         categories={categories}
                         handleCategoryFilterChange={categoryId => setCampaignCategory(categoryId)}
-                        required={false}
+                        required={true}
                         fullWidth={true}
                     />
                 </Grid>
