@@ -48,13 +48,11 @@ const MyMemories: NextPage<IMyMemories & any> = ({ t, categories, isLogged }) =>
         apis.memories
             .deleteMemoryById(memoryId)
             .then((res) => {
-                const newMemories = userMemories;
-                newMemories.rows.splice(index, 1);
-                setUserMemories(newMemories);
-                snackbarContext.displaySuccessSnackbar('memoryDeleted');
+                getUserMemories();
+                snackbarContext.displaySuccessSnackbar('Muisto poistettu');
             })
             .catch((err) => {
-                snackbarContext.displayErrorSnackbar('Error deleting memory');
+                snackbarContext.displayErrorSnackbar('Muiston poistossa tapahtui virhe');
             });
     };
 
