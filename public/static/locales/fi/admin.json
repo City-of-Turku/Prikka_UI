@@ -29,7 +29,7 @@
         "headerSV": "Nimi (Sv)",
         "headerEN": "Nimi (En)",
         "description": "Kuvaus",
-        "amount": "Muistot (kpl)"
+        "amount": "Lisätyt muistot (kpl)"
     },
     "deleteDialog": {
         "buttonDelete": "Poista valittu aihe",

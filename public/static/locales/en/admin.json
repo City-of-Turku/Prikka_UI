@@ -28,7 +28,8 @@
         "headerFI": "Name (Fi)",
         "headerSV": "Name (Sv)",
         "headerEN": "Name (En)",
-        "description": "Description"
+        "description": "Description",
+        "amount": "Added memories (pieces)"
     },
     "deleteDialog": {
         "buttonDelete": "Delete selected topic",

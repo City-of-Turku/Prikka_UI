@@ -28,7 +28,8 @@
         "headerFI": "Namn (Fi)",
         "headerSV": "Namn (Sv)",
         "headerEN": "Namn (En)",
-        "description": "Beskrivning"
+        "description": "Beskrivning",
+        "amount": "Antal minnen"
     },
     "deleteDialog": {
         "buttonDelete": "Radera valt tema",
