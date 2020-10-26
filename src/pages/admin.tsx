@@ -170,7 +170,7 @@ const Admin: NextPage<IAdmin & any> = ({
         apis.admin
             .adminCreateCategory(model)
             .then((res: AxiosResponse) => {
-                snackbarContext.displaySuccessSnackbar('Category added');
+                snackbarContext.displaySuccessSnackbar('Aihe lisätty');
                 getAllCategories();
                 setCategoryName({
                     nameFI: '',
@@ -180,7 +180,7 @@ const Admin: NextPage<IAdmin & any> = ({
                 setCategoryDescription('');
             })
             .catch((err: AxiosError) => {
-                snackbarContext.displayErrorSnackbar('Error');
+                snackbarContext.displayErrorSnackbar('Aiheen lisääminen epäonnistui');
             });
     };
 
@@ -194,11 +194,11 @@ const Admin: NextPage<IAdmin & any> = ({
         apis.admin
             .adminUpdateCategory(categoryUpdatedId,model)
             .then((res: AxiosResponse) => {
-                snackbarContext.displaySuccessSnackbar('Category updated');
+                snackbarContext.displaySuccessSnackbar('Aihe päivitetty');
                 getAllCategories();
             })
             .catch((err: AxiosError) => {
-                snackbarContext.displayErrorSnackbar('Error');
+                snackbarContext.displayErrorSnackbar('Aiheen päivitys epäonnistui');
             });
     };
     const handleCategoryUpdateCancel= () => {
@@ -244,7 +244,7 @@ const Admin: NextPage<IAdmin & any> = ({
                     setCategoryDescription('');
                 })
                 .catch((err: AxiosError) => {
-                    snackbarContext.displayErrorSnackbar('Error');
+                    snackbarContext.displayErrorSnackbar('Aiheen poisto epäonnistui');
                 });
         } else {
             snackbarContext.displayErrorSnackbar('Ei saa poistaa, aiheella on tallennetut muistot');
