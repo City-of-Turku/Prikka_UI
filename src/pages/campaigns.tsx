@@ -52,36 +52,39 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
     const showI18nText = (campaign) => {
         if (i18n.language=='fi')
             return (
-                <TextField
+/*                <TextField
                     variant="outlined"
                     multiline
                     fullWidth={true}
                     rows={10}
                     value={campaign.descriptionFI}
                     disabled={true}
-                ></TextField>
+                ></TextField>*/
+                <p style={{whiteSpace: "pre-line"}}>{campaign.descriptionFI}</p>
             );
         if (i18n.language=='sv')
             return (
-                <TextField
+/*                <TextField
                     variant="outlined"
                     multiline
                     fullWidth={true}
                     rows={10}
                     value={campaign.descriptionSV}
                     disabled={true}
-                ></TextField>
+                ></TextField>*/
+                <p style={{whiteSpace: "pre-line"}}>{campaign.descriptionSV}</p>
             );
         if (i18n.language=='en')
             return (
-                <TextField
+/*                <TextField
                     variant="outlined"
                     multiline
                     fullWidth={true}
                     rows={10}
                     value={campaign.descriptionEN}
                     disabled={true}
-                ></TextField>
+                ></TextField>*/
+                <p style={{whiteSpace: "pre-line"}}>{campaign.descriptionEN}</p>
             );
     };
 
@@ -111,9 +114,7 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
                     <Grid key={index} item xs={12}>
                         <Paper elevation={3} className={classes.paper}>
                             {showI18nHeader(campaign)}
-                            <div style={{ height: '5vh' }} />
                             {showI18nText(campaign)}
-                            <div style={{ height: '5vh' }} />
                             <div>
                                 <Button
                                     variant="contained"
