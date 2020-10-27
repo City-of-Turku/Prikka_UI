@@ -19,8 +19,8 @@ const Footer: React.FC = () => {
     const handleServiceInfoClick = (event: React.MouseEvent<EventTarget>) => {
         Router.push('/service_info');
     };
-    const handleAccessibilityDescriptionClick = (event: React.MouseEvent<EventTarget>) => {
-        Router.push('/accessibility_description');
+    const handleAccessibilityStatementClick = (event: React.MouseEvent<EventTarget>) => {
+        Router.push('/accessibility_statement');
     };
 
 
@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
                     <Typography variant="body1" gutterBottom onClick={handleServiceInfoClick}>
                         Tietoa palvelusta
                     </Typography>
-                    <Typography variant="body1" gutterBottom onClick={handleAccessibilityDescriptionClick}>
+                    <Typography variant="body1" gutterBottom onClick={handleAccessibilityStatementClick}>
                         Saavutettavuusseloste
                     </Typography>
                 </Grid>

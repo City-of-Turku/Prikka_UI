@@ -135,16 +135,17 @@ const ServiceInfo: NextPage<any> = ({ t }) => {
                     <Typography variant="h4" gutterBottom>
                         {t('title')}
                     </Typography>
+                    <div style={{ height: '1vh' }} />
                     <Intro />
-                    <div style={{ height: '4vh' }} />
+                    <div style={{ height: '2vh' }} />
                     <Rights />
-                    <div style={{ height: '4vh' }} />
+                    <div style={{ height: '2vh' }} />
                     <WhatKindOfMemory />
-                    <div style={{ height: '4vh' }} />
+                    <div style={{ height: '2vh' }} />
                     <PageAuthors />
-                    <div style={{ height: '4vh' }} />
+                    <div style={{ height: '2vh' }} />
                     <PersonRegister />
-                    <div style={{ height: '4vh' }} />
+                    <div style={{ height: '2vh' }} />
                     <Feedback />
                 </Paper>
             </Layout>
