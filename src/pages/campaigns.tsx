@@ -52,39 +52,24 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
     const showI18nText = (campaign) => {
         if (i18n.language=='fi')
             return (
-/*                <TextField
-                    variant="outlined"
-                    multiline
-                    fullWidth={true}
-                    rows={10}
-                    value={campaign.descriptionFI}
-                    disabled={true}
-                ></TextField>*/
-                <p style={{whiteSpace: "pre-line"}}>{campaign.descriptionFI}</p>
+                // <p style={{whiteSpace: "pre-line"}}>{campaign.descriptionFI}</p>
+                <Typography variant="body1" gutterBottom style={{whiteSpace: "pre-line"}}>
+                    {campaign.descriptionFI}
+                </Typography>
             );
         if (i18n.language=='sv')
             return (
-/*                <TextField
-                    variant="outlined"
-                    multiline
-                    fullWidth={true}
-                    rows={10}
-                    value={campaign.descriptionSV}
-                    disabled={true}
-                ></TextField>*/
-                <p style={{whiteSpace: "pre-line"}}>{campaign.descriptionSV}</p>
+                // <p style={{whiteSpace: "pre-line"}}>{campaign.descriptionSV}</p>
+                <Typography variant="body1" gutterBottom style={{whiteSpace: "pre-line"}}>
+                    {campaign.descriptionSV}
+                </Typography>
             );
         if (i18n.language=='en')
             return (
-/*                <TextField
-                    variant="outlined"
-                    multiline
-                    fullWidth={true}
-                    rows={10}
-                    value={campaign.descriptionEN}
-                    disabled={true}
-                ></TextField>*/
-                <p style={{whiteSpace: "pre-line"}}>{campaign.descriptionEN}</p>
+                // <p style={{whiteSpace: "pre-line"}}>{campaign.descriptionEN}</p>
+                <Typography variant="body1" gutterBottom style={{whiteSpace: "pre-line"}}>
+                    {campaign.descriptionEN}
+                </Typography>
             );
     };
 
@@ -114,7 +99,9 @@ const CampaignPage: NextPage<ICampaignPage & any> = ({ t, campaigns }) => {
                     <Grid key={index} item xs={12}>
                         <Paper elevation={3} className={classes.paper}>
                             {showI18nHeader(campaign)}
+                            <div style={{ height: '2vh' }} />
                             {showI18nText(campaign)}
+                            <div style={{ height: '2vh' }} />
                             <div>
                                 <Button
                                     variant="contained"
