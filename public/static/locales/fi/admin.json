@@ -46,6 +46,7 @@
         "title": "Aiheet - ylläpito",
         "created": "Luotu",
         "isPublic": "Aihe on julkaistu",
+        "visibleUntilDate": "Näkyvissä asti",
         "titleFI": "Otsikko (FI)",
         "titleSV": "Otsikko (SV)",
         "titleEN": "Otsikko (EN)",

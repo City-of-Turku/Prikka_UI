@@ -46,6 +46,7 @@
         "title": "Kampanjer - underhåll",
         "created": "Skapad",
         "isPublic": "Kampanjen är synlig för alla",
+        "visibleUntilDate": "Synlig fram till",
         "titleFI": "Rubrik (FI)",
         "titleSV": "Rubrik (SV)",
         "titleEN": "Rubrik (EN)",

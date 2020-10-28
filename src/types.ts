@@ -62,6 +62,7 @@ export type Campaign = {
     displayName: string;
     categoryId: number;
     isPublic: boolean;
+    visibleUntilDate: string;
 };
 
 export type Campaigns = {

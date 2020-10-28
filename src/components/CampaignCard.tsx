@@ -2,11 +2,12 @@
  * Component used to display campaign cards in admin campaign page
  */
 
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, Fragment} from 'react';
 import {Campaign, Categories} from '../types';
 import Moment from 'react-moment';
 import {useSnackbarContext} from "../contexts/SnackbarContext";
 import {Button, Grid, makeStyles, Paper, TableCell, TextField, Typography} from '@material-ui/core';
+import { KeyboardDatePicker } from "@material-ui/pickers";
 import theme from "../theme";
 import {apis} from "../services/apis";
 import {AxiosError, AxiosResponse} from "axios";
@@ -53,6 +54,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
     const [campaignDescriptionEN, setCampaignDescriptionEN] = useState<string>('');
     const [campaignCategory, setCampaignCategory] = useState<string>('');
     const [campaignIsPublic, setCampaignIsPublic] = useState<boolean>(false);
+    const [campaignVisibleUntilDate, setCampaignVisibleUntilDate] = useState<string>('');
 
     useEffect(() => {
         if (campaign!=null) {
@@ -67,6 +69,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                 setCampaignCategory(tmpCategoryId.toString());
             }
             setCampaignIsPublic(campaign.isPublic);
+            setCampaignVisibleUntilDate(campaign.visibleUntilDate);
         }
     }, []);
 
@@ -91,6 +94,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                     descriptionSV: campaignDescriptionSV,
                     descriptionEN: campaignDescriptionEN,
                     isPublic: campaignIsPublic,
+                    visibleUntilDate: campaignVisibleUntilDate,
                     categoryId: campaignCategory,
                 };
 
@@ -113,6 +117,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                 campaign.descriptionSV=campaignDescriptionSV;
                 campaign.descriptionEN=campaignDescriptionEN;
                 campaign.isPublic=campaignIsPublic;
+                campaign.visibleUntilDate=campaignVisibleUntilDate;
                 if (campaignCategory!=null){
                     let tmpCategoryId = Number(campaignCategory);
                     campaign.categoryId=tmpCategoryId;
@@ -157,7 +162,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
         <Paper elevation={3} className={classes.paper}>
 
             <Grid container item xs={12} spacing={3}>
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                     <Typography
                         variant="body2"
                         color="textSecondary"
@@ -169,7 +174,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                         ):null}
                     </Typography>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={5}>
                     <CategorySelect
                         t={t}
                         selectedCategoryId={null}
@@ -189,6 +194,22 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                                   checked={campaignIsPublic}
                                   onChange={event => setCampaignIsPublic(event.target.checked)}/>
                         {t('adminCampaign.isPublic')}
+                    </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <Typography
+                        variant="body2"
+                        color="textSecondary"
+                        component="p"
+                    >
+                        <TextField
+                            id="date"
+                            label={t('adminCampaign.visibleUntilDate')}
+                            type="date"
+                            value={campaignVisibleUntilDate}
+                            InputLabelProps={{shrink:true}}
+                            title="Valid until date"
+                            onChange={event => setCampaignVisibleUntilDate(event.target.value)}/>
                     </Typography>
                 </Grid>
             </Grid>

@@ -46,6 +46,7 @@
         "title": "Campaigns - maintenance",
         "created": "Created",
         "isPublic": "The campaign is public",
+        "visibleUntilDate": "Visible until date",
         "titleFI": "Header (FI)",
         "titleSV": "Header (SV)",
         "titleEN": "Header (EN)",
