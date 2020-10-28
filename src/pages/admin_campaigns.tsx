@@ -102,6 +102,7 @@ const AdminCampaign: NextPage<IAdminCampaign & any> = ({
                         <CampaignCard
                             t={t}
                             campaign={campaign}
+                            selectedCategoryId={campaign.categoryId.toString()}
                             categories={categories}
                             controls={true}
                             handleRefresch={() => getAllCampaigns()}
@@ -139,6 +140,7 @@ const AdminCampaign: NextPage<IAdminCampaign & any> = ({
                                 <CampaignCard
                                     t={t}
                                     campaign={null}
+                                    selectedCategoryId={null}
                                     categories={categories}
                                     controls={true}
                                     handleRefresch={() => getAllCampaigns()}

@@ -28,6 +28,7 @@ const useStyles = makeStyles({
 interface ICampaignCard {
     t(key, opts?): Function;
     campaign: Campaign;
+    selectedCategoryId: string;
     categories: Categories;
     controls?: boolean;
     handleRefresch?(): void;
@@ -36,6 +37,7 @@ interface ICampaignCard {
 const CampaignCard: React.FC<ICampaignCard> = ({
     t,
     campaign,
+    selectedCategoryId,
     categories,
     controls,
     handleRefresch
@@ -52,7 +54,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
     const [campaignDescriptionFI, setCampaignDescriptionFI] = useState<string>('');
     const [campaignDescriptionSV, setCampaignDescriptionSV] = useState<string>('');
     const [campaignDescriptionEN, setCampaignDescriptionEN] = useState<string>('');
-    const [campaignCategory, setCampaignCategory] = useState<string>('');
+    const [campaignCategory, setCampaignCategory] = useState<string>(selectedCategoryId);
     const [campaignIsPublic, setCampaignIsPublic] = useState<boolean>(false);
     const [campaignVisibleUntilDate, setCampaignVisibleUntilDate] = useState<string>('');
 
@@ -64,10 +66,6 @@ const CampaignCard: React.FC<ICampaignCard> = ({
             setCampaignDescriptionFI(campaign.descriptionFI);
             setCampaignDescriptionSV(campaign.descriptionSV);
             setCampaignDescriptionEN(campaign.descriptionEN);
-            let tmpCategoryId = campaign.categoryId;
-            if (tmpCategoryId!=null){
-                setCampaignCategory(tmpCategoryId.toString());
-            }
             setCampaignIsPublic(campaign.isPublic);
             setCampaignVisibleUntilDate(campaign.visibleUntilDate);
         }
@@ -118,10 +116,8 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                 campaign.descriptionEN=campaignDescriptionEN;
                 campaign.isPublic=campaignIsPublic;
                 campaign.visibleUntilDate=campaignVisibleUntilDate;
-                if (campaignCategory!=null){
-                    let tmpCategoryId = Number(campaignCategory);
-                    campaign.categoryId=tmpCategoryId;
-                }
+                let tmpCategoryId = Number(campaignCategory);
+                campaign.categoryId=tmpCategoryId;
                 apis.admin
                     .adminUpdateCampaignById((campaign.id), campaign)
                     .then((res: AxiosResponse) => {
@@ -177,7 +173,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                 <Grid item xs={5}>
                     <CategorySelect
                         t={t}
-                        selectedCategoryId={null}
+                        selectedCategoryId={campaignCategory}
                         categories={categories}
                         handleCategoryFilterChange={categoryId => setCampaignCategory(categoryId)}
                         required={true}
