@@ -7,12 +7,13 @@ import {Campaign, Categories} from '../types';
 import Moment from 'react-moment';
 import {useSnackbarContext} from "../contexts/SnackbarContext";
 import {Button, Grid, makeStyles, Paper, TableCell, TextField, Typography} from '@material-ui/core';
-import { KeyboardDatePicker } from "@material-ui/pickers";
+import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import theme from "../theme";
 import {apis} from "../services/apis";
 import {AxiosError, AxiosResponse} from "axios";
 import Checkbox from "@material-ui/core/Checkbox";
 import CategorySelect from './CategorySelect';
+import DateFnsUtils from '@date-io/date-fns';
 
 
 const useStyles = makeStyles({
@@ -198,14 +199,23 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                         color="textSecondary"
                         component="p"
                     >
-                        <TextField
+{/*                        <TextField
                             id="date"
                             label={t('adminCampaign.visibleUntilDate')}
                             type="date"
                             value={campaignVisibleUntilDate}
                             InputLabelProps={{shrink:true}}
                             title="Valid until date"
-                            onChange={event => setCampaignVisibleUntilDate(event.target.value)}/>
+                            onChange={event => setCampaignVisibleUntilDate(event.target.value)}
+                        />*/}
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                            <DatePicker
+                                label={t('adminCampaign.visibleUntilDate')}
+                                value={campaignVisibleUntilDate}
+                                disablePast
+                                onChange={setCampaignVisibleUntilDate}
+                            />
+                        </MuiPickersUtilsProvider>
                     </Typography>
                 </Grid>
             </Grid>
