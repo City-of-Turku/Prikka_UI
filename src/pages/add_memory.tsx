@@ -10,7 +10,7 @@
 import React, {useEffect, useState} from 'react';
 import Layout from '../components/Layout';
 import {apis} from '../services/apis';
-import {withTranslation} from '../i18n';
+import {i18n, withTranslation} from '../i18n';
 import {Box, Button, Grid, Paper, TextField, Typography,} from '@material-ui/core';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import PinpointMap from '../components/PinpointMap';
@@ -18,7 +18,7 @@ import {AxiosError, AxiosResponse} from 'axios';
 import {useSnackbarContext} from '../contexts/SnackbarContext';
 import Router from 'next/router';
 import CategorySelect from '../components/CategorySelect';
-import {Categories} from '../types';
+import {Categories, Category} from '../types';
 import Head from 'next/head';
 import {NextPage} from 'next';
 import CardMedia from "@material-ui/core/CardMedia";
@@ -124,10 +124,10 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
             snackbarContext.displayWarningSnackbar(
                 'Please enter a title for your memory!',
             );
-        } else if (categoryId === '') {
-            snackbarContext.displayWarningSnackbar(
-                'Please select a category for your memory!',
-            );
+//        } else if (categoryId === '') {
+//            snackbarContext.displayWarningSnackbar(
+//                'Please select a category for your memory!',
+//            );
         } else if (description === '') {
             snackbarContext.displayWarningSnackbar(
                 'Please enter a description for your memory!',
@@ -198,6 +198,36 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
         setWhereIsPhotoTaken(event.target.value);
     };
 
+/*    const getCategoryName2 = () => (
+        categories.find((category: Category, index: number) => {
+            if (category.id === selectedCategoryId) {
+                return (
+                    category['name' + i18n.language.toUpperCase()].replace(/(^\s*,)|(,\s*$)/g, '') +2
+                )
+            }
+        })
+    );
+*/
+    const getCategoryName = () => (
+        categories.map((category: Category, index: number) => {
+            if (category.id == selectedCategoryId) {
+                return (
+                    category['name' + i18n.language.toUpperCase()]
+                )
+            }
+        })
+    );
+
+/*    const getCategoryName = () => (
+        categories.map((category: Category, index: number) => {
+            if (category.id == selectedCategoryId) {
+                return (
+                    category['name' + i18n.language.toUpperCase()].replace(/(^\s*,)|(,\s*$)/g, '')
+                )
+            }
+        })
+    );
+*/
     const displayPhotoMetaInformation = () => {
         if (fileUrl){
         return (
@@ -208,7 +238,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
                     <TextField
                         className={classes.itemDoubble}
                         required
-                        id="outlined-basic"
+                        id="photographer"
                         label={t("photographer_PH")}
                         variant="outlined"
                         size="small"
@@ -228,7 +258,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
             <TextField
             className={classes.item}
             required
-            id="outlined-basic"
+            id="whenIsPhotoTaken"
             label={t("whenIsPhotoTaken_PH")}
             variant="outlined"
             size="small"
@@ -239,7 +269,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
             <TextField
                 className={classes.item}
                 required={false}
-                id="outlined-basic"
+                id="whereIsPhotoTaken"
                 label={t("whereIsPhotoTaken_PH")}
                 variant="outlined"
                 size="small"
@@ -251,12 +281,6 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
         )}
     };
 
-/*    useEffect(() => {
-        if (selectedCategoryId!=null) {
-            setCategoryId(selectedCategoryId);
-        }
-    }, []);
-*/
     return (
         <div>
             <Head>
@@ -313,7 +337,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
                                         <TextField
                                             className={classes.item}
                                             required
-                                            id="outlined-basic"
+                                            id="title"
                                             label={t("title_PH")}
                                             variant="outlined"
                                             size="small"
@@ -321,25 +345,18 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
                                             value={title}
                                             onChange={handleTitleChange}
                                         />
-                                        <CategorySelect
-                                            t={t}
-                                            selectedCategoryId={selectedCategoryId}
-                                            categories={categories}
-                                            handleCategoryFilterChange={
-                                                handleCategoryFilterChange
-                                            }
-                                            required={true}
-                                            fullWidth={true}
-                                        />
-                                        <div
-                                            style={{
-                                                margin: '0px',
-                                                padding: '0px',
-                                                paddingBottom: '16px',
-                                            }}
-                                        ></div>
                                         <TextField
-                                            id="outlined-multiline"
+                                            className={classes.item}
+                                            required
+                                            id="category"
+                                            label={t("category")}
+                                            variant="outlined"
+                                            size="small"
+                                            fullWidth
+                                            value={getCategoryName()}
+                                        />
+                                        <TextField
+                                            id="description"
                                             label={t("description_PH")}
                                             multiline
                                             rows="8"
