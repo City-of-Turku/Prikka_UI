@@ -198,36 +198,10 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
         setWhereIsPhotoTaken(event.target.value);
     };
 
-/*    const getCategoryName2 = () => (
-        categories.find((category: Category, index: number) => {
-            if (category.id === selectedCategoryId) {
-                return (
-                    category['name' + i18n.language.toUpperCase()].replace(/(^\s*,)|(,\s*$)/g, '') +2
-                )
-            }
-        })
-    );
-*/
     const getCategoryName = () => (
-        categories.map((category: Category, index: number) => {
-            if (category.id == selectedCategoryId) {
-                return (
-                    category['name' + i18n.language.toUpperCase()]
-                )
-            }
-        })
+        categories.find((category: Category, index: number) => category.id == selectedCategoryId)['name' + i18n.language.toUpperCase()]
     );
 
-/*    const getCategoryName = () => (
-        categories.map((category: Category, index: number) => {
-            if (category.id == selectedCategoryId) {
-                return (
-                    category['name' + i18n.language.toUpperCase()].replace(/(^\s*,)|(,\s*$)/g, '')
-                )
-            }
-        })
-    );
-*/
     const displayPhotoMetaInformation = () => {
         if (fileUrl){
         return (

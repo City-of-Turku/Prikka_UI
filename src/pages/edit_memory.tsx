@@ -203,35 +203,9 @@ const EditMemory: NextPage<IEditMemory & any> = ({ t, memory, selectedCategoryId
     };
 
     const getCategoryName = () => (
-        categories.map((category: Category, index: number) => {
-            if (category.id === selectedCategoryId) {
-                return (
-                    category['name' + i18n.language.toUpperCase()] + "4"
-                )
-            }
-        })
+        categories.find((category: Category, index: number) => category.id == selectedCategoryId)['name' + i18n.language.toUpperCase()]
     );
 
-/*    const getCategoryName2 = () => (
-        categories.map((category: Category, index: number) => {
-            if (category.id === selectedCategoryId) {
-                return (
-                    category['name' + i18n.language.toUpperCase()].replace(/(^\s*,)|(,\s*$)/g, '')
-                )
-            }
-        })
-    );
-
-    const getCategoryName12 = () => (
-        categories.find((category: Category, index: number) => {
-            if (category.id === selectedCategoryId) {
-                return (
-                    (category['name' + i18n.language.toUpperCase()]).replace(',','')
-                )
-            }
-        })
-    );
-*/
     const displayPhotoMetaInformation = () => {
         if (fileUrl){
             return (
