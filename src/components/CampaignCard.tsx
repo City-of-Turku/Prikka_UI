@@ -6,7 +6,7 @@ import React, {useEffect, useState, Fragment} from 'react';
 import {Campaign, Categories} from '../types';
 import Moment from 'react-moment';
 import {useSnackbarContext} from "../contexts/SnackbarContext";
-import {Button, Grid, makeStyles, Paper, TableCell, TextField, Typography} from '@material-ui/core';
+import {Button, Grid, makeStyles, Paper, TableCell, TextField, Typography, IconButton} from '@material-ui/core';
 import { DatePicker, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import theme from "../theme";
 import {apis} from "../services/apis";
@@ -14,6 +14,7 @@ import {AxiosError, AxiosResponse} from "axios";
 import Checkbox from "@material-ui/core/Checkbox";
 import CategorySelect from './CategorySelect';
 import DateFnsUtils from '@date-io/date-fns';
+import ClearIcon from "@material-ui/icons/Clear";
 
 
 const useStyles = makeStyles({
@@ -199,22 +200,25 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                         color="textSecondary"
                         component="p"
                     >
-{/*                        <TextField
-                            id="date"
-                            label={t('adminCampaign.visibleUntilDate')}
-                            type="date"
-                            value={campaignVisibleUntilDate}
-                            InputLabelProps={{shrink:true}}
-                            title="Valid until date"
-                            onChange={event => setCampaignVisibleUntilDate(event.target.value)}
-                        />*/}
                         <MuiPickersUtilsProvider utils={DateFnsUtils}>
                             <DatePicker
                                 label={t('adminCampaign.visibleUntilDate')}
                                 value={campaignVisibleUntilDate}
-                                disablePast
+                                //disablePast
                                 onChange={setCampaignVisibleUntilDate}
+                                format={"dd.MM.yyyy"}
+                                style={{ width: "125px" }}
                             />
+                            <IconButton
+                                // style={{ padding: 0 }}
+                                edge="end"
+                                size="small"
+                                disabled={!campaignVisibleUntilDate}
+                                onClick={() => setCampaignVisibleUntilDate(null)}
+                                style={{ alignContent: "end" }}
+                            >
+                                <ClearIcon />
+                            </IconButton>
                         </MuiPickersUtilsProvider>
                     </Typography>
                 </Grid>
