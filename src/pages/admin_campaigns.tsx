@@ -107,6 +107,7 @@ const AdminCampaign: NextPage<IAdminCampaign & any> = ({
                             controls={true}
                             handleRefresch={() => getAllCampaigns()}
                         />
+                        <div style={{ height: '4vh' }} />
                     </Grid>
                 );
             });
@@ -133,7 +134,7 @@ const AdminCampaign: NextPage<IAdminCampaign & any> = ({
                             {displayCampaigns()}
                         </Grid>
 
-                        <div style={{ height: '5vh' }} />
+                        <div style={{ height: '1vh' }} />
 
                         {newCampaign ? (
                             <Grid item xs={12}>
