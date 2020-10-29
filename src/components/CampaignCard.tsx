@@ -205,7 +205,7 @@ const CampaignCard: React.FC<ICampaignCard> = ({
                                 label={t('adminCampaign.visibleUntilDate')}
                                 value={campaignVisibleUntilDate}
                                 //disablePast
-                                onChange={setCampaignVisibleUntilDate}
+                                onChange={date => setCampaignVisibleUntilDate(date.toDateString())}
                                 format={"dd.MM.yyyy"}
                                 style={{ width: "125px" }}
                             />

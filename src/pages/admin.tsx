@@ -230,8 +230,7 @@ const Admin: NextPage<IAdmin & any> = ({
         setCategoryPassivated(false);
     };
 
-    const handleCategoryPassivate = (checked: boolean
-    ) => {
+    const handleCategoryPassivate = () => {
         if (categoryPassivated)
             setCategoryPassivated(false);
         else setCategoryPassivated(true)
