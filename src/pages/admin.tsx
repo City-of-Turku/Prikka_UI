@@ -34,6 +34,7 @@ import UserTable from "../components/UserTable";
 import {withStyles} from '@material-ui/core/styles';
 import {AddCircleRounded, DeleteRounded, EditRounded} from '@material-ui/icons';
 import {grey} from "@material-ui/core/colors";
+import Checkbox from "@material-ui/core/Checkbox";
 
 
 // --- STYLES ---
@@ -56,7 +57,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 const StyledTableCell = withStyles((theme) => ({
     head: {
-        backgroundColor: theme.palette.common.black,
+        backgroundColor:  theme.palette.common.black,
         color: theme.palette.common.white,
     },
     body: {
@@ -89,6 +90,7 @@ const Admin: NextPage<IAdmin & any> = ({
     const [showEditCategory, setShowEditCategory] = useState<boolean>(false);
     const [showAddCategory, setShowAddCategory] = useState<boolean>(false);
     const [categoryDescription, setCategoryDescription] = useState<string>('');
+    const [categoryPassivated, setCategoryPassivated] = useState<boolean>(false);
     const [categoryUpdatedId, setCategoryUpdatedId] = useState<number>(0);
     const [categoryName, setCategoryName] = React.useState({
         nameFI: "",
@@ -165,7 +167,8 @@ const Admin: NextPage<IAdmin & any> = ({
             nameEN: categoryName['nameEN'],
             descriptionFI: categoryDescription,
             descriptionSV: "",
-            descriptionEN: ""
+            descriptionEN: "",
+            passivated: categoryPassivated
         };
         apis.admin
             .adminCreateCategory(model)
@@ -178,6 +181,7 @@ const Admin: NextPage<IAdmin & any> = ({
                     nameEN: ''
                 });
                 setCategoryDescription('');
+                setCategoryPassivated(false);
             })
             .catch((err: AxiosError) => {
                 snackbarContext.displayErrorSnackbar('Aiheen lisääminen epäonnistui');
@@ -190,6 +194,7 @@ const Admin: NextPage<IAdmin & any> = ({
             nameSV: categoryName['nameSV'],
             nameEN: categoryName['nameEN'],
             descriptionFI: categoryDescription,
+            passivated: categoryPassivated
         };
         apis.admin
             .adminUpdateCategory(categoryUpdatedId,model)
@@ -222,6 +227,14 @@ const Admin: NextPage<IAdmin & any> = ({
             nameEN: ''
         });
         setCategoryDescription('');
+        setCategoryPassivated(false);
+    };
+
+    const handleCategoryPassivate = (checked: boolean
+    ) => {
+        if (categoryPassivated)
+            setCategoryPassivated(false);
+        else setCategoryPassivated(true)
     };
 
     const handleCategoryDeleteSubmit = (
@@ -242,6 +255,7 @@ const Admin: NextPage<IAdmin & any> = ({
                         nameEN: ''
                     });
                     setCategoryDescription('');
+                    setCategoryPassivated(false);
                 })
                 .catch((err: AxiosError) => {
                     snackbarContext.displayErrorSnackbar('Aiheen poisto epäonnistui');
@@ -280,18 +294,21 @@ const Admin: NextPage<IAdmin & any> = ({
                             className={classes.textField}
                             onChange={event => handleCategoryNameChangeUpdate(event.target.value,'nameEN')}
                         ></TextField>
-                    </div>
-                    <br />
-                    <div>
-                        <Grid item xs={12}>
                         <TextField
                             variant="outlined"
-                            multiline rows={4}
+                            multiline rows={1}
                             label={t('categoryDescription')}
                             value={categoryDescription}
                             onChange={event => setCategoryDescription(event.target.value)}
                         ></TextField>
-                        </Grid>
+                    </div>
+                    <br />
+                    <div>
+                        {t('categoryPassivated')}
+                        <Checkbox
+                            checked={categoryPassivated}
+                            onClick={handleCategoryPassivate}
+                        />
                     </div>
                     <br />
                     <div>
@@ -324,7 +341,7 @@ const Admin: NextPage<IAdmin & any> = ({
                 </Typography>
                 <form noValidate autoComplete="false">
                     <div style={{ display: 'flex', flexDirection: 'row' }}>
-                     <TextField
+                         <TextField
                             variant="outlined"
                             label={t('categoryNameFI')}
                             value={categoryName['nameFI']}
@@ -345,19 +362,19 @@ const Admin: NextPage<IAdmin & any> = ({
                             className={classes.textField}
                             onChange={event => handleCategoryNameChangeUpdate(event.target.value,'nameEN')}
                         ></TextField>
-                    </div>
-                    <br />
-                    <div>
-                        <Grid item xs={12}>
                         <TextField
                             variant="outlined"
                             multiline
-                            rows={4}
+                            rows={1}
                             label={t('categoryDescription')}
                             value={categoryDescription}
                             onChange={event => setCategoryDescription(event.target.value)}
                         ></TextField>
-                        </Grid>
+                    </div>
+                    <br />
+                    <div>
+                        {t('categoryPassivated')}
+                        <Checkbox checked={categoryPassivated}/>
                     </div>
                     <br />
                     <div>
@@ -399,6 +416,7 @@ const Admin: NextPage<IAdmin & any> = ({
         });
         setCategoryDescription(categorySelected['descriptionFI']);
         // Saved into finnish description col. for now, not shown to public, might change in future versions
+        setCategoryPassivated(categorySelected['passivated']);
     };
 
     const generateCategoryListItems = () => {
@@ -412,6 +430,7 @@ const Admin: NextPage<IAdmin & any> = ({
                     <TableCell>{category['nameEN']}</TableCell>
                     <TableCell>{category['descriptionFI']}</TableCell>
                     <TableCell>{category['memoryCount']}</TableCell>
+                    <TableCell><Checkbox checked={category['passivated']} disabled={true}/></TableCell>
                     <TableCell style={{ width:'100px'}}>
                         <EditRounded  onClick={(event) => handleCategoryListItemClick(event, index)} style={{ marginRight: '10px', fontSize: '1.3rem', cursor: 'pointer' }}/>
                         {safeToDelete ?
@@ -444,6 +463,7 @@ const Admin: NextPage<IAdmin & any> = ({
                                         <StyledTableCell>{t('categoryTable.headerEN')}</StyledTableCell>
                                         <StyledTableCell>{t('categoryTable.description')}</StyledTableCell>
                                         <StyledTableCell>{t('categoryTable.amount')}</StyledTableCell>
+                                        <StyledTableCell>{t('categoryTable.passivated')}</StyledTableCell>
                                     </TableHead>
                                     <TableBody>
                                         {categories

@@ -203,6 +203,11 @@ const createCategory = (payload: any) =>
  */
 const getAllCategories = () => api.get(`${basePathCategories}/categories`);
 
+/**
+ * GET : get active categories
+ */
+const getActiveCategories = () => api.get(`${basePathCategories}/categoriesactive`);
+
 
 /**************************************************************
  *  ADMIN INTERFACE                                           *
@@ -334,6 +339,7 @@ export const apis = {
     categories: {
         createCategory,
         getAllCategories,
+        getActiveCategories,
     },
     admin: {
         adminGetAllCampaigns,

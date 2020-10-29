@@ -9,6 +9,7 @@
     "categoryNameSV": "Namn (Sv)",
     "categoryNameEN": "Namn (En)",
     "categoryDescription": "Tema beskrivning",
+    "categoryPassivated": "Passiverad",
 
     "buttonAddCategory": "Spara ett nytt tema",
     "buttonUpdateCategory": "Uppdatera tema",
@@ -29,7 +30,8 @@
         "headerSV": "Namn (Sv)",
         "headerEN": "Namn (En)",
         "description": "Beskrivning",
-        "amount": "Antal minnen"
+        "amount": "Antal minnen",
+        "passivated": "Passiverade"
     },
     "deleteDialog": {
         "buttonDelete": "Radera valt tema",

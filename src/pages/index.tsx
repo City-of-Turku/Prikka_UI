@@ -152,7 +152,7 @@ Index.getInitialProps = async ({ req, query }) => {
 
     let categories: Categories;
     await apis.categories
-        .getAllCategories()
+        .getActiveCategories()
         .then((res) => {
             categories = res.data.categories;
             console.log('Categories fetched: ', categories.length);

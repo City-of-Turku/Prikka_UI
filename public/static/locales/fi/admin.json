@@ -9,6 +9,7 @@
     "categoryNameSV": "Nimi (Sv)",
     "categoryNameEN": "Nimi (En)",
     "categoryDescription": "Aiheen kuvaus",
+    "categoryPassivated": "Passivoitu",
 
     "buttonAddCategory": "Tallenna uusi aihe",
     "buttonUpdateCategory": "Päivitä aihe",
@@ -29,7 +30,8 @@
         "headerSV": "Nimi (Sv)",
         "headerEN": "Nimi (En)",
         "description": "Kuvaus",
-        "amount": "Lisätyt muistot (kpl)"
+        "amount": "Lisätyt muistot (kpl)",
+        "passivated": "Passivoidut"
     },
     "deleteDialog": {
         "buttonDelete": "Poista valittu aihe",

@@ -9,6 +9,7 @@
     "categoryNameSV": "Name (SV)",
     "categoryNameEN": "Name (EN)",
     "categoryDescription": "Topic description",
+    "categoryPassivated": "Passivated",
 
     "buttonAddCategory": "Save new topic",
     "buttonUpdateCategory": "Update topic",
@@ -29,7 +30,8 @@
         "headerSV": "Name (Sv)",
         "headerEN": "Name (En)",
         "description": "Description",
-        "amount": "Added memories (pieces)"
+        "amount": "Added memories (pieces)",
+        "passivated": "Passivated"
     },
     "deleteDialog": {
         "buttonDelete": "Delete selected topic",

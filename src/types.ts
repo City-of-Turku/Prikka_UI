@@ -78,6 +78,7 @@ export type Category = {
     descriptionFI: string;
     descriptionSV: string;
     descriptionEN: string;
+    passivated: boolean;
     createdAt: string;
 };
 
