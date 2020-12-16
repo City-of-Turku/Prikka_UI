@@ -1,2 +1,2 @@
 # Prikka_UI
-Museokeskuksen sovellus
+Museokeskuksen sovelluksen frontend -toteutus
