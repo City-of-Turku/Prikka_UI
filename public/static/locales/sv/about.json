@@ -1,0 +1,48 @@
+{
+    "title": "Information om oss",
+    "intro": {
+        "title":"Dela dina minnen och berättelser med andra!",
+        "p1": "\tHar du ett minne eller en intressant berättelse som du skulle vilja dela med andra? På denna webbplats kan du berätta om dina egna Åborelaterade minnen, händelser och stadhistorier. Om du vill kan du även dela en bild som har med ditt minne eller din berättelse att göra. Materialet som du delar finns för andra att se och bekanta sig med. Allt material sparas i Åbo museicentrals arkivsamling, som en del av vårt gemensamma kulturarv.",
+        "p2": "Här kan du spara dina minnen och klistra in dem vid händelsplatserna. Dina minnen hjälper oss att få en djupare bild av Åbos närhistoria och uppleva hur staden tidigare sett ut.",
+        "p3": ""
+    },
+    "how": {
+        "title": "Hur ska jag göra?",
+        "p1": "Logga in",
+        "p2": "Klicka på knappen \"Lägg till minnen\" för att skapa ett minne",
+        "p3": "Skriv din berättelse, lägg till en rubrik",
+        "p4": "Om du vill kan du lägga till en bild som har med minnet att göra",
+        "p5": "Markera på kartan platsen som är relaterad till minnet",
+        "p6": "Publicera minnet"
+    },
+    "notice": {
+        "title":"Vänligen beakta att:",
+        "p1": "Man ska skydda människors integritet. Om andra personer är en del av ditt minne, berätta inte deras fullständiga namn utan använd smeknamn eller förnamn. Undantag till detta är offentliga personer, för dem kan du använda hela namn.",
+        "p2": "Om du lägger till en bild för ditt minne, säkerställ att du har rätt att publicera den.",
+        "p3": "Museicentralen har rätt att ta bort material som meddelats som osakligt från sidan."
+    },
+    "opportunity": {
+        "title": "Bra möjlighet",
+        "p1": "att minnas gamla tider och läsa berättelser som andra människör delat",
+        "p2": "att ta reda på det egna närområdets historia",
+        "p3": "att bekanta sig med Åbo och se staden med nya ögon"
+    },
+    "who": {
+        "title": "Mer information om oss",
+        "p1": "Åbo museicentral",
+        "p2": " ansvarar för Åbo stads kultur-, konst- och naturhistoriska museiverksamhet. Vi skapar och upprätthåller föremåls- och konstsamlingar samt främjar bevarandet av kultumiljön. Museicentralen förmedlar kulturarv och visuell kultur: forskningsarbete och informationsutdelning genom utställningar och publikationer utgör grunden för museiverksamheten."
+    },
+    "rights": {
+        "title": "Rättigheter till sparat material",
+        "p1": "Åbo museicentral önskar att materialet som donerats via tjänsten kan användas så mångsidigt som möjligt. Åbo museicentral använder materialet i sin egen verksamhet samt möjliggör för andra att använda det i enlighet med CC BY 4.0.",
+        "p2": "Innehållet som laddas upp på webbplatsen licensieras med öppna kulturens Creative Commons-licens CC BY 4.0. Licensen ger en obegränsad rättighet att använda innehållet, också ändrat, och den möjliggör kommersiell användning. Upphovspersonens namn ska nämnas i samband med användning av materialet.",
+        "p3": "Mer information om licensen CC BY 4.0",
+        "p4": "Genom att spara material på webbplatsen godkänner du dess vidare användning enligt licensen CC BY 4.0. Kom ihåg att spara endast den text som du själv har skrivit och de bilder som du själv har tagit. Du ansvarar själv för att du har rättigheter till bilden och rättighet att dela bilden.",
+        "p5": "Åbo museicentral behandlar personuppgifter i enlighet med dataskyddslagen 4 § (art 6e) och 6 § (art 9)."
+    },
+    "what": {
+        "title": "Vilka slags minnen kan jag lägga till på webbplatsen?",
+        "p1": "Du kan lägga till vilket som helst personligt minne som har med Åbo att göra och klistra in det vid händelsplatsen. På webbplatsen kan du också dela intressanta stadshistorier som du upplevt eller hört.",
+        "p2": "Material som sparats pä webbplatsen prikka.fi görs till en del av Museicentralens arkivsamling. Geonom att spara material godkänner du dess användning för forskning och framförande enligt CC BY 4.0."
+    }
+}

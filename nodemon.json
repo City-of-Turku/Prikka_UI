@@ -1,0 +1,8 @@
+{
+    "watch": [".env", "locales/**/*.json", "src", "public"],
+    "ignore": ["locales/**/*.missing.json"],
+    "verbose": true,
+    "execMap": {
+        "ts": "ts-node --transpile-only  --compiler-options \"{\\\"module\\\":\\\"commonjs\\\", \\\"target\\\": \\\"es2017\\\"}\""
+    }
+}

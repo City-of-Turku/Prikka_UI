@@ -1,0 +1,41 @@
+{
+    "title": "TILLGÄNGLIGHETSUTLÅTANDE",
+    "intro": {
+        "title": "Tillgänglighetsutlåtande för webbplatsen Prikka.fi",
+        "p1": "Webbplatsen prikka.fi är en webbplats som är i testfas och som kommer att utvärderas 2021. Ett närmare tillgänglighetsutlåtande om den kommer också att upprättas år 2021.",
+        "p2": "På webbplatsen prikka.fi samlar man in stadsbornas minnen och historier som klistras in på Åbo stads servicekarta som platsspecifik information. Tillgänglighetsutlåtandet om servicekartan kan hittas på ",
+        "p3": "https://palvelukartta.turku.fi/sv/",
+        "p3link": "https://palvelukartta.turku.fi/sv/"
+    },
+    "part1": {
+        "title": "Upptäckte du bristande tillgänglighet i vår digitala tjänst? Berätta om det för oss så gör vi vårt bästa för att korrigera felet.",
+        "p1": "museokeskus@turku.fi",
+        "p1href": "mailto:museokeskus@turku.fi"
+    },
+    "part2": {
+        "title": "Tillsynsmyndighet",
+        "p1": "Om du upptäcker problem med tillgängligheten på webbsidan, ge först respons till webbsidans administra-tör.  Det kan ta 14 dagar innan du får ett svar. Om du inte är nöjd med det svar du har fått eller inte får något svar alls inom två veckor kan du ge respons till Regionförvaltningsverket i Södra Finland. På Regionförvaltningsverket i Södra Finlands webbsida finns detaljerad information om hur du gör en överklagan och hur ärendet behandlas."
+    },
+    "part3": {
+        "title": "Tillsynsmyndighetens kontaktuppgifter",
+        "p1": "Regionförvaltningsverket i Södra Finland ",
+        "p2": "Enheten för tillgänglighetstillsyn",
+        "p3": "www.tillganglighetskrav.fi",
+        "p3link": "https://www.tillganglighetskrav.fi",
+        "p4": "saavutettavuus(at)avi.fi",
+        "p5": "telefonnummer växel 0295 016 000"
+    },
+    "part4": {
+        "title": "Vi hos Åbo stad arbetar kontinuerligt med att förbättra tillgängligheten",
+        "p1": "Vi har förbundit oss till att förbättra de digitala tjänsternas tillgänglighet \nÅbo stads kunskaper om tillgänglighet utvecklas på ett planmässigt och målmedvetet sätt. Stadens ramavtalsleverantörer för tillgänglighet kommer att utvärdera stadens nuvarande nättjänster. Utgående från utvärderingen utvecklas tjänsternas tillgänglighet till den nivå som krävs i lagen inom tidsfristen för varje tjänst. Vid utvecklingen och upphandlingen av nya nättjänster beaktas tillgängligheten från allra första början. Utbildning i tillgänglighet ordnas för alla parter som deltar i utvecklingen av nättjänsterna och produktionen av deras innehåll. I staden pågår projektet Uppfyllande av kraven i tillgänglighetslagen."
+    },
+    "part5": {
+        "title": "Vi erbjuder stöd för användare som inte har tillgång till de digitala tjänsterna",
+        "p1": "Man kan få stöd med digitala tjänster på Åbo stads servicepunkter:",
+        "p2": "På Monitori i Skansen, Skansgatan 10, 20730 Åbo, telefon 040 160 4556",
+        "p3": "På Monitori i centrum, Auragatan 8, 20100 Åbo",
+        "p4": "på biblioteken"
+    },
+    "footerText": "Denna webbplats har publicerats",
+    "footerDate": "05.08.2020"
+}

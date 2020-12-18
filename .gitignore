@@ -1,0 +1,11 @@
+.DS_Store
+.env
+yarn-error.log
+
+
+/.next
+/build
+/locales/**/*.missing.json
+/node_modules
+/_todo
+package-lock.json

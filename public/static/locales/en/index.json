@@ -1,0 +1,15 @@
+{
+    "report":"Report inappropriat content",
+    "recentMemories": "Recent memories",
+    "error": "Error",
+    "noMemoriesFound": "No memories were found.",
+    "noMemoriesFoundDescription": "Be the first one to add one to this topic!",
+    "category": "Topic",
+    "alternativeAll": "All",
+    "anonymous": "Anonymous",
+
+    "shareMemory": {
+        "buttonShare": "Share",
+        "shareTitle": "Share this memory on social media"
+    }
+}

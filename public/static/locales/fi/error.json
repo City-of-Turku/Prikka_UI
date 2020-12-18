@@ -1,0 +1,7 @@
+{
+    "err": "Virhe on tapahtunut",
+    "notfound": "Muistoja ei löytynyt",
+    "404": "404, Sivua ei löydy.",
+    "404_param": "Sivua jota etsit ei ole olemassa.",
+    "memory_creation_error": "Muiston luonnissa tapahtui virhe"
+}

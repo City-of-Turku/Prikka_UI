@@ -1,0 +1,21 @@
+{
+    "menubar": {
+        "home": "Etusivu",
+        "memories": "My Memories",
+        "about": "Tietoja palvelusta",
+        "campaigns": "Aiheet",
+        "addmemory": "Lisää Muisto",
+        "login": "Kirjaudu",
+        "logout": "kirjaudu ulos"
+    },
+    "accountmenu": {
+        "navbar": "Tili",
+        "mymemories": "Muistoni",
+        "reportedmemories": "Raportoidut muistot",
+        "configurations": "Ylläpito",
+        "campaigns": "Aiheet",
+        "settings": "Käyttäjäasetukset",
+        "login": "Kirjaudu",
+        "logout": "Kirjaudu ulos"
+    }
+}

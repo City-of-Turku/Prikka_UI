@@ -1,0 +1,64 @@
+{
+    "title": "Admin",
+    "titleAddNewCategory": "Lisää uusi aihe",
+    "titleCategories": "Aiheet",
+    "titleSelectedCategory": "Valittu aihe",
+
+    "categoryName": "Aiheen nimi",
+    "categoryNameFI": "Nimi(Fi)",
+    "categoryNameSV": "Nimi (Sv)",
+    "categoryNameEN": "Nimi (En)",
+    "categoryDescription": "Aiheen kuvaus",
+    "categoryPassivated": "Passivoitu",
+
+    "buttonAddCategory": "Tallenna uusi aihe",
+    "buttonUpdateCategory": "Päivitä aihe",
+    "buttonCancel": "Cancel",
+
+    "notAllowed": "Sinulla ei ole oikeus nähdä nämä tiedot.",
+
+    "titleRegistredUsers": "Rekisteröidyt käyttäjät",
+    "userTable": {
+        "headerUserName": "Käyttäjänimi",
+        "headerEmail": "Sähköpostiosoite",
+        "headerIsAdmin": "Admin-oikeus",
+        "buttonAddAdminRole": "Lisää admin rooli",
+        "buttonRemoveAdminRole": "Poista admin rooli"
+    },
+    "categoryTable": {
+        "headerFI": "Nimi (Fi)",
+        "headerSV": "Nimi (Sv)",
+        "headerEN": "Nimi (En)",
+        "description": "Kuvaus",
+        "amount": "Lisätyt muistot (kpl)",
+        "passivated": "Passivoidut"
+    },
+    "deleteDialog": {
+        "buttonDelete": "Poista valittu aihe",
+        "deleteTitle": "Poista aihe",
+        "deleteConfirmQuestion": "Oletteko varma että haluatte poistaa valitun aiheen?",
+        "deleteConfirmInstruction": "Kirjoita 'Kyllä' vahistaksenne poiston.",
+        "deleteConfirmInstruction2": "Ystävällisesti kirjoita 'Kyllä' vahvistaksenne poiston",
+        "confirm": "Vahvista",
+        "cancel": "Peruta",
+        "delete": "Poista"
+    },
+
+    "adminCampaign": {
+        "title": "Aiheet - ylläpito",
+        "created": "Luotu",
+        "isPublic": "Aihe on julkaistu",
+        "visibleUntilDate": "Näkyvissä asti",
+        "titleFI": "Otsikko (FI)",
+        "titleSV": "Otsikko (SV)",
+        "titleEN": "Otsikko (EN)",
+        "descriptionFI": "Teksti (FI)",
+        "descriptionSV": "Teksti (SV)",
+        "descriptionEN": "Teksti (EN)",
+        "buttonSave": "Tallenna",
+        "buttonDelete": "Poista",
+        "buttonAdd": "Luo uusi aihe"
+    },
+    "category": "Aihe",
+    "alternativeAll": "Kaikki"
+}

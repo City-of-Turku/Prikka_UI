@@ -1,0 +1,23 @@
+{
+
+    "titleAdd": "Lägg till ett nytt minne",
+    "titleEdit": "Uppdatera ditt minne",
+    "warning":"Varning: Du är inte inloggad, dina minnen publiceras \"Anonymt\"",
+    "info_title": "Information",
+    "title_PH": "Rubrik",
+    "category_PH": "Tema",
+    "description_PH": "Beskrivning",
+    "photographer_PH": "Fotograf",
+    "whenIsPhotoTaken_PH": "När är bilden tagen",
+    "whereIsPhotoTaken_PH": "Var är bilden tagen?",
+    "map_title": "Plats",
+    "map_title_instruction": "Du kan markera platsen för minnet på kartan genom att trycka på musens vänstra knapp.",
+    "continue_button": "Skicka in",
+    "save_button": "Spara",
+    "back_button": "Tillbaka",
+    "success": "Minne skapat",
+    "image_info": "Maximal fil storlek 10MB",
+    "upload_button_text": "Ladda upp",
+    "category": "Tema",
+    "alternativeAll": "Alla"
+}

@@ -1,0 +1,10 @@
+{ 
+    "login": "Logga in",
+    "username": "Användaren",
+    "email": "E-post",
+    "password": "Lösenord",
+    "register": "Registrera",
+    "forgottenpassword": "Har du glömt ditt passord?",
+    "notRegistered": "Har du inte registrerat dig?",
+    "alreadyRegistered": "har du redan ett konto?"
+} 

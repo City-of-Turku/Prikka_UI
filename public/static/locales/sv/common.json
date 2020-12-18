@@ -1,0 +1,21 @@
+{
+    "menubar": {
+        "home": "Startsida",
+        "memories": "Mina minnen",
+        "about": "Info om tjänsten",
+        "campaigns": "Kampanjer",
+        "addmemory": "Lägg till minnen",
+        "login": "Logga in",
+        "logout": "Logga ut"
+    },
+    "accountmenu": {
+        "navbar": "Konto",
+        "mymemories": "Mina minnen",
+        "reportedmemories": "Rapporterade minnen",
+        "configurations": "Konfigurationer",
+        "campaigns": "Kampanjer",
+        "settings": "Användar inställningar",
+        "login": "Logga in",
+        "logout": "Logga ut"
+    }
+}

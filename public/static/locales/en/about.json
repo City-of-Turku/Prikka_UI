@@ -1,0 +1,48 @@
+{
+    "title": "About us",
+    "intro": {
+        "title":"Share your memories and stories!",
+        "p1": "Do you have an interesting memory or story that you would like to share? On this website, you can share your own memories, events or stories about the City of Turku. If you want, you can also share a photo related to your memory or story. The material you share will be available to other visitors on the website. All material will be stored in the archive collections of the Turku Museum Centre as part of our shared cultural heritage.",
+        "p2": "Here you can store your memories and connect them to the places where your memories have taken place. Your memories will help us to dig deeper into the local history of Turku and experience the history of the city.",
+        "p3": ""
+    },
+    "how": {
+        "title": "How to do it",
+        "p1": "Log in",
+        "p2": "Click on the \"Add memory\" button in order to create a memory",
+        "p3": "Write your story and add a headline",
+        "p4": "You can add one photo if you like",
+        "p5": "In the map, mark the place where your memory took place",
+        "p6": "Publish your memory."
+    },
+    "notice": {
+        "title": "Please note that:",
+        "p1": "You must respect the privacy of other persons. If your memory involves other people, do not share their whole names but use nicknames or first names instead. As an exception to this rule, it is permitted to mention the whole names of public figures.",
+        "p2": "If you add a photo, make sure that you have right to publish the photo.",
+        "p3": "Turku Museum Centre has the right to remove any material that has been reported as inappropriate."
+    },
+    "opportunity": {
+        "title": "Good opportunity for",
+        "p1": "reminiscing and reading stories shared by others.",
+        "p2": "finding out about local history.",
+        "p3": "getting to know Turku and seeing the city from a new perspective."
+    },
+    "who": {
+        "title": "Further information about us",
+        "p1": "Turku Museum Centre",
+        "p2": " is in charge of the City of Turku's culture, art and natural history museum operations. It creates and maintains collections of objects and artwork and promote the conservation of the local cultural environment. Turku Museum Centre transmits cultural heritage and visual culture: research and sharing of information through expositions and publications forms the foundation of the museum operations."
+    },
+    "rights": {
+        "title": "Rights for the stored material",
+        "p1": "Turku Museum Centre hopes that the material donated through the service could be used in the most versatile way. Turku Museum Centre will use the material in its own operations and make the material available for the use of others according to the CC BY 4.0.",
+        "p2": "The content uploaded to the website will be licenced with a Creative Commons licence CC BY 4.0. The licence will provide unrestricted access to the content, also when altered, and enables also commercial use. When using the material, the author must be named.",
+        "p3": "More information about the CC BY 4.0 license",
+        "p4": "By storing the material on the website, you consent to the further use of the material in accordance with the CC BY 4.0 licence. Please remember that you may only store your own text and pictures. You are responsible for ensuring that you have the rights to the picture and for sharing it.",
+        "p5": "Turku Museum Centre processes personal data in accordance with section 4 (article 6e) and section 6 (article 9) of the Data Protection Act."
+    },
+    "what": {
+        "title": "What memories can you add to the website?",
+        "p1": "You can add any personal memories related to Turku and connect them to the location in which they or an event has taken place. You can also use the website for sharing your experiences and interesting stories about the city.",
+        "p2": "Material stored on the prikka.fi website will be added to the archive collections of Museum Centre. By storing your material, you consent to the utilisation of your material for research and presentation purposes according to the CC by 4.0."
+    }
+}

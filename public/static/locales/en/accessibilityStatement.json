@@ -1,0 +1,41 @@
+{
+    "title": "ACCESSIBILITY STATEMENT",
+    "intro": {
+        "title": "Prikka.fi website accessibility statement",
+        "p1": "Prikka.fi is a website undergoing a testing period. An assessment and a more detailed accessibility statement of the website will be performed and created in 2021.",
+        "p2": "The Prikka.fi website will be used to store the memories and stories provided by residents of the city and assign them to specific locations in the City of Turku service map. The service map accessibility statement can be found at ",
+        "p3": "https://palvelukartta.turku.fi/en/",
+        "p3link": "https://palvelukartta.turku.fi/en/"
+    },
+    "part1": {
+        "title": "Have you noticed any shortcomings in the accessibility of our digital service? Please let us know and we will do our best to fix it.",
+        "p1": "museokeskus@turku.fi",
+        "p1href": "mailto:museokeskus@turku.fi"
+    },
+    "part2": {
+        "title": "Supervisory authority",
+        "p1": "If you notice any issues related to the accessibility of the website, please provide feedback to the administrator of the site first. You will receive a reply within 14 days. If you are not happy with the reply you receive, or if you receive no reply within two weeks, you can provide feedback to the Regional State Administrative Agency for Southern Finland. The Regional State Administrative Agency for Southern Finland website provides details on how to lodge a complaint and how the matter will be processed."
+    },
+    "part3": {
+        "title": "Contact details of the supervisory authority",
+        "p1": "Regional State Administrative Agency for Southern Finland",
+        "p2": "Unit of Accessibility Supervision",
+        "p3": "www.saavutettavuusvaatimukset.fi",
+        "p3link": "https://www.saavutettavuusvaatimukset.fi",
+        "p4": "saavutettavuus(at)avi.fi",
+        "p5": "telephone number for switchboard +358 (0)295 016 000"
+    },
+    "part4": {
+        "title": "At the City of Turku, we are working continually to improve accessibility",
+        "p1": "We are committed to improving the accessibility of digital services \nThe accessibility expertise of the City of Turku is developed in a systematic and purposeful manner. The City’s framework agreement suppliers of accessibility-related services will assess the City’s current online services. Based on the assessment, accessibility will be improved to the level required by law within the time limits defined for each service. Accessibility will be taken into account in the development and procurement of new online services. Accessibility training is organised for all parties who participate in developing online services and producing content for them. The City has an on-going project to fulfil the requirements of the Act on the Provision of Digital Services."
+    },
+    "part5": {
+        "title": "We provide users who are unable to access the digital services with additional support services",
+        "p1": "Digital support services are available at the following City of Turku Citizen Services Points:",
+        "p2": "Monitori, Skanssi (Skanssinkatu 10, FI-20730 Turku, telephone +358 (0)40 160 4556)",
+        "p3": "Monitori, City Centre (Aurakatu 8, FI-20100 Turku)",
+        "p4": "City libraries"
+    },
+    "footerText": "This website was published on",
+    "footerDate": "05.08.2020"
+}

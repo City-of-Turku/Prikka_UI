@@ -1,0 +1,64 @@
+{
+    "title": "Admin",
+    "titleAddNewCategory": "Add new topic",
+    "titleCategories": "Topics",
+    "titleSelectedCategory": "Selected topic",
+
+    "categoryName": "Topic name",
+    "categoryNameFI": "Name (FI)",
+    "categoryNameSV": "Name (SV)",
+    "categoryNameEN": "Name (EN)",
+    "categoryDescription": "Topic description",
+    "categoryPassivated": "Passivated",
+
+    "buttonAddCategory": "Save new topic",
+    "buttonUpdateCategory": "Update topic",
+    "buttonCancel": "Cancel",
+
+    "notAllowed": "You are not allowed to see this information.",
+
+    "titleRegistredUsers": "Registered users",
+    "userTable": {
+        "headerUserName": "User name",
+        "headerEmail": "E-mail",
+        "headerIsAdmin": "Is admin",
+        "buttonAddAdminRole": "Add admin role",
+        "buttonRemoveAdminRole": "Remove admin role"
+    },
+    "categoryTable": {
+        "headerFI": "Name (Fi)",
+        "headerSV": "Name (Sv)",
+        "headerEN": "Name (En)",
+        "description": "Description",
+        "amount": "Added memories (pieces)",
+        "passivated": "Passivated"
+    },
+    "deleteDialog": {
+        "buttonDelete": "Delete selected topic",
+        "deleteTitle": "Delete topic",
+        "deleteConfirmQuestion": "Are you sure that you want to delete selected topic?",
+        "deleteConfirmInstruction": "Type 'Yes' to confirm.",
+        "deleteConfirmInstruction2": "Please enter 'Yes' to confirm",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "delete": "Delete"
+    },
+
+    "adminCampaign": {
+        "title": "Campaigns - maintenance",
+        "created": "Created",
+        "isPublic": "The campaign is public",
+        "visibleUntilDate": "Visible until date",
+        "titleFI": "Header (FI)",
+        "titleSV": "Header (SV)",
+        "titleEN": "Header (EN)",
+        "descriptionFI": "Description (FI)",
+        "descriptionSV": "Description (SV)",
+        "descriptionEN": "Description (EN)",
+        "buttonSave": "Save",
+        "buttonDelete": "Delete",
+        "buttonAdd": "Create a new campaign"
+    },
+    "category": "Topic",
+    "alternativeAll": "All"
+}

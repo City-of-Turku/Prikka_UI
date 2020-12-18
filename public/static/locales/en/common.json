@@ -1,0 +1,22 @@
+{
+    "menubar": {
+        "home": "Homepage",
+        "memories": "My Memories",
+        "about": "About Us",
+        "campaigns": "Campaigns",
+        "addmemory": "Add Memory",
+        "login": "Login",
+        "logout": "Logout"
+    },
+
+    "accountmenu": {
+        "navbar": "Account",
+        "mymemories": "My Memories",
+        "reportedmemories": "Reported memories",
+        "configurations": "Configurations",
+        "campaigns": "Campaigns",
+        "settings": "User settings",
+        "login": "Login",
+        "logout": "LogOut"
+    }
+}

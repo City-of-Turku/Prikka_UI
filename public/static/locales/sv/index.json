@@ -1,0 +1,15 @@
+{
+    "report":"Anmäl osakligt innehåll",
+    "recentMemories": "Senaste minnena",
+    "error": "Ett fel uppstod",
+    "noMemoriesFound": "Det hittades inte några sparade minnen",
+    "noMemoriesFoundDescription": "Bli den första att lägga till ett minne för detta tema!",
+    "category": "Tema",
+    "alternativeAll": "Alla",
+    "anonymous": "Anonym",
+
+    "shareMemory": {
+        "buttonShare": "Dela",
+        "shareTitle": "Dela minnet i sociala medier"
+    }
+}

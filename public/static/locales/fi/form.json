@@ -1,0 +1,10 @@
+{ 
+    "login": "Kirjaudu",
+    "username": "Käyttäjä",
+    "email": "Sähköposti",
+    "password": "Salasana",
+    "register": "Rekisteröidy",
+    "forgottenpassword": "Unohditko salasanasi?",
+    "notRegistered": "Etkö ole rekisteröitynyt?",
+    "alreadyRegistered": "Onko sinulla jo tili?"
+}

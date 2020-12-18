@@ -1,0 +1,7 @@
+{
+    "err": "Ett fel har inträffat",
+    "notfound": "Inga minnen hittades",
+    "404": "404, Sidan hittades inte.",
+    "404_param": "Sidan du letar efter finns inte.",
+    "memory_creation_error": "Ett fel uppstod när minnet skapades"
+}

@@ -1,0 +1,23 @@
+{
+    "title": "Mina minnen",
+    "description":"Här är alla minnen listade som du publiserat.",
+    "emptyMemoryList": "Du har inte ännu lagt till några minnen.",
+    "addNewMemoryComment": "Lägg till ett minne från \"Lägg till minnen\" knappen.",
+    "buttonEdit": "Ändra",
+
+    "shareMemory": {
+        "buttonShare": "Dela",
+        "shareTitle": "Dela minnet i sociala medier"
+    },
+
+    "deleteDialog": {
+        "buttonDelete": "Radera",
+        "deleteTitle": "Radera ett minne",
+        "deleteConfirmQuestion": "Är ni säker på att ni vill radera ert sparade minne?",
+        "deleteConfirmInstruction": "Skriv 'Ja' för att bekräfta raderningen.",
+        "deleteConfirmInstruction2": "Vänligen skriv 'Ja' för att bekräfta.",
+        "confirm": "Bekräfta",
+        "cancel": "Ångra",
+        "delete": "Radera"
+    }
+}

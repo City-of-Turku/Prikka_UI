@@ -1,0 +1,15 @@
+{
+    "report":"Ilmoita epäasiallinen sisältö",
+    "recentMemories": "Viimeksi liitetyt muistot",
+    "error": "Tapahtui virhe",
+    "noMemoriesFound": "Ei löytynyt tallennettuja muistoja.",
+    "noMemoriesFoundDescription": "Ole ensimmäinen joka lisää muiston tällä aiheella!",
+    "category": "Aihe",
+    "alternativeAll": "Kaikki",
+    "anonymous": "Anonyymi",
+
+    "shareMemory": {
+        "buttonShare": "Jaa",
+        "shareTitle": "Jaa muisto sosiaalisessa mediassa"
+    }
+}

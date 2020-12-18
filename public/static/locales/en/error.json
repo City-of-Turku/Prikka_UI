@@ -1,0 +1,7 @@
+{
+    "err": "Error",
+    "notfound": "Memories not found",
+    "404": "404, Page not found.",
+    "404_param": "This page does not exist.",
+    "memory_creation_error": "Error creating memory"
+}

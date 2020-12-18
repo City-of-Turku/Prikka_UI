@@ -1,0 +1,13 @@
+{
+    "title": "Användar inställningar",
+    "userName": "Namn",
+    "userNameDesc": "- ditt namn syns endast för administratorerna",
+    "displayName": "Synligt namn",
+    "displayNameDesc": "- det här namnet syns för alla användare för minnet",
+    "yearOfBirth": "Födelseår",
+    "yearOfBirthDesc": "",
+    "email": "E-postadress",
+    "emailDesc": "",
+    "buttonUpdateUser": "Spara ändringarna",
+    "passchange": "Byt lösenord"
+}

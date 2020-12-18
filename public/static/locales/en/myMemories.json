@@ -1,0 +1,23 @@
+{
+    "title": "My Memories",
+    "description": "Here you can see all the memories you have published.",
+    "emptyMemoryList": "You have not yet added any memories.",
+    "addNewMemoryComment": "Add a memory from the \"Add memory\" button.",
+    "buttonEdit": "Edit",
+
+    "shareMemory": {
+        "buttonShare": "Share",
+        "shareTitle": "Share this memory on social media"
+    },
+
+    "deleteDialog": {
+        "buttonDelete": "Delete",
+        "deleteTitle": "Delete memory",
+        "deleteConfirmQuestion": "Are you sure that you want to delete your memory?",
+        "deleteConfirmInstruction": "Type 'Yes' to confirm.",
+        "deleteConfirmInstruction2": "Please enter 'Yes' to confirm",
+        "confirm": "Confirm",
+        "cancel": "Cancel",
+        "delete": "Delete"
+    }
+}
