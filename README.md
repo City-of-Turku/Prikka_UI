@@ -1,37 +1,61 @@
-## Changelog
+# Prikka application
+The Prikka application is used for gathering memories, events and stories about the City of Turku. The application consists of prikka_backend and prikka_ui.
 
-Some rework on my side :
+This project was started and mainly done as a Capstone-project at Turun AMK. The first version of the Prikka application is not optimized for mobile use.
 
--   Dropped OpenStreetMap Tile Server for Mapbox's (up to 7000 map load per month for now, but no choice since we're not allowed to use OSM's TileServer)
--   Replaced Leaflet by react-map-gl for easy integration with Mapbox
--   Replaced semantic-ui widgets by Material-ui
--   Added typescript to the stack, prevent easy mistakes and improve scalability
--   Building pages My memories, settings, about, other...
+## Frontend
 
-## Before you start 
-Be sure to have the backend server & database running.
+Uses React with typescript. 
+Created with next.js v9.44.
 
-## Available Scripts
+### Setup
+Setting up a development environment.  
 
-In the project directory, you can run:
+Be sure to have the backend server & database running before starting the frontend.
 
-### `npm run dev`
+1. Clone repo
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+2. Install node dependencies.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+    ```
+    npm install
+    ```
 
-### `npm run build`
+4. Make sure you have nodemon installed  
+   ```
+   npm install nodemon -g
+   ```
 
-Builds the app for production to the `/build` folder.<br />
-It correctly bundles NextJS in production mode and optimizes the build for the best performance.
-Also transpile the Typescript into Javascript
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+5. You will also need a .env file   
+    Mapbox token info here: https://docs.mapbox.com/help/how-mapbox-works/access-tokens/
 
-### `npm run prod`
+    Example .env file, for local development
+    ```
+    REACT_APP_MAPBOX_TOKEN=
+    FRONT_URL=http://localhost:3000
+    BACK_URL=http://localhost:4500
+    LOGIN_URL=/api/auth-management/login
+    LOGOUT_URL=/api/auth-management/logout
+    PORT=3000
+    ```
 
-Build and serve the content from /build folder.
-Faster than using dev server for demo.
+6. Start it      
+   
+   #### Local development
+   
+   ```
+   npm run dev
+   ```
+    Runs the app in the development mode.  
+    Open [http://localhost:3000](http://localhost:3000) to view it in the browser.  
+
+   #### Production
+   ```
+    npm run build
+    npm run prod
+   ```
+    Builds the app for production to the `/build` folder.  
+    It correctly bundles NextJS in production mode and optimizes the build for the best performance.
+    Also transpile the Typescript into Javascript  
+    The build is minified and the filenames include the hashes.
+   
