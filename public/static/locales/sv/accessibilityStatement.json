@@ -1,5 +1,5 @@
 {
-    "title": "TILLGÄNGLIGHETSUTLÅTANDE",
+    "title": "Tillgänglighetsutlåtande",
     "intro": {
         "title": "Tillgänglighetsutlåtande för webbplatsen Prikka.fi",
         "p1": "Webbplatsen prikka.fi är en webbplats som är i testfas och som kommer att utvärderas 2021. Ett närmare tillgänglighetsutlåtande om den kommer också att upprättas år 2021.",
@@ -10,7 +10,7 @@
     "part1": {
         "title": "Upptäckte du bristande tillgänglighet i vår digitala tjänst? Berätta om det för oss så gör vi vårt bästa för att korrigera felet.",
         "p1": "museokeskus@turku.fi",
-        "p1href": "mailto:museokeskus@turku.fi"
+        "p1link": "https://opaskartta.turku.fi/eFeedback/fi/Feedback/87/1043"
     },
     "part2": {
         "title": "Tillsynsmyndighet",

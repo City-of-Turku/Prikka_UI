@@ -1,5 +1,5 @@
 {
-    "titleAdd": "Add a new memory",
+    "titleAdd": "Add a new memory and mark it on the map",
     "titleEdit": "Update your memory",
     "warning": "Warning : You're not logged, your memory will be published as \"Anonymous\"",
     "info_title": "Informations",
@@ -9,8 +9,10 @@
     "photographer_PH": "Photographer",
     "whenIsPhotoTaken_PH": "When is the photo taken?",
     "whereIsPhotoTaken_PH": "Where is the photo taken?",
+    "sharePhotoInfo_PH": "Share picture data",
+    "sharePhotoInfoAdmin_PH": "Picture data is only visible to admin users",
     "map_title": "Position",
-    "map_title_instruction": "You can mark the position for the memory on the map by clicking the left button of the mouse.",
+    "map_title_instruction": "Mark your memory on the map by clicking the left button of the mouse.",
     "continue_button": "Submit",
     "save_button": "Save",
     "back_button": "Back",
