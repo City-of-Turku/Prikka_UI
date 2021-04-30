@@ -4,16 +4,10 @@
 
 // --- IMPORTS ---
 import React from 'react';
-import { withTranslation } from '../i18n';
+import {withTranslation} from '../i18n';
 import Layout from '../components/Layout';
-import {
-    Typography,
-    Paper,
-    makeStyles,
-    createStyles,
-    Theme,
-} from '@material-ui/core';
-import { NextPage, NextPageContext } from 'next';
+import {createStyles, makeStyles, Paper, Theme, Typography,} from '@material-ui/core';
+import {NextPage, NextPageContext} from 'next';
 import Head from 'next/head';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -53,9 +47,7 @@ const AccessibilityStatement: NextPage<any> = ({ t }) => {
                     {t('part1.title')}
                 </Typography>
                 <Typography variant="body1">
-                    <ul>
-                        <a href={t('part1.p1href')}>{t('part1.p1')}</a>
-                    </ul>
+                    <a href={t('part1.p1link')} target={"_blank"}>{t('part1.p1link')}</a>
                 </Typography>
             </>
         );
