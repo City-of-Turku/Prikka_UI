@@ -8,20 +8,11 @@
 import React from 'react';
 import Moment from 'react-moment';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-import {
-    Button,
-    createMuiTheme,
-    Divider,
-    Grid,
-    IconButton,
-    List,
-    ListItem,
-    MuiThemeProvider,
-    Paper,
-    Typography,
-} from '@material-ui/core';
+import {createMuiTheme, Divider, Grid, IconButton, List, ListItem, Paper, Table,
+    TableCell,
+    TableRow,
+    Typography,} from '@material-ui/core';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import FavoriteSharpIcon from '@material-ui/icons/FavoriteSharp';
 
 import {Memory} from '../types';
 import {blue, red} from '@material-ui/core/colors';
@@ -44,8 +35,17 @@ const useStyles = makeStyles((theme: Theme) =>
             maxHeight: 550,
         },
         buttonBack: {
-            margin: theme.spacing(1),
+            margin: theme.spacing(1)
         },
+        customDescription: {
+            whiteSpace: 'pre-line'
+        },
+        customPhotoInfoTable: {
+            "& .MuiTableCell-root": {
+                padding: "3px 0px 3px 3px",
+                borderBottom : '0px'
+            }
+        }
     }),
 );
 
@@ -56,24 +56,7 @@ interface IMemoryDetails {
     t(key, opts?): Function;
     handleUnselectMemory(): void;
     selectedMemory: Memory;
-}
-
-// component
-function Photo(props) {
-    console.log(props);
-    const photo = JSON.parse(props.photo);
-    if (photo) {
-        return (
-            <ListItem>
-                <img src={`${process.env.BACK_URL}/uploads/${photo.filename}`}/>
-            </ListItem>
-            )
-    }
-    return (
-        <ListItem>
-            <img src={`/images/placeholder_small.jpg`}/>
-        </ListItem>
-    )
+    isAdmin: boolean;
 }
 
 // --- COMPONENT ---
@@ -81,10 +64,49 @@ const MemoryDetails: React.FC<IMemoryDetails> = ({
     t,
     handleUnselectMemory,
     selectedMemory,
+    isAdmin
 }) => {
     const classes = useStyles();
     const shareUrl = `${process.env.FRONT_URL}/?memory=${selectedMemory.id}`;
     const shareTitle = 'Check out this memory at Prikka';
+
+    const showPhoto = () => {
+        const photo = JSON.parse(selectedMemory.photo);
+        if (photo) {
+            return (
+                <ListItem>
+                    <img src={`${process.env.BACK_URL}/uploads/${photo.filename}`}/>
+                </ListItem>
+            )
+        }
+        return null;
+    };
+
+    const showPhotoInfo = () => {
+        const photo = JSON.parse(selectedMemory.photo);
+        const sharePhotoInfo = selectedMemory.sharePhotoInfo;
+        if (photo && (sharePhotoInfo || isAdmin)) {
+            return (
+                <ListItem alignItems="flex-start">
+                    <Table className={classes.customPhotoInfoTable}>
+                        <TableRow>
+                            <TableCell>{t('photographer')}:</TableCell>
+                            <TableCell>{selectedMemory.photographer}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>{t('whenIsPhotoTaken')}:</TableCell>
+                            <TableCell>{selectedMemory.whenIsPhotoTaken}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>{t('whereIsPhotoTaken')}:</TableCell>
+                            <TableCell>{selectedMemory.whereIsPhotoTaken}</TableCell>
+                        </TableRow>
+                    </Table>
+                </ListItem>
+            )
+        }
+        return null;
+    };
 
     function showUserDisplayName2() {
         if(selectedMemory.User){
@@ -107,7 +129,6 @@ const MemoryDetails: React.FC<IMemoryDetails> = ({
                     </IconButton>
                 </ListItem>
 
-                {/*TODO : add picture */}
                 <ListItem alignItems="flex-start">
                     <Typography variant="h5">{selectedMemory.title}</Typography>
                 </ListItem>
@@ -120,13 +141,13 @@ const MemoryDetails: React.FC<IMemoryDetails> = ({
                 <Divider variant="fullWidth" component="li" />
 
                 <ListItem alignItems="flex-start">
-                    <Typography variant="body2" align="left">
+                    <Typography variant="body2" className={classes.customDescription}>
                         {selectedMemory.description}
                     </Typography>
                 </ListItem>
-                <ListItem>
-                    <Photo photo={selectedMemory.photo}></Photo>
-                </ListItem>
+                {showPhoto()}
+                {showPhotoInfo()}
+
                 <Divider variant="fullWidth" component="li" />
                 <ListItem>
                     <Grid container justify="center" spacing={2}>

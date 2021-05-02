@@ -7,7 +7,7 @@
  */
 
 // --- IMPORTS ---
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import Layout from '../components/Layout';
 import {apis} from '../services/apis';
 import {i18n, withTranslation} from '../i18n';
@@ -17,11 +17,11 @@ import PinpointMap from '../components/PinpointMap';
 import {AxiosError, AxiosResponse} from 'axios';
 import {useSnackbarContext} from '../contexts/SnackbarContext';
 import Router from 'next/router';
-import CategorySelect from '../components/CategorySelect';
 import {Categories, Category} from '../types';
 import Head from 'next/head';
 import {NextPage} from 'next';
 import CardMedia from "@material-ui/core/CardMedia";
+import Checkbox from "@material-ui/core/Checkbox";
 
 // --- STYLES ---
 const useStyles = makeStyles((theme: Theme) =>
@@ -57,6 +57,11 @@ const useStyles = makeStyles((theme: Theme) =>
             height: 70,
             width: 150,
         },
+        mapInstruction: {
+            fontWeight: "bold",
+            fontSize: "18px",
+            paddingBottom: '8px'
+        }
     }),
 );
 
@@ -92,6 +97,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
     const [photographer, setPhotographer] = useState<string>('');
     const [whenIsPhotoTaken, setWhenIsPhotoTaken] = useState<string>('');
     const [whereIsPhotoTaken, setWhereIsPhotoTaken] = useState<string>('');
+    const [sharePhotoInfo, setSharePhotoInfo] = useState<boolean>(true);
 
     //Adds filename when file is added
     const onChange = (e) => {
@@ -124,24 +130,11 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
             snackbarContext.displayWarningSnackbar(
                 'Please enter a title for your memory!',
             );
-//        } else if (categoryId === '') {
-//            snackbarContext.displayWarningSnackbar(
-//                'Please select a category for your memory!',
-//            );
         } else if (description === '') {
             snackbarContext.displayWarningSnackbar(
                 'Please enter a description for your memory!',
             );
-// TODO
-/*        } else if (file !== '' && photographer === '') {
-            snackbarContext.displayWarningSnackbar(
-                'Please enter photographer for your photo!',
-            );
-        } else if (file !== '' && whenIsPhotoTaken === '') {
-            snackbarContext.displayWarningSnackbar(
-                'Please enter when photo is taken!',
-            );
-*/        } else {
+        } else {
             var formData = new FormData();
             var data = {
                 position: {
@@ -157,6 +150,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
             formData.append('photographer', photographer);
             formData.append('whenIsPhotoTaken', whenIsPhotoTaken);
             formData.append('whereIsPhotoTaken', whereIsPhotoTaken);
+            formData.append('sharePhotoInfo', sharePhotoInfo.toString());
             apis.memories
                 .createMemory(formData)
                 .then((res: AxiosResponse) => {
@@ -169,35 +163,6 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
         }
     };
 
-    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value);
-    };
-    const handleCategoryChange = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-        setCategoryId(event.target.value);
-    };
-    const handleDescriptionChange = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-        setDescription(event.target.value);
-    };
-    const handlePhotographerChange = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-        setPhotographer(event.target.value);
-    };
-    const handleWhenIsPhotoTakenChange = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-        setWhenIsPhotoTaken(event.target.value);
-    };
-    const handleWhereIsPhotoTakenChange = (
-        event: React.ChangeEvent<HTMLInputElement>,
-    ) => {
-        setWhereIsPhotoTaken(event.target.value);
-    };
-
     const getCategoryName = () => (
         categories.find((category: Category, index: number) => category.id == selectedCategoryId)['name' + i18n.language.toUpperCase()]
     );
@@ -207,50 +172,62 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
         return (
 
             <>
-            <Grid container spacing={4}>
-                <Grid container xs={6}>
-                    <TextField
-                        className={classes.itemDoubble}
-                        required
-                        id="photographer"
-                        label={t("photographer_PH")}
-                        variant="outlined"
-                        size="small"
-                        fullWidth
-                        value={photographer}
-                        onChange={handlePhotographerChange}
-                    />
+                <Grid container spacing={4}>
+                    <Grid container xs={6}>
+                        <TextField
+                            className={classes.itemDoubble}
+                            required
+                            id="photographer"
+                            label={t("photographer_PH")}
+                            variant="outlined"
+                            size="small"
+                            fullWidth
+                            value={photographer}
+                            onChange={event => setPhotographer(event.target.value)}
+                        />
+                    </Grid>
+                    <Grid container xs={6}>
+                        <CardMedia
+                            className={classes.media}
+                            image={fileUrl}
+                            title="Memory Picture"
+                        />
+                    </Grid>
                 </Grid>
-                <Grid container xs={6}>
-                    <CardMedia
-                        className={classes.media}
-                        image={fileUrl}
-                        title="Memory Picture"
-                    />
-                </Grid>
-            </Grid>
-            <TextField
-            className={classes.item}
-            required
-            id="whenIsPhotoTaken"
-            label={t("whenIsPhotoTaken_PH")}
-            variant="outlined"
-            size="small"
-            fullWidth
-            value={whenIsPhotoTaken}
-            onChange={handleWhenIsPhotoTakenChange}
-            />
-            <TextField
-                className={classes.item}
-                required={false}
-                id="whereIsPhotoTaken"
-                label={t("whereIsPhotoTaken_PH")}
-                variant="outlined"
-                size="small"
-                fullWidth
-                value={whereIsPhotoTaken}
-                onChange={handleWhereIsPhotoTakenChange}
-            />
+                <TextField
+                    className={classes.item}
+                    required
+                    id="whenIsPhotoTaken"
+                    label={t("whenIsPhotoTaken_PH")}
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    value={whenIsPhotoTaken}
+                    onChange={event => setWhenIsPhotoTaken(event.target.value)}
+                />
+                <TextField
+                    className={classes.item}
+                    required={false}
+                    id="whereIsPhotoTaken"
+                    label={t("whereIsPhotoTaken_PH")}
+                    variant="outlined"
+                    size="small"
+                    fullWidth
+                    value={whereIsPhotoTaken}
+                    onChange={event => setWhereIsPhotoTaken(event.target.value)}
+                />
+                {t('sharePhotoInfo_PH')}
+                <Checkbox title="sharePhotoInfoPublic"
+                          checked={sharePhotoInfo}
+                          style={{ paddingLeft: "5px", paddingRight: "25px"}}
+                          onChange={event => setSharePhotoInfo(event.target.checked)}/>
+
+                {t('sharePhotoInfoAdmin_PH')}
+                <Checkbox title="sharePhotoIngoAdmin"
+                          checked={!sharePhotoInfo}
+                          style={{ paddingLeft: "5px"}}
+                          onChange={event => setSharePhotoInfo(!event.target.checked)}/>
+
             </>
         )}
     };
@@ -317,7 +294,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
                                             size="small"
                                             fullWidth
                                             value={title}
-                                            onChange={handleTitleChange}
+                                            onChange={event => setTitle(event.target.value)}
                                         />
                                         <TextField
                                             className={classes.item}
@@ -338,7 +315,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
                                             size="small"
                                             fullWidth
                                             value={description}
-                                            onChange={handleDescriptionChange}
+                                            onChange={event => setDescription(event.target.value)}
                                             required
                                         />
                                         { <div className={classes.root}>
@@ -380,7 +357,7 @@ const AddMemory: NextPage<IAddMemory & any> = ({ t, selectedCategoryId, categori
                                     >
                                         {t('map_title')}
                                     </Typography>
-                                    <Typography>
+                                    <Typography className={classes.mapInstruction}>
                                         {t('map_title_instruction')}
                                     </Typography>
                                     <PinpointMap
