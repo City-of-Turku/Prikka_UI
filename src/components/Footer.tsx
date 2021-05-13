@@ -1,28 +1,27 @@
 // --- IMPORTS ---
-import React, { useEffect } from 'react';
+import React from 'react';
 import Router from 'next/router';
-import { withTranslation } from '../i18n';
-import {
-    Button,
-    Grow,
-    Paper,
-    Popper,
-    MenuItem,
-    MenuList,
-    ClickAwayListener,
-    Grid, Typography,
-} from '@material-ui/core';
+import {Button, Grid,} from '@material-ui/core';
+import {makeStyles} from "@material-ui/core/styles";
 
-// --- COMPONENT ---
+const useStyles = makeStyles({
+    buttonLink: {
+        fontSize: "16px",
+        fontWeight: 400,
+        textTransform: "none",
+        padding: "0px"
+    }
+});
+
 const Footer: React.FC = () => {
 
+    const classes = useStyles();
     const handleServiceInfoClick = (event: React.MouseEvent<EventTarget>) => {
         Router.push('/service_info');
     };
     const handleAccessibilityStatementClick = (event: React.MouseEvent<EventTarget>) => {
         Router.push('/accessibility_statement');
     };
-
 
     return (
         <div style={{ padding: '24px 24px' }}>
@@ -36,12 +35,19 @@ const Footer: React.FC = () => {
                 <Grid item xs={6}>
                 </Grid>
                 <Grid item xs={3}>
-                    <Typography variant="body1" gutterBottom onClick={handleServiceInfoClick}>
+                    <Button
+                        onClick={handleServiceInfoClick}
+                        className={classes.buttonLink}
+                        style={{ backgroundColor: 'transparent' }}>
                         Tietoa palvelusta
-                    </Typography>
-                    <Typography variant="body1" gutterBottom onClick={handleAccessibilityStatementClick}>
+                    </Button>
+                    <br/>
+                    <Button
+                        onClick={handleAccessibilityStatementClick}
+                        className={classes.buttonLink}
+                        style={{ backgroundColor: 'transparent' }}>
                         Saavutettavuusseloste
-                    </Typography>
+                    </Button>
                 </Grid>
             </Grid>
         </div>

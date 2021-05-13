@@ -24,6 +24,7 @@ interface IIndex {
     t(key: string, opts?: any): string;
     categories: Categories;
     isLogged: boolean;
+    isAdmin: boolean;
     selectedMemoryId: string;
 }
 
@@ -31,6 +32,7 @@ const Index: NextPage<IIndex & any> = ({
     t,
     categories,
     isLogged,
+    isAdmin,
     selectedMemoryId,
 }) => {
     //Contexts
@@ -124,6 +126,7 @@ const Index: NextPage<IIndex & any> = ({
                     t={t}
                     selectedMemory={selectedMemory}
                     handleUnselectMemory={handleUnselectMemory}
+                    isAdmin={isAdmin}
                 />
             ) : (
                 <PinnedSubheaderList

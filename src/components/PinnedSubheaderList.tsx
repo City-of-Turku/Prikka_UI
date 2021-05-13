@@ -6,18 +6,10 @@
 
 // --- IMPORTS ---
 import React from 'react';
-import { Memories, Memory, Categories } from '../types';
-import {
-    List,
-    ListItem,
-    ListItemText,
-    ListSubheader,
-    Paper,
-    Grid,
-} from '@material-ui/core';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
+import {Categories, Memories, Memory} from '../types';
+import {Grid, List, ListItem, ListItemText, ListSubheader, Paper,} from '@material-ui/core';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import CategorySelect from './CategorySelect';
-import {i18n} from "../i18n";
 import {Pagination} from '@material-ui/lab';
 
 // --- STYLES ---
@@ -52,6 +44,12 @@ const useStyles = makeStyles((theme: Theme) =>
             paddingRight: '0px',
             textAlign: 'center',
         },
+        memoryItem: {
+            "& .MuiListItemText-root": {
+                marginTop: "0px",
+                marginBottom: "0px"
+            }
+        }
     }),
 );
 
@@ -110,7 +108,7 @@ const PinnedSubheaderList: React.FC<IPinnedSubheaderList> = ({
             }
 
             return (
-                <ListItem
+                <ListItem className={classes.memoryItem}
                     button
                     key={memory.id}
                     onClick={(event) => handleClickListItem(event, index)}

@@ -24,6 +24,7 @@ export type Memory = {
     photographer: string;
     whenIsPhotoTaken: string;
     whereIsPhotoTaken: string;
+    sharePhotoInfo: boolean;
     activeReports: number;
     Reports: {
         id: number;

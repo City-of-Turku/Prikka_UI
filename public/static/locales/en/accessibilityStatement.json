@@ -1,5 +1,5 @@
 {
-    "title": "ACCESSIBILITY STATEMENT",
+    "title": "Accessibility statement",
     "intro": {
         "title": "Prikka.fi website accessibility statement",
         "p1": "Prikka.fi is a website undergoing a testing period. An assessment and a more detailed accessibility statement of the website will be performed and created in 2021.",
@@ -10,7 +10,7 @@
     "part1": {
         "title": "Have you noticed any shortcomings in the accessibility of our digital service? Please let us know and we will do our best to fix it.",
         "p1": "museokeskus@turku.fi",
-        "p1href": "mailto:museokeskus@turku.fi"
+        "p1link": "https://opaskartta.turku.fi/eFeedback/fi/Feedback/87/1043"
     },
     "part2": {
         "title": "Supervisory authority",

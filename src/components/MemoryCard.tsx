@@ -25,6 +25,9 @@ const useStyles = makeStyles({
     media: {
         height: 140,
     },
+    customDescription: {
+        whiteSpace: 'pre-line'
+    }
 });
 
 interface IMemoryCard {
@@ -39,10 +42,9 @@ interface IMemoryCard {
 function getImageUrl(photo) {
     console.log(photo);
     if (photo) {
-//        return process.env.IMAGE_UPLOAD_PATH +''+ photo.filename;
         return process.env.BACK_URL + '/uploads/' + photo.filename;
     }
-    return "/images/placeholder_small.jpg";
+    return null;
 }
 
 const MemoryCard: React.FC<IMemoryCard> = ({
@@ -98,6 +100,7 @@ const MemoryCard: React.FC<IMemoryCard> = ({
                         variant="body1"
                         color="textSecondary"
                         component="p"
+                        className={classes.customDescription}
                     >
                         {memory.description}
                     </Typography>

@@ -7,6 +7,9 @@
     "category": "Tema",
     "alternativeAll": "Alla",
     "anonymous": "Anonym",
+    "photographer": "Fotograf",
+    "whenIsPhotoTaken": "När är bilden tagen",
+    "whereIsPhotoTaken": "Var är bilden tagen?",
 
     "shareMemory": {
         "buttonShare": "Dela",

@@ -1,5 +1,5 @@
 {
-    "title": "SAAVUTETTAVUUSSELOSTE",
+    "title": "Saavutettavuusseloste",
     "intro": {
         "title": "Prikka.fi sivuston saavutettavuusseloste",
         "p1": "Prikka.fi -sivusto on testausvaiheessa oleva verkkosivusto, josta tullaan laatimaan arviointi ja tarkempi saavutettavuusseloste 2021.",
@@ -10,7 +10,7 @@
     "part1": {
         "title": "Huomasitko saavutettavuuspuutteen digipalvelussamme? Kerro se meille ja teemme parhaamme puutteen korjaamiseksi.",
         "p1": "museokeskus@turku.fi",
-        "p1href": "mailto:museokeskus@turku.fi"
+        "p1link": "https://opaskartta.turku.fi/eFeedback/fi/Feedback/87/1043"
     },
     "part2": {
         "title": "Valvontaviranomainen",

@@ -7,6 +7,9 @@
     "category": "Topic",
     "alternativeAll": "All",
     "anonymous": "Anonymous",
+    "photographer": "Photographer",
+    "whenIsPhotoTaken": "When is the photo taken?",
+    "whereIsPhotoTaken": "Where is the photo taken?",
 
     "shareMemory": {
         "buttonShare": "Share",

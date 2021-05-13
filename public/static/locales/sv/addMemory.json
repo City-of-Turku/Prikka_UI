@@ -1,6 +1,6 @@
 {
 
-    "titleAdd": "Lägg till ett nytt minne",
+    "titleAdd": "Lägg till ett nytt minne och markera det på kartan",
     "titleEdit": "Uppdatera ditt minne",
     "warning":"Varning: Du är inte inloggad, dina minnen publiceras \"Anonymt\"",
     "info_title": "Information",
@@ -10,8 +10,10 @@
     "photographer_PH": "Fotograf",
     "whenIsPhotoTaken_PH": "När är bilden tagen",
     "whereIsPhotoTaken_PH": "Var är bilden tagen?",
+    "sharePhotoInfo_PH": "Publicera bildinformationen",
+    "sharePhotoInfoAdmin_PH": "Endast huvudanvändare ser bildinformationen",
     "map_title": "Plats",
-    "map_title_instruction": "Du kan markera platsen för minnet på kartan genom att trycka på musens vänstra knapp.",
+    "map_title_instruction": "Markera minnet på kartan genom att trycka på musens vänstra knapp.",
     "continue_button": "Skicka in",
     "save_button": "Spara",
     "back_button": "Tillbaka",
